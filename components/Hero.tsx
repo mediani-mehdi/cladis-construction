@@ -20,7 +20,7 @@ export default function Hero({ onOpenCatalogue }: HeroProps) {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden bg-black text-white pt-28 sm:pt-32"
+      className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden bg-black text-white pt-32 sm:pt-40"
     >
       {/* 1. Cinematic Construction Background Image with Parallax Scroll */}
       <motion.div
