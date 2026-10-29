@@ -12,11 +12,10 @@ interface HeroProps {
 export default function Hero({ onOpenCatalogue }: HeroProps) {
   const heroRef = useRef<HTMLDivElement>(null);
 
-  // Parallax Scroll Tracking
+  // Parallax Scroll Tracking (Background image subtle depth)
   const { scrollY } = useScroll();
-  const bgY = useTransform(scrollY, [0, 800], ["0%", "20%"]);
-  const bgScale = useTransform(scrollY, [0, 800], [1.02, 1.14]);
-  const textY = useTransform(scrollY, [0, 600], [0, 40]);
+  const bgY = useTransform(scrollY, [0, 800], ["0%", "15%"]);
+  const bgScale = useTransform(scrollY, [0, 800], [1.02, 1.12]);
 
   return (
     <section
@@ -74,13 +73,12 @@ export default function Hero({ onOpenCatalogue }: HeroProps) {
       </div>
 
       {/* 4. Bottom Hero Anchor: Massive Display Headline (Left) & Compact 'Demander un devis' Button (Right) */}
-      <div className="relative z-20 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 w-full pb-8 sm:pb-12 mt-auto">
+      <div className="relative z-20 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 w-full pb-16 sm:pb-20 lg:pb-28 mt-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
           
-          {/* Left Column: Massive Headline */}
+          {/* Left Column: Massive Headline & Clean Subtitle */}
           <motion.div
-            style={{ y: textY }}
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="lg:col-span-8 pb-2"
@@ -90,13 +88,13 @@ export default function Hero({ onOpenCatalogue }: HeroProps) {
               <span className="text-white">L'AVENIR</span>
             </h1>
 
-            {/* Micro subtitle line */}
-            <p className="text-xs sm:text-sm font-mono uppercase tracking-widest text-white/80 mt-4 max-w-xl font-medium">
+            {/* Micro subtitle line - Always clear with ample clearance above oncoming sections */}
+            <p className="text-xs sm:text-sm font-mono uppercase tracking-widest text-white/95 mt-4 max-w-xl font-medium">
               BARDAGE MÉTALLIQUE • COUVERTURE • ÉTANCHÉITÉ • CHARPENTES INDUSTRIELLES
             </p>
           </motion.div>
 
-          {/* Right Column: Smaller 'Demander un devis' CTA Button (Replaced the 24+ card) */}
+          {/* Right Column: Smaller 'Demander un devis' CTA Button */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

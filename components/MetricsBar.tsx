@@ -35,7 +35,7 @@ export default function MetricsBar() {
   ];
 
   return (
-    <section className="relative z-20 -mt-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 bg-white border border-black/10 divide-y sm:divide-y-0 sm:divide-x divide-black/10 shadow-swiss-md">
         {metrics.map((item, index) => {
           const IconComponent = item.icon;
