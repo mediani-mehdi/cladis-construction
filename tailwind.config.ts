@@ -10,11 +10,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // High-Impact Construction Identity Colors
+        // High-Impact Construction Identity Colors (Architectural Electric Blue)
         construction: {
-          orange: "#FF5500",
-          orangeLight: "#FF6A1A",
-          orangeDark: "#E04800",
+          blue: "#0066FF",
+          blueLight: "#3385FF",
+          blueDark: "#0052CC",
+          // Backward-compatibility aliases so any cached or external references resolve to blue
+          orange: "#0066FF",
+          orangeLight: "#3385FF",
+          orangeDark: "#0052CC",
         },
         // Swiss Style Color System
         swiss: {
@@ -29,7 +33,7 @@ const config: Config = {
           muted: "#666D77",
           light: "#8C94A0",
           faint: "#A5ADB8",
-          accent: "#FF5500", // Vibrant industrial construction orange
+          accent: "#0066FF", // Vibrant industrial architectural electric blue
         },
         gold: {
           DEFAULT: "#C59B27",

@@ -17,7 +17,7 @@ export default function Hero({ onOpenCatalogue }: HeroProps) {
   const bgY = useTransform(scrollY, [0, 800], ["0%", "20%"]);
   const bgScale = useTransform(scrollY, [0, 800], [1.02, 1.14]);
   const textY = useTransform(scrollY, [0, 600], [0, 50]);
-  const orangeBoxY = useTransform(scrollY, [0, 600], [0, 30]);
+  const accentBoxY = useTransform(scrollY, [0, 600], [0, 30]);
 
   return (
     <section
@@ -66,7 +66,7 @@ export default function Hero({ onOpenCatalogue }: HeroProps) {
             NOUS BÂTISSONS AVEC RIGUEUR
           </div>
           <div className="flex items-center gap-2 mt-2">
-            <span className="w-2 h-2 bg-construction-orange" />
+            <span className="w-2 h-2 bg-construction-blue" />
             <span className="text-[11px] font-mono uppercase tracking-widest text-white/80">
               CHAMBÉRY • SAVOIE • RHÔNE-ALPES
             </span>
@@ -74,7 +74,7 @@ export default function Hero({ onOpenCatalogue }: HeroProps) {
         </motion.div>
       </div>
 
-      {/* 4. Bottom Hero Anchor: Massive Display Headline (Left) & Orange Accent Box (Right) */}
+      {/* 4. Bottom Hero Anchor: Massive Display Headline (Left) & Blue Accent Box (Right) */}
       <div className="relative z-20 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 w-full pb-0 mt-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
           
@@ -97,15 +97,15 @@ export default function Hero({ onOpenCatalogue }: HeroProps) {
             </p>
           </motion.div>
 
-          {/* Right Column: Signature Orange Metric & CTA Box (Directly replicates reference orange box) */}
+          {/* Right Column: Signature Blue Metric & CTA Box (Directly replicates reference layout) */}
           <motion.div
-            style={{ y: orangeBoxY }}
+            style={{ y: accentBoxY }}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.35, ease: "easeOut" }}
             className="lg:col-span-4 self-end w-full sm:max-w-md lg:max-w-none ml-auto"
           >
-            <div className="bg-construction-orange text-white p-7 sm:p-9 shadow-2xl flex flex-col justify-between min-h-[260px] sm:min-h-[290px] border border-construction-orangeLight/40">
+            <div className="bg-construction-blue text-white p-7 sm:p-9 shadow-2xl flex flex-col justify-between min-h-[260px] sm:min-h-[290px] border border-construction-blueLight/40">
               
               {/* Top Metric */}
               <div>
@@ -121,10 +121,10 @@ export default function Hero({ onOpenCatalogue }: HeroProps) {
               <div className="pt-6 mt-6 border-t border-white/25">
                 <a
                   href="#devis"
-                  className="w-full py-3.5 px-4 border border-white/50 hover:border-white hover:bg-white hover:text-construction-orange transition-all duration-200 flex items-center justify-between font-mono text-xs uppercase tracking-widest font-bold group"
+                  className="w-full py-3.5 px-4 border border-white/50 hover:border-white hover:bg-white hover:text-construction-blue transition-all duration-200 flex items-center justify-between font-mono text-xs uppercase tracking-widest font-bold group"
                 >
                   <span>Demander un devis</span>
-                  <span className="w-6 h-6 rounded-full bg-white/20 group-hover:bg-construction-orange group-hover:text-white flex items-center justify-center transition-colors">
+                  <span className="w-6 h-6 rounded-full bg-white/20 group-hover:bg-construction-blue group-hover:text-white flex items-center justify-center transition-colors">
                     <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
                   </span>
                 </a>

@@ -126,7 +126,7 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
       {/* 1. Thin Scroll Progress Indicator */}
       <div className="fixed top-0 left-0 right-0 z-50 h-[2px] bg-white/10 pointer-events-none">
         <div
-          className="h-full bg-construction-orange transition-all duration-150 ease-out"
+          className="h-full bg-construction-blue transition-all duration-150 ease-out"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
@@ -141,10 +141,10 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
       >
         <div className="w-full flex items-stretch">
           
-          {/* A. Full-Height Signature Orange Brand Block (Docked flush against top-left edge) */}
+          {/* A. Full-Height Signature Blue Brand Block (Docked flush against top-left edge) */}
           <a
             href="#"
-            className="flex-shrink-0 bg-construction-orange hover:bg-construction-orangeDark text-white px-5 sm:px-7 lg:px-9 flex items-center justify-center gap-3 transition-colors select-none z-30 border-r border-construction-orangeDark/40"
+            className="flex-shrink-0 bg-construction-blue hover:bg-construction-blueDark text-white px-5 sm:px-7 lg:px-9 flex items-center justify-center gap-3 transition-colors select-none z-30 border-r border-construction-blueDark/40"
             title="CLADIS CONSTRUCTION - Accueil"
           >
             {/* Geometric Delta Logo Icon */}
@@ -175,7 +175,7 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
                   href="https://x.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-construction-orange transition-colors"
+                  className="hover:text-construction-blue transition-colors"
                   title="X (Twitter)"
                 >
                   <span className="font-sans font-bold text-xs">𝕏</span>
@@ -184,7 +184,7 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
                   href="https://facebook.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-construction-orange transition-colors"
+                  className="hover:text-construction-blue transition-colors"
                   title="Facebook"
                 >
                   <Facebook className="w-3.5 h-3.5" />
@@ -193,7 +193,7 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
                   href="https://instagram.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-construction-orange transition-colors"
+                  className="hover:text-construction-blue transition-colors"
                   title="Instagram"
                 >
                   <Instagram className="w-3.5 h-3.5" />
@@ -202,7 +202,7 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
                   href="https://linkedin.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-construction-orange transition-colors"
+                  className="hover:text-construction-blue transition-colors"
                   title="LinkedIn"
                 >
                   <Linkedin className="w-3.5 h-3.5" />
@@ -212,13 +212,13 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
               {/* Right: Working Hours & Direct Phone */}
               <div className="flex items-center gap-6">
                 <div className="flex items-center gap-1.5 text-white/85">
-                  <Clock className="w-3 h-3 text-construction-orange" />
+                  <Clock className="w-3 h-3 text-construction-blue" />
                   <span>Lun – Sam : 7h00 – 19h00</span>
                 </div>
                 <div className="h-3 w-[1px] bg-white/20" />
                 <a
                   href="tel:0952863156"
-                  className="text-white hover:text-construction-orange font-bold transition-colors"
+                  className="text-white hover:text-construction-blue font-bold transition-colors"
                 >
                   Tél : 09 52 86 31 56
                 </a>
@@ -235,10 +235,10 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
                 {/* 1. ACCUEIL */}
                 <a
                   href="#"
-                  className="hover:text-construction-orange transition-colors py-2 relative group"
+                  className="hover:text-construction-blue transition-colors py-2 relative group"
                 >
                   <span>Accueil</span>
-                  <span className="absolute bottom-1 left-0 w-0 h-[2px] bg-construction-orange transition-all duration-200 group-hover:w-full" />
+                  <span className="absolute bottom-1 left-0 w-0 h-[2px] bg-construction-blue transition-all duration-200 group-hover:w-full" />
                 </a>
 
                 {/* 2. NOS MÉTIERS (Dropdown) */}
@@ -249,12 +249,12 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
                 >
                   <a
                     href="#metiers"
-                    className="flex items-center gap-1.5 hover:text-construction-orange transition-colors"
+                    className="flex items-center gap-1.5 hover:text-construction-blue transition-colors"
                   >
                     <span>Nos Métiers</span>
                     <ChevronDown
                       className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                        activeDropdown === "metiers" ? "rotate-180 text-construction-orange" : ""
+                        activeDropdown === "metiers" ? "rotate-180 text-construction-blue" : ""
                       }`}
                     />
                   </a>
@@ -266,7 +266,7 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
                       onMouseLeave={handleDropdownLeave}
                     >
                       <div className="bg-[#0c0c0c]/98 backdrop-blur-2xl border border-white/15 p-3 shadow-2xl">
-                        <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-widest text-construction-orange pb-2 mb-2 border-b border-white/10 font-bold">
+                        <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-widest text-construction-blue pb-2 mb-2 border-b border-white/10 font-bold">
                           <span>Lots Techniques Enveloppe</span>
                           <span className="text-white/40">6 Lots</span>
                         </div>
@@ -278,7 +278,7 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
                               onClick={closeDropdown}
                               className="group/item block p-2 hover:bg-white/10 transition-colors"
                             >
-                              <div className="flex items-center justify-between text-xs font-bold text-white group-hover/item:text-construction-orange">
+                              <div className="flex items-center justify-between text-xs font-bold text-white group-hover/item:text-construction-blue">
                                 <span>{srv.title}</span>
                                 <span className="font-mono text-[10px] text-white/40">0{idx + 1}</span>
                               </div>
@@ -292,7 +292,7 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
                           <a
                             href="#metiers"
                             onClick={closeDropdown}
-                            className="inline-flex items-center gap-1 text-[10px] font-mono uppercase tracking-widest text-construction-orange hover:text-white"
+                            className="inline-flex items-center gap-1 text-[10px] font-mono uppercase tracking-widest text-construction-blue hover:text-white"
                           >
                             <span>Voir le détail technique</span>
                             <ArrowUpRight className="w-3 h-3" />
@@ -311,12 +311,12 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
                 >
                   <a
                     href="#alliance"
-                    className="flex items-center gap-1.5 hover:text-construction-orange transition-colors"
+                    className="flex items-center gap-1.5 hover:text-construction-blue transition-colors"
                   >
                     <span>L'Alliance</span>
                     <ChevronDown
                       className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                        activeDropdown === "alliance" ? "rotate-180 text-construction-orange" : ""
+                        activeDropdown === "alliance" ? "rotate-180 text-construction-blue" : ""
                       }`}
                     />
                   </a>
@@ -328,7 +328,7 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
                       onMouseLeave={handleDropdownLeave}
                     >
                       <div className="bg-[#0c0c0c]/98 backdrop-blur-2xl border border-white/15 p-3 shadow-2xl">
-                        <div className="text-[10px] font-mono uppercase tracking-widest text-construction-orange pb-2 mb-2 border-b border-white/10 font-bold">
+                        <div className="text-[10px] font-mono uppercase tracking-widest text-construction-blue pb-2 mb-2 border-b border-white/10 font-bold">
                           <span>Synergie Opérationnelle</span>
                         </div>
                         <div className="space-y-1">
@@ -339,7 +339,7 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
                               onClick={closeDropdown}
                               className="group/item block p-2 hover:bg-white/10 transition-colors"
                             >
-                              <div className="flex items-center justify-between text-xs font-bold text-white group-hover/item:text-construction-orange">
+                              <div className="flex items-center justify-between text-xs font-bold text-white group-hover/item:text-construction-blue">
                                 <span>{item.title}</span>
                                 <span className="font-mono text-[10px] text-white/40">P{idx + 1}</span>
                               </div>
@@ -362,12 +362,12 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
                 >
                   <a
                     href="#realisations"
-                    className="flex items-center gap-1.5 hover:text-construction-orange transition-colors"
+                    className="flex items-center gap-1.5 hover:text-construction-blue transition-colors"
                   >
                     <span>Réalisations</span>
                     <ChevronDown
                       className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                        activeDropdown === "realisations" ? "rotate-180 text-construction-orange" : ""
+                        activeDropdown === "realisations" ? "rotate-180 text-construction-blue" : ""
                       }`}
                     />
                   </a>
@@ -379,7 +379,7 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
                       onMouseLeave={handleDropdownLeave}
                     >
                       <div className="bg-[#0c0c0c]/98 backdrop-blur-2xl border border-white/15 p-3 shadow-2xl">
-                        <div className="text-[10px] font-mono uppercase tracking-widest text-construction-orange pb-2 mb-2 border-b border-white/10 font-bold">
+                        <div className="text-[10px] font-mono uppercase tracking-widest text-construction-blue pb-2 mb-2 border-b border-white/10 font-bold">
                           <span>Portefeuille Chantiers</span>
                         </div>
                         <div className="space-y-1">
@@ -390,7 +390,7 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
                               onClick={closeDropdown}
                               className="group/item block p-2 hover:bg-white/10 transition-colors"
                             >
-                              <div className="text-xs font-bold text-white group-hover/item:text-construction-orange">
+                              <div className="text-xs font-bold text-white group-hover/item:text-construction-blue">
                                 {cat.title}
                               </div>
                               <div className="text-[10px] text-white/60 font-mono font-normal mt-0.5 line-clamp-1">
@@ -407,19 +407,19 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
                 {/* 5. MÉTHODOLOGIE */}
                 <a
                   href="#methodologie"
-                  className="hover:text-construction-orange transition-colors py-2 relative group"
+                  className="hover:text-construction-blue transition-colors py-2 relative group"
                 >
                   <span>Méthodologie</span>
-                  <span className="absolute bottom-1 left-0 w-0 h-[2px] bg-construction-orange transition-all duration-200 group-hover:w-full" />
+                  <span className="absolute bottom-1 left-0 w-0 h-[2px] bg-construction-blue transition-all duration-200 group-hover:w-full" />
                 </a>
 
                 {/* 6. CONTACTS */}
                 <a
                   href="#contact"
-                  className="hover:text-construction-orange transition-colors py-2 relative group"
+                  className="hover:text-construction-blue transition-colors py-2 relative group"
                 >
                   <span>Contacts</span>
-                  <span className="absolute bottom-1 left-0 w-0 h-[2px] bg-construction-orange transition-all duration-200 group-hover:w-full" />
+                  <span className="absolute bottom-1 left-0 w-0 h-[2px] bg-construction-blue transition-all duration-200 group-hover:w-full" />
                 </a>
 
               </nav>
@@ -430,8 +430,8 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
                 {/* SEARCH Button / Field (Matches "SEARCH Q" exactly) */}
                 <div className="relative">
                   {searchOpen ? (
-                    <div className="flex items-center gap-2 bg-black/95 border border-construction-orange px-3 py-1.5 animate-fadeIn shadow-2xl">
-                      <Search className="w-3.5 h-3.5 text-construction-orange flex-shrink-0" />
+                    <div className="flex items-center gap-2 bg-black/95 border border-construction-blue px-3 py-1.5 animate-fadeIn shadow-2xl">
+                      <Search className="w-3.5 h-3.5 text-construction-blue flex-shrink-0" />
                       <input
                         ref={searchInputRef}
                         type="text"
@@ -468,18 +468,18 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
                   ) : (
                     <button
                       onClick={() => setSearchOpen(true)}
-                      className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-white hover:text-construction-orange transition-colors py-1.5 px-2"
+                      className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-white hover:text-construction-blue transition-colors py-1.5 px-2"
                       title="Rechercher sur le site"
                     >
                       <span className="hidden sm:inline">Search</span>
-                      <Search className="w-4 h-4 text-white group-hover:text-construction-orange" />
+                      <Search className="w-4 h-4 text-white group-hover:text-construction-blue" />
                     </button>
                   )}
 
                   {/* Search Shortcuts Flyout */}
                   {searchOpen && (
                     <div className="absolute right-0 top-full mt-2 w-80 bg-[#0c0c0c]/98 backdrop-blur-2xl border border-white/15 p-3 shadow-2xl z-50 animate-fadeIn">
-                      <div className="text-[10px] font-mono uppercase tracking-widest text-construction-orange pb-2 mb-2 border-b border-white/10 font-bold">
+                      <div className="text-[10px] font-mono uppercase tracking-widest text-construction-blue pb-2 mb-2 border-b border-white/10 font-bold">
                         Accès Rapides
                       </div>
                       <div className="space-y-1">
@@ -493,7 +493,7 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
                             <button
                               key={sc.label}
                               onClick={() => handleSearchSelect(sc)}
-                              className="w-full text-left p-2 hover:bg-white/10 text-xs font-mono text-white/90 hover:text-construction-orange flex items-center justify-between transition-colors"
+                              className="w-full text-left p-2 hover:bg-white/10 text-xs font-mono text-white/90 hover:text-construction-blue flex items-center justify-between transition-colors"
                             >
                               <span>{sc.label}</span>
                               <ArrowUpRight className="w-3 h-3 text-white/40" />
@@ -528,14 +528,14 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
           <div className="flex flex-col gap-6">
             <div className="flex items-center justify-between border-b border-white/15 pb-4">
               <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 bg-construction-orange" />
-                <span className="text-[11px] uppercase tracking-widest text-construction-orange font-mono font-bold">
+                <span className="w-2.5 h-2.5 bg-construction-blue" />
+                <span className="text-[11px] uppercase tracking-widest text-construction-blue font-mono font-bold">
                   MENU // CLADIS CONSTRUCTION
                 </span>
               </div>
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-1.5 text-white hover:text-construction-orange bg-white/10"
+                className="p-1.5 text-white hover:text-construction-blue bg-white/10"
                 aria-label="Fermer le menu"
               >
                 <X className="w-5 h-5" />
@@ -556,10 +556,10 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
                   key={link.label}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-base font-sans font-bold tracking-tight text-white hover:text-construction-orange transition-colors py-2.5 border-b border-white/10 flex items-center justify-between"
+                  className="text-base font-sans font-bold tracking-tight text-white hover:text-construction-blue transition-colors py-2.5 border-b border-white/10 flex items-center justify-between"
                 >
                   <span className="flex items-baseline gap-3">
-                    <span className="font-mono text-xs text-construction-orange">0{idx + 1}.</span>
+                    <span className="font-mono text-xs text-construction-blue">0{idx + 1}.</span>
                     <span>{link.label}</span>
                   </span>
                   <ArrowUpRight className="w-4 h-4 text-white/50" />
@@ -573,7 +573,7 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
               href="tel:0952863156"
               className="flex items-center justify-center gap-2 py-3 px-4 bg-white/10 border border-white/20 text-white text-xs font-mono"
             >
-              <Phone className="w-3.5 h-3.5 text-construction-orange" />
+              <Phone className="w-3.5 h-3.5 text-construction-blue" />
               <span>09 52 86 31 56 • CHAMBÉRY (SAVOIE)</span>
             </a>
 
@@ -585,7 +585,7 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
                 }}
                 className="flex items-center justify-center gap-2 py-3 px-4 bg-white/5 border border-white/20 text-white text-xs font-mono uppercase tracking-wider hover:bg-white/15"
               >
-                <Download className="w-3.5 h-3.5 text-construction-orange" />
+                <Download className="w-3.5 h-3.5 text-construction-blue" />
                 <span>Télécharger Catalogue 2026 (PDF)</span>
               </button>
             )}
@@ -593,7 +593,7 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
             <a
               href="#devis"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-2 py-3.5 px-4 bg-construction-orange text-white font-mono text-xs uppercase tracking-widest font-bold shadow-lg"
+              className="flex items-center justify-center gap-2 py-3.5 px-4 bg-construction-blue text-white font-mono text-xs uppercase tracking-widest font-bold shadow-lg"
             >
               <span>Demander un devis en ligne</span>
               <ArrowUpRight className="w-4 h-4" />
