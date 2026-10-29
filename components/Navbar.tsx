@@ -90,11 +90,12 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
         />
       </div>
 
-      {/* 2. Main Header Bar (Full edge-to-edge docking, smooth transition to white on scroll) */}
+      {/* 2. Main Header Bar (Full edge-to-edge docking, solid pure white on scroll) */}
       <header
+        style={{ backgroundColor: scrolled ? "#ffffff" : undefined }}
         className={`fixed top-0 left-0 right-0 z-40 w-full transition-all duration-300 ${
           scrolled
-            ? "bg-white/98 backdrop-blur-xl border-b border-black/10 shadow-swiss-md"
+            ? "bg-white border-b border-black/10 shadow-swiss-md"
             : "bg-gradient-to-b from-black/90 via-black/55 to-transparent border-b border-white/10"
         }`}
       >
