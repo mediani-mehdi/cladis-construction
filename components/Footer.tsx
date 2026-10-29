@@ -23,7 +23,7 @@ export default function Footer({ onOpenCatalogue }: FooterProps) {
           <div className="lg:col-span-4 space-y-5">
             <a href="#" className="inline-block py-1" title="CLADIS CONSTRUCTION">
               <Image
-                src="/images/cladis-logo-original.png"
+                src="/images/cladis-logo-white-bg.png"
                 alt="CLADIS CONSTRUCTION - Bardage, Étanchéité, Couverture"
                 width={240}
                 height={68}

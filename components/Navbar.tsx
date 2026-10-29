@@ -96,18 +96,18 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
       >
         <div className="max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           
-          {/* A. Official CLADIS Logo */}
+          {/* A. Official CLADIS Logo on Crisp White Background */}
           <a
             href="#"
-            className="flex items-center gap-3 select-none group py-1"
+            className="flex items-center bg-white px-4 sm:px-5 py-2 sm:py-2.5 shadow-lg select-none group border border-white/30 transition-all hover:bg-neutral-50"
             title="CLADIS CONSTRUCTION - Accueil"
           >
             <Image
-              src="/images/cladis-logo-dark.png"
+              src="/images/cladis-logo-white-bg.png"
               alt="CLADIS CONSTRUCTION - Bardage, Étanchéité, Couverture"
               width={260}
               height={74}
-              className="h-10 sm:h-12 md:h-13 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]"
+              className="h-9 sm:h-11 md:h-12 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.01]"
               priority
             />
           </a>
@@ -242,13 +242,15 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
         <div className="lg:hidden fixed inset-0 z-50 bg-black/98 backdrop-blur-2xl pt-20 px-6 pb-8 flex flex-col justify-between animate-fadeIn overflow-y-auto">
           <div className="flex flex-col gap-6">
             <div className="flex items-center justify-between border-b border-white/15 pb-4">
-              <Image
-                src="/images/cladis-logo-dark.png"
-                alt="CLADIS CONSTRUCTION"
-                width={180}
-                height={50}
-                className="h-8 w-auto object-contain"
-              />
+              <div className="bg-white px-3 py-1.5 shadow-sm inline-flex items-center">
+                <Image
+                  src="/images/cladis-logo-white-bg.png"
+                  alt="CLADIS CONSTRUCTION"
+                  width={180}
+                  height={50}
+                  className="h-8 w-auto object-contain"
+                />
+              </div>
               <button
                 onClick={() => setMobileMenuOpen(false)}
                 className="p-1.5 text-white hover:text-construction-blue bg-white/10"
