@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "CLADIS CONSTRUCTION" }],
   icons: {
-    icon: "/images/logo-dark.png",
+    icon: "/images/cladis-icon.png",
   },
 };
 

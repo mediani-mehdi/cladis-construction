@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { ArrowUp, Phone, Mail, MapPin } from "lucide-react";
 
 interface FooterProps {
@@ -20,19 +21,15 @@ export default function Footer({ onOpenCatalogue }: FooterProps) {
           
           {/* Brand Col */}
           <div className="lg:col-span-4 space-y-5">
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 bg-swiss-ink text-white flex items-center justify-center font-bold text-sm">
-                <span>C</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-sans text-xl font-bold tracking-tight text-swiss-ink">
-                  CLADIS
-                </span>
-                <span className="text-[10px] uppercase tracking-widest text-swiss-muted -mt-0.5 font-mono font-medium">
-                  CONSTRUCTION
-                </span>
-              </div>
-            </div>
+            <a href="#" className="inline-block py-1" title="CLADIS CONSTRUCTION">
+              <Image
+                src="/images/cladis-logo-original.png"
+                alt="CLADIS CONSTRUCTION - Bardage, Étanchéité, Couverture"
+                width={240}
+                height={68}
+                className="h-11 w-auto object-contain"
+              />
+            </a>
 
             <p className="text-xs text-swiss-muted font-normal leading-relaxed max-w-sm">
               Conception, ingénierie et réalisation de l'enveloppe du bâtiment industriel et de la construction métallique en région Auvergne-Rhône-Alpes. Bureau d'études intégré et alliance opérationnelle avec Building Services.
