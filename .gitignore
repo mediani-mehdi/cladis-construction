@@ -35,6 +35,9 @@ next-env.d.ts
 
 # temp files
 extracted_assets/
+scraped_*.html
+cladisbardage_scraped.html
+scraped_text.txt
 
 
 .vercel

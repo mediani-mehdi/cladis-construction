@@ -51,22 +51,24 @@ export default function Hero({ onOpenCatalogue }: HeroProps) {
       {/* Horizontal drafting line across the upper third */}
       <div className="absolute top-[28%] left-0 right-0 z-10 border-b border-white/10 pointer-events-none" />
 
-      {/* 3. Upper Content Area: Sub-Headline */}
+      {/* 3. Upper Content Area: Sub-Headline & Official Tagline */}
       <div className="relative z-20 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 w-full pt-6 sm:pt-10">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="max-w-md sm:max-w-lg"
+          className="max-w-lg sm:max-w-xl"
         >
-          <div className="text-sm sm:text-base lg:text-lg font-mono font-bold uppercase tracking-wider text-white leading-snug drop-shadow-md">
-            DE L'ÉTUDE À LA LIVRAISON — <br />
-            NOUS BÂTISSONS AVEC RIGUEUR
+          <div className="text-xs sm:text-sm font-mono font-bold uppercase tracking-wider text-construction-blue leading-snug drop-shadow-md">
+            CLADIS CONSTRUCTION — BARDAGE, COUVERTURE & ÉTANCHÉITÉ
+          </div>
+          <div className="text-sm sm:text-base lg:text-lg font-mono font-bold uppercase tracking-wider text-white leading-snug drop-shadow-md mt-1">
+            ENVELOPPE DU BÂTIMENT INDUSTRIEL &amp; CONSTRUCTION MÉTALLIQUE
           </div>
           <div className="flex items-center gap-2 mt-2">
             <span className="w-2 h-2 bg-construction-blue" />
             <span className="text-[11px] font-mono uppercase tracking-widest text-white/80">
-              CHAMBÉRY • SAVOIE • RHÔNE-ALPES
+              CHAMBÉRY • SAVOIE • RHÔNE-ALPES — DE L'ÉTUDE À LA LIVRAISON
             </span>
           </div>
         </motion.div>

@@ -5,31 +5,31 @@ import { Award, Briefcase, CheckSquare, Layers } from "lucide-react";
 export default function MetricsBar() {
   const metrics = [
     {
-      value: "24+",
+      value: "24",
       unit: "ans",
-      label: "Années d'expertise",
-      detail: "Savoir-faire historique sur les chantiers alpins et régionaux",
+      label: "Années d'expérience",
+      detail: "Plus de 24 ans d'expertise en enveloppe du bâtiment et construction métallique",
       icon: Award,
     },
     {
       value: "500+",
-      unit: "chantiers",
-      label: "Projets livrés",
+      unit: "réalisés",
+      label: "Projets réalisés",
       detail: "Bâtiments industriels, tertiaires et logistiques en Rhône-Alpes",
       icon: Briefcase,
     },
     {
       value: "100%",
-      unit: "maîtrise",
-      label: "Accompagnement global",
-      detail: "De l'ingénierie préliminaire à la réception clé en main",
+      unit: "dédié",
+      label: "Accompagnement",
+      detail: "De l'étude à la livraison, une équipe dédiée pour vos chantiers industriels",
       icon: CheckSquare,
     },
     {
       value: "1",
-      unit: "Pôle Dédié",
+      unit: "intégré",
       label: "Bureau d'études intégré",
-      detail: "Calculs de charges, modélisation BIM 3D et calepinage précis",
+      detail: "Études d'exécution, plans techniques et coordination des interfaces",
       icon: Layers,
     },
   ];

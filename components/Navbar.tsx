@@ -50,6 +50,8 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
     { label: "Bardage Métallique", target: "#metiers" },
     { label: "Couverture & Étanchéité", target: "#metiers" },
     { label: "Charpentes Industrielles", target: "#metiers" },
+    { label: "L'Entreprise (Qui sommes-nous)", target: "#entreprise" },
+    { label: "Nos Atouts", target: "#entreprise" },
     { label: "L'Alliance Building Services", target: "#alliance" },
     { label: "Nos Réalisations", target: "#realisations" },
     { label: "Configurateur Enveloppe", target: "#configurateur" },
@@ -74,10 +76,11 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
   const navLinks = [
     { label: "Accueil", href: "#" },
     { label: "Nos Métiers", href: "#metiers" },
-    { label: "L'Alliance", href: "#alliance" },
+    { label: "L'Entreprise", href: "#entreprise" },
     { label: "Réalisations", href: "#realisations" },
     { label: "Méthodologie", href: "#methodologie" },
-    { label: "Contacts", href: "#contact" },
+    { label: "L'Alliance", href: "#alliance" },
+    { label: "Contact", href: "#contact" },
   ];
 
   return (
@@ -173,7 +176,7 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
               <div className="flex items-center gap-6">
                 <div className={`flex items-center gap-1.5 ${scrolled ? "text-neutral-700" : "text-white/85"}`}>
                   <Clock className="w-3 h-3 text-construction-blue" />
-                  <span>Lun – Sam : 7h00 – 19h00</span>
+                  <span>Lun – Ven : 8h00 – 18h00</span>
                 </div>
                 <div className={`h-3 w-[1px] ${scrolled ? "bg-black/15" : "bg-white/20"}`} />
                 <a

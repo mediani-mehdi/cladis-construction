@@ -4,6 +4,7 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import MetricsBar from "@/components/MetricsBar";
+import AboutCompany from "@/components/AboutCompany";
 import CoreServices from "@/components/CoreServices";
 import Methodology from "@/components/Methodology";
 import AllianceSection from "@/components/AllianceSection";
@@ -43,6 +44,9 @@ export default function Home() {
 
       {/* Swiss Modular Metrics / Credibility Bar */}
       <MetricsBar />
+
+      {/* Qui sommes-nous / L'Entreprise & Nos Atouts */}
+      <AboutCompany />
 
       {/* Nos Métiers / Core Services (Modular Grid + Technical Sheets) */}
       <CoreServices />
