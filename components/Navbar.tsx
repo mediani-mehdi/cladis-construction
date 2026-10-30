@@ -47,15 +47,18 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
   }, [searchOpen]);
 
   const searchShortcuts = [
-    { label: "Bardage Métallique", target: "#metiers" },
-    { label: "Couverture & Étanchéité", target: "#metiers" },
-    { label: "Charpentes Industrielles", target: "#metiers" },
-    { label: "L'Entreprise (Qui sommes-nous)", target: "#entreprise" },
-    { label: "Nos Atouts", target: "#entreprise" },
-    { label: "L'Alliance Building Services", target: "#alliance" },
-    { label: "Nos Réalisations", target: "#realisations" },
-    { label: "Configurateur Enveloppe", target: "#configurateur" },
-    { label: "Demande de Devis", target: "#devis" },
+    { label: "Bardage Métallique", target: "/metiers/bardage-metallique" },
+    { label: "Couverture & Étanchéité", target: "/metiers/couverture-etancheite" },
+    { label: "Charpentes Industrielles", target: "/metiers/charpente-metallique" },
+    { label: "Bardage Spécifique & Façades", target: "/metiers/bardage-specifique" },
+    { label: "Isolation Thermique RE2020", target: "/metiers/isolation-thermique" },
+    { label: "Toiture Végétalisée & Solaire", target: "/metiers/toiture-vegetalisee-solaire" },
+    { label: "L'Entreprise (Qui sommes-nous)", target: "/l-entreprise" },
+    { label: "Nos Métiers (Vue d'ensemble)", target: "/metiers" },
+    { label: "L'Alliance Building Services", target: "/#alliance" },
+    { label: "Nos Réalisations", target: "/#realisations" },
+    { label: "Configurateur Enveloppe", target: "/#configurateur" },
+    { label: "Demande de Devis", target: "/#devis" },
     { label: "Catalogue 2026 (PDF)", action: "catalogue" },
   ];
 
@@ -66,21 +69,27 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
       return;
     }
     if (shortcut.target) {
+      if (shortcut.target.startsWith("/")) {
+        window.location.href = shortcut.target;
+        return;
+      }
       const el = document.querySelector(shortcut.target);
       if (el) {
         el.scrollIntoView({ behavior: "smooth" });
+      } else {
+        window.location.href = `/${shortcut.target}`;
       }
     }
   };
 
   const navLinks = [
-    { label: "Accueil", href: "#" },
-    { label: "Nos Métiers", href: "#metiers" },
-    { label: "L'Entreprise", href: "#entreprise" },
-    { label: "Réalisations", href: "#realisations" },
-    { label: "Méthodologie", href: "#methodologie" },
-    { label: "L'Alliance", href: "#alliance" },
-    { label: "Contact", href: "#contact" },
+    { label: "Accueil", href: "/" },
+    { label: "Nos Métiers", href: "/metiers" },
+    { label: "L'Entreprise", href: "/l-entreprise" },
+    { label: "Réalisations", href: "/#realisations" },
+    { label: "Méthodologie", href: "/#methodologie" },
+    { label: "L'Alliance", href: "/#alliance" },
+    { label: "Contact", href: "/#contact" },
   ];
 
   return (
@@ -106,7 +115,7 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
           
           {/* A. Full-Height Signature White Logo Block (Docked flush to top-left edge) */}
           <a
-            href="#"
+            href="/"
             className={`flex-shrink-0 bg-white hover:bg-neutral-50 px-4 sm:px-6 md:px-8 lg:px-9 flex items-center justify-center transition-colors select-none z-30 border-r ${
               scrolled ? "border-black/10" : "border-black/10 shadow-lg"
             } group`}

@@ -43,7 +43,7 @@ export default function Footer({ onOpenCatalogue }: FooterProps) {
           {/* Brand Col */}
           <div className="lg:col-span-4 space-y-5">
             {/* Logo on Pure White Background Badge (Preserving authentic white background requested by user) */}
-            <a href="#" className="inline-block" title="CLADIS CONSTRUCTION">
+            <a href="/" className="inline-block" title="CLADIS CONSTRUCTION">
               <div className="bg-white px-4 py-2.5 shadow-xl inline-flex items-center border border-white/30 hover:bg-neutral-50 transition-colors">
                 <Image
                   src="/images/cladis-logo-white-bg.png"
@@ -80,25 +80,28 @@ export default function Footer({ onOpenCatalogue }: FooterProps) {
             </span>
             <ul className="space-y-2.5 text-xs font-normal">
               <li>
-                <a href="#" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Accueil</a>
+                <a href="/" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Accueil</a>
               </li>
               <li>
-                <a href="#metiers" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Nos Métiers (Bardage, Couverture, Charpente)</a>
+                <a href="/l-entreprise" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">L'Entreprise (Qui sommes-nous)</a>
               </li>
               <li>
-                <a href="#methodologie" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Notre Méthodologie en 4 Phases</a>
+                <a href="/metiers" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Nos Métiers (Vue d'ensemble)</a>
               </li>
               <li>
-                <a href="#alliance" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">L'Alliance Stratégique Building Services</a>
+                <a href="/#methodologie" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Notre Méthodologie en 4 Phases</a>
               </li>
               <li>
-                <a href="#realisations" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Réalisations & Portfolio</a>
+                <a href="/#alliance" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">L'Alliance Stratégique Building Services</a>
               </li>
               <li>
-                <a href="#configurateur" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Configurateur Technique</a>
+                <a href="/#realisations" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Réalisations & Portfolio</a>
               </li>
               <li>
-                <a href="#devis" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Demande de Devis & Contact</a>
+                <a href="/#configurateur" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Configurateur Technique</a>
+              </li>
+              <li>
+                <a href="/#devis" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Demande de Devis & Contact</a>
               </li>
             </ul>
           </div>
@@ -111,22 +114,22 @@ export default function Footer({ onOpenCatalogue }: FooterProps) {
             </span>
             <ul className="space-y-2.5 text-xs font-normal">
               <li>
-                <a href="#metiers" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Bardage Métallique</a>
+                <a href="/metiers/bardage-metallique" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Bardage Métallique</a>
               </li>
               <li>
-                <a href="#metiers" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Couverture Industrielle</a>
+                <a href="/metiers/couverture-etancheite" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Couverture Industrielle</a>
               </li>
               <li>
-                <a href="#metiers" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Étanchéité Toiture</a>
+                <a href="/metiers/charpente-metallique" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Charpente Métallique</a>
               </li>
               <li>
-                <a href="#metiers" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Charpente Métallique</a>
+                <a href="/metiers/bardage-specifique" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Bardage Spécifique</a>
               </li>
               <li>
-                <a href="#metiers" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Isolation RE2020</a>
+                <a href="/metiers/isolation-thermique" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Isolation RE2020</a>
               </li>
               <li>
-                <a href="#metiers" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Toiture Végétalisée & Solaire</a>
+                <a href="/metiers/toiture-vegetalisee-solaire" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Toiture Végétalisée & Solaire</a>
               </li>
             </ul>
           </div>

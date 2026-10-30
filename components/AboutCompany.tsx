@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import {
   CheckCircle2,
   Compass,
@@ -10,6 +11,7 @@ import {
   Clock,
   Sparkles,
   ArrowUpRight,
+  ArrowRight,
   ShieldCheck,
   Building,
 } from "lucide-react";
@@ -158,6 +160,14 @@ export default function AboutCompany() {
 
             {/* CTAs */}
             <div className="flex flex-wrap items-center gap-4 pt-4">
+              <Link
+                href="/l-entreprise"
+                className="inline-flex items-center gap-2 px-6 py-3.5 bg-neutral-900 hover:bg-neutral-800 text-white font-mono text-xs uppercase tracking-widest font-bold shadow-md transition-colors"
+              >
+                <span>Découvrir l'entreprise</span>
+                <ArrowRight className="w-4 h-4 text-construction-blue" />
+              </Link>
+
               <a
                 href="#devis"
                 className="inline-flex items-center gap-2 px-6 py-3.5 bg-construction-blue hover:bg-construction-blueDark text-white font-mono text-xs uppercase tracking-widest font-bold shadow-md transition-colors"
@@ -170,7 +180,7 @@ export default function AboutCompany() {
                 href="#realisations"
                 className="inline-flex items-center gap-2 px-6 py-3.5 bg-white border border-neutral-300 hover:border-neutral-900 text-neutral-900 font-mono text-xs uppercase tracking-widest font-bold transition-colors"
               >
-                <span>Découvrir nos réalisations</span>
+                <span>Nos réalisations</span>
               </a>
             </div>
 
