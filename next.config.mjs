@@ -2,7 +2,14 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    unoptimized: true,
+    formats: ['image/webp'],
+    qualities: [75, 90],
+  },
+  async headers() {
+    return [{
+      source: '/images/:path*',
+      headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+    }];
   },
   async redirects() {
     return [

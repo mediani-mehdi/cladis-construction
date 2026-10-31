@@ -2,68 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import {
-  CheckCircle2,
-  Compass,
-  Award,
-  Layers,
-  Users,
-  Clock,
-  Sparkles,
-  ArrowUpRight,
-  ArrowRight,
-  ShieldCheck,
-  Building,
-} from "lucide-react";
+import { CheckCircle2, ArrowUpRight, ArrowRight } from "lucide-react";
 
 export default function AboutCompany() {
-  const atouts = [
-    {
-      num: "01",
-      title: "Bureau d'études intégré",
-      desc: "Études d'exécution, plans techniques et coordination.",
-      icon: Compass,
-    },
-    {
-      num: "02",
-      title: "Expertise technique",
-      desc: "Plus de 24 ans d'expérience en enveloppe du bâtiment.",
-      icon: Award,
-    },
-    {
-      num: "03",
-      title: "Coordination complète",
-      desc: "Pilotage des interfaces et suivi rigoureux.",
-      icon: Layers,
-    },
-    {
-      num: "04",
-      title: "Réseau de partenaires",
-      desc: "Alliance Building Services et filiale d'achat.",
-      icon: Users,
-    },
-    {
-      num: "05",
-      title: "Réactivité chantier",
-      desc: "Équipes qualifiées et encadrement expérimenté.",
-      icon: Clock,
-    },
-    {
-      num: "06",
-      title: "Solutions sur mesure",
-      desc: "Adaptation aux contraintes techniques et architecturales.",
-      icon: Sparkles,
-    },
-  ];
-
-  const trustedSectors = [
-    { name: "Plateformes Logistiques", desc: "Grands volumes & toitures photovoltaïques" },
-    { name: "Unités de Production Industrielle", desc: "Contraintes coupe-feu & étanchéité renforcée" },
-    { name: "Bâtiments Tertiaires & Sièges", desc: "Façades architecturales haute technicité" },
-    { name: "Entrepôts Frigorifiques & Agroalimentaire", desc: "Isolation thermique continue & RE2020" },
-    { name: "Centres Techniques & Concessions", desc: "Charpentes métalliques grande portée" },
-  ];
-
   return (
     <section id="entreprise" className="py-24 sm:py-28 bg-white border-t border-black/8 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -75,7 +16,7 @@ export default function AboutCompany() {
           <div className="lg:col-span-6 relative">
             <div className="relative aspect-[4/3] w-full overflow-hidden border border-black/10 shadow-swiss-lg bg-neutral-100 group">
               <Image
-                src="/images/about-building.jpg"
+                src="/images/about-building-a03b650d.webp"
                 alt="CLADIS CONSTRUCTION - Bâtiment industriel moderne et enveloppe métallique"
                 fill
                 className="object-cover object-center filter brightness-[0.98] contrast-[1.03] transition-transform duration-700 group-hover:scale-105"
@@ -186,89 +127,6 @@ export default function AboutCompany() {
 
           </div>
 
-        </div>
-
-        {/* 2. NOS ATOUTS (6 Piliers officiels de cladisbardage.com) */}
-        <div className="mt-28 pt-20 border-t border-black/8">
-          
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-            <div className="inline-flex items-center gap-2">
-              <span className="w-2 h-2 bg-construction-blue" />
-              <span className="text-xs uppercase tracking-widest font-mono text-construction-blue font-bold">
-                Nos atouts
-              </span>
-            </div>
-            
-            <h3 className="font-sans text-3xl sm:text-4xl font-black text-neutral-900 tracking-tight">
-              Une organisation pensée pour les projets industriels exigeants.
-            </h3>
-            
-            <p className="text-sm text-neutral-600">
-              Des fondations techniques solides et une chaîne logistique optimisée pour assurer la réussite de chaque chantier.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {atouts.map((item) => {
-              const IconComp = item.icon;
-              return (
-                <div
-                  key={item.title}
-                  className="group bg-white p-7 border border-neutral-200 hover:border-construction-blue transition-all duration-300 shadow-sm hover:shadow-md flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="font-mono text-xs font-bold text-construction-blue">
-                        {item.num} //
-                      </span>
-                      <div className="w-9 h-9 bg-neutral-100 group-hover:bg-blue-50 border border-neutral-200 group-hover:border-construction-blue flex items-center justify-center transition-colors">
-                        <IconComp className="w-4 h-4 text-neutral-800 group-hover:text-construction-blue transition-colors" />
-                      </div>
-                    </div>
-
-                    <h4 className="font-sans text-base font-bold text-neutral-900 tracking-tight group-hover:text-construction-blue transition-colors">
-                      {item.title}
-                    </h4>
-
-                    <p className="text-xs text-neutral-600 mt-2 leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div>
-
-                  <div className="w-0 group-hover:w-full h-[2px] bg-construction-blue transition-all duration-300 mt-6" />
-                </div>
-              );
-            })}
-          </div>
-
-        </div>
-
-        {/* 3. ILS NOUS FONT CONFIANCE */}
-        <div className="mt-20 pt-16 border-t border-black/8">
-          <div className="text-center mb-8">
-            <span className="text-xs font-mono uppercase tracking-widest text-neutral-500 font-bold">
-              Ils nous font confiance
-            </span>
-            <p className="text-xs text-neutral-600 mt-1">
-              Partenaires industriels, promoteurs et donneurs d'ordres en Auvergne-Rhône-Alpes
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-            {trustedSectors.map((sector) => (
-              <div
-                key={sector.name}
-                className="bg-neutral-50 border border-neutral-200 p-4 text-center hover:bg-white hover:border-construction-blue transition-colors group"
-              >
-                <div className="font-mono text-xs font-bold text-neutral-800 group-hover:text-construction-blue transition-colors">
-                  {sector.name}
-                </div>
-                <div className="text-[10px] text-neutral-500 mt-1">
-                  {sector.desc}
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
 
       </div>

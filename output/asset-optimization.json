@@ -1,0 +1,329 @@
+{
+  "before": 7370852,
+  "after": 1697092,
+  "savingsPercent": 77,
+  "assets": [
+    {
+      "source": "/images/alliance-bureau-etudes.jpg",
+      "optimized": "/images/alliance-bureau-etudes-a3a0e789.webp",
+      "before": 60613,
+      "after": 27150,
+      "width": 560,
+      "height": 380,
+      "sourceWidth": 560,
+      "sourceHeight": 380
+    },
+    {
+      "source": "/images/about-building.jpg",
+      "optimized": "/images/about-building-a03b650d.webp",
+      "before": 407017,
+      "after": 162700,
+      "width": 1536,
+      "height": 1024,
+      "sourceWidth": 1536,
+      "sourceHeight": 1024
+    },
+    {
+      "source": "/images/construction-hero.jpg",
+      "optimized": "/images/construction-hero-bcc0de60.webp",
+      "before": 967958,
+      "after": 196624,
+      "width": 1376,
+      "height": 768,
+      "sourceWidth": 1376,
+      "sourceHeight": 768
+    },
+    {
+      "source": "/images/cladis-icon.png",
+      "optimized": "/images/cladis-icon-95c79c03.png",
+      "before": 105123,
+      "after": 29002,
+      "width": 224,
+      "height": 256,
+      "sourceWidth": 295,
+      "sourceHeight": 337
+    },
+    {
+      "source": "/images/service-couverture.jpg",
+      "optimized": "/images/service-couverture-bd4b90a9.webp",
+      "before": 63595,
+      "after": 29096,
+      "width": 660,
+      "height": 360,
+      "sourceWidth": 660,
+      "sourceHeight": 360
+    },
+    {
+      "source": "/images/service-bardage.jpg",
+      "optimized": "/images/service-bardage-31295ac1.webp",
+      "before": 99701,
+      "after": 44360,
+      "width": 620,
+      "height": 560,
+      "sourceWidth": 620,
+      "sourceHeight": 560
+    },
+    {
+      "source": "/images/cladis-hero-facade-4k.jpg",
+      "optimized": "/images/cladis-hero-facade-4k-fef0595c.webp",
+      "before": 1381696,
+      "after": 402694,
+      "width": 3840,
+      "height": 2160,
+      "sourceWidth": 3840,
+      "sourceHeight": 2160
+    },
+    {
+      "source": "/images/catalogue-cover.jpg",
+      "optimized": "/images/catalogue-cover-faed49b8.webp",
+      "before": 209744,
+      "after": 184862,
+      "width": 1680,
+      "height": 2174,
+      "sourceWidth": 1680,
+      "sourceHeight": 2174
+    },
+    {
+      "source": "/images/hero-building.jpg",
+      "optimized": "/images/hero-building-60c1b312.webp",
+      "before": 294441,
+      "after": 137314,
+      "width": 1680,
+      "height": 1100,
+      "sourceWidth": 1680,
+      "sourceHeight": 1100
+    },
+    {
+      "source": "/images/cladis-logo-transparent.png",
+      "optimized": "/images/cladis-logo-transparent-07a6284b.webp",
+      "before": 221708,
+      "after": 126632,
+      "width": 861,
+      "height": 355,
+      "sourceWidth": 861,
+      "sourceHeight": 355
+    },
+    {
+      "source": "/images/project-chambery-hub.jpg",
+      "optimized": "/images/project-chambery-hub-7bb3c0df.webp",
+      "before": 146136,
+      "after": 79496,
+      "width": 640,
+      "height": 520,
+      "sourceWidth": 640,
+      "sourceHeight": 520
+    },
+    {
+      "source": "/images/alliance-building-services.jpg",
+      "optimized": "/images/alliance-building-services-8f93af7a.webp",
+      "before": 132240,
+      "after": 75918,
+      "width": 760,
+      "height": 380,
+      "sourceWidth": 760,
+      "sourceHeight": 380
+    },
+    {
+      "source": "/images/service-charpente.jpg",
+      "optimized": "/images/service-charpente-39e12ee7.webp",
+      "before": 105553,
+      "after": 52790,
+      "width": 660,
+      "height": 380,
+      "sourceWidth": 660,
+      "sourceHeight": 380
+    },
+    {
+      "source": "/images/project-alpes-logistics.jpg",
+      "optimized": "/images/project-alpes-logistics-4ff324a8.webp",
+      "before": 100117,
+      "after": 45644,
+      "width": 1370,
+      "height": 400,
+      "sourceWidth": 1370,
+      "sourceHeight": 400
+    },
+    {
+      "source": "/images/service-bardage-specifique.jpg",
+      "optimized": "/images/service-bardage-specifique-92e5cb59.webp",
+      "before": 92317,
+      "after": 42866,
+      "width": 780,
+      "height": 360,
+      "sourceWidth": 780,
+      "sourceHeight": 360
+    },
+    {
+      "source": "/images/service-isolation.jpg",
+      "optimized": "/images/service-isolation-9862ae62.webp",
+      "before": 55097,
+      "after": 22136,
+      "width": 640,
+      "height": 460,
+      "sourceWidth": 640,
+      "sourceHeight": 460
+    },
+    {
+      "source": "/images/service-vegetalise-solaire.jpg",
+      "optimized": "/images/service-vegetalise-solaire-b65a5003.webp",
+      "before": 83551,
+      "after": 37808,
+      "width": 680,
+      "height": 520,
+      "sourceWidth": 680,
+      "sourceHeight": 520
+    }
+  ],
+  "archived": [
+    {
+      "name": "about-building.jpg",
+      "bytes": 407017,
+      "used": true
+    },
+    {
+      "name": "alliance-building-services.jpg",
+      "bytes": 132240,
+      "used": true
+    },
+    {
+      "name": "alliance-bureau-etudes.jpg",
+      "bytes": 60613,
+      "used": true
+    },
+    {
+      "name": "alliance-filiale-achats.jpg",
+      "bytes": 1087513,
+      "used": false
+    },
+    {
+      "name": "catalogue-cover.jpg",
+      "bytes": 209744,
+      "used": true
+    },
+    {
+      "name": "cladis-hero-facade-4k.jpg",
+      "bytes": 1381696,
+      "used": true
+    },
+    {
+      "name": "cladis-icon.png",
+      "bytes": 105123,
+      "used": true
+    },
+    {
+      "name": "cladis-logo-crop.png",
+      "bytes": 192405,
+      "used": false
+    },
+    {
+      "name": "cladis-logo-dark.png",
+      "bytes": 159397,
+      "used": false
+    },
+    {
+      "name": "cladis-logo-original.png",
+      "bytes": 210272,
+      "used": false
+    },
+    {
+      "name": "cladis-logo-transparent.png",
+      "bytes": 221708,
+      "used": true
+    },
+    {
+      "name": "cladis-logo-white-bg.png",
+      "bytes": 159354,
+      "used": false
+    },
+    {
+      "name": "cladis-logo-white-text.png",
+      "bytes": 140676,
+      "used": false
+    },
+    {
+      "name": "cladis_construction_cover.jpg",
+      "bytes": 57807,
+      "used": false
+    },
+    {
+      "name": "construction-hero.jpg",
+      "bytes": 967958,
+      "used": true
+    },
+    {
+      "name": "fff.png",
+      "bytes": 418736,
+      "used": false
+    },
+    {
+      "name": "footer-logo.png",
+      "bytes": 11668,
+      "used": false
+    },
+    {
+      "name": "hero-building.jpg",
+      "bytes": 294441,
+      "used": true
+    },
+    {
+      "name": "hero-image-back.jpeg",
+      "bytes": 231954,
+      "used": false
+    },
+    {
+      "name": "logo-dark.png",
+      "bytes": 124289,
+      "used": false
+    },
+    {
+      "name": "logo-white.png",
+      "bytes": 9381,
+      "used": false
+    },
+    {
+      "name": "project-alpes-logistics.jpg",
+      "bytes": 100117,
+      "used": true
+    },
+    {
+      "name": "project-chambery-hub.jpg",
+      "bytes": 146136,
+      "used": true
+    },
+    {
+      "name": "service-bardage-specifique.jpg",
+      "bytes": 92317,
+      "used": true
+    },
+    {
+      "name": "service-bardage.jpg",
+      "bytes": 99701,
+      "used": true
+    },
+    {
+      "name": "service-charpente.jpg",
+      "bytes": 105553,
+      "used": true
+    },
+    {
+      "name": "service-couverture.jpg",
+      "bytes": 63595,
+      "used": true
+    },
+    {
+      "name": "service-isolation.jpg",
+      "bytes": 55097,
+      "used": true
+    },
+    {
+      "name": "service-vegetalise-solaire.jpg",
+      "bytes": 83551,
+      "used": true
+    },
+    {
+      "name": "whatsapp-logo.jpeg",
+      "bytes": 40793,
+      "used": false
+    }
+  ]
+}

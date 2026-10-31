@@ -10,17 +10,23 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // User Requested Primary & Secondary Text Colors
+        primary: "#2D374E",
+        secondary: "#3C3C3B",
+        muted: "#878787",
+        tertiary: "#878787",
+
         // High-Impact Construction Identity Colors (Architectural Electric Blue)
         construction: {
-          blue: "#0066FF",
-          blueLight: "#3385FF",
-          blueDark: "#0052CC",
+          blue: "#2D374E",
+          blueLight: "#2D374E",
+          blueDark: "#2D374E",
           // Backward-compatibility aliases so any cached or external references resolve to blue
-          orange: "#0066FF",
-          orangeLight: "#3385FF",
-          orangeDark: "#0052CC",
+          orange: "#2D374E",
+          orangeLight: "#2D374E",
+          orangeDark: "#2D374E",
         },
-        // Swiss Style Color System
+        // Swiss Style Color System mapped to the new palette
         swiss: {
           white: "#FFFFFF",
           snow: "#FAFAFA",
@@ -28,12 +34,12 @@ const config: Config = {
           stone: "#ECEEF1",
           border: "#E2E4E8",
           line: "rgba(0, 0, 0, 0.08)",
-          ink: "#0A0A0A",
-          charcoal: "#1E2024",
-          muted: "#666D77",
-          light: "#8C94A0",
+          ink: "#2D374E",        // Primary: #2D374E
+          charcoal: "#3C3C3B",   // Secondary: #3C3C3B
+          muted: "#878787",      // Other Secondary: #878787
+          light: "#878787",
           faint: "#A5ADB8",
-          accent: "#0066FF", // Vibrant industrial architectural electric blue
+          accent: "#2D374E",     // Vibrant industrial architectural electric blue
         },
         gold: {
           DEFAULT: "#C59B27",
@@ -44,9 +50,13 @@ const config: Config = {
         },
       },
       fontFamily: {
-        serif: ["var(--font-cormorant)", "Georgia", "serif"],
-        sans: ["var(--font-inter)", "Helvetica Neue", "Arial", "sans-serif"],
-        mono: ["var(--font-mono)", "Menlo", "Consolas", "monospace"],
+        primary: ["var(--font-cairo)", "sans-serif"],
+        secondary: ["var(--font-montserrat)", "sans-serif"],
+        cairo: ["var(--font-cairo)", "sans-serif"],
+        montserrat: ["var(--font-montserrat)", "sans-serif"],
+        sans: ["var(--font-cairo)", "sans-serif"],
+        serif: ["var(--font-montserrat)", "sans-serif"],
+        mono: ["var(--font-montserrat)", "monospace"],
       },
       letterSpacing: {
         widest: "0.2em",

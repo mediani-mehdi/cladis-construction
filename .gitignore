@@ -39,5 +39,8 @@ scraped_*.html
 cladisbardage_scraped.html
 scraped_text.txt
 
+# Original image sources retained locally after optimization
+.asset-sources/
+
 
 .vercel

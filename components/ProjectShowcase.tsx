@@ -1,158 +1,156 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { MapPin, ArrowRight, ArrowUpRight, Calendar, Ruler } from "lucide-react";
+import { ArrowRight, ArrowUpRight, MapPin } from "lucide-react";
 import { PROJECTS } from "@/lib/projects-data";
 
-export default function ProjectShowcase() {
-  const [filter, setFilter] = useState<string>("all");
+const categories = [
+  { id: "all", label: "Tous les métiers" },
+  { id: "bardage", label: "Bardage" },
+  { id: "couverture", label: "Couverture & étanchéité" },
+  { id: "charpente", label: "Charpente métallique" },
+  { id: "complexe", label: "Enveloppe complète" },
+];
 
-  const filteredProjects =
-    filter === "all"
-      ? PROJECTS
-      : PROJECTS.filter((p) => p.category === filter);
+const featuredIds = new Set(["hub-chambery", "charpente-porteuse-vallee", "siege-architectural-lyon"]);
+const featuredProjects = PROJECTS.filter((project) => featuredIds.has(project.id)).slice(0, 3);
+const focusStyle = "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary";
+
+export default function ProjectShowcase({ standalone = false }: { standalone?: boolean }) {
+  const [filter, setFilter] = useState("all");
+  const visibleProjects = standalone
+    ? filter === "all" ? PROJECTS : PROJECTS.filter((project) => project.category === filter)
+    : featuredProjects;
+  const Heading = standalone ? "h1" : "h2";
 
   return (
-    <section id="realisations" className="py-28 bg-white relative border-t border-black/8 bg-swiss-grid">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-          <div className="space-y-3">
-            <div className="inline-flex items-center gap-2">
-              <span className="w-2 h-2 bg-swiss-ink" />
-              <span className="text-[11px] uppercase tracking-widest font-mono text-swiss-muted font-medium">
-                [05 // PORTFOLIO SÉLECTIONNÉ • RHÔNE-ALPES]
+    <section
+      id="realisations"
+      aria-labelledby="projects-heading"
+      className={`scroll-mt-32 border-t border-primary/10 bg-white pb-20 sm:pb-28 ${standalone ? "pt-36 sm:pt-44" : "pt-20 sm:pt-28"}`}
+    >
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {standalone && (
+          <nav aria-label="Fil d’Ariane" className="mb-9 flex items-center gap-3 text-xs text-primary/60">
+            <Link href="/" className={`hover:text-primary ${focusStyle}`}>Accueil</Link>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page" className="text-primary">Réalisations</span>
+          </nav>
+        )}
+
+        <div className="mb-10 grid gap-6 sm:mb-12 lg:grid-cols-12 lg:items-end lg:gap-12">
+          <div className="lg:col-span-8">
+            <div className="mb-5 flex items-center gap-3">
+              <span className="h-1.5 w-6 bg-primary" aria-hidden="true" />
+              <span className="font-secondary text-[10px] font-semibold uppercase tracking-[0.2em] text-primary/65">
+                Une signature, des réalisations
               </span>
             </div>
-            <h2 className="font-sans text-3xl sm:text-5xl font-extrabold text-swiss-ink tracking-tight">
-              Nos Réalisations d'<span className="font-serif italic font-normal text-swiss-accent">Envergure</span>
-            </h2>
-          </div>
-
-          <div className="flex flex-col sm:items-end gap-3">
-            {/* Category Filter Pills */}
-            <div className="flex flex-wrap items-center gap-2">
-              {[
-                { id: "all", label: "Tous les Projets" },
-                { id: "bardage", label: "Bardage Métallique" },
-                { id: "couverture", label: "Couverture & Étanchéité" },
-                { id: "charpente", label: "Charpente Métallique" },
-                { id: "complexe", label: "Enveloppes Clé en Main" },
-              ].map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setFilter(tab.id)}
-                  className={`px-4 py-2 text-xs uppercase tracking-wider font-mono font-medium transition-all duration-200 border ${
-                    filter === tab.id
-                      ? "bg-swiss-ink text-white border-swiss-ink shadow-sm"
-                      : "bg-white border-black/10 text-swiss-muted hover:text-swiss-ink hover:border-black/25"
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
-
-            <Link
-              href="/realisations"
-              className="text-xs font-mono font-bold uppercase tracking-wider text-construction-blue hover:underline inline-flex items-center gap-1.5 pt-1"
+            <Heading
+              id="projects-heading"
+              className="font-sans text-4xl font-bold leading-[1.05] tracking-tight text-primary sm:text-5xl lg:text-6xl"
             >
-              <span>Voir la galerie complète des chantiers</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
+              Nos Réalisations<br />
+              <span className="font-normal text-primary/65">d’Envergure.</span>
+            </Heading>
           </div>
+          <p className="max-w-sm text-sm leading-relaxed text-secondary lg:col-span-4 lg:pb-1">
+            {standalone
+              ? "Explorez nos chantiers et découvrez les solutions qui donnent forme à chaque projet."
+              : "Trois projets, trois expressions de notre savoir-faire. Des structures aux façades, l’exigence se lit dans chaque détail."}
+          </p>
         </div>
 
-        {/* Projects Grid (Direct Links to Detailed Pages, NO MODAL) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project) => (
+        {standalone && (
+          <div className="mb-9 flex flex-wrap gap-x-6 gap-y-0 border-b border-primary/15" role="group" aria-label="Filtrer les réalisations par métier">
+            {categories.map((category) => {
+              const isActive = filter === category.id;
+              return (
+                <button
+                  key={category.id}
+                  type="button"
+                  aria-pressed={isActive}
+                  aria-controls="projects-gallery"
+                  onClick={() => setFilter(category.id)}
+                  className={`-mb-px inline-flex min-h-12 items-center border-b-2 pb-3 pt-2 text-xs transition-colors motion-reduce:transition-none ${focusStyle} ${isActive ? "border-primary font-bold text-primary" : "border-transparent text-primary/60 hover:border-primary/25 hover:text-primary"}`}
+                >
+                  {category.label}
+                </button>
+              );
+            })}
+          </div>
+        )}
+
+        <div id="projects-gallery" className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8">
+          {visibleProjects.map((project, index) => (
             <Link
               key={project.id}
               href={`/realisations/${project.slug}`}
-              className="group bg-white border border-black/10 hover:border-construction-blue shadow-swiss-sm hover:shadow-swiss-lg transition-all duration-300 flex flex-col justify-between overflow-hidden"
+              className={`group block min-w-0 ${focusStyle}`}
             >
-              <div>
-                {/* Image Thumbnail */}
-                <div className="relative h-64 w-full overflow-hidden bg-swiss-stone border-b border-black/8">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover object-center filter brightness-[0.98] contrast-[1.03] transition-transform duration-500 group-hover:scale-105"
-                  />
-
-                  {/* Location Badge */}
-                  <div className="absolute top-4 left-4">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/95 border border-black/10 text-[10px] font-mono text-swiss-ink font-bold shadow-sm">
-                      <MapPin className="w-3 h-3 text-construction-blue" />
-                      <span>{project.location}</span>
-                    </span>
-                  </div>
-
-                  {/* Surface Tag */}
-                  <div className="absolute top-4 right-4">
-                    <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-swiss-ink text-white text-[10px] font-mono font-bold shadow-sm">
-                      <Ruler className="w-3 h-3 text-construction-blue" />
-                      <span>{project.surface}</span>
-                    </span>
-                  </div>
-
-                  {/* View Project Badge */}
-                  <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-construction-blue text-white text-[10px] uppercase tracking-widest font-mono font-bold shadow-md">
-                      <span>Consulter</span>
-                      <ArrowUpRight className="w-3 h-3" />
-                    </span>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-6 sm:p-7 space-y-4">
-                  <div>
-                    <div className="flex items-center gap-2 text-[11px] font-mono text-swiss-muted mb-1">
-                      <Calendar className="w-3 h-3 text-construction-blue" />
-                      <span>Livraison {project.year}</span>
-                      <span>•</span>
-                      <span className="text-construction-blue font-bold uppercase">{project.categoryLabel}</span>
-                    </div>
-
-                    <h3 className="font-sans text-xl font-bold text-swiss-ink group-hover:text-construction-blue transition-colors tracking-tight">
-                      {project.title}
-                    </h3>
-                  </div>
-
-                  <p className="text-xs text-swiss-muted font-normal leading-relaxed line-clamp-3">
-                    {project.description}
-                  </p>
-
-                  {/* Micro Specs */}
-                  <div className="pt-4 border-t border-black/8 space-y-1.5">
-                    {project.technicalDetails.slice(0, 2).map((detail, i) => (
-                      <div key={i} className="flex items-center justify-between text-[11px] font-mono">
-                        <span className="text-swiss-muted">{detail.label}</span>
-                        <span className="text-swiss-ink font-medium truncate max-w-[170px] text-right">
-                          {detail.value}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
+              <div className="relative aspect-[4/5] overflow-hidden bg-swiss-stone">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  sizes="(min-width: 1280px) 384px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  className={`object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04] group-focus-visible:scale-[1.04] motion-reduce:transform-none motion-reduce:transition-none ${project.id === "hub-chambery" ? "object-bottom" : "object-center"}`}
+                />
+                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/55 to-transparent" />
+                <span className="absolute left-5 top-5 bg-white/95 px-2.5 py-2 font-secondary text-[9px] font-semibold uppercase tracking-wider text-primary">
+                  {project.categoryLabel}
+                </span>
+                <span className="absolute right-5 top-5 flex h-8 w-8 items-center justify-center bg-white/95 font-secondary text-[10px] text-primary">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between gap-3">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-medium text-white">
+                    <MapPin className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                    {project.location}
+                  </span>
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center bg-white text-primary transition-colors group-hover:bg-primary group-hover:text-white motion-reduce:transition-none">
+                    <ArrowUpRight className="h-5 w-5" aria-hidden="true" />
+                  </span>
                 </div>
               </div>
-
-              {/* Card Footer Link */}
-              <div className="p-6 pt-0">
-                <div className="w-full inline-flex items-center justify-between py-3 px-4 bg-neutral-50 group-hover:bg-construction-blue group-hover:text-white text-neutral-900 text-xs font-mono font-bold uppercase tracking-wider transition-colors duration-200 border border-neutral-200 group-hover:border-construction-blue">
-                  <span>Voir l'étude de cas complète</span>
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              <div className="pt-5">
+                <div className="mb-2 flex items-center justify-between gap-4 font-secondary text-[10px] uppercase tracking-wider text-primary/55">
+                  <span>{project.surface}</span>
+                  <span>Livraison {project.year}</span>
                 </div>
+                <h3 className="max-w-sm font-sans text-xl font-bold leading-tight tracking-tight text-primary sm:text-2xl">
+                  {project.title}
+                </h3>
+                <span className="mt-4 inline-flex items-center gap-2 border-b border-primary/20 pb-1 text-xs font-semibold text-primary transition-colors group-hover:border-primary">
+                  Découvrir le projet
+                  <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                </span>
               </div>
             </Link>
           ))}
         </div>
 
+        {standalone ? (
+          <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-primary/15 pt-7 sm:flex-row sm:items-center">
+            <p className="text-sm text-secondary">Donnons forme à votre prochain projet.</p>
+            <Link href="/#devis" className={`inline-flex items-center gap-4 bg-primary px-6 py-4 text-xs font-semibold text-white transition-colors hover:bg-primary/90 ${focusStyle}`}>
+              Parlons de votre projet
+              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
+        ) : (
+          <div className="mt-12 flex justify-center border-t border-primary/15 pt-9 sm:mt-14 sm:pt-10">
+            <Link
+              href="/realisations"
+              className={`inline-flex min-h-12 items-center justify-center gap-6 bg-primary px-7 py-4 font-secondary text-[10px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-primary/90 ${focusStyle}`}
+            >
+              Voir plus de réalisations
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

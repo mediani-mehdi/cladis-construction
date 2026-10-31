@@ -45,7 +45,7 @@ export default function CatalogueModal({ isOpen, onClose }: CatalogueModalProps)
         <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center mb-8 bg-swiss-subtle p-5 border border-black/10">
           <div className="sm:col-span-4 relative h-64 overflow-hidden border border-black/10 shadow-sm bg-swiss-stone">
             <Image
-              src="/images/catalogue-cover.jpg"
+              src="/images/catalogue-cover-faed49b8.webp"
               alt="Couverture Catalogue CLADIS 2026"
               fill
               className="object-cover object-top"

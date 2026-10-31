@@ -1,18 +1,18 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Cairo, Montserrat } from "next/font/google";
 import "./globals.css";
 
-const cormorant = Cormorant_Garamond({
+const cairo = Cairo({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--font-cormorant",
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-cairo",
   display: "swap",
 });
 
-const inter = Inter({
+const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-inter",
+  variable: "--font-montserrat",
   display: "swap",
 });
 
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "CLADIS CONSTRUCTION" }],
   icons: {
-    icon: "/images/cladis-icon.png",
+    icon: "/images/cladis-icon-95c79c03.png",
   },
 };
 
@@ -47,8 +47,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className={`${cormorant.variable} ${inter.variable}`}>
-      <body className="bg-white text-swiss-ink min-h-screen antialiased selection:bg-black selection:text-white">
+    <html lang="fr" className={`${cairo.variable} ${montserrat.variable}`}>
+      <body className="bg-white text-primary font-cairo min-h-screen antialiased selection:bg-primary selection:text-white">
         {children}
       </body>
     </html>

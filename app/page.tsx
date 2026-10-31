@@ -45,7 +45,7 @@ export default function Home() {
       {/* Swiss Modular Metrics / Credibility Bar */}
       <MetricsBar />
 
-      {/* Qui sommes-nous / L'Entreprise & Nos Atouts */}
+      {/* Qui sommes-nous / L'Entreprise */}
       <AboutCompany />
 
       {/* Nos Métiers / Core Services (Modular Grid + Technical Sheets) */}

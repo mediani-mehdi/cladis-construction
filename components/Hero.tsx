@@ -20,24 +20,26 @@ export default function Hero({ onOpenCatalogue }: HeroProps) {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden bg-black text-white pt-32 sm:pt-40"
+      className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden bg-black text-white pt-36 sm:pt-44 lg:pt-48"
     >
-      {/* 1. Cinematic Construction Background Image with Parallax Scroll */}
+      {/* 1. Bright architectural background with parallax scroll */}
       <motion.div
         style={{ y: bgY, scale: bgScale }}
-        className="absolute inset-0 w-full h-[120%] -top-[10%] z-0 pointer-events-none will-change-transform"
+        className="absolute inset-x-0 bottom-0 w-full h-[120%] origin-bottom z-0 pointer-events-none will-change-transform"
       >
         <Image
-          src="/images/construction-hero.jpg"
-          alt="CLADIS CONSTRUCTION - Chantier d'envergure, engin de terrassement et structure métallique"
+          src="/images/cladis-hero-facade-4k-fef0595c.webp"
+          alt="Façade contemporaine en bardage métallique et bois, avec les Alpes en arrière-plan"
           fill
           priority
-          className="object-cover object-center filter brightness-[0.88] contrast-[1.08]"
+          sizes="100vw"
+          quality={90}
+          className="object-cover object-left"
         />
 
-        {/* Cinematic Vignette for maximum text legibility while keeping the excavator & building vivid */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/50" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/40" />
+        {/* Gentle shading keeps white text readable while preserving the daylight. */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/10 to-transparent" />
       </motion.div>
 
       {/* 2. Architectural Drafting / Blueprint Grid Overlay */}
@@ -59,15 +61,15 @@ export default function Hero({ onOpenCatalogue }: HeroProps) {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="max-w-lg sm:max-w-xl"
         >
-          <div className="text-xs sm:text-sm font-mono font-bold uppercase tracking-wider text-construction-blue leading-snug drop-shadow-md">
+          <div className="text-xs sm:text-sm font-mono font-bold uppercase tracking-wider text-white leading-snug">
             CLADIS CONSTRUCTION — BARDAGE, COUVERTURE & ÉTANCHÉITÉ
           </div>
-          <div className="text-sm sm:text-base lg:text-lg font-mono font-bold uppercase tracking-wider text-white leading-snug drop-shadow-md mt-1">
+          <div className="text-sm sm:text-base lg:text-lg font-mono font-bold uppercase tracking-wider text-white leading-snug mt-1">
             ENVELOPPE DU BÂTIMENT INDUSTRIEL &amp; CONSTRUCTION MÉTALLIQUE
           </div>
           <div className="flex items-center gap-2 mt-2">
             <span className="w-2 h-2 bg-construction-blue" />
-            <span className="text-[11px] font-mono uppercase tracking-widest text-white/80">
+            <span className="text-[11px] font-mono uppercase tracking-widest text-white">
               CHAMBÉRY • SAVOIE • RHÔNE-ALPES — DE L'ÉTUDE À LA LIVRAISON
             </span>
           </div>
@@ -105,10 +107,10 @@ export default function Hero({ onOpenCatalogue }: HeroProps) {
           >
             <a
               href="#devis"
-              className="inline-flex items-center gap-3 px-7 py-4 bg-construction-blue hover:bg-construction-blueDark text-white font-mono text-xs uppercase tracking-widest font-bold shadow-2xl transition-all duration-200 group border border-white/20 hover:border-white"
+              className="inline-flex items-center gap-3 px-7 py-4 bg-primary hover:bg-primary/90 text-white font-mono text-xs uppercase tracking-widest font-bold shadow-2xl transition-all duration-200 group border border-white/20 hover:border-white"
             >
               <span>Demander un devis</span>
-              <span className="w-6 h-6 rounded-full bg-white/20 group-hover:bg-white group-hover:text-construction-blue flex items-center justify-center transition-colors">
+              <span className="w-6 h-6 rounded-full bg-white/20 group-hover:bg-white group-hover:text-primary flex items-center justify-center transition-colors">
                 <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
               </span>
             </a>

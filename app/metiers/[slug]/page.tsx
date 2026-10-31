@@ -20,9 +20,9 @@ import {
 } from "lucide-react";
 
 interface MetierPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export function generateStaticParams() {
@@ -31,8 +31,9 @@ export function generateStaticParams() {
   }));
 }
 
-export default function MetierDetailPage({ params }: MetierPageProps) {
-  const metier = getMetierBySlug(params.slug);
+export default async function MetierDetailPage({ params }: MetierPageProps) {
+  const { slug } = await params;
+  const metier = getMetierBySlug(slug);
 
   if (!metier) {
     notFound();

@@ -1,59 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { ALLIANCE_PILLARS } from "@/lib/alliance-data";
 import { ShieldCheck, Truck, Cpu, CheckCircle2, ArrowRight, ArrowUpRight } from "lucide-react";
 
 export default function AllianceSection() {
-  const pillars = [
-    {
-      role: "INGÉNIERIE & PILOTAGE",
-      name: "CLADIS CONSTRUCTION",
-      tagline: "Bureau d'Études & Maîtrise Technique",
-      image: "/images/alliance-bureau-etudes.jpg",
-      description:
-        "Entité mère dédiée aux études d'exécution, au calcul des structures, au chiffrage rigoureux et au pilotage global des opérations. Une ingénierie intégrée pour anticiper chaque contrainte constructive.",
-      highlights: [
-        "Bureau d'études 3D & calculs structurels intégrés",
-        "Calepinage au millimètre et anticipation des interfaces",
-        "Interlocuteur unique contractuel et garantie décennale",
-        "Suivi budgétaire transparent sans surcoûts imprévus",
-      ],
-      badge: "Études & Ingénierie",
-      icon: Cpu,
-    },
-    {
-      role: "EXÉCUTION SUR SITE",
-      name: "BUILDING SERVICES",
-      tagline: "Mise en Œuvre & Logistique Opérationnelle",
-      image: "/images/alliance-building-services.jpg",
-      description:
-        "Partenaire opérationnel de confiance fort de plus de 24 ans de présence sur les chantiers de la région. Building Services assure la pose de haute précision et la logistique de levage sur le terrain.",
-      highlights: [
-        "+24 ans d'expérience terrain en Rhône-Alpes",
-        "Équipes de pose qualifiées et habilitées (CACES, travail en hauteur)",
-        "Parc d'engins et outillages de levage spécialisés",
-        "Respect absolu des plannings et sécurité zéro accident",
-      ],
-      badge: "Exécution & Pose",
-      icon: Truck,
-    },
-    {
-      role: "SÉCURISATION DES COÛTS",
-      name: "FILIALE D'ACHAT",
-      tagline: "Approvisionnement Sécurisé & Compétitivité",
-      image: "/images/alliance-filiale-achats.jpg",
-      description:
-        "Centrale d'achat dédiée permettant de s'approvisionner directement auprès des plus grandes aciéries et fabricants européens. Elle garantit la stabilité des prix et la disponibilité immédiate des matériaux.",
-      highlights: [
-        "Accords-cadres directs avec les plus grands lamineurs d'acier",
-        "Sécurisation des stocks et remparts contre la volatilité",
-        "Contrôle qualité strict des matières premières (marquage CE)",
-        "Tarifs négociés au plus juste répercutés aux clients",
-      ],
-      badge: "Achats & Matières",
-      icon: ShieldCheck,
-    },
-  ];
+  const pillarIcons = [Cpu, Truck, ShieldCheck];
+  const pillars = ALLIANCE_PILLARS.map((pillar, index) => ({ ...pillar, icon: pillarIcons[index] }));
 
   return (
     <section id="alliance" className="py-28 bg-swiss-snow relative border-t border-black/8">
@@ -77,6 +31,10 @@ export default function AllianceSection() {
             l'ingénierie de conception, la puissance d'achat direct et l'excellence de pose sur site
             pour garantir la réussite sans compromis de vos projets industriels.
           </p>
+          <Link href="/alliance" className="inline-flex items-center gap-2 border-b border-primary/30 pb-2 text-xs font-semibold text-primary hover:border-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+            Comprendre notre alliance
+            <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+          </Link>
         </div>
 
         {/* 3 Pillar Cards Grid (Swiss White Cards) */}
@@ -92,7 +50,7 @@ export default function AllianceSection() {
                 <div className="relative h-56 w-full overflow-hidden bg-swiss-stone border-b border-black/8">
                   <Image
                     src={pillar.image}
-                    alt={pillar.name}
+                    alt={pillar.imageAlt}
                     fill
                     className="object-cover object-center filter brightness-[0.98] contrast-[1.03] transition-transform duration-500 group-hover:scale-105"
                   />

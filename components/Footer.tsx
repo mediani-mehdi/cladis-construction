@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { NAV_LINKS } from "@/lib/site-navigation";
 import { ArrowUp, Phone, Mail, MapPin } from "lucide-react";
 
 interface FooterProps {
@@ -13,25 +14,19 @@ export default function Footer({ onOpenCatalogue }: FooterProps) {
   };
 
   return (
-    <footer className="relative overflow-hidden text-white/80 border-t border-construction-blue/40 z-10">
-      
-      {/* 1. Cinematic Background Image with Deep Blue Shadow Overlay */}
+    <footer className="relative overflow-hidden bg-primary text-white/80 border-t border-white/10 z-10">
+
+      {/* 1. Architectural background with the primary brand color */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image
-          src="/images/hero-building.jpg"
+          src="/images/hero-building-60c1b312.webp"
           alt="CLADIS CONSTRUCTION - Façade Industrielle et Enveloppe Métallique"
           fill
           className="object-cover object-center filter brightness-[0.28] contrast-[1.15]"
         />
-        
-        {/* Deep Industrial Midnight-to-Electric Blue Gradient Shadow */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#020713]/95 via-[#051736]/90 to-[#01050e]/98" />
-        
-        {/* Vibrant Blue Atmospheric Shadow Vignettes */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_rgba(0,102,255,0.28),_transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(0,102,255,0.22),_transparent_55%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(0,85,255,0.12),_transparent_70%)]" />
-        
+
+        <div className="absolute inset-0 bg-primary/95" />
+
         {/* Architectural Blueprint Grid Pattern */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:56px_56px]" />
       </div>
@@ -39,14 +34,14 @@ export default function Footer({ onOpenCatalogue }: FooterProps) {
       {/* 2. Upper Footer Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 items-start">
-          
+
           {/* Brand Col */}
           <div className="lg:col-span-4 space-y-5">
             {/* Logo on Pure White Background Badge (Preserving authentic white background requested by user) */}
             <a href="/" className="inline-block" title="CLADIS CONSTRUCTION">
               <div className="bg-white px-4 py-2.5 shadow-xl inline-flex items-center border border-white/30 hover:bg-neutral-50 transition-colors">
                 <Image
-                  src="/images/cladis-logo-white-bg.png"
+                  src="/images/cladis-logo-transparent-07a6284b.webp"
                   alt="CLADIS CONSTRUCTION - Bardage, Étanchéité, Couverture"
                   width={240}
                   height={68}
@@ -79,29 +74,13 @@ export default function Footer({ onOpenCatalogue }: FooterProps) {
               <span>Navigation</span>
             </span>
             <ul className="space-y-2.5 text-xs font-normal">
-              <li>
-                <a href="/" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Accueil</a>
-              </li>
-              <li>
-                <a href="/l-entreprise" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">L'Entreprise (Qui sommes-nous)</a>
-              </li>
-              <li>
-                <a href="/metiers" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Nos Métiers (Vue d'ensemble)</a>
-              </li>
-              <li>
-                <a href="/#methodologie" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Notre Méthodologie en 4 Phases</a>
-              </li>
-              <li>
-                <a href="/#alliance" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">L'Alliance Stratégique Building Services</a>
-              </li>
-              <li>
-                <a href="/#realisations" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Réalisations & Portfolio</a>
-              </li>
+              {NAV_LINKS.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">{link.label}</a>
+                </li>
+              ))}
               <li>
                 <a href="/#configurateur" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Configurateur Technique</a>
-              </li>
-              <li>
-                <a href="/#devis" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Demande de Devis & Contact</a>
               </li>
             </ul>
           </div>
@@ -177,9 +156,9 @@ export default function Footer({ onOpenCatalogue }: FooterProps) {
       </div>
 
       {/* 3. Bottom Bar: Copyright & Back to Top */}
-      <div className="relative z-10 border-t border-white/10 py-6 bg-black/55 backdrop-blur-md">
+      <div className="relative z-10 border-t border-white/10 py-6 bg-black/10 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-          
+
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6 text-center sm:text-left text-white/60 font-normal">
             <span>© {new Date().getFullYear()} CLADIS CONSTRUCTION. Tous droits réservés.</span>
             <span className="hidden sm:inline">•</span>
