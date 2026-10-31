@@ -8,7 +8,7 @@ interface FooterProps {
   onOpenCatalogue?: () => void;
 }
 
-const footerLinkStyle = "text-white/75 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white";
+const footerLinkStyle = "inline-flex min-h-11 items-center text-white/75 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white xl:min-h-0";
 
 export default function Footer({ onOpenCatalogue }: FooterProps) {
   const scrollToTop = () => {
@@ -31,8 +31,8 @@ export default function Footer({ onOpenCatalogue }: FooterProps) {
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8">
-        <div className="grid grid-cols-1 items-start gap-x-9 gap-y-10 md:grid-cols-2 lg:grid-cols-12">
-          <div className="space-y-5 lg:col-span-4">
+        <div className="grid grid-cols-2 items-start gap-x-5 gap-y-9 sm:gap-x-9 lg:grid-cols-12">
+          <div className="col-span-2 space-y-5 md:col-span-1 lg:col-span-4">
             <a href="/" className="inline-flex border border-white/25 bg-white px-4 py-2.5 transition-colors hover:bg-neutral-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white" title="CLADIS CONSTRUCTION — Accueil">
               <Image
                 src="/images/cladis-logo-transparent-07a6284b.webp"
@@ -58,19 +58,19 @@ export default function Footer({ onOpenCatalogue }: FooterProps) {
 
           <nav aria-labelledby="footer-pages-heading" className="lg:col-span-2">
             <h2 id="footer-pages-heading" className="mb-5 font-secondary text-[10px] font-bold uppercase tracking-[0.18em] text-white">Explorer</h2>
-            <ul className="space-y-3 text-xs">
+            <ul className="space-y-1 text-xs xl:space-y-3">
               {NAV_LINKS.map((link) => <li key={link.href}><a href={link.href} className={footerLinkStyle}>{link.label}</a></li>)}
             </ul>
           </nav>
 
           <nav aria-labelledby="footer-metiers-heading" className="lg:col-span-3">
             <h2 id="footer-metiers-heading" className="mb-5 font-secondary text-[10px] font-bold uppercase tracking-[0.18em] text-white">Nos métiers</h2>
-            <ul className="space-y-3 text-xs">
+            <ul className="space-y-1 text-xs xl:space-y-3">
               {METIER_LINKS.map((link) => <li key={link.href}><a href={link.href} className={footerLinkStyle}>{link.label}</a></li>)}
             </ul>
           </nav>
 
-          <div className="lg:col-span-3">
+          <div className="col-span-2 md:col-span-1 lg:col-span-3">
             <h2 className="mb-5 font-secondary text-[10px] font-bold uppercase tracking-[0.18em] text-white">Contact & horaires</h2>
             <address className="space-y-4 text-xs not-italic">
               <div className="flex items-start gap-2.5">
@@ -111,7 +111,7 @@ export default function Footer({ onOpenCatalogue }: FooterProps) {
           <p className="text-[11px] leading-relaxed text-white/55">© {new Date().getFullYear()} CLADIS CONSTRUCTION. Tous droits réservés.</p>
           <div className="flex w-full items-center justify-between gap-5 sm:w-auto">
             <span className="text-[10px] text-white/55">Chambéry · Auvergne-Rhône-Alpes</span>
-            <button type="button" onClick={scrollToTop} className="inline-flex h-9 w-9 shrink-0 items-center justify-center border border-white/25 text-white transition-colors hover:bg-white hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white" aria-label="Retour en haut de page">
+            <button type="button" onClick={scrollToTop} className="inline-flex h-11 w-11 shrink-0 items-center justify-center border border-white/25 text-white transition-colors hover:bg-white hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white" aria-label="Retour en haut de page">
               <ArrowUp className="h-4 w-4" aria-hidden="true" />
             </button>
           </div>

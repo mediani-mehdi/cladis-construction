@@ -18,7 +18,7 @@ export default function Methodology() {
     <section
       id="methodologie"
       aria-labelledby="methodology-heading"
-      className="scroll-mt-32 border-t border-primary/10 bg-[#F6F5F2] py-20 sm:py-28"
+      className="scroll-mt-32 border-t border-primary/10 bg-[#F6F5F2] py-16 sm:py-20 lg:py-28"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-10 flex items-center gap-3 sm:mb-14">

@@ -34,7 +34,7 @@ export default function Hero() {
     <section
       aria-label="Présentation de CLADIS CONSTRUCTION"
       aria-roledescription="carrousel"
-      className="relative flex min-h-screen w-full flex-col justify-between overflow-hidden bg-black pt-36 text-white sm:pt-44 lg:pt-48"
+      className="relative flex min-h-svh w-full flex-col justify-between overflow-hidden bg-black pt-[calc(var(--site-header-height)+1rem)] text-white sm:pt-[calc(var(--site-header-height)+1.5rem)] lg:pt-48"
     >
       <motion.div
         style={{ y: reducedMotion ? 0 : bgY, scale: reducedMotion ? 1.02 : bgScale }}
@@ -60,26 +60,26 @@ export default function Hero() {
         <div className="h-full" />
       </div>
 
-      <div className="relative z-20 mx-auto flex w-full max-w-[1440px] items-center justify-between gap-4 px-4 pb-6 pt-6 sm:px-6 sm:pt-10 lg:px-8">
+      <div className="relative z-20 mx-auto flex w-full max-w-[1440px] items-center justify-between gap-3 px-4 pb-4 pt-2 sm:px-6 sm:pt-6 lg:px-8 lg:pt-10">
         <span className="inline-flex items-center gap-2 font-secondary text-[9px] uppercase tracking-widest text-white/80 sm:text-[10px]">
           <span className="h-1.5 w-1.5 shrink-0 bg-white/70" aria-hidden="true" />
           Chambéry · Savoie · Rhône-Alpes
         </span>
-        <span className="font-secondary text-[10px] tracking-widest text-white/65" aria-hidden="true">
+        <span className="shrink-0 font-secondary text-[10px] tracking-widest text-white/65" aria-hidden="true">
           0{activeSlide + 1} / 0{heroSlides.length}
         </span>
       </div>
 
-      <div className="relative z-20 mx-auto mt-auto w-full max-w-[1440px] px-4 pb-8 pt-10 sm:px-6 sm:pb-12 sm:pt-14 lg:px-8 lg:pb-16">
+      <div className="relative z-20 mx-auto mt-auto w-full max-w-[1440px] px-4 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-6 sm:px-6 sm:pb-10 sm:pt-10 lg:px-8 lg:pb-16 lg:pt-14">
         <div className="grid items-end gap-8 lg:grid-cols-12 lg:gap-10">
           <div className="min-w-0 lg:col-span-9" aria-live="polite" aria-atomic="true">
             <div key={activeSlide} className="animate-fadeIn motion-reduce:animate-none">
-              <div className="flex min-h-[8.5rem] items-end sm:min-h-[10rem] lg:min-h-[13rem]">
-                <h1 className="max-w-5xl font-sans text-[clamp(2rem,4.5vw,4.75rem)] font-black uppercase leading-[1.02] tracking-tight text-white drop-shadow-lg">
+              <div className="flex min-h-[7.5rem] items-end sm:min-h-[9rem] lg:min-h-[13rem]">
+                <h1 className="max-w-5xl font-sans text-[clamp(1.65rem,4.5vw,4.75rem)] font-black uppercase leading-[1.06] tracking-tight text-white drop-shadow-lg">
                   {slide.title}
                 </h1>
               </div>
-              <h2 className="mt-6 max-w-3xl font-sans text-xl font-semibold leading-snug tracking-tight text-white sm:text-2xl lg:text-[1.75rem]">
+              <h2 className="mt-5 max-w-3xl font-sans text-lg font-semibold leading-snug tracking-tight text-white sm:text-2xl lg:text-[1.75rem]">
                 {slide.subtitle}
               </h2>
               <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/85 sm:text-base">
@@ -90,7 +90,7 @@ export default function Hero() {
           <div className="lg:col-span-3 lg:flex lg:justify-end lg:pb-1">
             <a
               href="#devis"
-              className="group inline-flex items-center gap-3 whitespace-nowrap border border-white/25 bg-primary px-6 py-4 font-secondary text-[10px] font-bold uppercase tracking-widest text-white shadow-xl transition-colors hover:border-white/60 hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+              className="group inline-flex min-h-12 w-full items-center justify-center gap-3 border border-white/25 bg-primary px-6 py-4 font-secondary text-[10px] font-bold uppercase tracking-widest text-white shadow-xl transition-colors hover:border-white/60 hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:w-auto"
             >
               Demander un devis
               <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/15 transition-colors group-hover:bg-white group-hover:text-primary">

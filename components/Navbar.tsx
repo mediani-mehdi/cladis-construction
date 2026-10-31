@@ -1,396 +1,195 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { NAV_LINKS } from "@/lib/site-navigation";
-import {
-  Menu,
-  X,
-  ArrowUpRight,
-  Phone,
-  Download,
-  Clock,
-  Linkedin,
-  Instagram,
-  Facebook,
-  Search,
-} from "lucide-react";
+import { Menu, X, ArrowUpRight, Phone, Download, Clock, Linkedin, Instagram, Facebook, Search } from "lucide-react";
 
 interface NavbarProps {
   onOpenCatalogue?: () => void;
 }
 
+const searchShortcuts = [
+  { label: "Bardage Métallique", target: "/metiers/bardage-metallique" },
+  { label: "Couverture & Étanchéité", target: "/metiers/couverture-etancheite" },
+  { label: "Charpentes Industrielles", target: "/metiers/charpente-metallique" },
+  { label: "Bardage Spécifique & Façades", target: "/metiers/bardage-specifique" },
+  { label: "Isolation Thermique", target: "/metiers/isolation-thermique" },
+  { label: "Toiture Végétalisée & Solaire", target: "/metiers/toiture-vegetalisee-solaire" },
+  { label: "À propos (Qui sommes-nous)", target: "/l-entreprise" },
+  { label: "Nos Métiers", target: "/metiers" },
+  { label: "Méthodologie", target: "/methodologie" },
+  { label: "L'Alliance", target: "/alliance" },
+  { label: "Nos Réalisations", target: "/realisations" },
+  { label: "Configurateur Enveloppe", target: "/#configurateur" },
+  { label: "Demande de Devis", target: "/#devis" },
+  { label: "Catalogue 2026 (PDF)", action: "catalogue" },
+];
+
+const normalize = (value: string) => value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+const focusStyle = "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary";
+
 export default function Navbar({ onOpenCatalogue }: NavbarProps) {
   const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-
   const searchInputRef = useRef<HTMLInputElement>(null);
+  const searchButtonRef = useRef<HTMLButtonElement>(null);
+  const searchPanelRef = useRef<HTMLDivElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
-      if (totalScroll > 0) {
-        setScrollProgress((window.scrollY / totalScroll) * 100);
-      }
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(total > 0 ? (window.scrollY / total) * 100 : 0);
     };
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
-    if (searchOpen && searchInputRef.current) {
-      searchInputRef.current.focus();
-    }
+    const desktop = window.matchMedia("(min-width: 1280px)");
+    const closeOnDesktop = () => { if (desktop.matches) setMobileMenuOpen(false); };
+    desktop.addEventListener("change", closeOnDesktop);
+    return () => desktop.removeEventListener("change", closeOnDesktop);
+  }, []);
+
+  useEffect(() => {
+    if (!searchOpen) return;
+    searchInputRef.current?.focus();
+    const closeSearch = (event: KeyboardEvent) => {
+      if (event.key === "Escape") { setSearchOpen(false); searchButtonRef.current?.focus(); }
+    };
+    const outsideSearch = (event: PointerEvent) => {
+      const target = event.target as Node;
+      if (!searchPanelRef.current?.contains(target) && !searchButtonRef.current?.contains(target)) setSearchOpen(false);
+    };
+    document.addEventListener("keydown", closeSearch);
+    document.addEventListener("pointerdown", outsideSearch);
+    return () => { document.removeEventListener("keydown", closeSearch); document.removeEventListener("pointerdown", outsideSearch); };
   }, [searchOpen]);
 
-  const searchShortcuts = [
-    { label: "Bardage Métallique", target: "/metiers/bardage-metallique" },
-    { label: "Couverture & Étanchéité", target: "/metiers/couverture-etancheite" },
-    { label: "Charpentes Industrielles", target: "/metiers/charpente-metallique" },
-    { label: "Bardage Spécifique & Façades", target: "/metiers/bardage-specifique" },
-    { label: "Isolation Thermique RE2020", target: "/metiers/isolation-thermique" },
-    { label: "Toiture Végétalisée & Solaire", target: "/metiers/toiture-vegetalisee-solaire" },
-    { label: "À propos (Qui sommes-nous)", target: "/l-entreprise" },
-    { label: "Nos Métiers (Vue d'ensemble)", target: "/metiers" },
-    { label: "Méthodologie en quatre phases", target: "/methodologie" },
-    { label: "L'Alliance Building Services", target: "/alliance" },
-    { label: "Nos Réalisations", target: "/realisations" },
-    { label: "Configurateur Enveloppe", target: "/#configurateur" },
-    { label: "Demande de Devis", target: "/#devis" },
-    { label: "Catalogue 2026 (PDF)", action: "catalogue" },
-  ];
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    menuRef.current?.querySelector<HTMLButtonElement>("button")?.focus();
+    const keyboard = (event: KeyboardEvent) => {
+      if (event.key === "Escape") { setMobileMenuOpen(false); return; }
+      if (event.key !== "Tab") return;
+      const elements = menuRef.current?.querySelectorAll<HTMLElement>('a[href], button:not([disabled])');
+      if (!elements?.length) return;
+      const first = elements[0];
+      const last = elements[elements.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    };
+    document.addEventListener("keydown", keyboard);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", keyboard);
+      menuButtonRef.current?.focus();
+    };
+  }, [mobileMenuOpen]);
 
   const handleSearchSelect = (shortcut: { label: string; target?: string; action?: string }) => {
     setSearchOpen(false);
-    if (shortcut.action === "catalogue" && onOpenCatalogue) {
-      onOpenCatalogue();
-      return;
-    }
-    if (shortcut.target) {
-      if (shortcut.target.startsWith("/")) {
-        window.location.href = shortcut.target;
-        return;
-      }
-      const el = document.querySelector(shortcut.target);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
-      } else {
-        window.location.href = `/${shortcut.target}`;
-      }
-    }
+    searchButtonRef.current?.focus();
+    if (shortcut.action === "catalogue") {
+      if (onOpenCatalogue) onOpenCatalogue();
+      else window.location.href = "/catalogue-cladis-2026.pdf";
+    } else if (shortcut.target) window.location.href = shortcut.target;
   };
 
-  const navLinks = NAV_LINKS;
-  const isActivePage = (href: string) =>
-    href === "/" ? pathname === "/" : !href.includes("#") && (pathname === href || pathname.startsWith(`${href}/`));
+  const submitSearch = () => {
+    const query = normalize(searchQuery);
+    if (query.includes("cata")) { handleSearchSelect({ label: searchQuery, action: "catalogue" }); return; }
+    const target = query.includes("method") ? "/methodologie"
+      : query.includes("alliance") ? "/alliance"
+      : query.includes("propos") || query.includes("entreprise") ? "/l-entreprise"
+      : query.includes("devis") || query.includes("contact") ? "/#devis"
+      : query.includes("config") ? "/#configurateur"
+      : query.includes("projet") || query.includes("real") ? "/realisations" : "/metiers";
+    handleSearchSelect({ label: searchQuery, target });
+  };
+
+  const isActivePage = (href: string) => href === "/" ? pathname === "/" : !href.includes("#") && (pathname === href || pathname.startsWith(`${href}/`));
+  const matchingShortcuts = searchShortcuts.filter((shortcut) => normalize(shortcut.label).includes(normalize(searchQuery.trim())));
 
   return (
     <>
-      {/* 1. Thin Scroll Progress Indicator */}
-      <div className="fixed top-0 left-0 right-0 z-50 h-[2px] bg-black/5 pointer-events-none">
-        <div
-          className="h-full bg-construction-blue transition-all duration-150 ease-out"
-          style={{ width: `${scrollProgress}%` }}
-        />
+      <div className="pointer-events-none fixed inset-x-0 top-0 z-50 h-0.5 bg-primary/5" aria-hidden="true">
+        <div className="h-full bg-primary" style={{ width: `${scrollProgress}%` }} />
       </div>
-
-      {/* 2. Main Header Bar (Solid pure white background across all sections including hero) */}
-      <header
-        className="fixed top-0 left-0 right-0 z-40 w-full bg-white border-b border-black/10 shadow-swiss-sm transition-all duration-300"
-      >
-        <div className="w-full flex items-stretch">
-          
-          {/* A. Signature Clear-Background Logo Block (Docked flush to left edge, like the reference image) */}
-          <a
-            href="/"
-            className="flex-shrink-0 bg-white border-r border-black/10 px-5 sm:px-7 md:px-9 lg:px-11 xl:px-7 2xl:px-11 py-2.5 sm:py-3 flex items-center justify-center transition-colors select-none z-30 group min-w-[200px] sm:min-w-[260px] md:min-w-[290px] lg:min-w-[320px] xl:min-w-[260px] 2xl:min-w-[320px]"
-            title="CLADIS CONSTRUCTION - Accueil"
-          >
-            <Image
-              src="/images/cladis-logo-transparent-07a6284b.webp"
-              alt="CLADIS CONSTRUCTION - Bardage, Étanchéité, Couverture"
-              width={420}
-              height={120}
-              className="h-13 sm:h-16 md:h-18 lg:h-20 xl:h-16 2xl:h-20 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.03]"
-              priority
-            />
+      <header className="fixed inset-x-0 top-0 z-40 w-full border-b border-primary/10 bg-white shadow-swiss-sm">
+        <div className="flex w-full items-stretch">
+          <a href="/" title="CLADIS CONSTRUCTION — Accueil" className={`flex min-w-0 shrink-0 items-center justify-center border-r border-primary/10 bg-white px-3 py-3 sm:px-5 lg:px-7 xl:px-6 2xl:px-9 ${focusStyle}`}>
+            <Image src="/images/cladis-logo-transparent-07a6284b.webp" alt="CLADIS CONSTRUCTION — Accueil" width={420} height={120} priority className="h-12 w-[150px] object-contain sm:h-16 sm:w-[210px] lg:h-20 lg:w-[260px] xl:h-16 xl:w-[230px] 2xl:h-20 2xl:w-[260px]" />
           </a>
-
-          {/* B. Right Navigation Area (Two-tier architectural grid layout) */}
-          <div className="flex-1 flex flex-col justify-between min-w-0">
-            
-            {/* TOP TIER: Utility Row (Social icons on left, Opening hours & direct phone on right) */}
-            <div
-              className="hidden lg:flex items-center justify-between text-[11px] font-secondary h-9 px-6 lg:px-8 border-b border-black/8 bg-neutral-50/70 text-[#878787]"
-            >
-              
-              {/* Left: Social Media Icons */}
+          <div className="flex min-w-0 flex-1 flex-col justify-between">
+            <div className="hidden h-9 items-center justify-between gap-4 border-b border-primary/10 bg-neutral-50/70 px-6 text-[10px] text-muted lg:flex lg:px-8">
               <div className="flex items-center gap-4">
-                <a
-                  href="https://x.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#878787] hover:text-construction-blue transition-colors"
-                  title="X (Twitter)"
-                >
-                  <span className="font-bold text-xs">𝕏</span>
-                </a>
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#878787] hover:text-construction-blue transition-colors"
-                  title="Facebook"
-                >
-                  <Facebook className="w-3.5 h-3.5" />
-                </a>
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#878787] hover:text-construction-blue transition-colors"
-                  title="Instagram"
-                >
-                  <Instagram className="w-3.5 h-3.5" />
-                </a>
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#878787] hover:text-construction-blue transition-colors"
-                  title="LinkedIn"
-                >
-                  <Linkedin className="w-3.5 h-3.5" />
-                </a>
+                <a href="https://x.com" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" className={`hover:text-primary ${focusStyle}`}>𝕏</a>
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className={`hover:text-primary ${focusStyle}`}><Facebook className="h-3.5 w-3.5" /></a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className={`hover:text-primary ${focusStyle}`}><Instagram className="h-3.5 w-3.5" /></a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={`hover:text-primary ${focusStyle}`}><Linkedin className="h-3.5 w-3.5" /></a>
               </div>
-
-              {/* Right: Working Hours & Direct Phone */}
-              <div className="flex items-center gap-6">
-                <div className="flex items-center gap-1.5 text-[#878787]">
-                  <Clock className="w-3 h-3 text-construction-blue" />
-                  <span>Lun – Ven : 8h00 – 18h00</span>
-                </div>
-                <div className="h-3 w-[1px] bg-black/15" />
-                <a
-                  href="tel:0952863156"
-                  className="text-[#2D374E] hover:text-construction-blue font-bold font-secondary transition-colors"
-                >
-                  Tél : 09 52 86 31 56
-                </a>
+              <div className="flex items-center gap-5 whitespace-nowrap">
+                <span className="inline-flex items-center gap-1.5"><Clock className="h-3 w-3" aria-hidden="true" />Lun – Ven : 8h00 – 18h00</span>
+                <a href="tel:0952863156" className={`font-semibold text-primary ${focusStyle}`}>09 52 86 31 56</a>
               </div>
-
             </div>
-
-            {/* BOTTOM TIER: Main Navigation Menu + SEARCH & CTA */}
-            <div className="flex items-center justify-between h-14 sm:h-16 px-4 sm:px-6 lg:px-8">
-              
-              {/* Desktop Nav Links (Clean, direct links, Primary: #2D374E, Font: Montserrat) */}
-              <nav aria-label="Navigation principale" className="hidden xl:flex items-center gap-5 whitespace-nowrap text-[11px] font-secondary font-bold uppercase tracking-wider">
-                {navLinks.map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    aria-current={isActivePage(link.href) ? "page" : undefined}
-                    className="text-[#2D374E] hover:text-construction-blue transition-colors py-2 relative group"
-                  >
-                    <span>{link.label}</span>
-                    <span className={`absolute bottom-1 left-0 h-[2px] bg-primary transition-all duration-200 group-hover:w-full ${isActivePage(link.href) ? "w-full" : "w-0"}`} />
-                  </a>
-                ))}
+            <div className="flex h-[72px] min-w-0 items-center justify-between gap-3 px-3 sm:h-[88px] sm:px-5 lg:h-[68px] lg:px-6">
+              <nav aria-label="Navigation principale" className="hidden min-w-0 items-center gap-4 whitespace-nowrap font-secondary text-[11px] font-bold uppercase tracking-wider xl:flex 2xl:gap-5">
+                {NAV_LINKS.map((link) => <a key={link.href} href={link.href} aria-current={isActivePage(link.href) ? "page" : undefined} className={`relative py-3 text-primary ${focusStyle}`}><span>{link.label}</span><span aria-hidden="true" className={`absolute bottom-1 left-0 h-0.5 bg-primary ${isActivePage(link.href) ? "w-full" : "w-0"}`} /></a>)}
               </nav>
-
-              {/* Right Side: Search & Demander un devis */}
-              <div className="flex items-center gap-4 ml-auto lg:ml-0">
-                
-                {/* Search Trigger */}
-                <div className="relative">
-                  {searchOpen ? (
-                    <div
-                      className="flex items-center gap-2 bg-white border border-construction-blue shadow-lg px-3 py-1.5 animate-fadeIn"
-                    >
-                      <Search className="w-3.5 h-3.5 text-construction-blue flex-shrink-0" />
-                      <input
-                        ref={searchInputRef}
-                        type="text"
-                        placeholder="Rechercher (bardage, devis, catalogue)..."
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        onKeyDown={(e) => {
-                          if (e.key === "Enter") {
-                            const q = searchQuery.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-                            if (q.includes("cata") && onOpenCatalogue) {
-                              onOpenCatalogue();
-                              setSearchOpen(false);
-                            } else {
-                              const target = q.includes("method") ? "/methodologie"
-                                : q.includes("alliance") ? "/alliance"
-                                : q.includes("propos") || q.includes("entreprise") ? "/l-entreprise"
-                                : q.includes("devis") || q.includes("contact") ? "/#devis"
-                                : q.includes("config") ? "/#configurateur"
-                                : q.includes("projet") || q.includes("real") ? "/realisations"
-                                : "/metiers";
-                              handleSearchSelect({ label: searchQuery, target });
-                            }
-                          }
-                        }}
-                        className="bg-transparent text-xs text-[#2D374E] placeholder-[#878787] outline-none w-44 sm:w-56 font-secondary"
-                      />
-                      <button
-                        onClick={() => setSearchOpen(false)}
-                        className="text-[#878787] hover:text-[#2D374E] p-0.5"
-                        aria-label="Fermer la recherche"
-                      >
-                        <X className="w-3.5 h-3.5" />
-                      </button>
-                    </div>
-                  ) : (
-                    <button
-                      onClick={() => setSearchOpen(true)}
-                      className="flex items-center gap-2 text-xs font-secondary font-bold uppercase tracking-wider text-[#2D374E] hover:text-construction-blue transition-colors py-1.5 px-2 group"
-                      title="Rechercher"
-                    >
-                      <span className="sr-only">Rechercher</span>
-                      <Search className="w-4 h-4 text-[#2D374E] group-hover:text-construction-blue" />
-                    </button>
-                  )}
-
-                  {/* Search Shortcuts Flyout */}
-                  {searchOpen && (
-                    <div
-                      className="absolute right-0 top-full mt-2 w-72 bg-white border border-black/10 shadow-swiss-lg p-3 z-50 animate-fadeIn"
-                    >
-                      <div className="text-[10px] font-secondary uppercase tracking-widest text-construction-blue pb-2 mb-2 border-b border-black/10 font-bold">
-                        Accès Rapides
-                      </div>
-                      <div className="space-y-1">
-                        {searchShortcuts
-                          .filter((sc) =>
-                            searchQuery.trim() === ""
-                              ? true
-                              : sc.label.toLowerCase().includes(searchQuery.toLowerCase())
-                          )
-                          .map((sc) => (
-                            <button
-                              key={sc.label}
-                              onClick={() => handleSearchSelect(sc)}
-                              className="w-full text-left p-2 hover:bg-neutral-100 text-[#2D374E] hover:text-construction-blue text-xs font-secondary flex items-center justify-between transition-colors"
-                            >
-                              <span>{sc.label}</span>
-                              <ArrowUpRight className="w-3 h-3 text-[#878787]" />
-                            </button>
-                          ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                {/* Demander un devis CTA Button */}
-                <a
-                  href="/#devis"
-                  className="hidden sm:inline-flex xl:hidden 2xl:inline-flex items-center gap-2 px-5 py-2.5 text-xs font-secondary font-bold uppercase tracking-wider text-white bg-construction-blue hover:bg-construction-blueDark transition-all duration-200 shadow-md"
-                >
-                  <span>Demander un devis</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </a>
-
-                {/* Mobile Menu Toggle Button */}
-                <button
-                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                  className="xl:hidden p-2 text-[#2D374E] bg-neutral-100 border border-neutral-300 hover:bg-neutral-200 transition-colors"
-                  aria-label="Ouvrir le menu"
-                  aria-expanded={mobileMenuOpen}
-                  aria-controls="mobile-navigation"
-                >
-                  {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              <div className="ml-auto flex shrink-0 items-center gap-2 lg:gap-3">
+                <button ref={searchButtonRef} type="button" aria-label="Rechercher" aria-expanded={searchOpen} aria-controls="site-search" onClick={() => { setMobileMenuOpen(false); setSearchOpen((current) => !current); }} className={`flex h-11 w-11 items-center justify-center text-primary hover:bg-primary/5 ${focusStyle}`}>
+                  <Search className="h-5 w-5" aria-hidden="true" />
                 </button>
-
+                <a href="/#devis" className={`hidden min-h-11 items-center gap-2 whitespace-nowrap bg-primary px-4 py-3 font-secondary text-[10px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-primary/90 md:inline-flex xl:hidden 2xl:inline-flex ${focusStyle}`}>Demander un devis<ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" /></a>
+                <button ref={menuButtonRef} type="button" aria-label="Ouvrir le menu" aria-expanded={mobileMenuOpen} aria-controls="mobile-navigation" onClick={() => { setSearchOpen(false); setMobileMenuOpen(true); }} className={`flex h-11 w-11 items-center justify-center border border-primary/15 bg-primary/5 text-primary hover:bg-primary/10 xl:hidden ${focusStyle}`}>
+                  <Menu className="h-5 w-5" aria-hidden="true" />
+                </button>
               </div>
-
             </div>
-
           </div>
-
         </div>
+        {searchOpen && (
+          <div ref={searchPanelRef} id="site-search" className="fixed inset-x-4 top-[calc(var(--site-header-height)+0.5rem)] max-h-[calc(100dvh-var(--site-header-height)-1.5rem)] overflow-y-auto overscroll-contain border border-primary/15 bg-white p-3 shadow-swiss-lg sm:left-auto sm:right-6 sm:w-96 sm:p-4">
+            <form onSubmit={(event) => { event.preventDefault(); submitSearch(); }} className="sticky top-0 z-10 mb-4 flex min-w-0 items-center gap-2 border-b border-primary/15 bg-white pb-3">
+              <label htmlFor="site-search-input" className="sr-only">Rechercher sur le site</label>
+              <input id="site-search-input" ref={searchInputRef} type="search" placeholder="Métier, projet, catalogue…" value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} className="min-h-11 min-w-0 flex-1 bg-transparent px-2 text-base text-primary outline-none" />
+              <button type="button" onClick={() => { setSearchOpen(false); searchButtonRef.current?.focus(); }} aria-label="Fermer la recherche" className={`flex h-11 w-11 shrink-0 items-center justify-center text-primary hover:bg-primary/5 ${focusStyle}`}><X className="h-5 w-5" aria-hidden="true" /></button>
+            </form>
+            <p className="mb-2 font-secondary text-[9px] font-semibold uppercase tracking-widest text-primary/60">Accès rapides</p>
+            <div className="space-y-1">
+              {matchingShortcuts.length ? matchingShortcuts.map((shortcut) => <button key={shortcut.label} type="button" onClick={() => handleSearchSelect(shortcut)} className={`flex min-h-11 w-full items-center justify-between gap-3 px-2 py-3 text-left text-xs text-primary hover:bg-primary/5 ${focusStyle}`}><span className="min-w-0">{shortcut.label}</span><ArrowUpRight className="h-3.5 w-3.5 shrink-0" aria-hidden="true" /></button>) : <p className="px-2 py-3 text-sm text-muted">Aucun résultat. Essayez un métier ou « devis ».</p>}
+            </div>
+          </div>
+        )}
       </header>
 
-      {/* 3. Mobile Navigation Drawer */}
       {mobileMenuOpen && (
-        <div className="xl:hidden fixed inset-0 z-50 bg-primary pt-20 px-6 pb-8 flex flex-col justify-between animate-fadeIn overflow-y-auto">
-          <div className="flex flex-col gap-6">
-            <div className="flex items-center justify-between border-b border-white/15 pb-4">
-              <div className="bg-white px-3 py-1.5 shadow-sm inline-flex items-center">
-                <Image
-                  src="/images/cladis-logo-transparent-07a6284b.webp"
-                  alt="CLADIS CONSTRUCTION"
-                  width={220}
-                  height={62}
-                  className="h-10 w-auto object-contain"
-                />
-              </div>
-              <button
-                onClick={() => setMobileMenuOpen(false)}
-                className="p-1.5 text-white hover:bg-white/20 bg-white/10"
-                aria-label="Fermer le menu"
-              >
-                <X className="w-5 h-5" />
-              </button>
+        <div ref={menuRef} role="dialog" aria-modal="true" aria-label="Menu principal" className="fixed inset-0 z-50 flex h-dvh flex-col overflow-y-auto overscroll-contain bg-primary px-4 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-[max(1rem,env(safe-area-inset-top))] text-white sm:px-8 xl:hidden">
+          <div className="mx-auto flex w-full max-w-xl flex-1 flex-col">
+            <div className="mb-5 flex shrink-0 items-center justify-between gap-4 border-b border-white/20 pb-4">
+              <a href="/" className="inline-flex bg-white px-3 py-2" aria-label="Accueil CLADIS CONSTRUCTION"><Image src="/images/cladis-logo-transparent-07a6284b.webp" alt="CLADIS CONSTRUCTION" width={220} height={62} className="h-9 w-[150px] object-contain sm:h-11 sm:w-[190px]" /></a>
+              <button type="button" onClick={() => setMobileMenuOpen(false)} aria-label="Fermer le menu" className="flex h-11 w-11 shrink-0 items-center justify-center border border-white/25 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"><X className="h-5 w-5" aria-hidden="true" /></button>
             </div>
-
-            <nav id="mobile-navigation" aria-label="Navigation mobile" className="flex flex-col gap-2">
-              {navLinks.map((link, idx) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  aria-current={isActivePage(link.href) ? "page" : undefined}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-base font-sans font-bold tracking-tight text-white hover:bg-white/10 aria-[current=page]:bg-white/10 transition-colors px-2 py-2.5 border-b border-white/10 flex items-center justify-between"
-                >
-                  <span className="flex items-baseline gap-3">
-                    <span className="font-mono text-xs text-white/50">0{idx + 1}.</span>
-                    <span>{link.label}</span>
-                  </span>
-                  <ArrowUpRight className="w-4 h-4 text-white/50" />
-                </a>
-              ))}
+            <nav id="mobile-navigation" aria-label="Navigation mobile">
+              {NAV_LINKS.map((link) => <a key={link.href} href={link.href} aria-current={isActivePage(link.href) ? "page" : undefined} onClick={() => setMobileMenuOpen(false)} className="flex min-h-12 items-center justify-between gap-4 border-b border-white/15 px-2 py-3.5 text-base font-semibold text-white hover:bg-white/10 aria-[current=page]:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"><span>{link.label}</span><ArrowUpRight className="h-4 w-4 shrink-0 text-white/55" aria-hidden="true" /></a>)}
             </nav>
-          </div>
-
-          <div className="flex flex-col gap-3 pt-6 border-t border-white/15 mt-8">
-            <a
-              href="tel:0952863156"
-              className="flex items-center justify-center gap-2 py-3 px-4 bg-white/10 border border-white/20 text-white text-xs font-mono"
-            >
-              <Phone className="w-3.5 h-3.5 text-white/70" />
-              <span>09 52 86 31 56 • CHAMBÉRY (SAVOIE)</span>
-            </a>
-
-            {onOpenCatalogue && (
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenCatalogue();
-                }}
-                className="flex items-center justify-center gap-2 py-3 px-4 bg-white/5 border border-white/20 text-white text-xs font-mono uppercase tracking-wider hover:bg-white/15"
-              >
-                <Download className="w-3.5 h-3.5 text-white/70" />
-                <span>Télécharger Catalogue 2026 (PDF)</span>
-              </button>
-            )}
-
-            <a
-              href="/#devis"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-2 py-3.5 px-4 bg-white text-primary font-mono text-xs uppercase tracking-widest font-bold shadow-lg"
-            >
-              <span>Demander un devis en ligne</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </a>
+            <div className="mt-auto flex flex-col gap-3 pt-7">
+              <a href="/#devis" onClick={() => setMobileMenuOpen(false)} className="inline-flex min-h-12 items-center justify-between gap-3 bg-white px-5 py-4 text-sm font-bold text-primary">Demander un devis<ArrowUpRight className="h-4 w-4 shrink-0" aria-hidden="true" /></a>
+              {onOpenCatalogue ? <button type="button" onClick={() => { setMobileMenuOpen(false); onOpenCatalogue(); }} className="inline-flex min-h-12 items-center justify-center gap-2 border border-white/25 px-4 py-3 text-xs text-white"><Download className="h-4 w-4 shrink-0" aria-hidden="true" />Consulter le catalogue</button> : <a href="/catalogue-cladis-2026.pdf" className="inline-flex min-h-12 items-center justify-center gap-2 border border-white/25 px-4 py-3 text-xs text-white"><Download className="h-4 w-4 shrink-0" aria-hidden="true" />Consulter le catalogue</a>}
+              <a href="tel:0952863156" className="inline-flex min-h-11 items-center justify-center gap-2 py-2 text-xs text-white/75"><Phone className="h-3.5 w-3.5" aria-hidden="true" />09 52 86 31 56</a>
+            </div>
           </div>
         </div>
       )}

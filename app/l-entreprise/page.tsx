@@ -54,7 +54,7 @@ export default function EntreprisePage() {
                 <span className="h-1.5 w-6 bg-primary" aria-hidden="true" />
                 <span className="font-secondary text-[10px] font-semibold uppercase tracking-[0.2em] text-primary/65">Histoire de l'entreprise</span>
               </div>
-              <h1 id="about-heading" className="font-sans text-5xl font-bold leading-[1.04] tracking-tight text-primary sm:text-6xl xl:text-7xl">
+              <h1 id="about-heading" className="font-sans text-4xl font-bold leading-[1.06] tracking-tight text-primary sm:text-5xl lg:text-6xl xl:text-7xl">
                 Qui sommes-nous ?
               </h1>
               <p className="mt-5 max-w-xl font-secondary text-[10px] font-semibold uppercase leading-relaxed tracking-wider text-primary/65 sm:text-xs">

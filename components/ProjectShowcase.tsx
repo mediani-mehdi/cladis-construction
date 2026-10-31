@@ -83,14 +83,14 @@ export default function ProjectShowcase({ standalone = false }: { standalone?: b
           </div>
         )}
 
-        <div id="projects-gallery" className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8">
+        <div id="projects-gallery" className="grid grid-cols-1 gap-x-6 gap-y-10 min-[560px]:grid-cols-2 lg:grid-cols-3 lg:gap-x-8">
           {visibleProjects.map((project, index) => (
             <Link
               key={project.id}
               href={`/realisations/${project.slug}`}
-              className={`group block min-w-0 ${focusStyle}`}
+              className={`group block min-w-0 ${!standalone && index === 2 ? "min-[560px]:col-span-2 lg:col-span-1" : ""} ${focusStyle}`}
             >
-              <div className="relative aspect-[4/5] overflow-hidden bg-swiss-stone">
+              <div className={`relative aspect-[4/3] overflow-hidden bg-swiss-stone ${!standalone && index === 2 ? "min-[560px]:aspect-[16/9] lg:aspect-[4/5]" : "sm:aspect-[4/5]"}`}>
                 <Image
                   src={project.image}
                   alt={project.title}
@@ -99,7 +99,7 @@ export default function ProjectShowcase({ standalone = false }: { standalone?: b
                   className={`object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04] group-focus-visible:scale-[1.04] motion-reduce:transform-none motion-reduce:transition-none ${project.id === "hub-chambery" ? "object-bottom" : "object-center"}`}
                 />
                 <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/55 to-transparent" />
-                <span className="absolute left-5 top-5 bg-white/95 px-2.5 py-2 font-secondary text-[9px] font-semibold uppercase tracking-wider text-primary">
+                <span className="absolute left-5 top-5 max-w-[calc(100%-5rem)] bg-white/95 px-2.5 py-2 font-secondary text-[9px] font-semibold uppercase leading-relaxed tracking-wider text-primary">
                   {project.categoryLabel}
                 </span>
                 <span className="absolute right-5 top-5 flex h-8 w-8 items-center justify-center bg-white/95 font-secondary text-[10px] text-primary">

@@ -8,6 +8,15 @@
   --color-primary: #2D374E;
   --color-secondary: #3C3C3B;
   --color-muted: #878787;
+  --site-header-height: 72px;
+}
+
+@media (min-width: 640px) {
+  :root { --site-header-height: 88px; }
+}
+
+@media (min-width: 1024px) {
+  :root { --site-header-height: 104px; }
 }
 
 html {
@@ -37,6 +46,53 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
   color: #3C3C3B;
+}
+
+/* Allow long technical labels and grid content to fit narrow screens. */
+main .grid > * {
+  min-width: 0;
+}
+
+main :is(h1, h2, h3, h4, p, li, dd, td, th),
+a[href^="mailto:"] {
+  overflow-wrap: anywhere;
+}
+
+main section[id], #devis, #devis-lot {
+  scroll-margin-top: calc(var(--site-header-height) + 1rem);
+}
+
+button, a, input, select, textarea {
+  touch-action: manipulation;
+}
+
+@media (max-width: 1023px) {
+  input:not([type="range"]):not([type="checkbox"]):not([type="radio"]),
+  select, textarea {
+    min-width: 0;
+    max-width: 100%;
+    font-size: 16px;
+  }
+
+  main :is(input:not([type="range"]):not([type="checkbox"]):not([type="radio"]), select) {
+    min-height: 48px;
+  }
+}
+
+@media (max-width: 639px) {
+  main a.inline-flex {
+    max-width: 100%;
+    white-space: normal;
+  }
+
+  main .inline-flex > svg {
+    flex-shrink: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-fadeIn { animation: none; }
 }
 
 /* Swiss Architectural Grid Lines Pattern */

@@ -7,11 +7,11 @@ import { METIERS } from "@/lib/metiers-data";
 
 export default function CoreServices() {
   return (
-    <section id="metiers" className="py-28 bg-swiss-snow relative border-t border-black/8">
+    <section id="metiers" className="py-16 sm:py-20 lg:py-28 bg-swiss-snow relative border-t border-black/8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header Section (Swiss Structured Typography) */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-10 sm:mb-12 lg:mb-16 gap-6">
           <div className="space-y-3">
             <div className="inline-flex items-center gap-2">
               <span className="w-2 h-2 bg-swiss-ink" />
@@ -40,7 +40,7 @@ export default function CoreServices() {
         </div>
 
         {/* 6 Core Services Modular Grid (Direct Links to Dedicated Pages, NO MODAL) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
           {METIERS.map((service) => (
             <Link
               key={service.slug}

@@ -43,7 +43,7 @@ export default function EnvelopeConfigurator({ onApplyConfig }: ConfiguratorProp
   };
 
   return (
-    <section id="configurateur" className="py-28 bg-swiss-snow relative border-t border-black/8">
+    <section id="configurateur" className="py-16 sm:py-20 lg:py-28 bg-swiss-snow relative border-t border-black/8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
@@ -66,18 +66,18 @@ export default function EnvelopeConfigurator({ onApplyConfig }: ConfiguratorProp
         </div>
 
         {/* Configurator Card Container (Swiss Clean White Design) */}
-        <div className="bg-white border border-black/10 shadow-swiss-md p-6 sm:p-10 lg:p-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div className="bg-white border border-black/10 shadow-swiss-md p-4 sm:p-6 xl:p-10">
+          <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 xl:gap-10 items-start">
             
             {/* Left Column: Interactive Inputs */}
-            <div className="lg:col-span-7 space-y-8">
+            <div className="xl:col-span-7 space-y-8">
               
               {/* 1. Typologie */}
               <div>
                 <label className="text-xs uppercase font-mono tracking-widest text-swiss-ink font-bold block mb-3">
                   01. Typologie de Bâtiment
                 </label>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                <div className="grid grid-cols-1 min-[360px]:grid-cols-2 md:grid-cols-4 xl:grid-cols-2 2xl:grid-cols-4 gap-2.5">
                   {[
                     "Industriel & Usine",
                     "Plateforme Logistique",
@@ -102,7 +102,7 @@ export default function EnvelopeConfigurator({ onApplyConfig }: ConfiguratorProp
 
               {/* 2. Surface */}
               <div>
-                <div className="flex items-center justify-between mb-3">
+                <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
                   <label className="text-xs uppercase font-mono tracking-widest text-swiss-ink font-bold">
                     02. Surface Totale de l'Enveloppe (m²)
                   </label>
@@ -117,12 +117,12 @@ export default function EnvelopeConfigurator({ onApplyConfig }: ConfiguratorProp
                   step={250}
                   value={surface}
                   onChange={(e) => setSurface(Number(e.target.value))}
-                  className="w-full accent-black cursor-pointer bg-swiss-stone h-2 rounded-none"
+                  className="w-full accent-primary cursor-pointer bg-swiss-stone h-6 rounded-none"
                 />
-                <div className="flex justify-between text-[10px] font-mono text-swiss-muted mt-1.5">
+                <div className="flex justify-between gap-3 text-[10px] font-mono text-swiss-muted mt-1.5">
                   <span>500 m² (Atelier artisanal)</span>
-                  <span>7 500 m² (Moyen hub)</span>
-                  <span>15 000 m² (Mégasite)</span>
+                  <span className="hidden sm:inline">7 500 m² (Moyen hub)</span>
+                  <span className="text-right">15 000 m² (Mégasite)</span>
                 </div>
               </div>
 
@@ -197,7 +197,7 @@ export default function EnvelopeConfigurator({ onApplyConfig }: ConfiguratorProp
               </div>
 
               {/* 5. Charpente Switch */}
-              <div className="flex items-center justify-between p-4 bg-swiss-subtle border border-black/10">
+              <div className="flex flex-col items-start justify-between gap-4 p-4 bg-swiss-subtle border border-black/10 sm:flex-row sm:items-center">
                 <div>
                   <span className="text-xs font-bold text-swiss-ink block">
                     Intégrer le lot Charpente Métallique porteuse ?
@@ -209,7 +209,8 @@ export default function EnvelopeConfigurator({ onApplyConfig }: ConfiguratorProp
                 <button
                   type="button"
                   onClick={() => setHasCharpente(!hasCharpente)}
-                  className={`px-4 py-2 text-xs font-mono uppercase tracking-wider transition-colors border ${
+                  aria-pressed={hasCharpente}
+                  className={`min-h-11 shrink-0 px-4 py-2 text-xs font-mono uppercase tracking-wider transition-colors border ${
                     hasCharpente
                       ? "bg-swiss-ink text-white font-bold border-swiss-ink"
                       : "bg-white text-swiss-muted border-black/15 hover:border-black/30"
@@ -222,8 +223,8 @@ export default function EnvelopeConfigurator({ onApplyConfig }: ConfiguratorProp
             </div>
 
             {/* Right Column: Live Output & Engineering Summary (Swiss Structured Card) */}
-            <div className="lg:col-span-5 bg-swiss-subtle border border-black/10 p-7 sm:p-8 space-y-6 lg:sticky lg:top-28 shadow-swiss-sm">
-              <div className="flex items-center justify-between border-b border-black/10 pb-4">
+            <div className="xl:col-span-5 bg-swiss-subtle border border-black/10 p-4 sm:p-6 space-y-6 xl:sticky xl:top-28 shadow-swiss-sm">
+              <div className="flex flex-wrap items-center justify-between gap-3 border-b border-black/10 pb-4">
                 <div className="flex items-center gap-2">
                   <Sparkles className="w-4 h-4 text-swiss-accent" />
                   <span className="font-mono text-xs uppercase tracking-widest text-swiss-ink font-bold">
@@ -236,7 +237,7 @@ export default function EnvelopeConfigurator({ onApplyConfig }: ConfiguratorProp
               </div>
 
               {/* Key Metrics Display */}
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div className="p-4 bg-white border border-black/8 shadow-sm">
                   <span className="text-[10px] font-mono uppercase tracking-wider text-swiss-muted block font-medium">
                     Performance Thermique
@@ -258,7 +259,7 @@ export default function EnvelopeConfigurator({ onApplyConfig }: ConfiguratorProp
                 </div>
 
                 {hasCharpente && (
-                  <div className="p-4 bg-white border border-black/8 shadow-sm col-span-2">
+                  <div className="p-4 bg-white border border-black/8 shadow-sm sm:col-span-2">
                     <span className="text-[10px] font-mono uppercase tracking-wider text-swiss-muted block font-medium">
                       Tonnage d'Acier Estimé
                     </span>
@@ -272,27 +273,27 @@ export default function EnvelopeConfigurator({ onApplyConfig }: ConfiguratorProp
 
               {/* Selected Criteria Summary */}
               <div className="p-4 bg-white border border-black/8 space-y-2 text-xs">
-                <div className="flex justify-between">
+                <div className="flex flex-wrap justify-between gap-2">
                   <span className="text-swiss-muted">Typologie :</span>
                   <span className="text-swiss-ink font-mono font-medium">{buildingType}</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex flex-wrap justify-between gap-2">
                   <span className="text-swiss-muted">Surface :</span>
                   <span className="text-swiss-ink font-mono font-medium">{surface} m²</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex flex-wrap justify-between gap-2">
                   <span className="text-swiss-muted">Façade :</span>
-                  <span className="text-swiss-ink font-mono font-medium text-right text-[11px] max-w-[200px] truncate">
+                  <span className="min-w-0 max-w-full text-swiss-ink font-mono font-medium text-right text-[11px] sm:max-w-[65%]">
                     {bardageType}
                   </span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex flex-wrap justify-between gap-2">
                   <span className="text-swiss-muted">Toiture :</span>
-                  <span className="text-swiss-ink font-mono font-medium text-right text-[11px] max-w-[200px] truncate">
+                  <span className="min-w-0 max-w-full text-swiss-ink font-mono font-medium text-right text-[11px] sm:max-w-[65%]">
                     {toitureType}
                   </span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex flex-wrap justify-between gap-2">
                   <span className="text-swiss-muted">Charpente :</span>
                   <span className="text-swiss-ink font-mono font-bold">{hasCharpente ? "Incluse" : "Non incluse"}</span>
                 </div>

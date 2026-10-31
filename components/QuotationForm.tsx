@@ -64,11 +64,11 @@ Merci de nous recontacter pour une étude détaillée et un chiffrage précis.`,
   };
 
   return (
-    <section id="contact" className="py-28 bg-white relative border-t border-black/8 bg-swiss-grid">
+    <section id="contact" className="py-16 sm:py-20 lg:py-28 bg-white relative border-t border-black/8 bg-swiss-grid">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10" id="devis">
         
         {/* Section Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 lg:mb-20 space-y-4">
           <div className="inline-flex items-center gap-2">
             <span className="w-2 h-2 bg-swiss-ink" />
             <span className="text-[11px] uppercase tracking-widest font-mono text-swiss-muted font-medium">
@@ -86,10 +86,10 @@ Merci de nous recontacter pour une étude détaillée et un chiffrage précis.`,
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 xl:gap-12 items-start">
           
           {/* Left Column: Interactive Form (Swiss Light Design) */}
-          <div className="lg:col-span-7 bg-white border border-black/10 p-8 sm:p-10 shadow-swiss-md relative">
+          <div className="xl:col-span-7 bg-white border border-black/10 p-4 sm:p-7 lg:p-8 shadow-swiss-md relative">
             
             {submitted ? (
               <div className="py-16 px-4 text-center space-y-6">
@@ -138,7 +138,7 @@ Merci de nous recontacter pour une étude détaillée et un chiffrage précis.`,
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 
-                <div className="flex items-center justify-between border-b border-black/8 pb-4">
+                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-black/8 pb-4">
                   <span className="font-mono text-xs uppercase tracking-widest text-swiss-ink font-bold">
                     Formulaire de Consultation Technique
                   </span>
@@ -263,9 +263,9 @@ Merci de nous recontacter pour une étude détaillée et un chiffrage précis.`,
                   <label className="text-[11px] font-mono uppercase tracking-wider text-swiss-ink font-bold block mb-1.5">
                     Plans de l'Ouvrage ou CCTP (Facultatif - PDF, DWG, ZIP)
                   </label>
-                  <label className="flex items-center justify-center gap-3 p-4 bg-swiss-subtle border border-dashed border-black/20 hover:border-black rounded-none cursor-pointer transition-colors">
-                    <UploadCloud className="w-5 h-5 text-swiss-accent" />
-                    <span className="text-xs text-swiss-muted font-mono">
+                  <label className="flex min-h-16 items-center justify-center gap-3 p-4 bg-swiss-subtle border border-dashed border-black/20 hover:border-black rounded-none cursor-pointer transition-colors">
+                    <UploadCloud className="w-5 h-5 shrink-0 text-swiss-accent" />
+                    <span className="min-w-0 break-words text-xs text-swiss-muted font-mono">
                       {attachedFileName ? (
                         <span className="text-swiss-ink font-bold">{attachedFileName}</span>
                       ) : (
@@ -288,14 +288,14 @@ Merci de nous recontacter pour une étude détaillée et un chiffrage précis.`,
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-4 bg-swiss-ink text-white text-xs uppercase tracking-widest font-mono font-medium hover:bg-neutral-800 transition-all duration-200 shadow-sm flex items-center justify-center gap-2 disabled:opacity-50"
+                  className="min-h-12 w-full px-3 py-4 bg-swiss-ink text-white text-xs uppercase tracking-widest font-mono font-medium hover:bg-neutral-800 transition-all duration-200 shadow-sm flex items-center justify-center gap-2 disabled:opacity-50"
                 >
                   {loading ? (
                     <span>Transmission de votre dossier en cours...</span>
                   ) : (
                     <>
                       <span>Envoyer ma demande d'étude technique</span>
-                      <Send className="w-4 h-4" />
+                      <Send className="w-4 h-4 shrink-0" />
                     </>
                   )}
                 </button>
@@ -311,16 +311,16 @@ Merci de nous recontacter pour une étude détaillée et un chiffrage précis.`,
           </div>
 
           {/* Right Column: Company Contact Info & Headquarters Aside */}
-          <div className="lg:col-span-5 space-y-6">
+          <div className="xl:col-span-5 space-y-6">
             
             {/* Headquarters Card */}
-            <div className="bg-white border border-black/10 p-7 sm:p-8 space-y-6 shadow-swiss-md">
+            <div className="bg-white border border-black/10 p-4 sm:p-7 space-y-6 shadow-swiss-md">
               <div className="flex items-center gap-3 border-b border-black/8 pb-4">
-                <div className="w-9 h-9 bg-swiss-ink text-white flex items-center justify-center">
+                <div className="w-9 h-9 shrink-0 bg-swiss-ink text-white flex items-center justify-center">
                   <Building2 className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-sans text-xl text-swiss-ink font-bold">
+                  <h3 className="font-sans text-lg sm:text-xl text-swiss-ink font-bold">
                     CLADIS CONSTRUCTION
                   </h3>
                   <span className="text-[10px] font-mono uppercase tracking-widest text-swiss-muted block font-semibold">
@@ -418,8 +418,8 @@ Merci de nous recontacter pour une étude détaillée et un chiffrage précis.`,
             </div>
 
             {/* Direct Google Maps Navigation Card */}
-            <div className="bg-white border border-black/10 p-6 flex items-center justify-between shadow-swiss-sm">
-              <div className="space-y-1">
+            <div className="bg-white border border-black/10 p-4 sm:p-6 flex items-center justify-between gap-4 shadow-swiss-sm">
+              <div className="min-w-0 space-y-1">
                 <span className="text-[10px] font-mono uppercase tracking-widest text-swiss-muted font-bold block">
                   Visite & Rendez-vous Bureau
                 </span>
@@ -435,7 +435,7 @@ Merci de nous recontacter pour une étude détaillée et un chiffrage précis.`,
                 href="https://maps.google.com/?q=74+rue+de+la+Révériaz+73000+Chambéry"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-swiss-subtle border border-black/10 hover:bg-swiss-ink hover:text-white text-swiss-ink flex items-center justify-center transition-all duration-200"
+                className="w-11 h-11 shrink-0 bg-swiss-subtle border border-black/10 hover:bg-swiss-ink hover:text-white text-swiss-ink flex items-center justify-center transition-all duration-200"
                 title="Ouvrir dans Google Maps"
               >
                 <ArrowUpRight className="w-5 h-5" />

@@ -1,5 +1,6 @@
-"use client";
+﻿"use client";
 
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { X, Download, CheckCircle2, ExternalLink } from "lucide-react";
 
@@ -9,110 +10,67 @@ interface CatalogueModalProps {
 }
 
 export default function CatalogueModal({ isOpen, onClose }: CatalogueModalProps) {
+  const dialogRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const previousFocus = document.activeElement as HTMLElement | null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    dialogRef.current?.querySelector<HTMLButtonElement>("button")?.focus();
+    const handleKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") { onClose(); return; }
+      if (event.key !== "Tab") return;
+      const controls = dialogRef.current?.querySelectorAll<HTMLElement>('button:not([disabled]), a[href]');
+      if (!controls?.length) return;
+      const first = controls[0];
+      const last = controls[controls.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    };
+    document.addEventListener("keydown", handleKey);
+    return () => { document.body.style.overflow = previousOverflow; document.removeEventListener("keydown", handleKey); if (previousFocus?.isConnected) previousFocus.focus(); };
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-sm animate-fadeIn">
-      <div
-        className="relative w-full max-w-3xl max-h-[92vh] overflow-y-auto bg-white border border-black/20 shadow-2xl p-6 sm:p-10"
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Close Button */}
-        <button
-          onClick={onClose}
-          className="absolute top-6 right-6 p-2 bg-swiss-subtle hover:bg-swiss-ink hover:text-white text-swiss-ink transition-colors"
-          aria-label="Fermer le catalogue"
-        >
-          <X className="w-6 h-6" />
-        </button>
-
-        {/* Header */}
-        <div className="flex items-center gap-3 mb-2">
-          <span className="font-mono text-xs text-swiss-muted uppercase tracking-widest font-bold">
-            DOCUMENTATION TECHNIQUE OFFICIELLE // 2026
-          </span>
-          <span className="w-8 h-[1px] bg-black/20" />
+    <div onClick={onClose} className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-3 backdrop-blur-sm sm:p-6">
+      <div ref={dialogRef} role="dialog" aria-modal="true" aria-labelledby="catalogue-title" className="relative flex max-h-[calc(100dvh-1.5rem)] w-full max-w-3xl flex-col overflow-hidden border border-primary/20 bg-white shadow-2xl sm:max-h-[calc(100dvh-3rem)]" onClick={(event) => event.stopPropagation()}>
+        <div className="flex shrink-0 items-start justify-between gap-4 border-b border-primary/10 px-5 py-4 sm:px-8 sm:py-5">
+          <div className="min-w-0">
+            <span className="mb-2 block font-secondary text-[9px] font-semibold uppercase tracking-wider text-primary/55">Documentation technique officielle</span>
+            <h2 id="catalogue-title" className="font-sans text-xl font-bold leading-tight tracking-tight text-primary sm:text-3xl">Catalogue Technique 2026</h2>
+          </div>
+          <button type="button" onClick={onClose} className="flex h-11 w-11 shrink-0 items-center justify-center bg-primary/5 text-primary transition-colors hover:bg-primary hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary" aria-label="Fermer le catalogue"><X className="h-5 w-5" aria-hidden="true" /></button>
         </div>
 
-        <h3 className="font-sans text-2xl sm:text-4xl text-swiss-ink font-extrabold tracking-tight mb-1">
-          Catalogue Technique 2026
-        </h3>
-        <p className="text-xs font-mono uppercase tracking-wider text-swiss-muted mb-6">
-          CLADIS CONSTRUCTION • BARDAGE • ÉTANCHÉITÉ • COUVERTURE
-        </p>
-
-        {/* Preview Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center mb-8 bg-swiss-subtle p-5 border border-black/10">
-          <div className="sm:col-span-4 relative h-64 overflow-hidden border border-black/10 shadow-sm bg-swiss-stone">
-            <Image
-              src="/images/catalogue-cover-faed49b8.webp"
-              alt="Couverture Catalogue CLADIS 2026"
-              fill
-              className="object-cover object-top"
-            />
-          </div>
-
-          <div className="sm:col-span-8 space-y-4">
-            <div className="space-y-1">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-swiss-muted font-bold block">
-                Sommaire du Catalogue
-              </span>
-              <h4 className="font-sans text-base sm:text-lg text-swiss-ink font-bold">
-                Guide des Systèmes Constructifs & Réalisations
-              </h4>
+        <div className="min-h-0 overflow-y-auto overscroll-contain p-5 sm:p-8">
+          <p className="mb-5 font-secondary text-[10px] uppercase leading-relaxed tracking-wider text-primary/60">CLADIS CONSTRUCTION · Bardage · Étanchéité · Couverture</p>
+          <div className="grid grid-cols-1 items-start gap-6 border border-primary/10 bg-swiss-subtle p-4 md:grid-cols-12 md:p-5">
+            <div className="relative mx-auto h-60 w-44 max-w-full overflow-hidden border border-primary/10 bg-swiss-stone shadow-sm md:col-span-4 md:h-64 md:w-full">
+              <Image src="/images/catalogue-cover-faed49b8.webp" alt="Couverture du catalogue CLADIS 2026" fill sizes="(min-width: 768px) 200px, 176px" className="object-cover object-top" />
             </div>
-
-            <ul className="space-y-2 text-xs text-swiss-muted">
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-swiss-ink shrink-0" />
-                <span className="text-swiss-ink">1. Enveloppe du Bâtiment & ADN de l'Entreprise</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-swiss-ink shrink-0" />
-                <span className="text-swiss-ink">2. Bardage Métallique, Couverture & Étanchéité</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-swiss-ink shrink-0" />
-                <span className="text-swiss-ink">3. Charpentes Métalliques Industrielles (Eurocodes 3)</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-swiss-ink shrink-0" />
-                <span className="text-swiss-ink">4. Étanchéité Végétalisée & Solaire Photovoltaïque</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-swiss-ink shrink-0" />
-                <span className="text-swiss-ink">5. Bureau d'Études Intégré & Alliance Building Services</span>
-              </li>
-            </ul>
-
-            <div className="pt-2 text-[11px] font-mono text-swiss-muted">
-              Format : PDF Haute Définition • 8 Pages Complètes
+            <div className="min-w-0 space-y-4 md:col-span-8">
+              <div><span className="mb-2 block font-secondary text-[9px] font-semibold uppercase tracking-widest text-primary/55">Sommaire du catalogue</span><h3 className="font-sans text-lg font-bold leading-snug text-primary">Guide des systèmes constructifs & réalisations</h3></div>
+              <ul className="space-y-3 text-xs leading-relaxed text-primary">
+                {[
+                  "Enveloppe du bâtiment & identité de l'entreprise",
+                  "Bardage métallique, couverture & étanchéité",
+                  "Charpentes métalliques industrielles",
+                  "Étanchéité végétalisée & solaire photovoltaïque",
+                  "Bureau d'études intégré & alliance Building Services",
+                ].map((item) => <li key={item} className="flex items-start gap-2"><CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary/65" aria-hidden="true" /><span className="min-w-0">{item}</span></li>)}
+              </ul>
+              <p className="text-[11px] text-primary/55">Format PDF · Documentation complète</p>
             </div>
           </div>
         </div>
 
-        {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-black/10">
-          <a
-            href="/catalogue-cladis-2026.pdf"
-            download="Catalogue-CLADIS-CONSTRUCTION-2026.pdf"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-swiss-ink text-white text-xs uppercase tracking-widest font-mono font-medium hover:bg-neutral-800 transition-all shadow-sm"
-          >
-            <Download className="w-4 h-4" />
-            <span>Télécharger le Catalogue (PDF)</span>
-          </a>
-
-          <a
-            href="/catalogue-cladis-2026.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 border border-black/20 text-xs uppercase tracking-widest font-mono text-swiss-ink hover:bg-swiss-subtle transition-colors"
-          >
-            <ExternalLink className="w-4 h-4" />
-            <span>Consulter en plein écran</span>
-          </a>
+        <div className="grid shrink-0 grid-cols-1 gap-3 border-t border-primary/10 p-5 sm:grid-cols-2 sm:px-8">
+          <a href="/catalogue-cladis-2026.pdf" download="Catalogue-CLADIS-CONSTRUCTION-2026.pdf" className="inline-flex min-h-12 items-center justify-center gap-2 bg-primary px-4 py-3 text-center text-xs font-semibold text-white transition-colors hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"><Download className="h-4 w-4 shrink-0" aria-hidden="true" /><span>Télécharger le catalogue</span></a>
+          <a href="/catalogue-cladis-2026.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 border border-primary/25 px-4 py-3 text-center text-xs font-semibold text-primary transition-colors hover:bg-primary/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"><ExternalLink className="h-4 w-4 shrink-0" aria-hidden="true" /><span>Consulter en plein écran</span></a>
         </div>
-
       </div>
     </div>
   );

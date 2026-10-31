@@ -84,7 +84,7 @@ export default async function MetierDetailPage({ params }: MetierPageProps) {
                 </span>
               </div>
 
-              <h1 className="font-sans font-black text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.05] uppercase">
+              <h1 className="font-sans font-black text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.05] uppercase text-white">
                 {metier.title}
               </h1>
 
@@ -115,21 +115,21 @@ export default async function MetierDetailPage({ params }: MetierPageProps) {
               <div className="text-[10px] uppercase tracking-widest text-construction-blue font-bold border-b border-white/10 pb-2">
                 Fiche d'Identité Technique
               </div>
-              <div className="flex justify-between py-1 border-b border-white/5">
+              <div className="grid grid-cols-1 gap-1 border-b border-white/5 py-2 min-[400px]:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)] min-[400px]:gap-3">
                 <span className="text-white/60">Normes DTU :</span>
-                <span className="text-white font-bold">{metier.norms[0]}</span>
+                <span className="min-w-0 text-white font-bold min-[400px]:text-right">{metier.norms[0]}</span>
               </div>
-              <div className="flex justify-between py-1 border-b border-white/5">
+              <div className="grid grid-cols-1 gap-1 border-b border-white/5 py-2 min-[400px]:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)] min-[400px]:gap-3">
                 <span className="text-white/60">Garantie :</span>
-                <span className="text-white font-bold">Décennale 10 ans</span>
+                <span className="min-w-0 text-white font-bold min-[400px]:text-right">Décennale 10 ans</span>
               </div>
-              <div className="flex justify-between py-1 border-b border-white/5">
+              <div className="grid grid-cols-1 gap-1 border-b border-white/5 py-2 min-[400px]:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)] min-[400px]:gap-3">
                 <span className="text-white/60">Zone d'intervention :</span>
-                <span className="text-white font-bold">Auvergne-Rhône-Alpes</span>
+                <span className="min-w-0 text-white font-bold min-[400px]:text-right">Auvergne-Rhône-Alpes</span>
               </div>
-              <div className="flex justify-between py-1">
+              <div className="grid grid-cols-1 gap-1 py-2 min-[400px]:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)] min-[400px]:gap-3">
                 <span className="text-white/60">Bureau d'études :</span>
-                <span className="text-white font-bold">Intégré (Tekla / BIM)</span>
+                <span className="min-w-0 text-white font-bold min-[400px]:text-right">Intégré (Tekla / BIM)</span>
               </div>
             </div>
           </div>
@@ -137,7 +137,7 @@ export default async function MetierDetailPage({ params }: MetierPageProps) {
       </section>
 
       {/* 2. OVERVIEW & INDUSTRIAL CONTEXT */}
-      <section className="py-24 sm:py-28 bg-white border-b border-black/8">
+      <section className="py-16 sm:py-20 lg:py-28 bg-white border-b border-black/8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             
@@ -214,7 +214,7 @@ export default async function MetierDetailPage({ params }: MetierPageProps) {
       </section>
 
       {/* 3. TECHNICAL SOLUTIONS GRID */}
-      <section className="py-24 sm:py-28 bg-neutral-50 border-b border-black/8">
+      <section className="py-16 sm:py-20 lg:py-28 bg-neutral-50 border-b border-black/8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
@@ -229,7 +229,7 @@ export default async function MetierDetailPage({ params }: MetierPageProps) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             {metier.solutions.map((sol, idx) => (
               <div
                 key={sol.title}
@@ -270,7 +270,7 @@ export default async function MetierDetailPage({ params }: MetierPageProps) {
       </section>
 
       {/* 4. SPECIFICATIONS & APPLICATIONS TABLE */}
-      <section className="py-24 sm:py-28 bg-white border-b border-black/8">
+      <section className="py-16 sm:py-20 lg:py-28 bg-white border-b border-black/8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -288,14 +288,15 @@ export default async function MetierDetailPage({ params }: MetierPageProps) {
                 Spécifications et performances
               </h2>
 
-              <div className="border border-neutral-200 overflow-hidden shadow-sm">
-                <table className="w-full text-left text-xs">
+              <p className="text-xs text-muted sm:hidden">Faites défiler le tableau pour consulter toutes les données.</p>
+              <div role="region" aria-label="Spécifications techniques du métier" tabIndex={0} className="max-w-full overflow-x-auto border border-neutral-200 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary">
+                <table className="w-full min-w-[480px] text-left text-xs">
                   <tbody className="divide-y divide-neutral-200">
                     {metier.specs.map((sp) => (
                       <tr key={sp.label} className="hover:bg-neutral-50 transition-colors">
-                        <td className="p-4 font-mono font-bold text-neutral-800 bg-neutral-50/50 w-2/5 border-r border-neutral-200">
+                        <th scope="row" className="p-4 text-left font-mono font-bold text-neutral-800 bg-neutral-50/50 w-2/5 border-r border-neutral-200">
                           {sp.label}
-                        </td>
+                        </th>
                         <td className="p-4 text-neutral-700 font-medium">
                           {sp.value}
                         </td>
@@ -371,7 +372,7 @@ export default async function MetierDetailPage({ params }: MetierPageProps) {
       </section>
 
       {/* 5. METHODOLOGY / PROTOCOLE DE POSE */}
-      <section className="py-24 sm:py-28 bg-neutral-50 border-b border-black/8">
+      <section className="py-16 sm:py-20 lg:py-28 bg-neutral-50 border-b border-black/8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
@@ -413,7 +414,7 @@ export default async function MetierDetailPage({ params }: MetierPageProps) {
 
       {/* 6. FAQ SECTION */}
       {metier.faqs && metier.faqs.length > 0 && (
-        <section className="py-24 sm:py-28 bg-white border-b border-black/8">
+        <section className="py-16 sm:py-20 lg:py-28 bg-white border-b border-black/8">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <div className="text-center mb-16 space-y-3">
@@ -470,7 +471,7 @@ export default async function MetierDetailPage({ params }: MetierPageProps) {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             {relatedMetiers.map((rel) => (
               <Link
                 key={rel.slug}

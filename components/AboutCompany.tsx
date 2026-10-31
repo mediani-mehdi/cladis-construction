@@ -6,7 +6,7 @@ import { CheckCircle2, ArrowUpRight, ArrowRight } from "lucide-react";
 
 export default function AboutCompany() {
   return (
-    <section id="entreprise" className="py-24 sm:py-28 bg-white border-t border-black/8 relative">
+    <section id="entreprise" className="py-16 sm:py-20 lg:py-28 bg-white border-t border-black/8 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* 1. QUI SOMMES-NOUS / L'ENTREPRISE */}

@@ -10,11 +10,11 @@ export default function AllianceSection() {
   const pillars = ALLIANCE_PILLARS.map((pillar, index) => ({ ...pillar, icon: pillarIcons[index] }));
 
   return (
-    <section id="alliance" className="py-28 bg-swiss-snow relative border-t border-black/8">
+    <section id="alliance" className="py-16 sm:py-20 lg:py-28 bg-swiss-snow relative border-t border-black/8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 lg:mb-20 space-y-4">
           <div className="inline-flex items-center gap-2">
             <span className="w-2 h-2 bg-swiss-ink" />
             <span className="text-[11px] uppercase tracking-widest font-mono text-swiss-muted font-medium">
@@ -38,13 +38,13 @@ export default function AllianceSection() {
         </div>
 
         {/* 3 Pillar Cards Grid (Swiss White Cards) */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
           {pillars.map((pillar, idx) => {
             const Icon = pillar.icon;
             return (
               <div
                 key={pillar.name}
-                className="group bg-white border border-black/10 hover:border-black/35 shadow-swiss-sm hover:shadow-swiss-lg transition-all duration-300 flex flex-col justify-between"
+                className={`group bg-white border border-black/10 hover:border-black/35 shadow-swiss-sm hover:shadow-swiss-lg transition-all duration-300 flex flex-col justify-between ${idx === 2 ? "md:col-span-2 xl:col-span-1" : ""}`}
               >
                 {/* Top Image Preview */}
                 <div className="relative h-56 w-full overflow-hidden bg-swiss-stone border-b border-black/8">
@@ -115,8 +115,8 @@ export default function AllianceSection() {
         </div>
 
         {/* Synergies Summary Banner (Swiss High-Contrast White/Ink) */}
-        <div className="mt-12 p-8 bg-white border border-black/10 shadow-swiss-md flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="space-y-1 text-center md:text-left">
+        <div className="mt-10 p-5 sm:p-8 bg-white border border-black/10 shadow-swiss-md flex flex-col xl:flex-row items-start xl:items-center justify-between gap-6">
+          <div className="min-w-0 space-y-1">
             <h4 className="font-sans text-xl text-swiss-ink font-bold tracking-tight">
               Un interlocuteur unique pour l'intégralité de votre enveloppe
             </h4>
@@ -127,7 +127,7 @@ export default function AllianceSection() {
 
           <a
             href="#devis"
-            className="inline-flex items-center gap-2 px-7 py-3.5 bg-swiss-ink text-white text-xs uppercase tracking-widest font-mono font-medium hover:bg-neutral-800 transition-colors shrink-0 shadow-sm"
+            className="inline-flex min-h-12 w-full sm:w-auto items-center justify-center gap-2 px-5 sm:px-7 py-3.5 bg-swiss-ink text-white text-xs uppercase tracking-widest font-mono font-medium hover:bg-neutral-800 transition-colors shrink-0 shadow-sm"
           >
             <span>Démarrer une consultation</span>
             <ArrowRight className="w-3.5 h-3.5" />

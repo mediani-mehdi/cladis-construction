@@ -38,7 +38,7 @@ export default function MetiersPage() {
                 <span className="h-1.5 w-6 bg-primary" aria-hidden="true" />
                 <span className="font-secondary text-[10px] font-semibold uppercase tracking-[0.2em] text-primary/65">L’expertise de l’enveloppe</span>
               </div>
-              <h1 id="metiers-heading" className="font-sans text-5xl font-bold leading-[1.02] tracking-tight text-primary sm:text-6xl xl:text-7xl">
+              <h1 id="metiers-heading" className="font-sans text-4xl font-bold leading-[1.06] tracking-tight text-primary sm:text-5xl lg:text-6xl xl:text-7xl">
                 Nos métiers.<br />
                 <span className="font-normal text-primary/60">Votre bâtiment,<br />notre exigence.</span>
               </h1>

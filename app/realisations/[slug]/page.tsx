@@ -86,7 +86,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
                 </span>
               </div>
 
-              <h1 className="font-sans font-black text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.08] uppercase">
+              <h1 className="font-sans font-black text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-[1.08] uppercase text-white">
                 {project.title}
               </h1>
 
@@ -117,21 +117,21 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
               <div className="text-[10px] uppercase tracking-widest text-construction-blue font-bold border-b border-white/10 pb-2">
                 Fiche d'Opération
               </div>
-              <div className="flex justify-between py-1 border-b border-white/5">
+              <div className="grid grid-cols-1 gap-1 border-b border-white/5 py-2 min-[400px]:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)] min-[400px]:gap-3">
                 <span className="text-white/60">Localisation :</span>
-                <span className="text-white font-bold">{project.location}</span>
+                <span className="min-w-0 text-white font-bold min-[400px]:text-right">{project.location}</span>
               </div>
-              <div className="flex justify-between py-1 border-b border-white/5">
+              <div className="grid grid-cols-1 gap-1 border-b border-white/5 py-2 min-[400px]:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)] min-[400px]:gap-3">
                 <span className="text-white/60">Surface totale :</span>
-                <span className="text-white font-bold">{project.surface}</span>
+                <span className="min-w-0 text-white font-bold min-[400px]:text-right">{project.surface}</span>
               </div>
-              <div className="flex justify-between py-1 border-b border-white/5">
+              <div className="grid grid-cols-1 gap-1 border-b border-white/5 py-2 min-[400px]:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)] min-[400px]:gap-3">
                 <span className="text-white/60">Année de livraison :</span>
-                <span className="text-white font-bold">{project.year}</span>
+                <span className="min-w-0 text-white font-bold min-[400px]:text-right">{project.year}</span>
               </div>
-              <div className="flex justify-between py-1">
+              <div className="grid grid-cols-1 gap-1 py-2 min-[400px]:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)] min-[400px]:gap-3">
                 <span className="text-white/60">Typologie :</span>
-                <span className="text-white font-bold">{project.clientType}</span>
+                <span className="min-w-0 text-white font-bold min-[400px]:text-right">{project.clientType}</span>
               </div>
             </div>
           </div>
@@ -139,7 +139,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
       </section>
 
       {/* 2. CONTEXT & PRESENTATION */}
-      <section className="py-24 sm:py-28 bg-white border-b border-black/8">
+      <section className="py-16 sm:py-20 lg:py-28 bg-white border-b border-black/8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             
@@ -214,7 +214,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
       </section>
 
       {/* 3. CHALLENGES & SOLUTIONS */}
-      <section className="py-24 sm:py-28 bg-neutral-50 border-b border-black/8">
+      <section className="py-16 sm:py-20 lg:py-28 bg-neutral-50 border-b border-black/8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -267,7 +267,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
       </section>
 
       {/* 4. TECHNICAL DETAILS SPEC TABLE */}
-      <section className="py-24 sm:py-28 bg-white border-b border-black/8">
+      <section className="py-16 sm:py-20 lg:py-28 bg-white border-b border-black/8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="max-w-3xl mb-12 space-y-3">
@@ -282,14 +282,15 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
             </p>
           </div>
 
-          <div className="border border-neutral-200 overflow-hidden shadow-sm max-w-4xl">
-            <table className="w-full text-left text-xs">
+          <p className="mb-3 text-xs text-muted sm:hidden">Faites défiler le tableau pour consulter toutes les données.</p>
+          <div role="region" aria-label="Données techniques du chantier" tabIndex={0} className="max-w-4xl overflow-x-auto border border-neutral-200 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary">
+            <table className="w-full min-w-[480px] text-left text-xs">
               <tbody className="divide-y divide-neutral-200">
                 {project.technicalDetails.map((td) => (
                   <tr key={td.label} className="hover:bg-neutral-50 transition-colors">
-                    <td className="p-4 font-mono font-bold text-neutral-800 bg-neutral-50/50 w-2/5 border-r border-neutral-200">
+                    <th scope="row" className="p-4 text-left font-mono font-bold text-neutral-800 bg-neutral-50/50 w-2/5 border-r border-neutral-200">
                       {td.label}
-                    </td>
+                    </th>
                     <td className="p-4 text-neutral-700 font-medium">
                       {td.value}
                     </td>
@@ -304,7 +305,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
 
       {/* 5. GALLERY SECTION */}
       {project.galleryImages && project.galleryImages.length > 1 && (
-        <section className="py-24 sm:py-28 bg-neutral-50 border-b border-black/8">
+        <section className="py-16 sm:py-20 lg:py-28 bg-neutral-50 border-b border-black/8">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
               <span className="text-xs font-mono uppercase tracking-widest text-construction-blue font-bold">
@@ -353,7 +354,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             {relatedProjects.map((rel) => (
               <Link
                 key={rel.id}
