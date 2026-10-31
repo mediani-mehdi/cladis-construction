@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import MetricsBar from "@/components/MetricsBar";
+import ExperienceSection from "@/components/ExperienceSection";
 import AboutCompany from "@/components/AboutCompany";
 import CoreServices from "@/components/CoreServices";
 import Methodology from "@/components/Methodology";
@@ -42,8 +42,8 @@ export default function Home() {
       {/* Swiss Editorial Hero Section */}
       <Hero />
 
-      {/* Swiss Modular Metrics / Credibility Bar */}
-      <MetricsBar />
+      {/* Experience and capabilities */}
+      <ExperienceSection />
 
       {/* Qui sommes-nous / L'Entreprise */}
       <AboutCompany />

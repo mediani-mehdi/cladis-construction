@@ -12,7 +12,7 @@ export default function AboutCompany() {
         {/* 1. QUI SOMMES-NOUS / L'ENTREPRISE */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Left Column: Image with architectural accents & badge */}
+          {/* Left Column: Architectural image */}
           <div className="lg:col-span-6 relative">
             <div className="relative aspect-[4/3] w-full overflow-hidden border border-black/10 shadow-swiss-lg bg-neutral-100 group">
               <Image
@@ -25,22 +25,10 @@ export default function AboutCompany() {
               
               {/* Corner Architectural Coordinate Mark */}
               <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3 py-1.5 border border-black/10 text-[10px] font-mono text-neutral-800 font-bold uppercase tracking-wider">
-                Chambéry • 73000
+                Chambéry • Savoie
               </div>
             </div>
 
-            {/* Overlapping Floating Badge */}
-            <div className="absolute -bottom-6 -right-2 sm:-right-6 bg-construction-blue text-white p-5 sm:p-6 shadow-2xl border border-white/20 max-w-[240px]">
-              <div className="font-mono text-3xl sm:text-4xl font-extrabold tracking-tight">
-                24 ans
-              </div>
-              <div className="font-mono text-[11px] uppercase tracking-wider font-bold mt-1 text-white/90">
-                d'expertise industrielle
-              </div>
-              <div className="text-[10px] text-white/75 mt-1">
-                Enveloppe du bâtiment en Rhône-Alpes
-              </div>
-            </div>
           </div>
 
           {/* Right Column: Editorial Copy */}

@@ -1,190 +1,122 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
-import { NAV_LINKS } from "@/lib/site-navigation";
-import { ArrowUp, Phone, Mail, MapPin } from "lucide-react";
+import { NAV_LINKS, METIER_LINKS } from "@/lib/site-navigation";
+import { ArrowUp, ArrowUpRight, Phone, Mail, MapPin, Download } from "lucide-react";
 
 interface FooterProps {
   onOpenCatalogue?: () => void;
 }
 
+const footerLinkStyle = "text-white/75 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white";
+
 export default function Footer({ onOpenCatalogue }: FooterProps) {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
   };
 
   return (
-    <footer className="relative overflow-hidden bg-primary text-white/80 border-t border-white/10 z-10">
-
-      {/* 1. Architectural background with the primary brand color */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
+    <footer className="relative z-10 overflow-hidden border-t border-white/10 bg-primary text-white/80">
+      <div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
         <Image
           src="/images/hero-building-60c1b312.webp"
-          alt="CLADIS CONSTRUCTION - Façade Industrielle et Enveloppe Métallique"
+          alt=""
           fill
-          className="object-cover object-center filter brightness-[0.28] contrast-[1.15]"
+          sizes="100vw"
+          className="object-cover object-center brightness-[0.28] contrast-[1.15]"
         />
-
         <div className="absolute inset-0 bg-primary/95" />
-
-        {/* Architectural Blueprint Grid Pattern */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:56px_56px]" />
       </div>
 
-      {/* 2. Upper Footer Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 items-start">
-
-          {/* Brand Col */}
-          <div className="lg:col-span-4 space-y-5">
-            {/* Logo on Pure White Background Badge (Preserving authentic white background requested by user) */}
-            <a href="/" className="inline-block" title="CLADIS CONSTRUCTION">
-              <div className="bg-white px-4 py-2.5 shadow-xl inline-flex items-center border border-white/30 hover:bg-neutral-50 transition-colors">
-                <Image
-                  src="/images/cladis-logo-transparent-07a6284b.webp"
-                  alt="CLADIS CONSTRUCTION - Bardage, Étanchéité, Couverture"
-                  width={240}
-                  height={68}
-                  className="h-11 w-auto object-contain"
-                />
-              </div>
+      <div className="relative z-10 mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8">
+        <div className="grid grid-cols-1 items-start gap-x-9 gap-y-10 md:grid-cols-2 lg:grid-cols-12">
+          <div className="space-y-5 lg:col-span-4">
+            <a href="/" className="inline-flex border border-white/25 bg-white px-4 py-2.5 transition-colors hover:bg-neutral-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white" title="CLADIS CONSTRUCTION — Accueil">
+              <Image
+                src="/images/cladis-logo-transparent-07a6284b.webp"
+                alt="CLADIS CONSTRUCTION — Accueil"
+                width={240}
+                height={68}
+                className="h-11 w-auto object-contain"
+              />
             </a>
-
-            <p className="text-xs text-white/70 font-normal leading-relaxed max-w-sm">
-              Conception, ingénierie et réalisation de l'enveloppe du bâtiment industriel et de la construction métallique en région Auvergne-Rhône-Alpes. Bureau d'études intégré et alliance opérationnelle avec Building Services.
+            <p className="max-w-sm text-xs leading-relaxed text-white/70">
+              Une expertise structurée en enveloppe du bâtiment et en construction métallique.
+              Des études à la réalisation, nous accompagnons vos projets avec rigueur, précision et exigence.
             </p>
-
-            <div className="flex flex-wrap gap-2 pt-2">
-              <span className="px-2.5 py-1 bg-white/10 backdrop-blur-sm border border-white/15 text-[10px] font-mono text-white/90 font-medium">
-                Garantie Décennale
-              </span>
-              <span className="px-2.5 py-1 bg-white/10 backdrop-blur-sm border border-white/15 text-[10px] font-mono text-white/90 font-medium">
-                DTU & Eurocodes 3
-              </span>
-              <span className="px-2.5 py-1 bg-white/10 backdrop-blur-sm border border-white/15 text-[10px] font-mono text-white/90 font-medium">
-                Chambéry (73)
-              </span>
+            <div className="flex flex-wrap gap-2">
+              <span className="border border-white/15 px-2.5 py-1.5 text-[10px] text-white/75">Bureau d'études intégré</span>
+              <span className="border border-white/15 px-2.5 py-1.5 text-[10px] text-white/75">Alliance opérationnelle</span>
             </div>
+            <nav aria-label="Préparer votre projet" className="flex flex-col items-start gap-3 border-t border-white/15 pt-5 text-xs font-semibold">
+              <a href="/#configurateur" className={`inline-flex items-center gap-2 ${footerLinkStyle}`}>Configurer mon bâtiment<ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" /></a>
+              <a href="/#devis" className={`inline-flex items-center gap-2 ${footerLinkStyle}`}>Demander un devis<ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" /></a>
+            </nav>
           </div>
 
-          {/* Col 2: Navigation Links */}
-          <div className="lg:col-span-3 space-y-4">
-            <span className="text-xs font-mono uppercase tracking-widest text-white font-bold flex items-center gap-2">
-              <span className="w-1.5 h-1.5 bg-construction-blue" />
-              <span>Navigation</span>
-            </span>
-            <ul className="space-y-2.5 text-xs font-normal">
-              {NAV_LINKS.map((link) => (
-                <li key={link.href}>
-                  <a href={link.href} className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">{link.label}</a>
-                </li>
-              ))}
-              <li>
-                <a href="/#configurateur" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Configurateur Technique</a>
-              </li>
+          <nav aria-labelledby="footer-pages-heading" className="lg:col-span-2">
+            <h2 id="footer-pages-heading" className="mb-5 font-secondary text-[10px] font-bold uppercase tracking-[0.18em] text-white">Explorer</h2>
+            <ul className="space-y-3 text-xs">
+              {NAV_LINKS.map((link) => <li key={link.href}><a href={link.href} className={footerLinkStyle}>{link.label}</a></li>)}
             </ul>
-          </div>
+          </nav>
 
-          {/* Col 3: Métiers & Lots */}
-          <div className="lg:col-span-2 space-y-4">
-            <span className="text-xs font-mono uppercase tracking-widest text-white font-bold flex items-center gap-2">
-              <span className="w-1.5 h-1.5 bg-construction-blue" />
-              <span>Nos Lots</span>
-            </span>
-            <ul className="space-y-2.5 text-xs font-normal">
-              <li>
-                <a href="/metiers/bardage-metallique" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Bardage Métallique</a>
-              </li>
-              <li>
-                <a href="/metiers/couverture-etancheite" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Couverture Industrielle</a>
-              </li>
-              <li>
-                <a href="/metiers/charpente-metallique" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Charpente Métallique</a>
-              </li>
-              <li>
-                <a href="/metiers/bardage-specifique" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Bardage Spécifique</a>
-              </li>
-              <li>
-                <a href="/metiers/isolation-thermique" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Isolation RE2020</a>
-              </li>
-              <li>
-                <a href="/metiers/toiture-vegetalisee-solaire" className="text-white/75 hover:text-white hover:translate-x-0.5 transition-all inline-block">Toiture Végétalisée & Solaire</a>
-              </li>
+          <nav aria-labelledby="footer-metiers-heading" className="lg:col-span-3">
+            <h2 id="footer-metiers-heading" className="mb-5 font-secondary text-[10px] font-bold uppercase tracking-[0.18em] text-white">Nos métiers</h2>
+            <ul className="space-y-3 text-xs">
+              {METIER_LINKS.map((link) => <li key={link.href}><a href={link.href} className={footerLinkStyle}>{link.label}</a></li>)}
             </ul>
-          </div>
+          </nav>
 
-          {/* Col 4: Contact & Horaires */}
-          <div className="lg:col-span-3 space-y-4">
-            <span className="text-xs font-mono uppercase tracking-widest text-white font-bold flex items-center gap-2">
-              <span className="w-1.5 h-1.5 bg-construction-blue" />
-              <span>Coordonnées & Horaires</span>
-            </span>
-            <div className="space-y-2.5 text-xs font-normal">
-              <div className="flex items-start gap-2">
-                <MapPin className="w-3.5 h-3.5 text-construction-blue shrink-0 mt-0.5" />
-                <span className="text-white/90">74 rue de la Révériaz, 73000 Chambéry</span>
+          <div className="lg:col-span-3">
+            <h2 className="mb-5 font-secondary text-[10px] font-bold uppercase tracking-[0.18em] text-white">Contact & horaires</h2>
+            <address className="space-y-4 text-xs not-italic">
+              <div className="flex items-start gap-2.5">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-white/60" aria-hidden="true" />
+                <span className="leading-relaxed text-white/80">74 rue de la Révériaz<br />73000 Chambéry</span>
               </div>
-              <div className="flex items-start gap-2">
-                <Phone className="w-3.5 h-3.5 text-construction-blue shrink-0 mt-0.5" />
-                <a href="tel:0952863156" className="font-mono text-white/90 hover:text-white transition-colors">
-                  09 52 86 31 56 / 07 68 52 72 15
-                </a>
+              <div className="flex items-start gap-2.5">
+                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-white/60" aria-hidden="true" />
+                <div className="flex flex-col items-start gap-2">
+                  <a href="tel:0952863156" className={footerLinkStyle}>09 52 86 31 56</a>
+                  <a href="tel:0768527215" className={footerLinkStyle}>07 68 52 72 15</a>
+                </div>
               </div>
-              <div className="flex items-start gap-2">
-                <Mail className="w-3.5 h-3.5 text-construction-blue shrink-0 mt-0.5" />
-                <a href="mailto:contact@cladisbardage.com" className="font-mono text-white/90 hover:text-white transition-colors">
-                  contact@cladisbardage.com
-                </a>
+              <div className="flex items-start gap-2.5">
+                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-white/60" aria-hidden="true" />
+                <a href="mailto:contact@cladisbardage.com" className={`break-all ${footerLinkStyle}`}>contact@cladisbardage.com</a>
               </div>
-              <div className="pt-2 text-[11px] font-mono text-white/60 border-t border-white/10">
-                <span className="text-white/90 block font-bold">Heures d'ouverture :</span>
-                <span>Lundi – Vendredi : 8h00 – 18h00</span>
-              </div>
-            </div>
-
-            {onOpenCatalogue && (
-              <button
-                onClick={onOpenCatalogue}
-                className="w-full mt-2 py-2.5 px-3 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white text-white text-xs font-mono uppercase tracking-wider transition-all text-center block shadow-md"
-              >
-                Télécharger Catalogue 2026 (PDF)
+            </address>
+            <p className="mt-5 border-t border-white/15 pt-4 text-xs leading-relaxed text-white/65">
+              <span className="block font-semibold text-white/85">Heures d'ouverture</span>
+              Lundi – Vendredi : 8h00 – 18h00
+            </p>
+            {onOpenCatalogue ? (
+              <button type="button" onClick={onOpenCatalogue} className="mt-5 inline-flex min-h-11 w-full items-center justify-center gap-2 border border-white/25 bg-white/10 px-3 py-3 text-xs font-semibold text-white transition-colors hover:border-white/60 hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
+                <Download className="h-3.5 w-3.5" aria-hidden="true" />Consulter le catalogue
               </button>
+            ) : (
+              <a href="/catalogue-cladis-2026.pdf" target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex min-h-11 w-full items-center justify-center gap-2 border border-white/25 bg-white/10 px-3 py-3 text-xs font-semibold text-white transition-colors hover:border-white/60 hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
+                <Download className="h-3.5 w-3.5" aria-hidden="true" />Consulter le catalogue
+              </a>
             )}
           </div>
-
         </div>
       </div>
 
-      {/* 3. Bottom Bar: Copyright & Back to Top */}
-      <div className="relative z-10 border-t border-white/10 py-6 bg-black/10 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-
-          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6 text-center sm:text-left text-white/60 font-normal">
-            <span>© {new Date().getFullYear()} CLADIS CONSTRUCTION. Tous droits réservés.</span>
-            <span className="hidden sm:inline">•</span>
-            <span>Chambéry, Savoie, Auvergne-Rhône-Alpes</span>
-          </div>
-
-          <div className="flex items-center gap-6">
-            <span className="text-[11px] text-white/60 hover:text-white transition-colors cursor-pointer font-mono">
-              Mentions Légales
-            </span>
-            <span className="text-[11px] text-white/60 hover:text-white transition-colors cursor-pointer font-mono">
-              Politique de Confidentialité
-            </span>
-
-            <button
-              onClick={scrollToTop}
-              className="w-8 h-8 bg-white/10 border border-white/20 hover:bg-construction-blue hover:border-construction-blue text-white flex items-center justify-center transition-all shadow-sm"
-              aria-label="Retour en haut de page"
-            >
-              <ArrowUp className="w-3.5 h-3.5" />
+      <div className="relative z-10 border-t border-white/15 bg-black/10 py-5">
+        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-4 px-4 sm:flex-row sm:items-center sm:px-6 lg:px-8">
+          <p className="text-[11px] leading-relaxed text-white/55">© {new Date().getFullYear()} CLADIS CONSTRUCTION. Tous droits réservés.</p>
+          <div className="flex w-full items-center justify-between gap-5 sm:w-auto">
+            <span className="text-[10px] text-white/55">Chambéry · Auvergne-Rhône-Alpes</span>
+            <button type="button" onClick={scrollToTop} className="inline-flex h-9 w-9 shrink-0 items-center justify-center border border-white/25 text-white transition-colors hover:bg-white hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white" aria-label="Retour en haut de page">
+              <ArrowUp className="h-4 w-4" aria-hidden="true" />
             </button>
           </div>
-
         </div>
       </div>
-
     </footer>
   );
 }
