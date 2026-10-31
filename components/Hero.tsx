@@ -1,31 +1,44 @@
-"use client";
+﻿"use client";
 
-import { useRef } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
-interface HeroProps {
-  onOpenCatalogue?: () => void;
-}
+const heroSlides = [
+  {
+    title: "ENVELOPPE DU BÂTIMENT & CONSTRUCTION MÉTALLIQUE",
+    subtitle: "L'exigence technique, au cœur de chaque projet.",
+    description: "Une expertise structurée pour concevoir et piloter des solutions constructives performantes.",
+  },
+  {
+    title: "CLADIS CONSTRUCTION",
+    subtitle: "L'expertise technique au service de vos ambitions.",
+    description: "Enveloppe du bâtiment et construction métallique, avec rigueur, précision et exigence.",
+  },
+];
 
-export default function Hero({ onOpenCatalogue }: HeroProps) {
-  const heroRef = useRef<HTMLDivElement>(null);
-
-  // Parallax Scroll Tracking (Background image subtle depth)
+export default function Hero() {
+  const [activeSlide, setActiveSlide] = useState(0);
+  const slide = heroSlides[activeSlide];
+  const reducedMotion = useReducedMotion();
   const { scrollY } = useScroll();
   const bgY = useTransform(scrollY, [0, 800], ["0%", "15%"]);
   const bgScale = useTransform(scrollY, [0, 800], [1.02, 1.12]);
 
+  function moveSlide(direction: number) {
+    setActiveSlide((current) => (current + direction + heroSlides.length) % heroSlides.length);
+  }
+
   return (
     <section
-      ref={heroRef}
-      className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden bg-black text-white pt-36 sm:pt-44 lg:pt-48"
+      aria-label="Présentation de CLADIS CONSTRUCTION"
+      aria-roledescription="carrousel"
+      className="relative flex min-h-screen w-full flex-col justify-between overflow-hidden bg-black pt-36 text-white sm:pt-44 lg:pt-48"
     >
-      {/* 1. Bright architectural background with parallax scroll */}
       <motion.div
-        style={{ y: bgY, scale: bgScale }}
-        className="absolute inset-x-0 bottom-0 w-full h-[120%] origin-bottom z-0 pointer-events-none will-change-transform"
+        style={{ y: reducedMotion ? 0 : bgY, scale: reducedMotion ? 1.02 : bgScale }}
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-[120%] w-full origin-bottom will-change-transform"
       >
         <Image
           src="/images/cladis-hero-facade-4k-fef0595c.webp"
@@ -36,89 +49,83 @@ export default function Hero({ onOpenCatalogue }: HeroProps) {
           quality={90}
           className="object-cover object-left"
         />
-
-        {/* Gentle shading keeps white text readable while preserving the daylight. */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/10 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/15 to-transparent" />
       </motion.div>
 
-      {/* 2. Architectural Drafting / Blueprint Grid Overlay */}
-      <div className="absolute inset-0 z-10 pointer-events-none grid grid-cols-4 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 border-x border-white/10">
-        <div className="border-r border-white/10 h-full" />
-        <div className="border-r border-white/10 h-full hidden sm:block" />
-        <div className="border-r border-white/10 h-full hidden md:block" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 mx-auto grid max-w-[1440px] grid-cols-4 border-x border-white/10 px-4 sm:px-6 lg:px-8">
+        <div className="h-full border-r border-white/10" />
+        <div className="hidden h-full border-r border-white/10 sm:block" />
+        <div className="hidden h-full border-r border-white/10 md:block" />
         <div className="h-full" />
       </div>
-      
-      {/* Horizontal drafting line across the upper third */}
-      <div className="absolute top-[28%] left-0 right-0 z-10 border-b border-white/10 pointer-events-none" />
 
-      {/* 3. Upper Content Area: Sub-Headline & Official Tagline */}
-      <div className="relative z-20 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 w-full pt-6 sm:pt-10">
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="max-w-lg sm:max-w-xl"
-        >
-          <div className="text-xs sm:text-sm font-mono font-bold uppercase tracking-wider text-white leading-snug">
-            CLADIS CONSTRUCTION — BARDAGE, COUVERTURE & ÉTANCHÉITÉ
-          </div>
-          <div className="text-sm sm:text-base lg:text-lg font-mono font-bold uppercase tracking-wider text-white leading-snug mt-1">
-            ENVELOPPE DU BÂTIMENT INDUSTRIEL &amp; CONSTRUCTION MÉTALLIQUE
-          </div>
-          <div className="flex items-center gap-2 mt-2">
-            <span className="w-2 h-2 bg-construction-blue" />
-            <span className="text-[11px] font-mono uppercase tracking-widest text-white">
-              CHAMBÉRY • SAVOIE • RHÔNE-ALPES — DE L'ÉTUDE À LA LIVRAISON
-            </span>
-          </div>
-        </motion.div>
+      <div className="relative z-20 mx-auto flex w-full max-w-[1440px] items-center justify-between gap-4 px-4 pb-6 pt-6 sm:px-6 sm:pt-10 lg:px-8">
+        <span className="inline-flex items-center gap-2 font-secondary text-[9px] uppercase tracking-widest text-white/80 sm:text-[10px]">
+          <span className="h-1.5 w-1.5 shrink-0 bg-white/70" aria-hidden="true" />
+          Chambéry · Savoie · Rhône-Alpes
+        </span>
+        <span className="font-secondary text-[10px] tracking-widest text-white/65" aria-hidden="true">
+          0{activeSlide + 1} / 0{heroSlides.length}
+        </span>
       </div>
 
-      {/* 4. Bottom Hero Anchor: Massive Display Headline (Left) & Compact 'Demander un devis' Button (Right) */}
-      <div className="relative z-20 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 w-full pb-16 sm:pb-20 lg:pb-28 mt-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
-          
-          {/* Left Column: Massive Headline & Clean Subtitle */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="lg:col-span-8 pb-2"
-          >
-            <h1 className="font-sans font-black text-6xl sm:text-8xl md:text-9xl xl:text-[9.5rem] tracking-tighter uppercase leading-[0.86] text-white drop-shadow-lg select-none">
-              BÂTIR <br />
-              <span className="text-white">L'AVENIR</span>
-            </h1>
-
-            {/* Micro subtitle line - Always clear with ample clearance above oncoming sections */}
-            <p className="text-xs sm:text-sm font-mono uppercase tracking-widest text-white/95 mt-4 max-w-xl font-medium">
-              BARDAGE MÉTALLIQUE • COUVERTURE • ÉTANCHÉITÉ • CHARPENTES INDUSTRIELLES
-            </p>
-          </motion.div>
-
-          {/* Right Column: Smaller 'Demander un devis' CTA Button */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.35, ease: "easeOut" }}
-            className="lg:col-span-4 lg:flex lg:justify-end pb-3"
-          >
+      <div className="relative z-20 mx-auto mt-auto w-full max-w-[1440px] px-4 pb-8 pt-10 sm:px-6 sm:pb-12 sm:pt-14 lg:px-8 lg:pb-16">
+        <div className="grid items-end gap-8 lg:grid-cols-12 lg:gap-10">
+          <div className="min-w-0 lg:col-span-9" aria-live="polite" aria-atomic="true">
+            <div key={activeSlide} className="animate-fadeIn motion-reduce:animate-none">
+              <div className="flex min-h-[8.5rem] items-end sm:min-h-[10rem] lg:min-h-[13rem]">
+                <h1 className="max-w-5xl font-sans text-[clamp(2rem,4.5vw,4.75rem)] font-black uppercase leading-[1.02] tracking-tight text-white drop-shadow-lg">
+                  {slide.title}
+                </h1>
+              </div>
+              <h2 className="mt-6 max-w-3xl font-sans text-xl font-semibold leading-snug tracking-tight text-white sm:text-2xl lg:text-[1.75rem]">
+                {slide.subtitle}
+              </h2>
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/85 sm:text-base">
+                {slide.description}
+              </p>
+            </div>
+          </div>
+          <div className="lg:col-span-3 lg:flex lg:justify-end lg:pb-1">
             <a
               href="#devis"
-              className="inline-flex items-center gap-3 px-7 py-4 bg-primary hover:bg-primary/90 text-white font-mono text-xs uppercase tracking-widest font-bold shadow-2xl transition-all duration-200 group border border-white/20 hover:border-white"
+              className="group inline-flex items-center gap-3 whitespace-nowrap border border-white/25 bg-primary px-6 py-4 font-secondary text-[10px] font-bold uppercase tracking-widest text-white shadow-xl transition-colors hover:border-white/60 hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
             >
-              <span>Demander un devis</span>
-              <span className="w-6 h-6 rounded-full bg-white/20 group-hover:bg-white group-hover:text-primary flex items-center justify-center transition-colors">
-                <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+              Demander un devis
+              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/15 transition-colors group-hover:bg-white group-hover:text-primary">
+                <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
               </span>
             </a>
-          </motion.div>
+          </div>
+        </div>
 
+        <div className="mt-8 flex items-center justify-between gap-6 border-t border-white/25 pt-5 sm:mt-10 sm:pt-6">
+          <div role="group" aria-label="Choisir une présentation" className="flex items-center gap-3">
+            {heroSlides.map((item, index) => (
+              <button
+                key={item.title}
+                type="button"
+                aria-label={`Afficher la présentation ${index + 1} : ${item.title}`}
+                aria-pressed={activeSlide === index}
+                onClick={() => setActiveSlide(index)}
+                className={`inline-flex min-h-11 items-center gap-2.5 px-2 font-secondary text-[10px] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${activeSlide === index ? "text-white" : "text-white/50 hover:text-white"}`}
+              >
+                <span className={`h-0.5 transition-all motion-reduce:transition-none ${activeSlide === index ? "w-10 bg-white" : "w-5 bg-white/40"}`} aria-hidden="true" />
+                0{index + 1}
+              </button>
+            ))}
+          </div>
+          <div className="flex items-center gap-2">
+            <button type="button" onClick={() => moveSlide(-1)} aria-label="Présentation précédente" className="flex h-11 w-11 items-center justify-center border border-white/30 text-white transition-colors hover:bg-white hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
+              <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+            </button>
+            <button type="button" onClick={() => moveSlide(1)} aria-label="Présentation suivante" className="flex h-11 w-11 items-center justify-center border border-white/30 text-white transition-colors hover:bg-white hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </button>
+          </div>
         </div>
       </div>
-
     </section>
   );
 }

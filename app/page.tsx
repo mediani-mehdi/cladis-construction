@@ -40,7 +40,7 @@ export default function Home() {
       <Navbar onOpenCatalogue={() => setCatalogueOpen(true)} />
 
       {/* Swiss Editorial Hero Section */}
-      <Hero onOpenCatalogue={() => setCatalogueOpen(true)} />
+      <Hero />
 
       {/* Swiss Modular Metrics / Credibility Bar */}
       <MetricsBar />
