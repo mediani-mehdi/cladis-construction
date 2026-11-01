@@ -53,6 +53,7 @@ export default function CoreServices() {
                   src={service.heroImage}
                   alt={service.title}
                   fill
+                  sizes="(min-width: 1280px) 384px, (min-width: 640px) calc((100vw - 80px) / 2), calc(100vw - 32px)"
                   className="object-cover object-center filter contrast-[1.03] brightness-[0.98] transition-transform duration-500 group-hover:scale-105"
                 />
 

@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "bardage-metallique",
+    "image": "/images/metier-bardage-metallique-b151c959.webp",
+    "previous": "/images/service-bardage-31295ac1.webp",
+    "bytes": 145554,
+    "width": 1440,
+    "height": 1080
+  },
+  {
+    "slug": "couverture-etancheite",
+    "image": "/images/metier-couverture-etancheite-7ddec386.webp",
+    "previous": "/images/service-couverture-bd4b90a9.webp",
+    "bytes": 195258,
+    "width": 1440,
+    "height": 1080
+  },
+  {
+    "slug": "charpente-metallique",
+    "image": "/images/metier-charpente-metallique-e3a483da.webp",
+    "previous": "/images/service-charpente-39e12ee7.webp",
+    "bytes": 246458,
+    "width": 1440,
+    "height": 1080
+  },
+  {
+    "slug": "bardage-specifique",
+    "image": "/images/metier-bardage-specifique-7a7c34f6.webp",
+    "previous": "/images/service-bardage-specifique-92e5cb59.webp",
+    "bytes": 259390,
+    "width": 1440,
+    "height": 1080
+  },
+  {
+    "slug": "isolation-thermique",
+    "image": "/images/metier-isolation-thermique-127f1539.webp",
+    "previous": "/images/service-isolation-9862ae62.webp",
+    "bytes": 151200,
+    "width": 1440,
+    "height": 1080
+  },
+  {
+    "slug": "toiture-vegetalisee-solaire",
+    "image": "/images/metier-toiture-vegetalisee-solaire-f7006fe1.webp",
+    "previous": "/images/service-vegetalise-solaire-b65a5003.webp",
+    "bytes": 370326,
+    "width": 1440,
+    "height": 1080
+  }
+]

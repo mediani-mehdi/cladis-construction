@@ -11,12 +11,6 @@ import { ArrowDown, ArrowRight, ArrowUpRight, Check, Download } from "lucide-rea
 
 const focusStyle = "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary";
 
-// These two source photographs depict cladding and roof waterproofing respectively.
-const serviceImages: Record<string, string> = {
-  "bardage-metallique": "/images/service-couverture-bd4b90a9.webp",
-  "couverture-etancheite": "/images/service-bardage-31295ac1.webp",
-};
-
 export default function MetiersPage() {
   const [catalogueOpen, setCatalogueOpen] = useState(false);
 
@@ -69,7 +63,7 @@ export default function MetiersPage() {
             <div className="relative lg:col-span-6">
               <div className="relative aspect-[4/3] overflow-hidden bg-swiss-stone lg:aspect-[5/6] lg:max-h-[610px]">
                 <Image
-                  src="/images/cladis-hero-facade-4k-fef0595c.webp"
+                  src={METIERS[0].heroImage}
                   alt="Façade contemporaine associant bardage métallique, bois et vitrages"
                   fill
                   priority
@@ -128,7 +122,7 @@ export default function MetiersPage() {
                 <Link href={`/metiers/${metier.slug}`} aria-labelledby={`metier-title-${metier.slug}`} className={`group flex h-full flex-col ${focusStyle}`}>
                   <div className="relative aspect-[16/10] overflow-hidden bg-swiss-stone">
                     <Image
-                      src={serviceImages[metier.slug] ?? metier.heroImage}
+                      src={metier.heroImage}
                       alt={metier.title}
                       fill
                       sizes="(min-width: 1280px) 584px, (min-width: 768px) 50vw, 100vw"

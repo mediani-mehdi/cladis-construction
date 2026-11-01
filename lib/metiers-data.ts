@@ -47,8 +47,8 @@ export const METIERS: MetierData[] = [
     shortTitle: "Bardage Métallique",
     subtitle: "Façades Architecturales & Isolation Haute Performance",
     tagline: "Esthétisme rigoureux, étanchéité à l'air et protection thermique pérenne",
-    heroImage: "/images/service-bardage-31295ac1.webp",
-    galleryImages: ["/images/service-bardage-31295ac1.webp", "/images/about-building-a03b650d.webp", "/images/project-chambery-hub-7bb3c0df.webp"],
+    heroImage: "/images/metier-bardage-metallique-b151c959.webp",
+    galleryImages: ["/images/metier-bardage-metallique-b151c959.webp", "/images/about-building-a03b650d.webp", "/images/project-chambery-hub-7bb3c0df.webp"],
     shortDesc:
       "Pose de bardages extérieurs industriels et tertiaires respectant les normes les plus exigeantes. Systèmes simple peau, double peau avec isolant haute densité et panneaux sandwich certifiés.",
     fullDesc:
@@ -155,8 +155,8 @@ export const METIERS: MetierData[] = [
     shortTitle: "Couverture & Étanchéité",
     subtitle: "Systèmes de Toitures Industrielles Métalliques & Synthétiques",
     tagline: "Protection absolue contre les intempéries alpines et durabilité garantie",
-    heroImage: "/images/service-couverture-bd4b90a9.webp",
-    galleryImages: ["/images/service-couverture-bd4b90a9.webp", "/images/project-alpes-logistics-4ff324a8.webp", "/images/construction-hero-bcc0de60.webp"],
+    heroImage: "/images/metier-couverture-etancheite-7ddec386.webp",
+    galleryImages: ["/images/metier-couverture-etancheite-7ddec386.webp", "/images/project-alpes-logistics-4ff324a8.webp", "/images/construction-hero-bcc0de60.webp"],
     shortDesc:
       "Travaux d'étanchéité bitumineuse multicouche élastomère, membranes synthétiques PVC/TPO, bacs acier isolés pour toitures terrasses inaccessibles ou techniques.",
     fullDesc:
@@ -263,8 +263,8 @@ export const METIERS: MetierData[] = [
     shortTitle: "Charpentes Métalliques",
     subtitle: "Conception, Calculs Structurels & Levage Haute Précision",
     tagline: "Robustesse millimétrée, grandes portées libres et conformité Eurocodes 3",
-    heroImage: "/images/service-charpente-39e12ee7.webp",
-    galleryImages: ["/images/service-charpente-39e12ee7.webp", "/images/construction-hero-bcc0de60.webp", "/images/hero-building-60c1b312.webp"],
+    heroImage: "/images/metier-charpente-metallique-e3a483da.webp",
+    galleryImages: ["/images/metier-charpente-metallique-e3a483da.webp", "/images/construction-hero-bcc0de60.webp", "/images/hero-building-60c1b312.webp"],
     shortDesc:
       "Pose de structures métalliques mécano-soudées, ossatures primaires et secondaires, portiques haute portée conçus pour les grandes charges d'exploitation et ponts roulants.",
     fullDesc:
@@ -369,8 +369,8 @@ export const METIERS: MetierData[] = [
     shortTitle: "Bardage Spécifique",
     subtitle: "Trames Sur Mesure, Cassettes Architecturales & Façades Complexes",
     tagline: "Réalisation d'enveloppes singulières à forte identité architecturale",
-    heroImage: "/images/service-bardage-specifique-92e5cb59.webp",
-    galleryImages: ["/images/service-bardage-specifique-92e5cb59.webp", "/images/about-building-a03b650d.webp", "/images/project-chambery-hub-7bb3c0df.webp"],
+    heroImage: "/images/metier-bardage-specifique-7a7c34f6.webp",
+    galleryImages: ["/images/metier-bardage-specifique-7a7c34f6.webp", "/images/about-building-a03b650d.webp", "/images/project-chambery-hub-7bb3c0df.webp"],
     shortDesc:
       "Conception et mise en œuvre de façades à géométrie singulière, cassettes perforées, brise-soleil intégrés, bardage vertical à joint debout et habillages spécifiques.",
     fullDesc:
@@ -470,8 +470,8 @@ export const METIERS: MetierData[] = [
     shortTitle: "Isolation Thermique",
     subtitle: "Performance Énergétique, Économies d'Énergie & Confort Global",
     tagline: "Limitation radicale des déperditions, rupture des ponts thermiques et confort thermique 4 saisons",
-    heroImage: "/images/service-isolation-9862ae62.webp",
-    galleryImages: ["/images/service-isolation-9862ae62.webp", "/images/about-building-a03b650d.webp", "/images/service-couverture-bd4b90a9.webp"],
+    heroImage: "/images/metier-isolation-thermique-127f1539.webp",
+    galleryImages: ["/images/metier-isolation-thermique-127f1539.webp", "/images/about-building-a03b650d.webp", "/images/metier-couverture-etancheite-7ddec386.webp"],
     shortDesc:
       "Complexes isolants haute densité, rupteurs de ponts thermiques, isolation continue des enveloppes industrielles pour atteindre les seuils énergétiques les plus stricts.",
     fullDesc:
@@ -571,8 +571,8 @@ export const METIERS: MetierData[] = [
     shortTitle: "Étanchéité Végétalisée & Solaire",
     subtitle: "Synergie Écologique, Biodiversité & Production d'Énergie Verte",
     tagline: "Transformer vos toitures en centrales de production d'énergie et réservoirs de fraîcheur",
-    heroImage: "/images/service-vegetalise-solaire-b65a5003.webp",
-    galleryImages: ["/images/service-vegetalise-solaire-b65a5003.webp", "/images/service-couverture-bd4b90a9.webp", "/images/construction-hero-bcc0de60.webp"],
+    heroImage: "/images/metier-toiture-vegetalisee-solaire-f7006fe1.webp",
+    galleryImages: ["/images/metier-toiture-vegetalisee-solaire-f7006fe1.webp", "/images/metier-couverture-etancheite-7ddec386.webp", "/images/construction-hero-bcc0de60.webp"],
     shortDesc:
       "Complexes d'étanchéité anti-racines pour toitures végétalisées et supports d'intégration solaire photovoltaïque sans percement d'étanchéité.",
     fullDesc:
