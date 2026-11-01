@@ -41,8 +41,8 @@ export default function Hero() {
         className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-[120%] w-full origin-bottom will-change-transform"
       >
         <Image
-          src="/images/cladis-hero-facade-4k-fef0595c.webp"
-          alt="Façade contemporaine en bardage métallique et bois, avec les Alpes en arrière-plan"
+          src="/images/homepage-hero-3cdb9cad.webp"
+          alt="Bâtiment industriel contemporain en bardage métallique anthracite, entrée vitrée et finitions bois, au pied des Alpes"
           fill
           priority
           sizes="100vw"
