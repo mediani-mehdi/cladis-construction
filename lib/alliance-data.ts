@@ -5,8 +5,8 @@ export const ALLIANCE_PILLARS = [
     role: "Ingénierie & pilotage",
     name: "CLADIS CONSTRUCTION",
     tagline: "La vision technique et la coordination du projet",
-    image: "/images/alliance-bureau-etudes-a3a0e789.webp",
-    imageAlt: "Deux professionnels de la construction échangeant sur un chantier",
+    image: "/images/alliance-engineering-3c7acb42.webp",
+    imageAlt: "Équipe d'ingénierie étudiant les plans et un assemblage de charpente métallique au bureau d'études",
     description: "CLADIS CONSTRUCTION assure les études, le chiffrage et le pilotage global de l'opération. Son rôle est de relier les besoins du maître d'ouvrage aux choix techniques et à l'organisation de leur réalisation.",
     paragraphs: [
       "Le bureau d'études analyse les contraintes, développe les plans d'exécution et précise les interfaces entre charpente, couverture et bardage. Cette préparation donne aux intervenants une base commune pour fabriquer, approvisionner et poser les différents systèmes.",
@@ -22,8 +22,8 @@ export const ALLIANCE_PILLARS = [
     role: "Exécution sur site",
     name: "BUILDING SERVICES",
     tagline: "L'expérience du terrain au service de la réalisation",
-    image: "/images/project-chambery-hub-7bb3c0df.webp",
-    imageAlt: "Structure métallique en cours de montage avec des équipes sur site",
+    image: "/images/alliance-installation-fb19c46e.webp",
+    imageAlt: "Deux poseurs équipés de protections alignent un panneau de bardage métallique sur un bâtiment industriel",
     description: "Building Services apporte son savoir-faire opérationnel à la mise en œuvre des ouvrages. Les équipes interviennent sur la pose, le levage et l'organisation des travaux en coordination avec le pilotage du projet.",
     paragraphs: [
       "La préparation du terrain prend en compte les accès, les engins, les zones de stockage et les conditions d'intervention. Les plans et les détails d'exécution sont mis en relation avec les moyens de chantier pour organiser les séquences de montage.",
@@ -39,8 +39,8 @@ export const ALLIANCE_PILLARS = [
     role: "Achats & approvisionnements",
     name: "FILIALE D'ACHAT",
     tagline: "Anticiper les besoins, organiser les approvisionnements",
-    image: "/images/alliance-building-services-8f93af7a.webp",
-    imageAlt: "Stockage de profilés et de matériaux dans un bâtiment industriel",
+    image: "/images/alliance-procurement-01b95925.webp",
+    imageAlt: "Responsable des approvisionnements contrôlant des panneaux sandwich et des profilés métalliques en entrepôt",
     description: "La filiale d'achat accompagne la consultation des fournisseurs et la préparation des commandes. Elle rapproche les besoins techniques des conditions d'approvisionnement et du calendrier de l'opération.",
     paragraphs: [
       "Les références, quantités, finitions et documents attendus sont précisés à partir des études. Les échanges avec les fabricants et fournisseurs permettent d'examiner les disponibilités, les délais et les conditions de livraison avant les interventions.",

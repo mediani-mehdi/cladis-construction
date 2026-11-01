@@ -52,6 +52,9 @@ export default function AllianceSection() {
                     src={pillar.image}
                     alt={pillar.imageAlt}
                     fill
+                    sizes={idx === 2
+                      ? "(min-width: 1280px) 384px, (min-width: 768px) calc(100vw - 48px), calc(100vw - 32px)"
+                      : "(min-width: 1280px) 384px, (min-width: 768px) calc((100vw - 80px) / 2), calc(100vw - 32px)"}
                     className="object-cover object-center filter brightness-[0.98] contrast-[1.03] transition-transform duration-500 group-hover:scale-105"
                   />
 
