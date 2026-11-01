@@ -13,7 +13,7 @@ export const METHODOLOGY_PHASES = [
     deliverables: ["Diagnostic des contraintes du site", "Note de calculs préliminaire selon les besoins", "Préconisation des systèmes d'enveloppe", "Première estimation et périmètre d'intervention"],
     tools: ["Analyse des plans", "Relevés du site", "Eurocodes 1 & 3"],
     duration: "1 à 2 semaines",
-    photo: { src: "/images/methodology-etude-diagnostic.webp", alt: "Deux ingénieurs analysent les plans et la façade d'un bâtiment industriel sur site" },
+    photo: { src: "/images/methodology-etude-diagnostic-639c3753.webp", alt: "Deux ingénieurs analysent les plans et la façade d'un bâtiment industriel sur site" },
   },
   {
     num: "02",
@@ -29,7 +29,7 @@ export const METHODOLOGY_PHASES = [
     deliverables: ["Plans d'exécution d'atelier et de pose", "Calepinage des panneaux et cassettes", "Carnet de détails et de raccordements", "Dossier technique pour les validations du projet"],
     tools: ["Modélisation BIM 3D", "Plans d'exécution", "Calepinage des façades"],
     duration: "2 à 4 semaines",
-    photo: { src: "/images/methodology-conception-modelisation.webp", alt: "Modèle BIM d'une charpente métallique à l'écran et plans d'exécution sur un bureau d'études" },
+    photo: { src: "/images/methodology-conception-modelisation-b93b0957.webp", alt: "Modèle BIM d'une charpente métallique à l'écran et plans d'exécution sur un bureau d'études" },
   },
   {
     num: "03",
@@ -45,7 +45,7 @@ export const METHODOLOGY_PHASES = [
     deliverables: ["Planning d'intervention et organisation logistique", "Suivi des contrôles et des points de coordination", "Documents de préparation et de sécurité du chantier", "Traçabilité des ajustements et décisions techniques"],
     tools: ["Planning de chantier", "Moyens de levage adaptés", "Contrôles de pose"],
     duration: "Selon calendrier opérationnel",
-    photo: { src: "/images/methodology-realisation-pilotage.webp", alt: "Deux responsables coordonnent la pose du bardage sur un chantier de construction métallique" },
+    photo: { src: "/images/methodology-realisation-pilotage-fd60a947.webp", alt: "Deux responsables coordonnent la pose du bardage sur un chantier de construction métallique" },
   },
   {
     num: "04",
@@ -61,6 +61,6 @@ export const METHODOLOGY_PHASES = [
     deliverables: ["Procès-verbal de réception et suivi des réserves", "Dossier des ouvrages exécutés (DOE)", "Documents de conformité et d'assurance du projet", "Préconisations d'entretien de l'enveloppe"],
     tools: ["Contrôles de fin de travaux", "Dossier DOE", "Suivi de réception"],
     duration: "Réception & accompagnement",
-    photo: { src: "/images/methodology-livraison-reception.webp", alt: "Bâtiment industriel achevé avec bardage métallique, entrée vitrée et finitions en bois" },
+    photo: { src: "/images/methodology-livraison-reception-3c0ef568.webp", alt: "Bâtiment industriel achevé avec bardage métallique, entrée vitrée et finitions en bois" },
   },
 ];

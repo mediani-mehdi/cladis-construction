@@ -23,8 +23,8 @@ export default function MethodologiePage() {
         title="Une méthode claire."
         subtitle="Un projet maîtrisé."
         description="Un ouvrage réussi se prépare à chaque étape. CLADIS CONSTRUCTION organise les études, les échanges techniques et la réalisation autour d'un parcours en quatre phases, pour relier vos objectifs aux conditions concrètes du chantier."
-        image="/images/construction-hero-bcc0de60.webp"
-        imageAlt="Chantier de construction d'un bâtiment à structure métallique"
+        image="/images/methodology-hero-69ff522c.webp"
+        imageAlt="Ingénieur examinant les plans d'un bâtiment industriel devant sa charpente métallique et son bardage"
         caption="Étudier · Concevoir · Réaliser · Transmettre"
         action={{ href: "#phases", label: "Découvrir les quatre phases" }}
       />

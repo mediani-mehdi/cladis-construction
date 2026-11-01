@@ -1,0 +1,61 @@
+{
+  "format": "WebP",
+  "quality": 80,
+  "effort": 6,
+  "note": "Encoded directly from generated PNG originals; hero is a new photograph.",
+  "before": 1047992,
+  "after": 720156,
+  "savingsPercent": 31.3,
+  "assets": [
+    {
+      "slug": "hero",
+      "previous": "/images/construction-hero-bcc0de60.webp",
+      "optimized": "/images/methodology-hero-69ff522c.webp",
+      "before": 196624,
+      "after": 148698,
+      "width": 1144,
+      "height": 1373,
+      "savingsPercent": 24.4
+    },
+    {
+      "slug": "etude-diagnostic",
+      "previous": "/images/methodology-etude-diagnostic.webp",
+      "optimized": "/images/methodology-etude-diagnostic-639c3753.webp",
+      "before": 175602,
+      "after": 117902,
+      "width": 1440,
+      "height": 810,
+      "savingsPercent": 32.9
+    },
+    {
+      "slug": "conception-modelisation",
+      "previous": "/images/methodology-conception-modelisation.webp",
+      "optimized": "/images/methodology-conception-modelisation-b93b0957.webp",
+      "before": 159432,
+      "after": 106078,
+      "width": 1440,
+      "height": 810,
+      "savingsPercent": 33.5
+    },
+    {
+      "slug": "realisation-pilotage",
+      "previous": "/images/methodology-realisation-pilotage.webp",
+      "optimized": "/images/methodology-realisation-pilotage-fd60a947.webp",
+      "before": 262304,
+      "after": 179662,
+      "width": 1440,
+      "height": 810,
+      "savingsPercent": 31.5
+    },
+    {
+      "slug": "livraison-reception",
+      "previous": "/images/methodology-livraison-reception.webp",
+      "optimized": "/images/methodology-livraison-reception-3c0ef568.webp",
+      "before": 254030,
+      "after": 167816,
+      "width": 1440,
+      "height": 810,
+      "savingsPercent": 33.9
+    }
+  ]
+}
