@@ -1,0 +1,66 @@
+{
+  "mode": "built-in image_gen",
+  "purpose": "General unbranded illustrative imagery for Nos Réalisations project cards.",
+  "assets": [
+    {
+      "key": "realisations-enveloppe",
+      "source": "C:\\Users\\mehdi\\.codex\\generated_images\\01a198ee-7096-75d2-81eb-6467650cc826\\exec-a8a31d08-f84f-4384-98c5-8c74ad319cd1.png",
+      "prompt": "Use case: photorealistic-natural.\nAsset type: general illustrative project photograph for the Nos Réalisations gallery on a French industrial construction website.\nPrimary request: A completed modern industrial logistics building with an integrated two-storey office wing, crisp silver-gray insulated metal cladding, charcoal aluminum facade cassettes and dark-framed glazing. Three-quarter exterior view from ground level, the building fills most of the frame, uncluttered paved forecourt, simple planting, quiet neutral European business park with no recognizable landmark.\nStyle: high quality natural architectural photography, realistic construction details and believable material textures, restrained professional editorial treatment, no exaggerated CGI, moderate contrast, sharp building details.\nComposition: landscape 4:3 photograph, main subject centered with enough vertical content to crop elegantly to a 4:5 project card; avoid extreme wide angle distortion; straight verticals.\nLighting: soft clear daylight, subtle warm sun and pale blue sky where visible; consistent muted neutral gray color treatment across the series.\nConstraints: depict a generic illustrative construction scene, no identifiable real client or building, no signs, no company branding, no text, no lettering, no logos, no watermark, no people. One continuous photograph only, no collage, no borders.",
+      "original": ".asset-sources/images/realisations-enveloppe-original.png",
+      "optimized": "/images/realisations-enveloppe-0e344ed8.webp",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 183180
+    },
+    {
+      "key": "realisations-bardage",
+      "source": "C:\\Users\\mehdi\\.codex\\generated_images\\01a198ee-7096-75d2-81eb-6467650cc826\\exec-2829e0f7-f03a-480e-a22b-22dfcdafe9b5.png",
+      "prompt": "Use case: photorealistic-natural.\nAsset type: general illustrative project photograph for the Nos Réalisations gallery on a French industrial construction website.\nPrimary request: A completed contemporary industrial production building clad in finely ribbed anthracite metal wall panels. Three-quarter exterior view with the building corner and long facade showing precise vertical panel seams and careful flashings, a few practical windows, clean paved foreground, neutral European industrial setting with no recognizable landmark.\nStyle: high quality natural architectural photography, realistic construction details and believable material textures, restrained professional editorial treatment, no exaggerated CGI, moderate contrast, sharp building details.\nComposition: landscape 4:3 photograph, main subject centered with enough vertical content to crop elegantly to a 4:5 project card; avoid extreme wide angle distortion; straight verticals.\nLighting: soft clear daylight, subtle warm sun and pale blue sky where visible; consistent muted neutral gray color treatment across the series.\nConstraints: depict a generic illustrative construction scene, no identifiable real client or building, no signs, no company branding, no text, no lettering, no logos, no watermark, no people. One continuous photograph only, no collage, no borders.",
+      "original": ".asset-sources/images/realisations-bardage-original.png",
+      "optimized": "/images/realisations-bardage-33af9157.webp",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 135194
+    },
+    {
+      "key": "realisations-couverture",
+      "source": "C:\\Users\\mehdi\\.codex\\generated_images\\01a198ee-7096-75d2-81eb-6467650cc826\\exec-cf678b94-328b-48e2-b9a7-b5fe026d0a20.png",
+      "prompt": "Use case: photorealistic-natural.\nAsset type: general illustrative project photograph for the Nos Réalisations gallery on a French industrial construction website.\nPrimary request: A broad flat roof of a modern industrial warehouse viewed from an elevated roof-level angle, emphasizing a professionally finished gray waterproof roofing membrane with straight sealed seams, neat metal parapet flashings, a few low rectangular rooflights, distant modest industrial surroundings. The roof dominates the frame and reads clearly as roofing craftsmanship.\nStyle: high quality natural architectural photography, realistic construction details and believable material textures, restrained professional editorial treatment, no exaggerated CGI, moderate contrast, sharp building details.\nComposition: landscape 4:3 photograph, main subject centered with enough vertical content to crop elegantly to a 4:5 project card; avoid extreme wide angle distortion; straight verticals.\nLighting: soft clear daylight, subtle warm sun and pale blue sky where visible; consistent muted neutral gray color treatment across the series.\nConstraints: depict a generic illustrative construction scene, no identifiable real client or building, no signs, no company branding, no text, no lettering, no logos, no watermark, no people. One continuous photograph only, no collage, no borders.",
+      "original": ".asset-sources/images/realisations-couverture-original.png",
+      "optimized": "/images/realisations-couverture-f68c2a17.webp",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 189934
+    },
+    {
+      "key": "realisations-charpente",
+      "source": "C:\\Users\\mehdi\\.codex\\generated_images\\01a198ee-7096-75d2-81eb-6467650cc826\\exec-c644ee65-7599-46a6-a453-df4c9d71efb1.png",
+      "prompt": "Use case: photorealistic-natural.\nAsset type: general illustrative project photograph for the Nos Réalisations gallery on a French industrial construction website.\nPrimary request: The interior of a spacious newly built industrial steel hall. A clear rhythm of galvanized gray steel portal frames, bolted beam-to-column connections and roof purlins, clear unobstructed span, clean concrete slab, partial metal roof decking, natural daylight entering at the far open gable. Eye-level three-quarter view, convincing practical steel construction, no machinery or people.\nStyle: high quality natural architectural photography, realistic construction details and believable material textures, restrained professional editorial treatment, no exaggerated CGI, moderate contrast, sharp building details.\nComposition: landscape 4:3 photograph, main subject centered with enough vertical content to crop elegantly to a 4:5 project card; avoid extreme wide angle distortion; straight verticals.\nLighting: soft clear daylight, subtle warm sun and pale blue sky where visible; consistent muted neutral gray color treatment across the series.\nConstraints: depict a generic illustrative construction scene, no identifiable real client or building, no signs, no company branding, no text, no lettering, no logos, no watermark, no people. One continuous photograph only, no collage, no borders.",
+      "original": ".asset-sources/images/realisations-charpente-original.png",
+      "optimized": "/images/realisations-charpente-0fea2374.webp",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 204098
+    },
+    {
+      "key": "realisations-facade",
+      "source": "C:\\Users\\mehdi\\.codex\\generated_images\\01a198ee-7096-75d2-81eb-6467650cc826\\exec-84a49e8e-6a44-4bf0-b030-4eac262c6ed7.png",
+      "prompt": "Use case: photorealistic-natural.\nAsset type: general illustrative project photograph for the Nos Réalisations gallery on a French industrial construction website.\nPrimary request: A completed contemporary two-storey commercial office building with precisely folded satin aluminum cassette cladding and dark-framed ribbon glazing. Oblique exterior architectural view showing the building corner, restrained geometric panel layout, realistic recessed joints, neutral silver and charcoal materials, quiet landscaping and a simple paved walkway, neutral European surroundings with no recognizable landmark.\nStyle: high quality natural architectural photography, realistic construction details and believable material textures, restrained professional editorial treatment, no exaggerated CGI, moderate contrast, sharp building details.\nComposition: landscape 4:3 photograph, main subject centered with enough vertical content to crop elegantly to a 4:5 project card; avoid extreme wide angle distortion; straight verticals.\nLighting: soft clear daylight, subtle warm sun and pale blue sky where visible; consistent muted neutral gray color treatment across the series.\nConstraints: depict a generic illustrative construction scene, no identifiable real client or building, no signs, no company branding, no text, no lettering, no logos, no watermark, no people. One continuous photograph only, no collage, no borders.",
+      "original": ".asset-sources/images/realisations-facade-original.png",
+      "optimized": "/images/realisations-facade-4a5f5393.webp",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 193542
+    },
+    {
+      "key": "realisations-toiture-solaire",
+      "source": "C:\\Users\\mehdi\\.codex\\generated_images\\01a198ee-7096-75d2-81eb-6467650cc826\\exec-b9a60b6c-cfe4-4a5a-a70e-11a38f6dccca.png",
+      "prompt": "Use case: photorealistic-natural.\nAsset type: general illustrative project photograph for the Nos Réalisations gallery on a French industrial construction website.\nPrimary request: An elevated oblique view across the flat roof of a contemporary industrial building with a professionally installed array of dark blue-black photovoltaic panels on low tilted racks beside distinct planted zones of low sedum green roofing. Neat gravel maintenance strips, metal parapet edges, carefully aligned panel rows, believable unobstructed panel layout, quiet neutral surroundings with no recognizable landmark.\nStyle: high quality natural architectural photography, realistic construction details and believable material textures, restrained professional editorial treatment, no exaggerated CGI, moderate contrast, sharp building details.\nComposition: landscape 4:3 photograph, main subject centered with enough vertical content to crop elegantly to a 4:5 project card; avoid extreme wide angle distortion; straight verticals.\nLighting: soft clear daylight, subtle warm sun and pale blue sky where visible; consistent muted neutral gray color treatment across the series.\nConstraints: depict a generic illustrative construction scene, no identifiable real client or building, no signs, no company branding, no text, no lettering, no logos, no watermark, no people. One continuous photograph only, no collage, no borders.",
+      "original": ".asset-sources/images/realisations-toiture-solaire-original.png",
+      "optimized": "/images/realisations-toiture-solaire-5addd741.webp",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 296650
+    }
+  ]
+}
