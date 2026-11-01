@@ -10,6 +10,7 @@ interface InteriorPageHeroProps {
   subtitle: string;
   description: string;
   image: string;
+  imageQuality?: 75 | 90;
   imageAlt: string;
   caption: string;
   action: { href: string; label: string };
@@ -45,7 +46,7 @@ export default function InteriorPageHero(props: InteriorPageHeroProps) {
           </div>
           <figure className="min-w-0 lg:col-span-5">
             <div className="relative aspect-[4/3] overflow-hidden bg-swiss-stone lg:aspect-[5/6]">
-              <Image src={props.image} alt={props.imageAlt} fill priority sizes="(min-width: 1280px) 480px, (min-width: 1024px) 42vw, 100vw" className="object-cover object-center" />
+              <Image src={props.image} alt={props.imageAlt} fill priority quality={props.imageQuality ?? 75} sizes="(min-width: 1280px) 480px, (min-width: 1024px) 42vw, 100vw" className="object-cover object-center" />
             </div>
             <figcaption className="mt-4 border-t border-primary/20 pt-3 font-secondary text-[9px] uppercase tracking-wider text-primary/55">{props.caption}</figcaption>
           </figure>

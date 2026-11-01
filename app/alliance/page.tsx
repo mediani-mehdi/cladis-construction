@@ -23,7 +23,8 @@ export default function AlliancePage() {
         title="Trois forces réunies."
         subtitle="Une même direction."
         description="Un projet d'enveloppe mobilise des études, des matériaux et des équipes de terrain. Notre alliance relie ces compétences pour préparer les interventions, partager les décisions et accompagner chaque opération avec une organisation cohérente."
-        image="/images/alliance-bureau-etudes-a3a0e789.webp"
+        image="/images/alliance-handshake-hq-ff7ca6d9.webp"
+        imageQuality={90}
         imageAlt="Deux professionnels de la construction échangeant sur un chantier"
         caption="CLADIS CONSTRUCTION · BUILDING SERVICES · FILIALE D'ACHAT"
         action={{ href: "#nos-complementarites", label: "Découvrir notre organisation" }}
