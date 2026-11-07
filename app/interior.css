@@ -89,7 +89,18 @@
 .v2-interior .v2-page-content .v2-ambition-label h2 { font-size: 10px; font-weight: 500; line-height: 1.8; text-transform: uppercase; letter-spacing: .12em; color: #c4d8f1; }
 .v2-interior .v2-page-content .v2-ambition-copy { padding-left: 35px; border-left: 1px solid #ffffff30; font-size: clamp(17px,1.65vw,22px); font-weight: 400; line-height: 1.6; letter-spacing: -.015em; color: #d9e6f7; }
 .v2-ambition-copy strong { font-weight: 600; color: white; }
+.v2-expertise-summary { padding-block: 10px 85px; }
+.v2-expertise-summary-panel { border: 1px solid #d0dfee; border-radius: 14px; padding: 42px 46px; background: linear-gradient(120deg,#e7effa,#f1f6fd); box-shadow: inset 0 1px #ffffffcc; }
+.v2-expertise-summary-panel > .v2-eyebrow { color: #557ca9; text-transform: uppercase; }
+.v2-expertise-summary-copy { display: grid; grid-template-columns: 1.2fr 1fr; align-items: end; gap: 60px; margin-top: 25px; }
+.v2-interior .v2-page-content .v2-expertise-summary h2.v2-expertise-summary-title { font-size: clamp(30px,3.2vw,48px); line-height: 1.18; letter-spacing: -.04em; }
+.v2-expertise-summary-title em { color: #557ca9; }
+.v2-interior .v2-page-content .v2-expertise-summary-copy p { max-width: 450px; font-size: 14px; line-height: 1.9; color: #60748e; }
 @media (max-width: 700px) {
+  .v2-expertise-summary { padding-bottom: 55px; }
+  .v2-expertise-summary-panel { padding: 27px 24px; }
+  .v2-expertise-summary-copy { grid-template-columns: 1fr; gap: 24px; }
+  .v2-interior .v2-page-content .v2-expertise-summary-copy p { font-size: 13px; }
   .v2-company-ambition { padding-block: 22px; }
   .v2-ambition-panel { grid-template-columns: 1fr; padding: 25px; gap: 20px; }
   .v2-interior .v2-page-content .v2-ambition-copy { padding-left: 0; padding-top: 20px; border-left: 0; border-top: 1px solid #ffffff30; font-size: 17px; }
