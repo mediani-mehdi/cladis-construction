@@ -24,9 +24,9 @@
 .v2-footer-phone-card { display: flex; flex-direction: column; position: relative; gap: 19px; padding: 22px 18px; border: 1px solid #ffffff30; border-radius: 10px; background: #ffffff07; backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); transition: background .25s,border-color .25s; }
 .v2-footer-phone-card:hover { background: #ffffff12; border-color: #ffffff60; }
 .v2-footer-phone-card > span { padding-right: 20px; font-size: 10px; line-height: 1.5; color: #a8c4e7; }
-.v2-footer-phone-card > strong { font-family: var(--font-montserrat),sans-serif; font-size: clamp(18px,1.7vw,25px); font-weight: 400; letter-spacing: -.04em; color: #f4f7fc; white-space: nowrap; }
+.v2-footer-phone-card > strong { font-family: inherit; font-size: 12px; font-weight: 400; letter-spacing: normal; line-height: 1.8; color: #d3e1f5; white-space: nowrap; }
 .v2-footer-phone-card > svg { position: absolute; right: 16px; top: 22px; color: #a8c4e7; }
-.v2-footer-mail { display: flex; align-items: center; justify-content: space-between; gap: 15px; min-height: 52px; margin-top: 14px; font-size: 13px; color: #d3e1f5; }
+.v2-footer-mail { display: flex; align-items: center; justify-content: space-between; gap: 15px; min-height: 52px; margin-top: 14px; font-size: 12px; line-height: 1.8; color: #d3e1f5; }
 .v2-footer-mail svg { flex-shrink: 0; color: #a8c4e7; }
 .v2-footer-hours { display: block; margin-top: 3px; font-size: 10px; color: #95b0d2; }
 .v2-footer-final { display: flex; align-items: center; justify-content: space-between; gap: 20px; border-top: 1px solid #ffffff20; padding: 18px 0; font-size: 9px; color: #95b0d2; }
@@ -38,7 +38,6 @@
   .v2-footer-main { grid-template-columns: 1fr 1fr; gap: 30px 50px; }
   .v2-footer-connect { grid-column: 1 / -1; }
   .v2-footer-navigation > div { grid-template-columns: 1fr 1fr; column-gap: 25px; }
-  .v2-footer-phone-card > strong { font-size: 25px; }
   .v2-footer-phone-card { padding: 22px; }
 }
 @media (max-width: 700px) {
@@ -52,7 +51,6 @@
   .v2-footer-navigation a { min-height: 44px; }
   .v2-footer-phones { grid-template-columns: 1fr; }
   .v2-footer-phone-card { padding: 23px; gap: 14px; }
-  .v2-footer-phone-card > strong { font-size: 26px; }
   .v2-footer-mail { font-size: 12px; }
   .v2-footer-final { flex-wrap: wrap; gap: 10px; font-size: 8px; }
   .v2-footer-final > span:nth-child(2) { display: none; }
