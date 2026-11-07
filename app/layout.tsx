@@ -3,6 +3,8 @@ import { Cairo, Montserrat } from "next/font/google";
 import "./globals.css";
 import "./home.css";
 import "./interior.css";
+import "./footer.css";
+import "./alliance.css";
 
 const cairo = Cairo({
   subsets: ["latin"],

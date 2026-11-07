@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, Check } from "lucide-react";
+import { Check } from "lucide-react";
 import InformationPageLayout from "@/components/InformationPageLayout";
 import { ALLIANCE_PILLARS } from "@/lib/alliance-data";
 
@@ -9,8 +9,6 @@ export const metadata: Metadata = {
   title: "L'Alliance | CLADIS CONSTRUCTION",
   description: "CLADIS CONSTRUCTION, Building Services et la filiale d'achat associent études, réalisation et approvisionnements pour accompagner votre projet.",
 };
-
-const focusStyle = "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary";
 
 export default function AlliancePage() {
   return (
@@ -33,32 +31,25 @@ export default function AlliancePage() {
         </div>
       </section>
 
-      <section id="nos-complementarites" aria-labelledby="alliance-actors-heading" className="scroll-mt-32 py-16 sm:py-20">
+      <section id="nos-complementarites" aria-labelledby="alliance-actors-heading" className="v2-alliance-roles scroll-mt-32 py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-9 grid gap-5 lg:grid-cols-12 lg:gap-12">
+          <div className="v2-alliance-roles-heading mb-9 grid gap-5 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-7"><span className="mb-3 block font-secondary text-[10px] font-semibold uppercase tracking-[0.2em] text-primary/55">Une chaîne de compétences</span><h2 id="alliance-actors-heading" className="font-sans text-3xl font-bold leading-tight tracking-tight text-primary sm:text-4xl">À chaque rôle,<br /><span className="font-normal">une expertise dédiée.</span></h2></div>
             <p className="max-w-md text-sm leading-relaxed text-secondary lg:col-span-5">CLADIS CONSTRUCTION coordonne la vision d'ensemble. Building Services accompagne la réalisation sur site. La filiale d'achat prépare les approvisionnements en lien avec les besoins du projet.</p>
           </div>
-          <nav aria-label="Les trois acteurs de l'alliance" className="v2-alliance-index">
-            {ALLIANCE_PILLARS.map((pillar) => <a key={pillar.slug} href={`#${pillar.slug}`} className={focusStyle}><span className="v2-alliance-index-number">{pillar.num}</span><span className="v2-alliance-index-label"><strong>{pillar.role}</strong><small>{pillar.name}</small></span><ArrowDown size={16} aria-hidden="true" /></a>)}
-          </nav>
-
-          <div className="v2-actor-panels">
+          <div className="v2-alliance-cards">
             {ALLIANCE_PILLARS.map((pillar) => (
-              <article key={pillar.slug} id={pillar.slug} aria-labelledby={`actor-heading-${pillar.num}`} className="v2-actor-panel">
-                <div className="v2-actor-image">
-                  <Image src={pillar.image} alt={pillar.imageAlt} fill quality={90} sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover object-center" />
-                  <span className="v2-actor-badge v2-glass">{pillar.badge}</span>
-                  <div className="v2-actor-benefit"><p>{pillar.benefit}</p></div>
+              <article key={pillar.slug} id={pillar.slug} aria-labelledby={`actor-heading-${pillar.num}`} className="v2-alliance-card">
+                <div className="v2-alliance-card-media">
+                  <Image src={pillar.image} alt={pillar.imageAlt} fill quality={90} sizes="(min-width: 1101px) 33vw, (min-width: 701px) 45vw, 100vw" className="object-cover object-center" />
+                  <span className="v2-alliance-card-number v2-glass">{pillar.num}</span>
+                  <div className="v2-alliance-card-benefit v2-glass"><p>{pillar.benefit}</p></div>
                 </div>
-                <div className="v2-actor-copy">
-                  <header className="v2-actor-header">
-                    <span className="v2-actor-number" aria-hidden="true">{pillar.num}</span>
-                    <div><span className="v2-eyebrow">{pillar.role}</span><h3 id={`actor-heading-${pillar.num}`}>{pillar.name}</h3></div>
-                  </header>
-                  <p className="v2-actor-intro">{pillar.tagline}</p>
-                  <div className="v2-actor-paragraphs">{pillar.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
-                  <ul className="v2-actor-highlights">{pillar.highlights.map((highlight) => <li key={highlight}><Check size={15} strokeWidth={1.5} aria-hidden="true" /><span>{highlight}</span></li>)}</ul>
+                <div className="v2-alliance-card-body">
+                  <header><span className="v2-eyebrow">{pillar.role}</span><h3 id={`actor-heading-${pillar.num}`}>{pillar.name}</h3></header>
+                  <p className="v2-alliance-card-summary">{pillar.description}</p>
+                  <ul className="v2-alliance-card-highlights">{pillar.highlights.map((highlight) => <li key={highlight}><Check size={16} strokeWidth={1.5} aria-hidden="true" /><span>{highlight}</span></li>)}</ul>
+                  <details className="v2-alliance-card-details"><summary>Notre approche en détail</summary><div><p className="v2-alliance-card-tagline">{pillar.tagline}</p>{pillar.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div></details>
                 </div>
               </article>
             ))}
