@@ -38,7 +38,7 @@ export default function HomeNavigation({ onOpenCatalogue }: { onOpenCatalogue: (
   }, [open]);
 
   return <>
-    <a className="v2-skip" href={isHome ? "#introduction" : "#page-content"}>Aller au contenu</a>
+    <a className="v2-skip" href={isHome ? "#savoir-faire" : "#page-content"}>Aller au contenu</a>
     <header className={`v2-nav v2-glass ${!isHome ? "v2-nav-interior" : ""} ${scrolled || !isHome ? "is-scrolled" : ""}`}>
       <a href="/" className="v2-brand" aria-label="CLADIS Construction, accueil"><Image src="/images/cladis-logo-transparent-07a6284b.webp" alt="CLADIS Construction" width={210} height={60} priority /></a>
       <nav aria-label="Navigation principale" className="v2-desktop-nav">

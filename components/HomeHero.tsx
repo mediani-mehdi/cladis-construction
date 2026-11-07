@@ -38,7 +38,7 @@ export default function HomeHero() {
             <p>{HERO_SLIDES[1].description}</p>
           </motion.div>}
           <div className="v2-hero-bottom">
-            <a href="#introduction" className="v2-scroll-link"><span className="v2-round-icon"><ArrowDown size={17} /></span><span>FAITES DÉFILER<br /><b>Découvrez la différence Cladis</b></span></a>
+            <a href="#savoir-faire" className="v2-scroll-link"><span className="v2-round-icon"><ArrowDown size={17} /></span><span>FAITES DÉFILER<br /><b>Découvrez la différence Cladis</b></span></a>
             <div className="v2-hero-location"><span>45°33′59.0″N  5°55′12.0″E</span><b>CHAMBÉRY · AUVERGNE-RHÔNE-ALPES</b></div>
             <span className="v2-sequence-hint v2-glass"><Mouse size={15} /><span>LE SCROLL DONNE VIE</span></span>
           </div>

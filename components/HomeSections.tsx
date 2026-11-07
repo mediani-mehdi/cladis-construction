@@ -20,9 +20,9 @@ const steps = [
 ];
 
 const knowhow = [
-  { icon: Ruler, title: "Expertise éprouvée", text: "Une connaissance approfondie de l'enveloppe du bâtiment et de la construction métallique." },
-  { icon: Layers3, title: "Organisation structurée", text: "Des études préparées avec rigueur et des interfaces coordonnées à chaque étape." },
-  { icon: HardHat, title: "Engagement terrain", text: "Un accompagnement attentif aux contraintes et aux ambitions de chaque projet." },
+  { title: "Expertise éprouvée", text: "Une connaissance approfondie de l'enveloppe du bâtiment et de la construction métallique." },
+  { title: "Organisation structurée", text: "Des études préparées avec rigueur et des interfaces coordonnées à chaque étape." },
+  { title: "Engagement terrain", text: "Un accompagnement attentif aux contraintes et aux ambitions de chaque projet." },
 ];
 
 export default function HomeSections() {
@@ -33,13 +33,13 @@ export default function HomeSections() {
   const active = METIERS[activeService];
 
   return <>
+    <section id="savoir-faire" tabIndex={-1} aria-labelledby="savoir-faire-heading" className="v2-knowhow v2-container">
+      <Reveal className="v2-knowhow-heading"><span className="v2-eyebrow">Le savoir-faire CLADIS</span><h2 id="savoir-faire-heading">Une solide expérience.<br /><em>Un savoir-faire exigeant.</em></h2></Reveal>
+      <div className="v2-knowhow-grid">{knowhow.map((item) => <Reveal key={item.title}><article className="v2-knowhow-item"><h3>{item.title}</h3><p>{item.text}</p></article></Reveal>)}</div>
+    </section>
     <section id="introduction" className="v2-intro v2-container">
       <Reveal className="v2-section-top"><span className="v2-eyebrow">01 / L’ESPRIT CLADIS</span><span className="v2-small-note">L’EXIGENCE, PAR NATURE.</span></Reveal>
       <Reveal className="v2-intro-grid"><div><h2>De la structure<br />à la signature<br /><em>architecturale.</em></h2><a href="/l-entreprise" className="v2-text-link">Rencontrer Cladis <ArrowUpRight size={18} /></a></div><div className="v2-intro-right"><p className="v2-lead">Nous donnons à vos bâtiments<br />une enveloppe à la hauteur<br />de ce qu’ils abritent.</p><p>Depuis Chambéry, Cladis Construction accompagne les projets industriels, logistiques et tertiaires. Nous réunissons l’ingénierie, les matériaux et le savoir-faire de terrain pour construire des ouvrages cohérents, durables et singuliers.</p><div className="v2-intro-facts"><div><strong>06</strong><span>expertises complémentaires</span></div><div><strong>01</strong><span>interlocuteur pour votre projet</span></div></div></div></Reveal>
-      <section aria-labelledby="savoir-faire-heading" className="v2-knowhow">
-        <Reveal className="v2-knowhow-heading"><span className="v2-eyebrow">Le savoir-faire CLADIS</span><h2 id="savoir-faire-heading">Une solide expérience.<br /><em>Un savoir-faire exigeant.</em></h2></Reveal>
-        <div className="v2-knowhow-grid">{knowhow.map((item) => <Reveal key={item.title}><article className="v2-knowhow-card"><span className="v2-knowhow-icon"><item.icon size={25} strokeWidth={1.25} aria-hidden="true" /></span><h3>{item.title}</h3><p>{item.text}</p></article></Reveal>)}</div>
-      </section>
       <Reveal className="v2-intro-image v2-intro-image-woodland"><Image src="/images/about-company-woodland-d9a52e11.webp" alt="Bâtiment contemporain en bardage métallique anthracite, encadrement bois et vitrages éclairés dans un environnement boisé" fill quality={90} sizes="(max-width: 700px) 100vw, 90vw" /><div className="v2-image-caption v2-glass"><span>LA TECHNIQUE AU SERVICE DE L’ARCHITECTURE</span><ArrowUpRight size={22} /></div><span className="v2-image-index">CLADIS — CONCEPTION / RÉALISATION</span></Reveal>
     </section>
 
