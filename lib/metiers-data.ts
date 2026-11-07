@@ -155,8 +155,8 @@ export const METIERS: MetierData[] = [
     shortTitle: "Couverture & Étanchéité",
     subtitle: "Systèmes de Toitures Industrielles Métalliques & Synthétiques",
     tagline: "Protection absolue contre les intempéries alpines et durabilité garantie",
-    heroImage: "/images/metier-couverture-etancheite-7ddec386.webp",
-    galleryImages: ["/images/metier-couverture-etancheite-7ddec386.webp", "/images/high-quality/project-alpes-logistics.jpg", "/images/construction-hero-bcc0de60.webp"],
+    heroImage: "/images/metier-couverture-etancheite-7ddec386.jpg",
+    galleryImages: ["/images/metier-couverture-etancheite-7ddec386.jpg", "/images/high-quality/project-alpes-logistics.jpg", "/images/construction-hero-bcc0de60.webp"],
     shortDesc:
       "Travaux d'étanchéité bitumineuse multicouche élastomère, membranes synthétiques PVC/TPO, bacs acier isolés pour toitures terrasses inaccessibles ou techniques.",
     fullDesc:
@@ -471,7 +471,7 @@ export const METIERS: MetierData[] = [
     subtitle: "Performance Énergétique, Économies d'Énergie & Confort Global",
     tagline: "Limitation radicale des déperditions, rupture des ponts thermiques et confort thermique 4 saisons",
     heroImage: "/images/metier-isolation-thermique-127f1539.webp",
-    galleryImages: ["/images/metier-isolation-thermique-127f1539.webp", "/images/about-building-a03b650d.webp", "/images/metier-couverture-etancheite-7ddec386.webp"],
+    galleryImages: ["/images/metier-isolation-thermique-127f1539.webp", "/images/about-building-a03b650d.webp", "/images/metier-couverture-etancheite-7ddec386.jpg"],
     shortDesc:
       "Complexes isolants haute densité, rupteurs de ponts thermiques, isolation continue des enveloppes industrielles pour atteindre les seuils énergétiques les plus stricts.",
     fullDesc:
@@ -572,7 +572,7 @@ export const METIERS: MetierData[] = [
     subtitle: "Synergie Écologique, Biodiversité & Production d'Énergie Verte",
     tagline: "Transformer vos toitures en centrales de production d'énergie et réservoirs de fraîcheur",
     heroImage: "/images/metier-toiture-vegetalisee-solaire-f7006fe1.webp",
-    galleryImages: ["/images/metier-toiture-vegetalisee-solaire-f7006fe1.webp", "/images/metier-couverture-etancheite-7ddec386.webp", "/images/construction-hero-bcc0de60.webp"],
+    galleryImages: ["/images/metier-toiture-vegetalisee-solaire-f7006fe1.webp", "/images/metier-couverture-etancheite-7ddec386.jpg", "/images/construction-hero-bcc0de60.webp"],
     shortDesc:
       "Complexes d'étanchéité anti-racines pour toitures végétalisées et supports d'intégration solaire photovoltaïque sans percement d'étanchéité.",
     fullDesc:

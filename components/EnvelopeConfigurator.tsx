@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Building2, Sparkles, ArrowRight, ShieldCheck } from "lucide-react";
 
 interface ConfiguratorProps {
@@ -222,23 +223,26 @@ export default function EnvelopeConfigurator({ onApplyConfig }: ConfiguratorProp
 
             </div>
 
-            {/* Right Column: Live Output & Engineering Summary (Swiss Structured Card) */}
-            <div className="xl:col-span-5 bg-swiss-subtle border border-black/10 p-4 sm:p-6 space-y-6 xl:sticky xl:top-28 shadow-swiss-sm">
-              <div className="flex flex-wrap items-center justify-between gap-3 border-b border-black/10 pb-4">
+            {/* Live diagnostic on a photographic background with glass cards. */}
+            <div className="v2-diagnostic xl:col-span-5 xl:sticky xl:top-28">
+              <Image src="/images/methodology-etude-diagnostic-639c3753.webp" alt="" fill quality={90} sizes="(min-width: 1280px) 480px, (min-width: 640px) 85vw, 100vw" className="v2-diagnostic-image" aria-hidden="true" />
+              <div className="v2-diagnostic-shade" aria-hidden="true" />
+              <div className="v2-diagnostic-content">
+              <div className="v2-diagnostic-heading flex flex-wrap items-center justify-between gap-3 pb-4">
                 <div className="flex items-center gap-2">
                   <Sparkles className="w-4 h-4 text-swiss-accent" />
                   <span className="font-mono text-xs uppercase tracking-widest text-swiss-ink font-bold">
                     Diagnostic Préliminaire
                   </span>
                 </div>
-                <span className="text-[10px] font-mono text-swiss-ink px-2 py-0.5 bg-white border border-black/15 font-semibold">
+                <span className="v2-diagnostic-badge text-[10px] font-mono text-swiss-ink px-2 py-0.5 bg-white border border-black/15 font-semibold">
                   RE 2020 Compliant
                 </span>
               </div>
 
               {/* Key Metrics Display */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div className="p-4 bg-white border border-black/8 shadow-sm">
+                <div className="v2-diagnostic-card p-4">
                   <span className="text-[10px] font-mono uppercase tracking-wider text-swiss-muted block font-medium">
                     Performance Thermique
                   </span>
@@ -248,7 +252,7 @@ export default function EnvelopeConfigurator({ onApplyConfig }: ConfiguratorProp
                   <span className="text-[10px] text-swiss-muted">Conforme réglementation thermique</span>
                 </div>
 
-                <div className="p-4 bg-white border border-black/8 shadow-sm">
+                <div className="v2-diagnostic-card p-4">
                   <span className="text-[10px] font-mono uppercase tracking-wider text-swiss-muted block font-medium">
                     Délai Prévisionnel
                   </span>
@@ -259,7 +263,7 @@ export default function EnvelopeConfigurator({ onApplyConfig }: ConfiguratorProp
                 </div>
 
                 {hasCharpente && (
-                  <div className="p-4 bg-white border border-black/8 shadow-sm sm:col-span-2">
+                  <div className="v2-diagnostic-card p-4 sm:col-span-2">
                     <span className="text-[10px] font-mono uppercase tracking-wider text-swiss-muted block font-medium">
                       Tonnage d'Acier Estimé
                     </span>
@@ -272,7 +276,7 @@ export default function EnvelopeConfigurator({ onApplyConfig }: ConfiguratorProp
               </div>
 
               {/* Selected Criteria Summary */}
-              <div className="p-4 bg-white border border-black/8 space-y-2 text-xs">
+              <div className="v2-diagnostic-card p-4 space-y-2 text-xs">
                 <div className="flex flex-wrap justify-between gap-2">
                   <span className="text-swiss-muted">Typologie :</span>
                   <span className="text-swiss-ink font-mono font-medium">{buildingType}</span>
@@ -303,7 +307,7 @@ export default function EnvelopeConfigurator({ onApplyConfig }: ConfiguratorProp
               <button
                 type="button"
                 onClick={handleTransfer}
-                className="w-full py-4 bg-swiss-ink text-white text-xs uppercase tracking-widest font-mono font-medium hover:bg-neutral-800 transition-all duration-200 shadow-sm flex items-center justify-center gap-2 group"
+                className="v2-diagnostic-cta w-full py-4 text-xs uppercase tracking-widest font-mono font-medium transition-all duration-200 shadow-sm flex items-center justify-center gap-2 group"
               >
                 <span>Chiffrer ce projet sur mesure</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -312,6 +316,7 @@ export default function EnvelopeConfigurator({ onApplyConfig }: ConfiguratorProp
               <div className="flex items-center justify-center gap-2 text-[11px] text-swiss-muted font-mono text-center">
                 <ShieldCheck className="w-3.5 h-3.5 text-swiss-accent shrink-0" />
                 <span>Étude sans engagement réalisée par notre bureau d'études</span>
+              </div>
               </div>
 
             </div>
