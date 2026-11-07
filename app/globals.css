@@ -5,7 +5,7 @@
 :root {
   --font-cairo: 'Cairo', sans-serif;
   --font-montserrat: 'Montserrat', sans-serif;
-  --color-primary: #2D374E;
+  --color-primary: #142C4C;
   --color-secondary: #3C3C3B;
   --color-muted: #878787;
   --site-header-height: 72px;
@@ -26,7 +26,7 @@ html {
 
 body {
   background-color: #FFFFFF;
-  color: #2D374E;
+  color: #142C4C;
   font-family: var(--font-cairo), sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -35,13 +35,13 @@ body {
 
 /* Swiss High-Contrast Inverted Selection with Primary Color */
 ::selection {
-  background-color: #2D374E;
+  background-color: #142C4C;
   color: #FFFFFF;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-cairo), sans-serif;
-  color: #2D374E;
+  color: #142C4C;
 }
 
 p {

@@ -11,20 +11,20 @@ const config: Config = {
     extend: {
       colors: {
         // User Requested Primary & Secondary Text Colors
-        primary: "#2D374E",
+        primary: "#142C4C",
         secondary: "#3C3C3B",
         muted: "#878787",
         tertiary: "#878787",
 
         // High-Impact Construction Identity Colors (Architectural Electric Blue)
         construction: {
-          blue: "#2D374E",
-          blueLight: "#2D374E",
-          blueDark: "#2D374E",
+          blue: "#142C4C",
+          blueLight: "#142C4C",
+          blueDark: "#142C4C",
           // Backward-compatibility aliases so any cached or external references resolve to blue
-          orange: "#2D374E",
-          orangeLight: "#2D374E",
-          orangeDark: "#2D374E",
+          orange: "#142C4C",
+          orangeLight: "#142C4C",
+          orangeDark: "#142C4C",
         },
         // Swiss Style Color System mapped to the new palette
         swiss: {
@@ -34,12 +34,12 @@ const config: Config = {
           stone: "#ECEEF1",
           border: "#E2E4E8",
           line: "rgba(0, 0, 0, 0.08)",
-          ink: "#2D374E",        // Primary: #2D374E
+          ink: "#142C4C",        // Primary: #142C4C
           charcoal: "#3C3C3B",   // Secondary: #3C3C3B
           muted: "#878787",      // Other Secondary: #878787
           light: "#878787",
           faint: "#A5ADB8",
-          accent: "#2D374E",     // Vibrant industrial architectural electric blue
+          accent: "#142C4C",     // Vibrant industrial architectural electric blue
         },
         gold: {
           DEFAULT: "#C59B27",
