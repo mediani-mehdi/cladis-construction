@@ -74,10 +74,11 @@ export default function EntreprisePage() {
             <figure className="min-w-0 lg:col-span-5">
               <div className="relative aspect-[4/3] overflow-hidden bg-swiss-stone sm:aspect-[5/4] lg:aspect-[4/5]">
                 <Image
-                  src="/images/about-building-a03b650d.webp"
-                  alt="Architecture contemporaine d'un bâtiment aux façades métalliques et vitrées"
+                  src="/images/about-company-woodland-d9a52e11.webp"
+                  alt="Bâtiment contemporain en bardage métallique anthracite, encadrement bois et vitrages éclairés dans un environnement boisé"
                   fill
                   priority
+                  quality={90}
                   sizes="(min-width: 1280px) 480px, (min-width: 1024px) 42vw, 100vw"
                   className="object-cover object-center"
                 />
