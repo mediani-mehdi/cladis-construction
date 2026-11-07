@@ -7,7 +7,7 @@ import Navbar from "@/components/HomeNavigation";
 import Footer from "@/components/HomeFooter";
 import CatalogueModal from "@/components/CatalogueModal";
 import { METIERS } from "@/lib/metiers-data";
-import { ArrowUpRight, Download } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 const focusStyle = "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary";
 
@@ -42,19 +42,6 @@ export default function MetiersPage() {
                 CLADIS CONSTRUCTION associe six expertises pour concevoir
                 et réaliser une enveloppe à la hauteur de votre projet.
               </p>
-              <div className="mt-8 flex flex-wrap items-center gap-5">
-                <button type="button" onClick={() => setCatalogueOpen(true)} className={`inline-flex min-h-12 items-center gap-2 border-b border-primary/30 py-2 text-xs font-semibold text-primary transition-colors hover:border-primary ${focusStyle}`}>
-                  <Download className="h-4 w-4" aria-hidden="true" />
-                  Le catalogue 2026
-                </button>
-              </div>
-              <div className="mt-9 flex items-start gap-3 border-t border-primary/15 pt-5">
-                <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/55" aria-hidden="true" />
-                <p className="text-xs leading-relaxed text-primary/65">
-                  Construction neuve & rénovation<br />
-                  Chambéry · Savoie · Auvergne-Rhône-Alpes
-                </p>
-              </div>
             </div>
 
             <div className="relative lg:col-span-6">
