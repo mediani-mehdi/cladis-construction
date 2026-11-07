@@ -1,4 +1,5 @@
 .asset-sources/
+public/New-hero/
 extracted_assets/
 output/
 scraped_*.html

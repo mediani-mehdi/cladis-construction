@@ -1,16 +1,15 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
 import { ArrowDown, ArrowUpRight, Mouse } from "lucide-react";
 import ScrollFrameSequence from "@/components/ScrollFrameSequence";
 
 export default function HomeHero() {
   const sectionRef = useRef<HTMLElement>(null);
   const reducedMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end end"] });
-  const inset = useTransform(scrollYProgress, [0.45, 1], ["0%", "3%"]);
-  const radius = useTransform(scrollYProgress, [0.45, 1], [0, 24]);
+  const { scrollYProgress: rawProgress } = useScroll({ target: sectionRef, offset: ["start start", "end end"] });
+  const scrollYProgress = useSpring(rawProgress, { stiffness: 100, damping: 26, mass: 0.5, restDelta: 0.00005 });
   const titleY = useTransform(scrollYProgress, [0, 0.65], [0, -160]);
   const titleOpacity = useTransform(scrollYProgress, [0, 0.4, 0.65], [1, 1, 0]);
   const statementOpacity = useTransform(scrollYProgress, [0.5, 0.85], [0, 1]);
@@ -19,7 +18,7 @@ export default function HomeHero() {
   return (
     <section ref={sectionRef} className="v2-hero" aria-label="CLADIS Construction, l’enveloppe de vos ambitions">
       <div className="v2-hero-sticky">
-        <motion.div className="v2-hero-film" style={{ inset: reducedMotion ? 0 : inset, borderRadius: reducedMotion ? 0 : radius }}>
+        <div className="v2-hero-film">
           <div className="v2-hero-media"><ScrollFrameSequence progress={scrollYProgress} reducedMotion={!!reducedMotion} /></div>
           <div className="v2-hero-shade" />
           <div className="v2-hero-grid" aria-hidden="true" />
@@ -40,7 +39,7 @@ export default function HomeHero() {
             <div className="v2-hero-location"><span>45°33′59.0″N  5°55′12.0″E</span><b>CHAMBÉRY · AUVERGNE-RHÔNE-ALPES</b></div>
             <span className="v2-sequence-hint v2-glass"><Mouse size={15} /><span>LE SCROLL DONNE VIE</span></span>
           </div>
-        </motion.div>
+        </div>
         <motion.div className="v2-hero-progress" style={{ scaleX: scrollYProgress }} aria-hidden="true" />
       </div>
     </section>
