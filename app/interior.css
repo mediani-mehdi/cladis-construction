@@ -60,6 +60,30 @@
 .v2-interior-hero-caption { width: 100%; margin-top: auto; padding: 21px 25px; border-radius: 9px; display: flex; align-items: center; justify-content: space-between; gap: 24px; font-family: var(--font-montserrat),sans-serif; font-size: 8px; letter-spacing: .14em; color: #e5eeff; }
 .v2-interior-hero-caption svg { flex-shrink: 0; }
 
+.v2-methodology-hero { padding-block: 150px 75px; background: radial-gradient(ellipse at 90% 0%,#dce9fa,#f5f7fb 65%); }
+.v2-methodology-breadcrumb { display: flex; align-items: center; gap: 12px; font-size: 11px; color: #63758c; margin-bottom: 45px; }
+.v2-methodology-breadcrumb [aria-current=page] { color: #173b68; }
+.v2-methodology-breadcrumb a:hover { color: #173b68; }
+.v2-methodology-intro { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 65px; }
+.v2-methodology-copy > .v2-eyebrow { color: #557ca9; text-transform: uppercase; }
+.v2-methodology-copy h1 { margin-top: 26px; font-size: clamp(44px,5.1vw,78px); line-height: 1.12; letter-spacing: -.05em; color: #142c4c; }
+.v2-methodology-copy h1 em { color: #557ca9; }
+.v2-interior .v2-page-content .v2-methodology-copy p { margin-top: 30px; padding-top: 27px; border-top: 1px solid #c7d7eb; max-width: 560px; font-size: 14px; line-height: 1.9; color: #63758c; }
+.v2-methodology-visual { position: relative; height: 510px; overflow: hidden; border: 7px solid #ffffffa6; border-radius: 16px; box-shadow: 0 20px 60px #173b6810; }
+.v2-methodology-visual img { object-position: center; }
+@media (max-width: 1000px) {
+  .v2-methodology-intro { grid-template-columns: 1fr; gap: 35px; }
+  .v2-methodology-copy h1 { font-size: clamp(44px,7.5vw,68px); }
+  .v2-methodology-visual { height: 400px; }
+}
+@media (max-width: 700px) {
+  .v2-methodology-hero { padding-block: 115px 45px; }
+  .v2-methodology-breadcrumb { margin-bottom: 35px; }
+  .v2-methodology-copy h1 { font-size: clamp(38px,10vw,58px); margin-top: 20px; }
+  .v2-interior .v2-page-content .v2-methodology-copy p { font-size: 13px; padding-top: 22px; margin-top: 25px; }
+  .v2-methodology-visual { height: 300px; border-width: 5px; border-radius: 12px; }
+}
+
 /* Editorial company and expertise introductions. */
 .v2-interior .v2-editorial-hero { padding-top: 155px; padding-bottom: 75px; background: radial-gradient(ellipse at 80% 20%,#d8e6f9 0%,#edf3fb 45%,#f5f7fb 80%); }
 .v2-editorial-hero h1 { font-size: clamp(46px,5.8vw,88px); font-weight: 500; line-height: 1.1; letter-spacing: -.05em; }

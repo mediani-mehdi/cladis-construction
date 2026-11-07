@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, ArrowRight, ArrowUpRight, Check } from "lucide-react";
+import { ArrowDown, Check } from "lucide-react";
 import InformationPageLayout from "@/components/InformationPageLayout";
-import InteriorPageHero from "@/components/InteriorPageHero";
 import { METHODOLOGY_PHASES } from "@/lib/methodology-data";
 
 export const metadata: Metadata = {
@@ -16,18 +15,23 @@ const focusStyle = "focus-visible:outline focus-visible:outline-2 focus-visible:
 export default function MethodologiePage() {
   return (
     <InformationPageLayout>
-      <InteriorPageHero
-        id="methodologie"
-        label="Méthodologie"
-        eyebrow="De la première étude à la réception"
-        title="Une méthode claire."
-        subtitle="Un projet maîtrisé."
-        description="Un ouvrage réussi se prépare à chaque étape. CLADIS CONSTRUCTION organise les études, les échanges techniques et la réalisation autour d'un parcours en quatre phases, pour relier vos objectifs aux conditions concrètes du chantier."
-        image="/images/methodology-hero-69ff522c.webp"
-        imageAlt="Ingénieur examinant les plans d'un bâtiment industriel devant sa charpente métallique et son bardage"
-        caption="Étudier · Concevoir · Réaliser · Transmettre"
-        action={{ href: "#phases", label: "Découvrir les quatre phases" }}
-      />
+      <section aria-labelledby="methodologie-heading" className="v2-methodology-hero">
+        <div className="v2-container">
+          <nav aria-label="Fil d’Ariane" className="v2-methodology-breadcrumb">
+            <Link href="/">Accueil</Link><span aria-hidden="true">/</span><span aria-current="page">Notre méthode</span>
+          </nav>
+          <div className="v2-methodology-intro">
+            <div className="v2-methodology-copy">
+              <span className="v2-eyebrow">De la première étude à la réception</span>
+              <h1 id="methodologie-heading">Une méthode claire.<br /><em>Un projet maîtrisé.</em></h1>
+              <p>Un ouvrage réussi se prépare à chaque étape. CLADIS CONSTRUCTION organise les études, les échanges techniques et la réalisation autour d'un parcours en quatre phases, pour relier vos objectifs aux conditions concrètes du chantier.</p>
+            </div>
+            <div className="v2-methodology-visual">
+              <Image src="/images/methodology-hero-69ff522c.webp" alt="Ingénieur examinant les plans d'un bâtiment industriel devant sa charpente métallique et son bardage" fill priority quality={90} sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section id="phases" aria-labelledby="phases-heading" className="scroll-mt-32 py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -101,12 +105,6 @@ export default function MethodologiePage() {
         </div>
       </section>
 
-      <section aria-labelledby="methodologie-contact-heading" className="py-16 sm:py-20">
-        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-7 px-4 sm:px-6 lg:flex-row lg:items-center lg:px-8">
-          <div><h2 id="methodologie-contact-heading" className="font-sans text-2xl font-bold tracking-tight text-primary sm:text-3xl">Commençons par votre projet.</h2><Link href="/alliance" className={`mt-4 inline-flex items-center gap-3 text-xs font-semibold text-primary/65 hover:text-primary ${focusStyle}`}>Découvrez les acteurs de notre alliance<ArrowRight className="h-3.5 w-3.5" aria-hidden="true" /></Link></div>
-          <Link href="/#devis" className={`inline-flex min-h-12 items-center gap-6 bg-primary px-6 py-4 font-secondary text-[10px] font-bold uppercase tracking-wider text-white hover:bg-primary/90 ${focusStyle}`}>Échanger avec notre équipe<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
-        </div>
-      </section>
     </InformationPageLayout>
   );
 }
