@@ -6,7 +6,7 @@ import Link from "next/link";
 import Navbar from "@/components/HomeNavigation";
 import Footer from "@/components/HomeFooter";
 import CatalogueModal from "@/components/CatalogueModal";
-import { ArrowDown, ArrowRight, ArrowUpRight, Download } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Download } from "lucide-react";
 
 const values = [
   {
@@ -69,16 +69,6 @@ export default function EntreprisePage() {
                   Issue du milieu de la construction, CLADIS CONSTRUCTION a été pensée dès sa création comme une entité capable de répondre aux enjeux techniques, économiques et organisationnels des opérations d'envergure, dans les domaines de l'enveloppe du bâtiment et de la construction métallique.
                 </p>
               </div>
-              <div className="mt-8 flex flex-wrap items-center gap-5 sm:mt-10">
-                <Link href="/metiers" className={`inline-flex min-h-12 items-center justify-between gap-6 bg-primary px-6 py-4 font-secondary text-[10px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-primary/90 ${focusStyle}`}>
-                  Découvrir nos métiers
-                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
-                <a href="#mission-vision" className={`inline-flex min-h-12 items-center gap-3 border-b border-primary/30 py-2 text-xs font-semibold text-primary transition-colors hover:border-primary ${focusStyle}`}>
-                  Notre mission &amp; notre vision
-                  <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
-                </a>
-              </div>
             </div>
 
             <figure className="min-w-0 lg:col-span-5">
@@ -104,14 +94,17 @@ export default function EntreprisePage() {
         </div>
       </section>
 
-      <section aria-labelledby="ambition-heading" className="bg-primary py-14 sm:py-20">
-        <div className="mx-auto grid max-w-7xl gap-6 px-4 sm:px-6 lg:grid-cols-12 lg:gap-12 lg:px-8">
-          <h2 id="ambition-heading" className="font-secondary text-[10px] font-semibold uppercase leading-relaxed tracking-[0.2em] text-white/60 lg:col-span-3 lg:pt-2">
-            Notre ambition est claire :
-          </h2>
-          <p className="max-w-4xl font-sans text-2xl font-normal leading-snug tracking-tight text-white sm:text-3xl lg:col-span-9 lg:text-4xl">
-            <strong className="font-semibold">Concevoir, structurer et piloter</strong> des projets complexes avec rigueur, précision et exigence, en apportant des solutions fiables, durables et performantes.
-          </p>
+      <section aria-labelledby="ambition-heading" className="v2-company-ambition">
+        <div className="v2-container">
+          <div className="v2-ambition-panel">
+            <div className="v2-ambition-label">
+              <ArrowUpRight size={24} strokeWidth={1.25} aria-hidden="true" />
+              <h2 id="ambition-heading" className="font-secondary">Notre ambition est claire :</h2>
+            </div>
+            <p className="v2-ambition-copy">
+              <strong>Concevoir, structurer et piloter</strong> des projets complexes avec rigueur, précision et exigence, en apportant des solutions fiables, durables et performantes.
+            </p>
+          </div>
         </div>
       </section>
 
