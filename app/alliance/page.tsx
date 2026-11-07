@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, ArrowRight, ArrowUpRight, Check } from "lucide-react";
+import { ArrowDown, Check } from "lucide-react";
 import InformationPageLayout from "@/components/InformationPageLayout";
-import InteriorPageHero from "@/components/InteriorPageHero";
 import { ALLIANCE_PILLARS } from "@/lib/alliance-data";
 
 export const metadata: Metadata = {
@@ -16,19 +15,23 @@ const focusStyle = "focus-visible:outline focus-visible:outline-2 focus-visible:
 export default function AlliancePage() {
   return (
     <InformationPageLayout>
-      <InteriorPageHero
-        id="alliance"
-        label="L’Alliance"
-        eyebrow="Des compétences qui se complètent"
-        title="Trois forces réunies."
-        subtitle="Une même direction."
-        description="Un projet d'enveloppe mobilise des études, des matériaux et des équipes de terrain. Notre alliance relie ces compétences pour préparer les interventions, partager les décisions et accompagner chaque opération avec une organisation cohérente."
-        image="/images/alliance-handshake-hq-ff7ca6d9.webp"
-        imageQuality={90}
-        imageAlt="Deux professionnels de la construction échangeant sur un chantier"
-        caption="CLADIS CONSTRUCTION · BUILDING SERVICES · FILIALE D'ACHAT"
-        action={{ href: "#nos-complementarites", label: "Découvrir notre organisation" }}
-      />
+      <section aria-labelledby="alliance-heading" className="v2-methodology-hero v2-alliance-hero">
+        <div className="v2-container">
+          <nav aria-label="Fil d’Ariane" className="v2-methodology-breadcrumb">
+            <Link href="/">Accueil</Link><span aria-hidden="true">/</span><span aria-current="page">L’Alliance</span>
+          </nav>
+          <div className="v2-methodology-intro">
+            <div className="v2-methodology-copy">
+              <span className="v2-eyebrow">Des compétences qui se complètent</span>
+              <h1 id="alliance-heading">Trois forces réunies.<br /><em>Une même direction.</em></h1>
+              <p>Un projet d'enveloppe mobilise des études, des matériaux et des équipes de terrain. Notre alliance relie ces compétences pour préparer les interventions, partager les décisions et accompagner chaque opération avec une organisation cohérente.</p>
+            </div>
+            <div className="v2-methodology-visual">
+              <Image src="/images/alliance-handshake-hq-ff7ca6d9.webp" alt="Deux professionnels de la construction échangeant sur un chantier" fill priority quality={90} sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section id="nos-complementarites" aria-labelledby="alliance-actors-heading" className="scroll-mt-32 py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -82,12 +85,6 @@ export default function AlliancePage() {
         </div>
       </section>
 
-      <section aria-labelledby="alliance-contact-heading" className="py-16 sm:py-20">
-        <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-12 lg:items-center lg:px-8">
-          <div className="lg:col-span-7"><h2 id="alliance-contact-heading" className="font-sans text-2xl font-bold tracking-tight text-primary sm:text-3xl">Des compétences réunies pour votre projet.</h2><Link href="/methodologie" className={`mt-4 inline-flex items-center gap-3 text-xs font-semibold text-primary/65 hover:text-primary ${focusStyle}`}>Parcourez notre méthode en quatre phases<ArrowRight className="h-3.5 w-3.5" aria-hidden="true" /></Link></div>
-          <div className="flex flex-wrap gap-4 lg:col-span-5 lg:justify-end"><Link href="/realisations" className={`inline-flex min-h-12 items-center gap-4 border border-primary/25 px-5 py-4 text-xs font-semibold text-primary hover:bg-primary/5 ${focusStyle}`}>Nos réalisations<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link><Link href="/#devis" className={`inline-flex min-h-12 items-center gap-4 bg-primary px-5 py-4 text-xs font-semibold text-white hover:bg-primary/90 ${focusStyle}`}>Parlons de votre projet<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link></div>
-        </div>
-      </section>
     </InformationPageLayout>
   );
 }
