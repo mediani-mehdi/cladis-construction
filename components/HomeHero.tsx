@@ -1,10 +1,12 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
-import { ArrowDown, ArrowUpRight, Mouse } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Linkedin, Mouse } from "lucide-react";
 import ScrollFrameSequence from "@/components/ScrollFrameSequence";
 import { HERO_SLIDES } from "@/lib/hero-content";
+import { SOCIAL_LINKS } from "@/lib/social-links";
 
 export default function HomeHero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -39,7 +41,10 @@ export default function HomeHero() {
           </motion.div>}
           <div className="v2-hero-bottom">
             <a href="#savoir-faire" className="v2-scroll-link"><span className="v2-round-icon"><ArrowDown size={17} /></span><span>FAITES DÉFILER<br /><b>Découvrez la différence Cladis</b></span></a>
-            <div className="v2-hero-location"><span>45°33′59.0″N  5°55′12.0″E</span><b>CHAMBÉRY · AUVERGNE-RHÔNE-ALPES</b></div>
+            <nav className="v2-hero-social" aria-label="Retrouvez Cladis sur les réseaux sociaux">
+              <a href={SOCIAL_LINKS.whatsapp} target="_blank" rel="noopener noreferrer" className="v2-hero-social-link v2-glass" aria-label="Contacter Cladis sur WhatsApp" title="WhatsApp"><Image src="/icons/whatsapp.svg" alt="" width={20} height={20} aria-hidden="true" /></a>
+              <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="v2-hero-social-link v2-glass" aria-label="CLADIS Construction sur LinkedIn" title="LinkedIn"><Linkedin size={20} aria-hidden="true" /></a>
+            </nav>
             <span className="v2-sequence-hint v2-glass"><Mouse size={15} /><span>LE SCROLL DONNE VIE</span></span>
           </div>
         </div>
