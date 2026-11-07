@@ -39,28 +39,26 @@ export default function AlliancePage() {
             <div className="lg:col-span-7"><span className="mb-3 block font-secondary text-[10px] font-semibold uppercase tracking-[0.2em] text-primary/55">Une chaîne de compétences</span><h2 id="alliance-actors-heading" className="font-sans text-3xl font-bold leading-tight tracking-tight text-primary sm:text-4xl">À chaque rôle,<br /><span className="font-normal">une expertise dédiée.</span></h2></div>
             <p className="max-w-md text-sm leading-relaxed text-secondary lg:col-span-5">CLADIS CONSTRUCTION coordonne la vision d'ensemble. Building Services accompagne la réalisation sur site. La filiale d'achat prépare les approvisionnements en lien avec les besoins du projet.</p>
           </div>
-          <nav aria-label="Les trois acteurs de l'alliance" className="grid grid-cols-1 border-l border-t border-primary/15 md:grid-cols-3">
-            {ALLIANCE_PILLARS.map((pillar) => <a key={pillar.slug} href={`#${pillar.slug}`} className={`group flex min-h-28 flex-col justify-between gap-4 border-b border-r border-primary/15 p-5 hover:bg-[#e9eff7] ${focusStyle}`}><span className="font-secondary text-[9px] uppercase tracking-wider text-primary/55">{pillar.num} / {pillar.role}</span><span className="flex items-center justify-between gap-3 text-sm font-bold text-primary">{pillar.name}<ArrowDown className="h-4 w-4 shrink-0 text-primary/55 transition-transform group-hover:translate-y-0.5 motion-reduce:transform-none" aria-hidden="true" /></span></a>)}
+          <nav aria-label="Les trois acteurs de l'alliance" className="v2-alliance-index">
+            {ALLIANCE_PILLARS.map((pillar) => <a key={pillar.slug} href={`#${pillar.slug}`} className={focusStyle}><span className="v2-alliance-index-number">{pillar.num}</span><span className="v2-alliance-index-label"><strong>{pillar.role}</strong><small>{pillar.name}</small></span><ArrowDown size={16} aria-hidden="true" /></a>)}
           </nav>
 
-          <div className="mt-12 sm:mt-16">
-            {ALLIANCE_PILLARS.map((pillar, index) => (
-              <article key={pillar.slug} id={pillar.slug} aria-labelledby={`actor-heading-${pillar.num}`} className="scroll-mt-36 border-t border-primary/15 py-12 last:pb-0 sm:py-16">
-                <div className="grid items-start gap-8 lg:grid-cols-12 lg:gap-14">
-                  <div className={`min-w-0 lg:col-span-5 ${index % 2 === 1 ? "lg:order-2" : ""}`}>
-                    <div className="relative aspect-[4/3] overflow-hidden bg-swiss-stone">
-                      <Image src={pillar.image} alt={pillar.imageAlt} fill sizes="(min-width: 1280px) 480px, (min-width: 1024px) 42vw, 100vw" className="object-cover object-center" />
-                      <span className="absolute bottom-5 left-5 bg-white px-3 py-2 font-secondary text-[9px] font-semibold uppercase tracking-widest text-primary">{pillar.badge}</span>
-                    </div>
-                    <p className="mt-5 border-l-2 border-primary/35 pl-4 text-sm font-medium leading-relaxed text-primary">{pillar.benefit}</p>
-                  </div>
-                  <div className={`lg:col-span-7 ${index % 2 === 1 ? "lg:order-1" : ""}`}>
-                    <span className="mb-4 block font-secondary text-[10px] font-semibold uppercase tracking-widest text-primary/55">{pillar.num} / {pillar.role}</span>
-                    <h3 id={`actor-heading-${pillar.num}`} className="font-sans text-3xl font-bold tracking-tight text-primary sm:text-4xl">{pillar.name}</h3>
-                    <p className="mb-5 mt-3 text-base font-medium leading-relaxed text-primary/70">{pillar.tagline}</p>
-                    <div className="space-y-4 text-sm leading-relaxed text-secondary">{pillar.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
-                    <ul className="mt-6 grid gap-x-5 gap-y-3 border-t border-primary/10 pt-5 sm:grid-cols-2">{pillar.highlights.map((highlight) => <li key={highlight} className="flex items-start gap-2.5 text-xs leading-relaxed text-primary"><Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary/60" aria-hidden="true" /><span>{highlight}</span></li>)}</ul>
-                  </div>
+          <div className="v2-actor-panels">
+            {ALLIANCE_PILLARS.map((pillar) => (
+              <article key={pillar.slug} id={pillar.slug} aria-labelledby={`actor-heading-${pillar.num}`} className="v2-actor-panel">
+                <div className="v2-actor-image">
+                  <Image src={pillar.image} alt={pillar.imageAlt} fill quality={90} sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover object-center" />
+                  <span className="v2-actor-badge v2-glass">{pillar.badge}</span>
+                  <div className="v2-actor-benefit"><p>{pillar.benefit}</p></div>
+                </div>
+                <div className="v2-actor-copy">
+                  <header className="v2-actor-header">
+                    <span className="v2-actor-number" aria-hidden="true">{pillar.num}</span>
+                    <div><span className="v2-eyebrow">{pillar.role}</span><h3 id={`actor-heading-${pillar.num}`}>{pillar.name}</h3></div>
+                  </header>
+                  <p className="v2-actor-intro">{pillar.tagline}</p>
+                  <div className="v2-actor-paragraphs">{pillar.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
+                  <ul className="v2-actor-highlights">{pillar.highlights.map((highlight) => <li key={highlight}><Check size={15} strokeWidth={1.5} aria-hidden="true" /><span>{highlight}</span></li>)}</ul>
                 </div>
               </article>
             ))}
