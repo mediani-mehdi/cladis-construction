@@ -1,18 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import ExperienceSection from "@/components/ExperienceSection";
-import AboutCompany from "@/components/AboutCompany";
-import CoreServices from "@/components/CoreServices";
-import Methodology from "@/components/Methodology";
-import AllianceSection from "@/components/AllianceSection";
-import ProjectShowcase from "@/components/ProjectShowcase";
+import HomeNavigation from "@/components/HomeNavigation";
+import HomeHero from "@/components/HomeHero";
+import HomeSections from "@/components/HomeSections";
 import EnvelopeConfigurator from "@/components/EnvelopeConfigurator";
 import QuotationForm from "@/components/QuotationForm";
 import CatalogueModal from "@/components/CatalogueModal";
-import Footer from "@/components/Footer";
+import HomeFooter from "@/components/HomeFooter";
+import "./home.css";
 
 export default function Home() {
   const [catalogueOpen, setCatalogueOpen] = useState(false);
@@ -35,39 +31,19 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-white text-swiss-ink selection:bg-black selection:text-white antialiased">
-      {/* Floating Glassmorphism Navbar with Scroll Progress */}
-      <Navbar onOpenCatalogue={() => setCatalogueOpen(true)} />
-
-      {/* Swiss Editorial Hero Section */}
-      <Hero />
-
-      {/* Experience and capabilities */}
-      <ExperienceSection />
-
-      {/* Qui sommes-nous / L'Entreprise */}
-      <AboutCompany />
-
-      {/* Nos Métiers / Core Services (Modular Grid + Technical Sheets) */}
-      <CoreServices />
-
-      {/* Project Methodology / 4-Step Swiss Protocol */}
-      <Methodology />
-
-      {/* Strategic Alliance Section (Cladis • Building Services • Filiale d'Achat) */}
-      <AllianceSection />
-
-      {/* Selected Portfolio / Project Showcase with Filter Tabs */}
-      <ProjectShowcase />
+    <main className="v2-home">
+      <HomeNavigation onOpenCatalogue={() => setCatalogueOpen(true)} />
+      <HomeHero />
+      <HomeSections />
 
       {/* Interactive Envelope Configurator */}
-      <EnvelopeConfigurator onApplyConfig={handleApplyConfig} />
+      <div className="v2-tools"><EnvelopeConfigurator onApplyConfig={handleApplyConfig} /></div>
 
       {/* Interactive Quotation Form (Demande de Devis & Coordinates) */}
-      <QuotationForm preFillData={configPreFill} />
+      <div className="v2-consultation"><QuotationForm preFillData={configPreFill} /></div>
 
       {/* Minimal Swiss Footer */}
-      <Footer onOpenCatalogue={() => setCatalogueOpen(true)} />
+      <HomeFooter onOpenCatalogue={() => setCatalogueOpen(true)} />
 
       {/* Official Catalogue 2026 Modal */}
       <CatalogueModal
