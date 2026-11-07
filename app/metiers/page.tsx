@@ -7,7 +7,6 @@ import Navbar from "@/components/HomeNavigation";
 import Footer from "@/components/HomeFooter";
 import CatalogueModal from "@/components/CatalogueModal";
 import { METIERS } from "@/lib/metiers-data";
-import { ArrowUpRight } from "lucide-react";
 
 const focusStyle = "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary";
 
@@ -96,9 +95,6 @@ export default function MetiersPage() {
                     <span className="absolute left-5 top-5 inline-flex items-baseline gap-2 bg-white px-3 py-2 text-primary sm:left-6 sm:top-6">
                       <span className="font-secondary text-[9px] uppercase tracking-widest text-primary/50">Métier</span>
                       <span className="font-secondary text-xs font-semibold">{metier.num}</span>
-                    </span>
-                    <span className="absolute bottom-5 right-5 flex h-11 w-11 items-center justify-center bg-white text-primary transition-colors group-hover:bg-primary group-hover:text-white sm:bottom-6 sm:right-6">
-                      <ArrowUpRight className="h-5 w-5" aria-hidden="true" />
                     </span>
                   </div>
                   <div className="flex flex-1 flex-col pt-6">
