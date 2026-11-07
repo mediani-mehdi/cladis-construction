@@ -44,7 +44,7 @@ export default function HomeNavigation({ onOpenCatalogue }: { onOpenCatalogue: (
       <nav aria-label="Navigation principale" className="v2-desktop-nav">
         {[
           { href: "/l-entreprise", label: "L’entreprise" },
-          { href: "/metiers", label: "Nos expertises" },
+          { href: "/metiers", label: "Nos métiers" },
           { href: "/methodologie", label: "Notre méthode" },
           { href: "/alliance", label: "L’alliance" },
           { href: "/realisations", label: "Réalisations" },
