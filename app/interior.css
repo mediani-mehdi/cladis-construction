@@ -1,0 +1,154 @@
+/* The same architectural palette, glass, spacing and typography on every route. */
+.v2-interior { min-height: 100svh; }
+.v2-interior .v2-page-content { isolation: isolate; }
+.v2-interior .v2-page-content section[id],
+.v2-interior :is(#devis-lot, #devis-projet, article[id]) { scroll-margin-top: 125px; }
+.v2-desktop-nav a[aria-current=page] { box-shadow: 0 1px currentColor; }
+.v2-interior .v2-page-content > section > .max-w-7xl,
+.v2-interior .v2-detail > section > .max-w-7xl { width: min(1376px, calc(100% - 112px)); max-width: none; margin-inline: auto; padding-inline: 0; }
+.v2-interior .v2-page-content :is(h2,h3,h4):not(.font-secondary) { font-weight: 500; letter-spacing: -.035em; }
+.v2-interior .v2-page-content h2:not(.font-secondary) { font-size: clamp(32px,3.8vw,58px); line-height: 1.15; }
+.v2-interior .v2-page-content h2 > span.font-normal { font-family: Georgia, 'Times New Roman', serif; font-style: italic; color: #557ca9; }
+.v2-interior .v2-page-content h2.text-white > span { color: #b2cef2; }
+.v2-interior .v2-page-content :is(h3,h4).font-bold { font-weight: 500; }
+.v2-interior .v2-page-content .font-mono { font-family: var(--font-montserrat),sans-serif; }
+.v2-interior .v2-page-content p { line-height: 1.85; }
+.v2-interior .v2-page-content section.bg-white { background: var(--v2-paper); }
+.v2-interior .v2-page-content section.bg-neutral-50 { background: #e9eff7; }
+.v2-interior .v2-page-content :is(section,div).bg-primary { background: #102e56; color: #f0f5ff; }
+.v2-interior .v2-page-content p.text-secondary { color: var(--v2-muted); }
+.v2-interior .v2-page-content div.bg-black { background-color: #102e56; }
+.v2-interior .v2-page-content :is(a,button).bg-primary,
+.v2-interior .v2-page-content :is(a,button).bg-construction-blue { background: #173b68; border-radius: 6px; min-height: 50px; text-transform: none; letter-spacing: 0; font-family: var(--font-cairo),sans-serif; font-size: 12px; font-weight: 600; transition: background .25s,transform .25s; }
+.v2-interior .v2-page-content :is(a,button).bg-primary:hover,
+.v2-interior .v2-page-content :is(a,button).bg-construction-blue:hover { background: #24558e; transform: translateY(-2px); }
+.v2-interior .v2-page-content .relative.overflow-hidden { border-radius: 10px; }
+.v2-interior .v2-page-content .relative > span[class*="bg-white"] { background: #f5f9ffbd; border: 1px solid #ffffff80; border-radius: 7px; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); box-shadow: inset 0 1px #ffffff70; }
+.v2-interior .v2-page-content :is(div,article,a).border.bg-white,
+.v2-interior .v2-page-content div.border.bg-neutral-50,
+.v2-interior .v2-page-content [role=region].border { border-radius: 12px; border-color: #cbd9e9; background: #ffffffb3; box-shadow: 0 12px 36px #173b6805; }
+.v2-interior .v2-page-content :is(a,button)[class*="border-white/"][class*="bg-white/"] { border-radius: 7px; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+.v2-interior .v2-page-content table { font-family: var(--font-cairo),sans-serif; }
+.v2-interior .v2-page-content :is(th,td) { padding: 20px; border-color: #d3dfed; }
+.v2-interior .v2-page-content th { background: #e9eff7; color: #173b68; font-family: var(--font-cairo),sans-serif; font-weight: 600; }
+.v2-interior .v2-page-content td { background: #ffffff85; color: #506984; }
+.v2-interior .v2-page-content details { border-radius: 10px; border: 1px solid #d3dfed; background: #ffffffa6; }
+.v2-interior .v2-page-content details[open] { background: #fff; }
+.v2-interior .v2-page-content summary { min-height: 56px; font-family: var(--font-cairo),sans-serif; text-transform: none; }
+.v2-interior .v2-page-content :is(input:not([type=checkbox]),textarea,select) { border-radius: 6px; }
+.v2-interior .v2-page-content [class*=shadow-swiss] { border-radius: 12px; }
+.v2-interior .v2-page-content [id^=devis-] #contact { background: #e5edf8; }
+.v2-interior .v2-page-content [id^=devis-] #contact .shadow-swiss-md { background: #ffffffbd; border-color: #fff; backdrop-filter: blur(18px); }
+.v2-interior .v2-page-content [id^=devis-] #contact .font-serif { font-family: Georgia, 'Times New Roman',serif; font-weight: 400; color: #557ca9; }
+.v2-interior [role=dialog] h2 { font-size: 24px; }
+
+/* Full-width photographic chapter openings, sharing the homepage's treatment. */
+.v2-interior-hero { position: relative; min-height: 780px; display: flex; align-items: stretch; background: #102e56; color: white; overflow: hidden; }
+.v2-interior-hero-image { position: absolute; inset: 0; }
+.v2-interior-hero-image img { object-position: center; }
+.v2-interior-hero-shade { position: absolute; inset: 0; background: linear-gradient(90deg,#081d3be6,#102e5680 65%,#102e5626),linear-gradient(0deg,#0b2342c7,transparent 55%); }
+.v2-interior-hero-content { position: relative; padding-top: 155px; padding-bottom: 38px; display: flex; flex-direction: column; align-items: start; }
+.v2-breadcrumb { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; font-size: 11px; color: #d1dff4; }
+.v2-breadcrumb [aria-current=page] { color: white; }
+.v2-breadcrumb a:hover { color: #fff; }
+.v2-interior-hero-copy { padding: 55px 0 45px; width: 100%; }
+.v2-interior-hero-copy > .v2-eyebrow { text-transform: uppercase; color: #d0e2fc; }
+.v2-interior-hero h1 { font-size: clamp(48px,6.5vw,100px); line-height: 1.08; letter-spacing: -.05em; margin-top: 22px; max-width: 1120px; color: white; }
+.v2-interior-hero h1 em { color: #c4dcfa; }
+.v2-interior-hero-copy > p { max-width: 640px; font-size: 14px; color: #e0e9f7; margin-top: 28px; }
+.v2-interior-hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 30px; margin-top: 32px; }
+.v2-interior-hero-caption { width: 100%; margin-top: auto; padding: 21px 25px; border-radius: 9px; display: flex; align-items: center; justify-content: space-between; gap: 24px; font-family: var(--font-montserrat),sans-serif; font-size: 8px; letter-spacing: .14em; color: #e5eeff; }
+.v2-interior-hero-caption svg { flex-shrink: 0; }
+
+/* Editorial company and expertise introductions. */
+.v2-interior .v2-editorial-hero { padding-top: 155px; padding-bottom: 75px; background: radial-gradient(ellipse at 80% 20%,#d8e6f9 0%,#edf3fb 45%,#f5f7fb 80%); }
+.v2-editorial-hero h1 { font-size: clamp(46px,5.8vw,88px); font-weight: 500; line-height: 1.1; letter-spacing: -.05em; }
+.v2-editorial-hero h1 > :is(span,em) { font-family: Georgia,'Times New Roman',serif; color: #557ca9; font-style: italic; font-weight: 400; }
+.v2-editorial-hero figure figcaption { font-size: 8px; line-height: 1.8; }
+.v2-editorial-hero .relative[class*="-mt-"] { border: 1px solid #ffffff55; border-radius: 10px; background: #102e56e8; backdrop-filter: blur(22px); box-shadow: 0 15px 40px #102e5626; }
+.v2-editorial-hero nav[aria-label="Accès direct à nos métiers"],
+.v2-interior nav[aria-label="Les quatre phases du projet"],
+.v2-interior nav[aria-label="Les trois acteurs de l'alliance"] { gap: 12px; border: 0; }
+.v2-editorial-hero nav[aria-label="Accès direct à nos métiers"] a,
+.v2-interior nav[aria-label="Les quatre phases du projet"] a,
+.v2-interior nav[aria-label="Les trois acteurs de l'alliance"] a { border: 1px solid #cedced; background: #ffffff80; border-radius: 10px; padding: 22px; min-height: 125px; transition: background .25s,transform .25s; }
+.v2-editorial-hero nav[aria-label="Accès direct à nos métiers"] a:hover,
+.v2-interior nav[aria-label="Les quatre phases du projet"] a:hover,
+.v2-interior nav[aria-label="Les trois acteurs de l'alliance"] a:hover { transform: translateY(-3px); background: white; }
+.v2-interior #expertises article { padding-bottom: 10px; }
+.v2-interior #expertises article > a > div:last-child { padding: 25px 0; }
+.v2-interior #expertises article h3 { font-size: clamp(24px,2.6vw,36px); }
+.v2-interior #phases article, .v2-interior #nos-complementarites article { padding-block: 70px; }
+.v2-interior #phases article .bg-\[\#e9eff7\] { border: 1px solid #d0ddec; border-radius: 10px; margin-top: 16px; background: #ffffff99; }
+.v2-interior #mission-vision article { padding-top: 30px; }
+.v2-interior #mission-vision h2 { font-family: Georgia,'Times New Roman',serif; font-style: italic; color: #557ca9; }
+
+/* Every project and métier detail retains its technical sections and forms. */
+.v2-interior .v2-detail-hero { min-height: 680px; display: flex; align-items: end; padding-top: 165px; padding-bottom: 65px; background: #102e56; }
+.v2-interior .v2-detail-hero > .relative { width: min(1376px,calc(100% - 112px)); }
+.v2-interior .v2-detail-hero h1 { font-size: clamp(38px,4.4vw,68px); line-height: 1.1; font-weight: 500; letter-spacing: -.04em; text-transform: none; }
+.v2-interior .v2-detail-hero .text-construction-blue { color: #c1dcff; }
+.v2-interior .v2-page-content .v2-detail-hero a.bg-construction-blue { background-color: #f4f7fc; color: #132d50; }
+.v2-interior .v2-page-content .v2-detail-hero a.bg-construction-blue:hover { background-color: #dce9fa; color: #132d50; }
+.v2-interior .v2-detail-hero a.bg-construction-blue svg { color: #132d50; }
+.v2-interior .v2-detail-hero .font-mono { font-family: var(--font-cairo),sans-serif; }
+.v2-interior .v2-detail-hero > .relative > .flex { flex-wrap: wrap; row-gap: 8px; }
+.v2-interior .v2-detail-facts { border-radius: 12px; background: #ffffff12; padding: 28px; }
+.v2-interior .v2-detail > section:not(.v2-detail-hero) { padding-block: 90px; border-color: #d5e0ed; }
+.v2-interior .v2-detail h2 { max-width: 1000px; }
+.v2-interior .v2-detail .text-neutral-900 { color: #142c4c; }
+.v2-interior .v2-detail .text-neutral-700 { color: #4a627e; }
+.v2-interior .v2-detail .text-neutral-600 { color: #60748e; }
+.v2-interior .v2-detail .border-neutral-200 { border-color: #d1ddeb; }
+.v2-interior .v2-detail .text-center { text-align: left; margin-left: 0; }
+.v2-interior .v2-detail :is(h2,h3).font-black { font-weight: 500; text-transform: none; }
+.v2-interior .v2-detail :is(.p-6,.p-7,.p-8).border { border-radius: 12px; }
+.v2-portfolio-section { padding-block: 90px 110px; }
+.v2-not-found { background: #102e56; color: #f0f5ff; padding: 165px 0 90px; min-height: 80svh; position: relative; overflow: hidden; }
+.v2-not-found .v2-container { position: relative; }
+.v2-not-found h1 { font-size: clamp(52px,7vw,100px); line-height: 1.08; margin-top: 45px; letter-spacing: -.05em; }
+.v2-not-found h1 em { color: #b2cef2; }
+.v2-not-found p { font-size: 14px; max-width: 470px; margin-top: 26px; color: #d1dff4; }
+.v2-error-number { position: absolute; top: -80px; right: 0; font-family: var(--font-montserrat),sans-serif; font-size: clamp(140px,30vw,420px); font-weight: 500; letter-spacing: -.09em; line-height: 1.2; color: #c4dcfa0c; pointer-events: none; }
+.v2-interior .v2-portfolio-section .v2-project-grid { row-gap: 45px; }
+.v2-interior .v2-portfolio-section .v2-project-title h3 { font-size: 20px; }
+
+@media (max-width: 1180px) {
+  .v2-desktop-nav { display: none; }
+  .v2-menu-trigger { display: flex; }
+  .v2-nav-cta { margin-left: auto; }
+}
+@media (max-width: 1100px) {
+  .v2-interior .v2-page-content > section > .max-w-7xl,
+  .v2-interior .v2-detail > section > .max-w-7xl,
+  .v2-interior .v2-detail-hero > .relative { width: calc(100% - 64px); }
+  .v2-interior-hero { min-height: 740px; }
+  .v2-interior .v2-detail-hero { min-height: 620px; }
+}
+@media (max-width: 700px) {
+  .v2-interior .v2-page-content > section > .max-w-7xl,
+  .v2-interior .v2-detail > section > .max-w-7xl,
+  .v2-interior .v2-detail-hero > .relative { width: calc(100% - 40px); }
+  .v2-interior .v2-page-content h2:not(.font-secondary) { font-size: clamp(30px,7.5vw,44px); }
+  .v2-interior .v2-page-content :is(th,td) { padding: 15px; }
+  .v2-interior .v2-editorial-hero { padding-top: 115px; padding-bottom: 50px; }
+  .v2-editorial-hero h1 { font-size: clamp(40px,10vw,60px); }
+  .v2-interior-hero { min-height: 760px; }
+  .v2-interior-hero-content { padding-top: 115px; padding-bottom: 22px; }
+  .v2-interior-hero-copy { padding-block: 40px 35px; }
+  .v2-interior-hero h1 { font-size: clamp(39px,10.2vw,64px); }
+  .v2-interior-hero-copy > p { margin-top: 24px; font-size: 13px; }
+  .v2-interior-hero-actions { gap: 12px; margin-top: 25px; flex-direction: column; align-items: start; }
+  .v2-interior-hero-caption { padding: 18px; font-size: 7px; letter-spacing: .08em; }
+  .v2-interior #phases article, .v2-interior #nos-complementarites article { padding-block: 45px; }
+  .v2-interior .v2-detail-hero { padding-top: 120px; padding-bottom: 40px; }
+  .v2-interior .v2-detail-hero h1 { font-size: clamp(32px,8vw,48px); }
+  .v2-interior .v2-detail-facts { padding: 23px; }
+  .v2-interior .v2-detail > section:not(.v2-detail-hero) { padding-block: 60px; }
+  .v2-interior .v2-detail :is(.p-7,.p-8).border { padding: 24px; }
+  .v2-portfolio-section { padding-block: 60px; }
+  .v2-interior .v2-portfolio-section .v2-project-title h3 { font-size: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .v2-interior .v2-page-content a:hover { transform: none !important; }
+}

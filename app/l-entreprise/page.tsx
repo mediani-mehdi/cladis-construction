@@ -3,8 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import Navbar from "@/components/HomeNavigation";
+import Footer from "@/components/HomeFooter";
 import CatalogueModal from "@/components/CatalogueModal";
 import { ArrowDown, ArrowRight, ArrowUpRight, Download } from "lucide-react";
 
@@ -37,10 +37,11 @@ export default function EntreprisePage() {
   const [catalogueOpen, setCatalogueOpen] = useState(false);
 
   return (
-    <main className="min-h-screen bg-white text-primary antialiased selection:bg-primary selection:text-white">
+    <main className="v2-home v2-interior">
       <Navbar onOpenCatalogue={() => setCatalogueOpen(true)} />
+      <div id="page-content" tabIndex={-1} className="v2-page-content">
 
-      <section id="histoire" aria-labelledby="about-heading" className="bg-[#F6F5F2] pb-16 pt-32 sm:pb-20 sm:pt-40 lg:pt-44">
+      <section id="histoire" aria-labelledby="about-heading" className="v2-editorial-hero bg-[#e9eff7] pb-16 pt-32 sm:pb-20 sm:pt-40 lg:pt-44">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <nav aria-label="Fil d’Ariane" className="mb-9 flex items-center gap-3 text-xs text-primary/55 sm:mb-12">
             <Link href="/" className={`transition-colors hover:text-primary ${focusStyle}`}>Accueil</Link>
@@ -55,7 +56,7 @@ export default function EntreprisePage() {
                 <span className="font-secondary text-[10px] font-semibold uppercase tracking-[0.2em] text-primary/65">Histoire de l'entreprise</span>
               </div>
               <h1 id="about-heading" className="font-sans text-4xl font-bold leading-[1.06] tracking-tight text-primary sm:text-5xl lg:text-6xl xl:text-7xl">
-                Qui sommes-nous ?
+                Qui sommes-<em>nous ?</em>
               </h1>
               <p className="mt-5 max-w-xl font-secondary text-[10px] font-semibold uppercase leading-relaxed tracking-wider text-primary/65 sm:text-xs">
                 Enveloppe du bâtiment &amp; construction métallique
@@ -145,7 +146,7 @@ export default function EntreprisePage() {
         </div>
       </section>
 
-      <section aria-labelledby="values-heading" className="border-y border-primary/10 bg-[#F6F5F2] py-20 sm:py-24">
+      <section aria-labelledby="values-heading" className="border-y border-primary/10 bg-[#e9eff7] py-20 sm:py-24">
         <div className="mx-auto grid max-w-7xl items-start gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:px-8">
           <div className="lg:col-span-4">
             <span className="mb-5 block font-secondary text-[10px] font-semibold uppercase tracking-[0.2em] text-primary/55">Ce qui nous guide</span>
@@ -196,6 +197,7 @@ export default function EntreprisePage() {
         </div>
       </section>
 
+      </div>
       <Footer onOpenCatalogue={() => setCatalogueOpen(true)} />
       <CatalogueModal isOpen={catalogueOpen} onClose={() => setCatalogueOpen(false)} />
     </main>

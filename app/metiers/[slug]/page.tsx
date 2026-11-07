@@ -1,8 +1,7 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import InformationPageLayout from "@/components/InformationPageLayout";
 import QuotationForm from "@/components/QuotationForm";
 import { METIERS, getMetierBySlug } from "@/lib/metiers-data";
 import {
@@ -43,21 +42,22 @@ export default async function MetierDetailPage({ params }: MetierPageProps) {
   const relatedMetiers = METIERS.filter((m) => m.slug !== metier.slug).slice(0, 3);
 
   return (
-    <main className="min-h-screen bg-white text-neutral-900 antialiased selection:bg-black selection:text-white">
-      {/* Global Navbar */}
-      <Navbar />
+    <InformationPageLayout>
+      <div className="v2-detail">
 
       {/* 1. HERO HEADER */}
-      <section className="relative pt-36 sm:pt-44 pb-20 bg-black text-white overflow-hidden border-b border-white/10">
+      <section className="v2-detail-hero relative pt-36 sm:pt-44 pb-20 bg-black text-white overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 z-0 pointer-events-none">
           <Image
             src={metier.heroImage}
             alt={metier.title}
             fill
             priority
-            className="object-cover object-center filter brightness-[0.3] contrast-[1.15]"
+            quality={90}
+            sizes="100vw"
+            className="object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0b2342]/95 via-[#102e56]/65 to-[#102e56]/25" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(0,102,255,0.22),_transparent_70%)]" />
         </div>
 
@@ -111,7 +111,7 @@ export default async function MetierDetailPage({ params }: MetierPageProps) {
             </div>
 
             {/* Quick Metrics Badge */}
-            <div className="lg:col-span-4 bg-white/10 backdrop-blur-md p-6 border border-white/15 text-xs font-mono space-y-3">
+            <div className="v2-glass v2-detail-facts lg:col-span-4 bg-white/10 backdrop-blur-md p-6 border border-white/15 text-xs font-mono space-y-3">
               <div className="text-[10px] uppercase tracking-widest text-construction-blue font-bold border-b border-white/10 pb-2">
                 Fiche d'Identité Technique
               </div>
@@ -513,9 +513,8 @@ export default async function MetierDetailPage({ params }: MetierPageProps) {
         />
       </div>
 
-      {/* Global Footer */}
-      <Footer />
-    </main>
+    </div>
+    </InformationPageLayout>
   );
 }
 

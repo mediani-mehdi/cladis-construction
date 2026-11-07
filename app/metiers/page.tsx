@@ -3,8 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import Navbar from "@/components/HomeNavigation";
+import Footer from "@/components/HomeFooter";
 import CatalogueModal from "@/components/CatalogueModal";
 import { METIERS } from "@/lib/metiers-data";
 import { ArrowDown, ArrowRight, ArrowUpRight, Check, Download } from "lucide-react";
@@ -15,10 +15,11 @@ export default function MetiersPage() {
   const [catalogueOpen, setCatalogueOpen] = useState(false);
 
   return (
-    <main className="min-h-screen bg-white text-primary antialiased selection:bg-primary selection:text-white">
+    <main className="v2-home v2-interior">
       <Navbar onOpenCatalogue={() => setCatalogueOpen(true)} />
+      <div id="page-content" tabIndex={-1} className="v2-page-content">
 
-      <section aria-labelledby="metiers-heading" className="overflow-hidden bg-[#F6F5F2] pb-12 pt-32 sm:pb-16 sm:pt-40 lg:pt-44">
+      <section aria-labelledby="metiers-heading" className="v2-editorial-hero overflow-hidden bg-[#e9eff7] pb-12 pt-32 sm:pb-16 sm:pt-40 lg:pt-44">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <nav aria-label="Fil d’Ariane" className="mb-8 flex items-center gap-3 text-xs text-primary/55 sm:mb-10">
             <Link href="/" className={`transition-colors hover:text-primary ${focusStyle}`}>Accueil</Link>
@@ -191,6 +192,7 @@ export default function MetiersPage() {
         </div>
       </section>
 
+      </div>
       <Footer onOpenCatalogue={() => setCatalogueOpen(true)} />
       <CatalogueModal isOpen={catalogueOpen} onClose={() => setCatalogueOpen(false)} />
     </main>

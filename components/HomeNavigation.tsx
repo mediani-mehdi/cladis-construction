@@ -2,10 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { NAV_LINKS } from "@/lib/site-navigation";
 
 export default function HomeNavigation({ onOpenCatalogue }: { onOpenCatalogue: () => void }) {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -35,11 +38,20 @@ export default function HomeNavigation({ onOpenCatalogue }: { onOpenCatalogue: (
   }, [open]);
 
   return <>
-    <a className="v2-skip" href="#introduction">Aller au contenu</a>
-    <header className={`v2-nav v2-glass ${scrolled ? "is-scrolled" : ""}`}>
+    <a className="v2-skip" href={isHome ? "#introduction" : "#page-content"}>Aller au contenu</a>
+    <header className={`v2-nav v2-glass ${!isHome ? "v2-nav-interior" : ""} ${scrolled || !isHome ? "is-scrolled" : ""}`}>
       <a href="/" className="v2-brand" aria-label="CLADIS Construction, accueil"><Image src="/images/cladis-logo-transparent-07a6284b.webp" alt="CLADIS Construction" width={210} height={60} priority /></a>
-      <nav aria-label="Navigation principale" className="v2-desktop-nav"><a href="/l-entreprise">L’entreprise</a><a href="#expertises">Nos expertises</a><a href="#realisations">Réalisations</a><button onClick={onOpenCatalogue}>Le catalogue <span>↗</span></button></nav>
-      <a href="#devis" className="v2-nav-cta">Parlons de votre projet <ArrowUpRight size={16} /></a>
+      <nav aria-label="Navigation principale" className="v2-desktop-nav">
+        {[
+          { href: "/l-entreprise", label: "L’entreprise" },
+          { href: "/metiers", label: "Nos expertises" },
+          { href: "/methodologie", label: "Notre méthode" },
+          { href: "/alliance", label: "L’alliance" },
+          { href: "/realisations", label: "Réalisations" },
+        ].map((link) => <a key={link.href} href={link.href} aria-current={pathname === link.href || pathname.startsWith(`${link.href}/`) ? "page" : undefined}>{link.label}</a>)}
+        <button onClick={onOpenCatalogue}>Le catalogue <span>↗</span></button>
+      </nav>
+      <a href="/#devis" className="v2-nav-cta">Parlons de votre projet <ArrowUpRight size={16} /></a>
       <button ref={triggerRef} className="v2-menu-trigger" onClick={() => setOpen(true)} aria-label="Ouvrir le menu" aria-expanded={open} aria-controls="v2-mobile-menu"><Menu size={22} /></button>
     </header>
     {open && <div ref={menuRef} id="v2-mobile-menu" className="v2-mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation">

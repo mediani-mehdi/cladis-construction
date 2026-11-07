@@ -156,7 +156,7 @@ export const METIERS: MetierData[] = [
     subtitle: "Systèmes de Toitures Industrielles Métalliques & Synthétiques",
     tagline: "Protection absolue contre les intempéries alpines et durabilité garantie",
     heroImage: "/images/metier-couverture-etancheite-7ddec386.webp",
-    galleryImages: ["/images/metier-couverture-etancheite-7ddec386.webp", "/images/project-alpes-logistics-4ff324a8.webp", "/images/construction-hero-bcc0de60.webp"],
+    galleryImages: ["/images/metier-couverture-etancheite-7ddec386.webp", "/images/high-quality/project-alpes-logistics.jpg", "/images/construction-hero-bcc0de60.webp"],
     shortDesc:
       "Travaux d'étanchéité bitumineuse multicouche élastomère, membranes synthétiques PVC/TPO, bacs acier isolés pour toitures terrasses inaccessibles ou techniques.",
     fullDesc:

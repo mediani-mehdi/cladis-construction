@@ -37,7 +37,7 @@ export default function AlliancePage() {
             <p className="max-w-md text-sm leading-relaxed text-secondary lg:col-span-5">CLADIS CONSTRUCTION coordonne la vision d'ensemble. Building Services accompagne la réalisation sur site. La filiale d'achat prépare les approvisionnements en lien avec les besoins du projet.</p>
           </div>
           <nav aria-label="Les trois acteurs de l'alliance" className="grid grid-cols-1 border-l border-t border-primary/15 md:grid-cols-3">
-            {ALLIANCE_PILLARS.map((pillar) => <a key={pillar.slug} href={`#${pillar.slug}`} className={`group flex min-h-28 flex-col justify-between gap-4 border-b border-r border-primary/15 p-5 hover:bg-[#F6F5F2] ${focusStyle}`}><span className="font-secondary text-[9px] uppercase tracking-wider text-primary/55">{pillar.num} / {pillar.role}</span><span className="flex items-center justify-between gap-3 text-sm font-bold text-primary">{pillar.name}<ArrowDown className="h-4 w-4 shrink-0 text-primary/55 transition-transform group-hover:translate-y-0.5 motion-reduce:transform-none" aria-hidden="true" /></span></a>)}
+            {ALLIANCE_PILLARS.map((pillar) => <a key={pillar.slug} href={`#${pillar.slug}`} className={`group flex min-h-28 flex-col justify-between gap-4 border-b border-r border-primary/15 p-5 hover:bg-[#e9eff7] ${focusStyle}`}><span className="font-secondary text-[9px] uppercase tracking-wider text-primary/55">{pillar.num} / {pillar.role}</span><span className="flex items-center justify-between gap-3 text-sm font-bold text-primary">{pillar.name}<ArrowDown className="h-4 w-4 shrink-0 text-primary/55 transition-transform group-hover:translate-y-0.5 motion-reduce:transform-none" aria-hidden="true" /></span></a>)}
           </nav>
 
           <div className="mt-12 sm:mt-16">
@@ -65,7 +65,7 @@ export default function AlliancePage() {
         </div>
       </section>
 
-      <section aria-labelledby="alliance-working-heading" className="bg-[#F6F5F2] py-16 sm:py-20">
+      <section aria-labelledby="alliance-working-heading" className="bg-[#e9eff7] py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-9 grid gap-5 lg:grid-cols-12 lg:gap-12">
             <h2 id="alliance-working-heading" className="font-sans text-3xl font-bold leading-tight tracking-tight text-primary sm:text-4xl lg:col-span-7">Une organisation qui relie<br /><span className="font-normal">les études au chantier.</span></h2>

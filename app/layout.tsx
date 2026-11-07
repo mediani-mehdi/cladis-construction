@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Cairo, Montserrat } from "next/font/google";
 import "./globals.css";
+import "./home.css";
+import "./interior.css";
 
 const cairo = Cairo({
   subsets: ["latin"],

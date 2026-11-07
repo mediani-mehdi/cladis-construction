@@ -120,7 +120,7 @@ export const PROJECTS: ProjectItem[] = [
     image: "/images/realisations-couverture-f68c2a17.webp",
     galleryImages: [
       "/images/realisations-couverture-f68c2a17.webp",
-      "/images/project-alpes-logistics-4ff324a8.webp",
+      "/images/high-quality/project-alpes-logistics.jpg",
       "/images/construction-hero-bcc0de60.webp",
     ],
     clientType: "Logistique & Froid Positif",

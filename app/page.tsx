@@ -8,7 +8,6 @@ import EnvelopeConfigurator from "@/components/EnvelopeConfigurator";
 import QuotationForm from "@/components/QuotationForm";
 import CatalogueModal from "@/components/CatalogueModal";
 import HomeFooter from "@/components/HomeFooter";
-import "./home.css";
 
 export default function Home() {
   const [catalogueOpen, setCatalogueOpen] = useState(false);

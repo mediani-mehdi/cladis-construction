@@ -40,7 +40,7 @@ export default function MethodologiePage() {
           </div>
           <nav aria-label="Les quatre phases du projet" className="grid grid-cols-1 border-l border-t border-primary/15 sm:grid-cols-2 lg:grid-cols-4">
             {METHODOLOGY_PHASES.map((phase) => (
-              <a key={phase.slug} href={`#${phase.slug}`} className={`group flex min-h-28 flex-col justify-between gap-4 border-b border-r border-primary/15 p-5 transition-colors hover:bg-[#F6F5F2] ${focusStyle}`}>
+              <a key={phase.slug} href={`#${phase.slug}`} className={`group flex min-h-28 flex-col justify-between gap-4 border-b border-r border-primary/15 p-5 transition-colors hover:bg-[#e9eff7] ${focusStyle}`}>
                 <span className="font-secondary text-[10px] tracking-widest text-primary/45">{phase.num} /</span>
                 <span className="flex items-center justify-between gap-3 text-sm font-bold text-primary">{phase.title}<ArrowDown className="h-4 w-4 shrink-0 text-primary/55 transition-transform group-hover:translate-y-0.5 motion-reduce:transform-none" aria-hidden="true" /></span>
               </a>
@@ -71,7 +71,7 @@ export default function MethodologiePage() {
                       <Image src={phase.photo.src} alt={phase.photo.alt} fill sizes="(min-width: 1280px) 480px, (min-width: 1024px) 42vw, 100vw" className="object-cover object-center" />
                       <span className="absolute bottom-4 left-4 bg-white/95 px-3 py-2 font-secondary text-[10px] font-semibold text-primary">{phase.num} / CLADIS CONSTRUCTION</span>
                     </div>
-                    <div className="bg-[#F6F5F2] p-6">
+                    <div className="bg-[#e9eff7] p-6">
                       <h4 className="mb-4 font-secondary text-[10px] font-bold uppercase tracking-widest text-primary">Les documents & repères de cette phase</h4>
                       <ul className="space-y-3">
                         {phase.deliverables.map((deliverable) => <li key={deliverable} className="flex items-start gap-2.5 text-xs leading-relaxed text-secondary"><span className="mt-1.5 h-1 w-1 shrink-0 bg-primary/45" aria-hidden="true" />{deliverable}</li>)}
@@ -85,7 +85,7 @@ export default function MethodologiePage() {
         </div>
       </section>
 
-      <section aria-labelledby="coordination-heading" className="bg-[#F6F5F2] py-16 sm:py-20">
+      <section aria-labelledby="coordination-heading" className="bg-[#e9eff7] py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-9 grid gap-5 lg:grid-cols-12 lg:gap-12">
             <h2 id="coordination-heading" className="font-sans text-3xl font-bold leading-tight tracking-tight text-primary sm:text-4xl lg:col-span-7">La même exigence,<br /><span className="font-normal">du début à la fin.</span></h2>
