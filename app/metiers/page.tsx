@@ -27,7 +27,7 @@ export default function MetiersPage() {
           </nav>
 
           <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
-            <div className="lg:col-span-6 lg:py-5">
+            <div className="lg:col-span-5 lg:py-5">
               <div className="mb-6 flex items-center gap-3">
                 <span className="h-1.5 w-6 bg-primary" aria-hidden="true" />
                 <span className="font-secondary text-[10px] font-semibold uppercase tracking-[0.2em] text-primary/65">L’expertise de l’enveloppe</span>
@@ -43,15 +43,15 @@ export default function MetiersPage() {
               </p>
             </div>
 
-            <div className="relative lg:col-span-6">
-              <div className="relative aspect-[4/3] overflow-hidden bg-swiss-stone lg:aspect-[5/6] lg:max-h-[610px]">
+            <div className="relative lg:col-span-7">
+              <div className="relative aspect-[2048/1143] overflow-hidden bg-swiss-stone">
                 <Image
                   src="/images/nos_metier_hero.jpg"
                   alt="Bâtiment contemporain avec bardage et toiture métalliques à joints debout"
                   fill
                   priority
                   quality={90}
-                  sizes="(min-width: 1280px) 580px, (min-width: 1024px) 50vw, 100vw"
+                  sizes="(min-width: 1280px) 680px, (min-width: 1024px) 58vw, 100vw"
                   className="object-cover object-center"
                 />
                 <span className="absolute right-5 top-5 border border-white/50 bg-white/90 px-3 py-2 font-secondary text-[9px] font-semibold uppercase tracking-widest text-primary sm:right-6 sm:top-6">
