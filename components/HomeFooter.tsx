@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { ArrowUp, ArrowUpRight } from "lucide-react";
+import { NAV_LINKS } from "@/lib/site-navigation";
 
 export default function HomeFooter({ onOpenCatalogue }: { onOpenCatalogue: () => void }) {
   return <footer className="v2-footer v2-footer-redesign">
@@ -14,6 +15,7 @@ export default function HomeFooter({ onOpenCatalogue }: { onOpenCatalogue: () =>
       </div>
       <div className="v2-footer-main">
         <div className="v2-footer-brand"><a href="/" aria-label="CLADIS Construction, accueil"><Image src="/images/cladis-logo-transparent-07a6284b.webp" alt="CLADIS Construction" width={210} height={60} className="v2-footer-logo" /></a><p>De la structure aux finitions, nous donnons forme à vos ambitions. Une enveloppe durable, un savoir-faire précis, un engagement à chaque étape.</p></div>
+        <nav className="v2-footer-navigation" aria-label="Menu de pied de page"><span className="v2-eyebrow">MENU</span><div>{NAV_LINKS.map((link) => <a key={link.href} href={link.href}>{link.label}</a>)}</div></nav>
         <nav className="v2-footer-navigation" aria-label="Informations légales"><span className="v2-eyebrow">INFORMATIONS LÉGALES</span><div><a href="/informations-legales#mentions-legales">Mentions légales</a><a href="/informations-legales#conditions-generales">Conditions générales</a><a href="/informations-legales#confidentialite">Confidentialité</a></div></nav>
         <div className="v2-footer-connect"><span className="v2-eyebrow">NOUS CONTACTER</span><address className="v2-footer-contact-list">
           <span className="v2-footer-contact-address">74 rue de la Révériaz<br />73000 Chambéry, France</span>
