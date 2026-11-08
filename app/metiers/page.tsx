@@ -46,13 +46,13 @@ export default function MetiersPage() {
             <div className="relative lg:col-span-6">
               <div className="relative aspect-[4/3] overflow-hidden bg-swiss-stone lg:aspect-[5/6] lg:max-h-[610px]">
                 <Image
-                  src={METIERS[0].heroImage}
-                  alt="Façade contemporaine associant bardage métallique, bois et vitrages"
+                  src="/images/nos_metier_hero.jpg"
+                  alt="Bâtiment contemporain avec bardage et toiture métalliques à joints debout"
                   fill
                   priority
                   quality={90}
                   sizes="(min-width: 1280px) 580px, (min-width: 1024px) 50vw, 100vw"
-                  className="object-cover object-left"
+                  className="object-cover object-center"
                 />
                 <span className="absolute right-5 top-5 border border-white/50 bg-white/90 px-3 py-2 font-secondary text-[9px] font-semibold uppercase tracking-widest text-primary sm:right-6 sm:top-6">
                   Structure · Protection · Finition
