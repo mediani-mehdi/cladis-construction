@@ -42,5 +42,10 @@ scraped_text.txt
 # Original image sources retained locally after optimization
 .asset-sources/
 
+# Raw hero frames and image source archives
+/public/New-hero/
+/public/images/**/*.zip
+/public/images/**/*.rar
+
 
 .vercel

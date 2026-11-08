@@ -10,7 +10,8 @@
       "optimized": "/images/realisations-enveloppe-0e344ed8.webp",
       "width": 1448,
       "height": 1086,
-      "bytes": 183180
+      "bytes": 183180,
+      "highQuality": "/images/high-quality/realisations-enveloppe.png"
     },
     {
       "key": "realisations-bardage",
@@ -20,7 +21,8 @@
       "optimized": "/images/realisations-bardage-33af9157.webp",
       "width": 1448,
       "height": 1086,
-      "bytes": 135194
+      "bytes": 135194,
+      "highQuality": "/images/high-quality/realisations-bardage.png"
     },
     {
       "key": "realisations-couverture",
@@ -30,7 +32,8 @@
       "optimized": "/images/realisations-couverture-f68c2a17.webp",
       "width": 1448,
       "height": 1086,
-      "bytes": 189934
+      "bytes": 189934,
+      "highQuality": "/images/high-quality/realisations-couverture.png"
     },
     {
       "key": "realisations-charpente",
@@ -40,7 +43,8 @@
       "optimized": "/images/realisations-charpente-0fea2374.webp",
       "width": 1448,
       "height": 1086,
-      "bytes": 204098
+      "bytes": 204098,
+      "highQuality": "/images/high-quality/realisations-charpente.png"
     },
     {
       "key": "realisations-facade",
@@ -50,7 +54,8 @@
       "optimized": "/images/realisations-facade-4a5f5393.webp",
       "width": 1448,
       "height": 1086,
-      "bytes": 193542
+      "bytes": 193542,
+      "highQuality": "/images/high-quality/realisations-facade.png"
     },
     {
       "key": "realisations-toiture-solaire",
@@ -60,7 +65,8 @@
       "optimized": "/images/realisations-toiture-solaire-5addd741.webp",
       "width": 1448,
       "height": 1086,
-      "bytes": 296650
+      "bytes": 296650,
+      "highQuality": "/images/high-quality/realisations-toiture-solaire.png"
     }
   ]
 }

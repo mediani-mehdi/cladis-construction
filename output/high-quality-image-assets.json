@@ -1,0 +1,286 @@
+{
+  "note": "Original image files copied byte for byte at native resolution, without resizing or re-encoding.",
+  "imageCount": 31,
+  "totalBytes": 56424371,
+  "assets": [
+    {
+      "websiteImage": "/images/about-building-a03b650d.webp",
+      "highQuality": "/images/high-quality/about-building.jpg",
+      "source": ".asset-sources/images/about-building.jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 407017,
+      "sha256": "044ab54ff2a9e6bd41158bfb1e1c862f2a3ca842d1b349426d69e469b810deb0"
+    },
+    {
+      "websiteImage": "/images/alliance-engineering-3c7acb42.webp",
+      "highQuality": "/images/high-quality/alliance-engineering.png",
+      "source": "C:/Users/mehdi/.codex/generated_images/01a19828-b1fb-7092-8216-dd5ad382ecbd/exec-55981f7d-38bd-4f6c-aa45-f7cd4393a41c.png",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 2211299,
+      "sha256": "abe5344f5863a2d0999b467920ce654dec1760ee2f5974dd69334e7851952725"
+    },
+    {
+      "websiteImage": "/images/alliance-handshake-hq-ff7ca6d9.webp",
+      "highQuality": "/images/high-quality/alliance-handshake-hq.png",
+      "source": "C:/Users/mehdi/.codex/generated_images/01a19828-b1fb-7092-8216-dd5ad382ecbd/exec-5a711b09-f9aa-49cc-89aa-5c2d33750315.png",
+      "width": 1523,
+      "height": 1032,
+      "bytes": 1980410,
+      "sha256": "694aeb61339a830d8da3ad508320535a6dd4c31c6987853604606a08a7449264"
+    },
+    {
+      "websiteImage": "/images/alliance-installation-fb19c46e.webp",
+      "highQuality": "/images/high-quality/alliance-installation.png",
+      "source": "C:/Users/mehdi/.codex/generated_images/01a19828-b1fb-7092-8216-dd5ad382ecbd/exec-8e257b3b-0942-4d63-ad63-e9a9d21cf46c.png",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 2422245,
+      "sha256": "248ca0103213c9040401003e2fe48f9721d8c12e3e973801a3b1dbfedd9cfecd"
+    },
+    {
+      "websiteImage": "/images/alliance-procurement-01b95925.webp",
+      "highQuality": "/images/high-quality/alliance-procurement.png",
+      "source": "C:/Users/mehdi/.codex/generated_images/01a19828-b1fb-7092-8216-dd5ad382ecbd/exec-e98ed1bc-cb7b-4c0e-aca3-c1d03ccd594a.png",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 2532701,
+      "sha256": "f6dfa7b4ddd51b9a48322ba37d9b3e6e7f4d74f5f6024cd3563b611744c5b968"
+    },
+    {
+      "websiteImage": "/images/catalogue-cover-faed49b8.webp",
+      "highQuality": "/images/high-quality/catalogue-cover.jpg",
+      "source": ".asset-sources/images/catalogue-cover.jpg",
+      "width": 1680,
+      "height": 2174,
+      "bytes": 209744,
+      "sha256": "240feeb7ad9ed22d65857fe123a60186133f6a2e019d4c19cbe9477e3595c042"
+    },
+    {
+      "websiteImage": "/images/cladis-icon-95c79c03.png",
+      "highQuality": "/images/high-quality/cladis-icon.png",
+      "source": ".asset-sources/images/cladis-icon.png",
+      "width": 295,
+      "height": 337,
+      "bytes": 105123,
+      "sha256": "6233c97d5cc75fee33b7193225d6c9876ee8016d1dc04ac92f437ec6ecf6786d"
+    },
+    {
+      "websiteImage": "/images/cladis-logo-transparent-07a6284b.webp",
+      "highQuality": "/images/high-quality/cladis-logo-transparent.png",
+      "source": ".asset-sources/images/cladis-logo-transparent.png",
+      "width": 861,
+      "height": 355,
+      "bytes": 221708,
+      "sha256": "e191a5546ea78eb3d4defbd324423c206d5d50d28b60d7a7115fb198aecf297b"
+    },
+    {
+      "websiteImage": "/images/construction-hero-bcc0de60.webp",
+      "highQuality": "/images/high-quality/construction-hero.jpg",
+      "source": ".asset-sources/images/construction-hero.jpg",
+      "width": 1376,
+      "height": 768,
+      "bytes": 967958,
+      "sha256": "3b1e7b3242a9dfba33fc0bfd4f9664a990b93e272c0d2391c30301ef869d57f9"
+    },
+    {
+      "websiteImage": "/images/hero-building-60c1b312.webp",
+      "highQuality": "/images/high-quality/hero-building.jpg",
+      "source": ".asset-sources/images/hero-building.jpg",
+      "width": 1680,
+      "height": 1100,
+      "bytes": 294441,
+      "sha256": "ff5d5f3afecb137d6b3cd321303b4889f91b7bef692d9ee8ea92fbf7a6cd1686"
+    },
+    {
+      "websiteImage": "/images/homepage-hero-3cdb9cad.webp",
+      "highQuality": "/images/high-quality/homepage-hero.png",
+      "source": "C:/Users/mehdi/.codex/generated_images/01a19828-b1fb-7092-8216-dd5ad382ecbd/exec-004d28bb-7ba6-43d1-9b57-706e299d9cc5.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2163393,
+      "sha256": "e80875ef4d986853d37b267dd9aa535992059063e400033690093889730342b6"
+    },
+    {
+      "websiteImage": "/images/methodology-conception-modelisation-b93b0957.webp",
+      "highQuality": "/images/high-quality/methodology-conception-modelisation.png",
+      "source": "C:/Users/mehdi/.codex/generated_images/01a19828-b1fb-7092-8216-dd5ad382ecbd/exec-d6f8d0cc-7655-469c-8acb-bbc0c82318a1.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2186889,
+      "sha256": "17763614a31aed785d2e77a82aa210f56919e413898114413323fbd969c3f3d9"
+    },
+    {
+      "websiteImage": "/images/methodology-etude-diagnostic-639c3753.webp",
+      "highQuality": "/images/high-quality/methodology-etude-diagnostic.png",
+      "source": "C:/Users/mehdi/.codex/generated_images/01a19828-b1fb-7092-8216-dd5ad382ecbd/exec-bd9cbde7-a0ac-4ac9-ab13-cec2af93ac7e.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2303509,
+      "sha256": "aa1f4e98e844f674b4b223869c85d9f7eeb71b0c8dc1e4fd80fd548206a4edfe"
+    },
+    {
+      "websiteImage": "/images/methodology-hero-69ff522c.webp",
+      "highQuality": "/images/high-quality/methodology-hero.png",
+      "source": "C:/Users/mehdi/.codex/generated_images/01a19828-b1fb-7092-8216-dd5ad382ecbd/exec-fa850724-f714-4950-9568-3047c15277bf.png",
+      "width": 1145,
+      "height": 1374,
+      "bytes": 2309245,
+      "sha256": "21d3b9c30ad9753d7ea55e74af1ed4a5b4d73fe698805b7c25c757dc7c28981b"
+    },
+    {
+      "websiteImage": "/images/methodology-livraison-reception-3c0ef568.webp",
+      "highQuality": "/images/high-quality/methodology-livraison-reception.png",
+      "source": "C:/Users/mehdi/.codex/generated_images/01a19828-b1fb-7092-8216-dd5ad382ecbd/exec-89f1e670-633f-49ad-8217-5f7a26d1b450.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2464322,
+      "sha256": "d30a672b8807168d38e10958f23d3a905acdd0ff28247bbbd950bb1865656530"
+    },
+    {
+      "websiteImage": "/images/methodology-realisation-pilotage-fd60a947.webp",
+      "highQuality": "/images/high-quality/methodology-realisation-pilotage.png",
+      "source": "C:/Users/mehdi/.codex/generated_images/01a19828-b1fb-7092-8216-dd5ad382ecbd/exec-0e6cd4ee-775b-49d9-97a9-66c4c161750f.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2580407,
+      "sha256": "4270e4776a615f1cb5bec271b8811048e4a0fa2472ca096bf8b71355eb2e6272"
+    },
+    {
+      "websiteImage": "/images/metier-bardage-metallique-b151c959.webp",
+      "highQuality": "/images/high-quality/metier-bardage-metallique.png",
+      "source": "C:/Users/mehdi/.codex/generated_images/01a19828-b1fb-7092-8216-dd5ad382ecbd/exec-b53dadb5-232d-4091-bbf0-5f89bb544ce8.png",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 2097698,
+      "sha256": "75594cfe5687d9e37202d5473545d80b8591f07559cef7942e0ea233eebdaad5"
+    },
+    {
+      "websiteImage": "/images/metier-bardage-specifique-7a7c34f6.webp",
+      "highQuality": "/images/high-quality/metier-bardage-specifique.png",
+      "source": "C:/Users/mehdi/.codex/generated_images/01a19828-b1fb-7092-8216-dd5ad382ecbd/exec-8758e274-6b87-4ec1-94c9-96cacad52177.png",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 2687876,
+      "sha256": "1382a10d48b3d9d00959e729f2c0968e6b552b948cde5d44e318e723ce1d2417"
+    },
+    {
+      "websiteImage": "/images/metier-charpente-metallique-e3a483da.webp",
+      "highQuality": "/images/high-quality/metier-charpente-metallique.png",
+      "source": "C:/Users/mehdi/.codex/generated_images/01a19828-b1fb-7092-8216-dd5ad382ecbd/exec-b5258064-80cb-4081-a6c8-39d3c98bf818.png",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 2782528,
+      "sha256": "45081b4c0ff26d2c875ccdbb2f57db3f992b9fbd38a97852bfdc7e1ed56efce0"
+    },
+    {
+      "websiteImage": "/images/metier-couverture-etancheite-7ddec386.webp",
+      "highQuality": "/images/high-quality/metier-couverture-etancheite.png",
+      "source": "C:/Users/mehdi/.codex/generated_images/01a19828-b1fb-7092-8216-dd5ad382ecbd/exec-433d60e1-6b73-4ac1-ab4b-94deb22aa645.png",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 2677736,
+      "sha256": "231b135bfe973008ce77e29a17d1d240ab761fe9b6ff3b6841c1b948fe1cfbcc"
+    },
+    {
+      "websiteImage": "/images/metier-isolation-thermique-127f1539.webp",
+      "highQuality": "/images/high-quality/metier-isolation-thermique.png",
+      "source": "C:/Users/mehdi/.codex/generated_images/01a19828-b1fb-7092-8216-dd5ad382ecbd/exec-03d976c9-db59-442d-9209-4cbd626b16eb.png",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 2324916,
+      "sha256": "cf20c1075e51a9052db633ea70ec1377b69de2c78dc7ec177045b0acf089212a"
+    },
+    {
+      "websiteImage": "/images/metier-toiture-vegetalisee-solaire-f7006fe1.webp",
+      "highQuality": "/images/high-quality/metier-toiture-vegetalisee-solaire.png",
+      "source": "C:/Users/mehdi/.codex/generated_images/01a19828-b1fb-7092-8216-dd5ad382ecbd/exec-4a72c6a7-b682-4c46-b86d-0816609253d9.png",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 3276888,
+      "sha256": "4f799ade9534347f499e3f7d40c6f7f48a1e1bb84e02e859d0027f4e7ca34b22"
+    },
+    {
+      "websiteImage": "/images/project-alpes-logistics-4ff324a8.webp",
+      "highQuality": "/images/high-quality/project-alpes-logistics.jpg",
+      "source": ".asset-sources/images/project-alpes-logistics.jpg",
+      "width": 1370,
+      "height": 400,
+      "bytes": 100117,
+      "sha256": "21fbc84bc153d34b09ef2f641bd07ea7085e158384e6267aea4d14668c2b8b35"
+    },
+    {
+      "websiteImage": "/images/project-chambery-hub-7bb3c0df.webp",
+      "highQuality": "/images/high-quality/project-chambery-hub.jpg",
+      "source": ".asset-sources/images/project-chambery-hub.jpg",
+      "width": 640,
+      "height": 520,
+      "bytes": 146136,
+      "sha256": "1aacf960cfc25736ca3adb101d6f7e84d8c45685cde87b6235a3a7ddf4055551"
+    },
+    {
+      "websiteImage": "/images/realisations-bardage-33af9157.webp",
+      "highQuality": "/images/high-quality/realisations-bardage.png",
+      "source": ".asset-sources/images/realisations-bardage-original.png",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 2126878,
+      "sha256": "c09d3bd5db9284cf1bd51a885615a7455db38330caa55ec1047d994ff3e3b48d"
+    },
+    {
+      "websiteImage": "/images/realisations-charpente-0fea2374.webp",
+      "highQuality": "/images/high-quality/realisations-charpente.png",
+      "source": ".asset-sources/images/realisations-charpente-original.png",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 2567681,
+      "sha256": "efd3142982895edb7326c61dab3a6baa8a55a0762003601f6db2b5e2aa7d74e9"
+    },
+    {
+      "websiteImage": "/images/realisations-couverture-f68c2a17.webp",
+      "highQuality": "/images/high-quality/realisations-couverture.png",
+      "source": ".asset-sources/images/realisations-couverture-original.png",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 2565441,
+      "sha256": "1a66bd04d792fd78e5cdb1ec2e70245a63eb765a1b5efbf1e6ac69ddf7de96d2"
+    },
+    {
+      "websiteImage": "/images/realisations-enveloppe-0e344ed8.webp",
+      "highQuality": "/images/high-quality/realisations-enveloppe.png",
+      "source": ".asset-sources/images/realisations-enveloppe-original.png",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 2393459,
+      "sha256": "8871b9badd3d61680910fb7934599e9df93b5e6469a9f3177c1bafd49871b71d"
+    },
+    {
+      "websiteImage": "/images/realisations-facade-4a5f5393.webp",
+      "highQuality": "/images/high-quality/realisations-facade.png",
+      "source": ".asset-sources/images/realisations-facade-original.png",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 2372916,
+      "sha256": "b16896f686e169bfea4838084dc9e7d1c8c78502042172c9929c186a83c78db2"
+    },
+    {
+      "websiteImage": "/images/realisations-toiture-solaire-5addd741.webp",
+      "highQuality": "/images/high-quality/realisations-toiture-solaire.png",
+      "source": ".asset-sources/images/realisations-toiture-solaire-original.png",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 2880095,
+      "sha256": "a230dbb9dddd28f4be7111b9e98ac9d05ababcf70a75e624d323ab72569e1736"
+    },
+    {
+      "websiteImage": "/images/service-couverture-bd4b90a9.webp",
+      "highQuality": "/images/high-quality/service-couverture.jpg",
+      "source": ".asset-sources/images/service-couverture.jpg",
+      "width": 660,
+      "height": 360,
+      "bytes": 63595,
+      "sha256": "d6610f4f3df2ae53127db9f2bc6e639c82c79679a0c73da376c22dc0383e2d71"
+    }
+  ]
+}
