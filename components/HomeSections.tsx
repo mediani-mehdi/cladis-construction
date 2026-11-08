@@ -13,10 +13,10 @@ function Reveal({ children, className = "" }: { children: ReactNode; className?:
 }
 
 const steps = [
-  { icon: Ruler, title: "Comprendre & concevoir", text: "Un bureau d’études intégré pour traduire vos contraintes en solutions techniques précises.", tag: "ÉTUDES & CONCEPTION" },
-  { icon: Layers3, title: "Choisir & préparer", text: "Des matériaux sélectionnés et un approvisionnement coordonné pour un chantier maîtrisé.", tag: "MATÉRIAUX & LOGISTIQUE" },
-  { icon: HardHat, title: "Construire & coordonner", text: "Des équipes de pose mobilisées, un interlocuteur dédié et une attention constante aux interfaces.", tag: "RÉALISATION & PILOTAGE" },
-  { icon: PackageCheck, title: "Vérifier & transmettre", text: "Des contrôles jusqu’aux finitions, une réception accompagnée et les documents de votre ouvrage.", tag: "LIVRAISON & RÉCEPTION" },
+  { icon: Ruler, title: "Comprendre & concevoir", text: "Un bureau d’études intégré pour traduire vos contraintes en solutions techniques précises.", tag: "ÉTUDES & CONCEPTION", slug: "etude-diagnostic" },
+  { icon: Layers3, title: "Choisir & préparer", text: "Des matériaux sélectionnés et un approvisionnement coordonné pour un chantier maîtrisé.", tag: "MATÉRIAUX & LOGISTIQUE", slug: "conception-modelisation" },
+  { icon: HardHat, title: "Construire & coordonner", text: "Des équipes de pose mobilisées, un interlocuteur dédié et une attention constante aux interfaces.", tag: "RÉALISATION & PILOTAGE", slug: "realisation-pilotage" },
+  { icon: PackageCheck, title: "Vérifier & transmettre", text: "Des contrôles jusqu’aux finitions, une réception accompagnée et les documents de votre ouvrage.", tag: "LIVRAISON & RÉCEPTION", slug: "livraison-reception" },
 ];
 
 const knowhow = [
@@ -59,7 +59,41 @@ export default function HomeSections() {
       <div className="v2-project-grid" aria-live="polite">{projects.map((project, index) => <a key={project.id} href={`/realisations/${project.slug}`} className={`v2-project-card ${index === 0 ? "v2-project-featured" : ""}`}><div className="v2-project-image"><Image src={project.image} alt={project.title} fill sizes="(max-width: 700px) 100vw, 60vw" /><span className="v2-project-tag v2-glass">{project.categoryLabel}</span><span className="v2-project-arrow v2-glass"><ArrowUpRight size={23} /></span><div className="v2-project-image-footer"><span>{project.location}</span><span>{project.surface} / {project.year}</span></div></div><div className="v2-project-title"><h3>{project.title}</h3><span>0{PROJECTS.indexOf(project) + 1}</span></div></a>)}</div>
     </section>
 
-    <section className="v2-method" id="approche"><div className="v2-container"><Reveal className="v2-section-top"><span className="v2-eyebrow">04 / UNE MÉTHODE, UN ENGAGEMENT</span><a href="/methodologie" className="v2-text-link">Notre méthodologie <ArrowUpRight size={17} /></a></Reveal><Reveal className="v2-section-heading"><h2>Maîtriser chaque étape.<br /><em>Tenir le cap, ensemble.</em></h2><p>Un projet réussi commence par une vision claire.<br />Et se construit dans la continuité.</p></Reveal><div className="v2-steps">{steps.map((step, index) => <Reveal key={step.title} className="v2-step"><div className="v2-step-top"><step.icon size={27} strokeWidth={1.2} /><span>0{index + 1}</span></div><span className="v2-step-tag">{step.tag}</span><h3>{step.title}</h3><p>{step.text}</p></Reveal>)}</div></div></section>
+    <section className="v2-method" id="approche">
+      <div className="v2-container">
+        <Reveal className="v2-section-top">
+          <span className="v2-eyebrow">04 / UNE MÉTHODE, UN ENGAGEMENT</span>
+          <a href="/methodologie" className="v2-text-link">Notre méthodologie <ArrowUpRight size={17} /></a>
+        </Reveal>
+        <Reveal className="v2-section-heading">
+          <h2>Maîtriser chaque étape.<br /><em>Tenir le cap, ensemble.</em></h2>
+          <p>Un projet réussi commence par une vision claire.<br />Et se construit dans la continuité.</p>
+        </Reveal>
+        <div className="v2-steps">
+          {steps.map((step, index) => (
+            <Reveal key={step.title}>
+              <a href={`/methodologie#${step.slug}`} className="v2-step">
+                <div className="v2-step-top">
+                  <div className="v2-step-icon">
+                    <step.icon size={25} strokeWidth={1.4} />
+                  </div>
+                  <span className="v2-step-number">0{index + 1}</span>
+                </div>
+                <div className="v2-step-body">
+                  <span className="v2-step-tag">{step.tag}</span>
+                  <h3>{step.title}</h3>
+                  <p>{step.text}</p>
+                </div>
+                <div className="v2-step-link">
+                  <span>Découvrir cette étape</span>
+                  <ArrowUpRight size={15} />
+                </div>
+              </a>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
 
     <section className="v2-alliance v2-container"><Reveal className="v2-alliance-visual"><Image src="/images/high-quality/alliance-installation.png" alt="Équipe spécialisée dans la pose et la réalisation de l’enveloppe du bâtiment" fill sizes="(max-width: 800px) 100vw, 50vw" /><div className="v2-alliance-badge v2-glass"><span>CLADIS</span><Plus size={17} /><span>BUILDING SERVICES</span></div></Reveal><Reveal className="v2-alliance-copy"><span className="v2-eyebrow">05 / LA FORCE DU COLLECTIF</span><h2>Des expertises unies.<br /><em>Un projet maîtrisé.</em></h2><p>Cladis Construction, Building Services et notre filiale d’achat associent leurs forces. De l’étude à la pose, une chaîne de compétences coordonnée pour donner à votre projet toute sa dimension.</p><a href="/alliance" className="v2-text-link">Découvrir notre alliance <ArrowUpRight size={18} /></a><div className="v2-alliance-signature"><span>CONCEVOIR</span><ArrowRight size={14} /><span>APPROVISIONNER</span><ArrowRight size={14} /><span>CONSTRUIRE</span></div></Reveal></section>
 
