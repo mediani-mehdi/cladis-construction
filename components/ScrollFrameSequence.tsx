@@ -4,160 +4,291 @@ import { useEffect, useRef } from "react";
 import { type MotionValue } from "framer-motion";
 import frames from "@/public/hero-frames/new-hero/manifest.json";
 
-export default function ScrollFrameSequence({ progress, reducedMotion }: { progress: MotionValue<number>; reducedMotion: boolean }) {
+interface ScrollFrameSequenceProps {
+  progress: MotionValue<number>;
+  reducedMotion: boolean;
+}
+
+export default function ScrollFrameSequence({
+  progress,
+  reducedMotion,
+}: ScrollFrameSequenceProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas || reducedMotion) return;
-    const context = canvas.getContext("2d", { alpha: false });
+
+    const context = canvas.getContext("2d", {
+      alpha: false,
+      desynchronized: true,
+    });
     if (!context) return;
-    const mobile = window.matchMedia("(max-width: 700px)");
-    const cache = new Map<string, { image: HTMLImageElement; index: number }>();
-    const pending = new Map<string, HTMLImageElement>();
-    const failed = new Set<string>();
+
+    const mobileQuery = window.matchMedia("(max-width: 700px)");
+    let variant = mobileQuery.matches ? frames.mobile : frames.desktop;
+
+    // Cache images by unique filename so duplicates in manifest take 0 extra network/memory
+    const imageCache = new Map<string, HTMLImageElement>();
+    const inFlight = new Set<string>();
     let disposed = false;
-    let target = 0;
-    let position = 0;
-    let direction = 1;
-    let raf = 0;
-    let variant = mobile.matches ? frames.mobile : frames.desktop;
-    let lastDrawn = "";
 
-    function paint(image: HTMLImageElement, alpha = 1) {
-      if (!canvas || !context) return;
-      const scale = Math.max(canvas.width / image.naturalWidth, canvas.height / image.naturalHeight);
-      const width = image.naturalWidth * scale;
-      const height = image.naturalHeight * scale;
-      context.globalAlpha = alpha;
-      context.drawImage(image, (canvas.width - width) / 2, (canvas.height - height) / 2, width, height);
-    }
+    let targetFrame = 0;
+    let currentFrame = 0;
+    let lastRenderedIndex = -1;
+    let rafId = 0;
+    let isAnimating = false;
 
-    function draw() {
-      raf = 0;
-      if (disposed || !context || !canvas || !cache.size) return;
-      const lower = Math.floor(position);
-      const upper = Math.min(lower + 1, frames.count - 1);
-      let first = cache.get(frames.files[lower]);
-      const second = cache.get(frames.files[upper]);
-      let blend = position - lower;
-      if (!first) {
-        const closest = Array.from(cache.values()).reduce((best, entry) => Math.abs(entry.index - position) < Math.abs(best.index - position) ? entry : best);
-        // Hold the last painted frame while buffering rather than jumping to
-        // an unrelated cached frame after a fast scroll or direction change.
-        if (Math.abs(closest.index - position) > 2) return;
-        first = closest;
-        blend = 0;
-      }
-      const signature = `${first.index}:${second?.index}:${blend.toFixed(3)}`;
-      if (signature === lastDrawn) return;
-      context.imageSmoothingEnabled = true;
-      context.imageSmoothingQuality = "high";
-      paint(first.image);
-      if (second && blend > 0 && first.image !== second.image) paint(second.image, blend);
-      context.globalAlpha = 1;
-      lastDrawn = signature;
+    // Helper: Paint image with cover (proportional crop & center)
+    function paint(image: HTMLImageElement) {
+      if (!canvas || !context || !image.naturalWidth) return;
+      const cw = canvas.width;
+      const ch = canvas.height;
+      const nw = image.naturalWidth;
+      const nh = image.naturalHeight;
+
+      const scale = Math.max(cw / nw, ch / nh);
+      const dw = nw * scale;
+      const dh = nh * scale;
+      const dx = (cw - dw) * 0.5;
+      const dy = (ch - dh) * 0.5;
+
+      context.drawImage(image, dx, dy, dw, dh);
       canvas.dataset.ready = "true";
-      canvas.dataset.frame = String(lower);
-      canvas.dataset.blend = blend.toFixed(3);
     }
 
-    function scheduleDraw() { if (!raf) raf = requestAnimationFrame(draw); }
+    function render(framePosition: number) {
+      if (disposed || !canvas || !context) return;
 
-    function loadNearby() {
-      if (disposed) return;
-      // Decode adjacent frames before painting. Prefetch farther in the scroll
-      // direction while keeping decoded image memory bounded on each device.
-      const candidates = [Math.floor(position), Math.ceil(position)];
-      const ahead = mobile.matches ? 8 : 14;
-      for (let distance = 1; distance <= ahead; distance++) {
-        candidates.push(target + distance * direction);
-        if (distance <= 4) candidates.push(target - distance * direction);
-      }
-      for (const index of candidates) {
-        if (index < 0 || index >= frames.count) continue;
-        const key = frames.files[index];
-        const cached = cache.get(key);
-        if (cached) { cached.index = index; continue; }
-        if (pending.size >= 6) break;
-        if (pending.has(key) || failed.has(key)) continue;
-        const image = new window.Image();
-        const requestedVariant = variant;
-        image.decoding = "async";
-        image.fetchPriority = Math.abs(index - position) <= 1 ? "high" : "low";
-        pending.set(key, image);
-        image.onload = async () => {
-          try { await image.decode(); } catch { /* A completed image can still be painted by older decoders. */ }
-          if (disposed || requestedVariant !== variant) return;
-          pending.delete(key);
-          cache.set(key, { image, index });
-          const cacheLimit = mobile.matches ? 18 : 26;
-          while (cache.size > cacheLimit) {
-            const farthest = Array.from(cache.entries()).reduce((best, entry) => Math.abs(entry[1].index - position) > Math.abs(best[1].index - position) ? entry : best);
-            cache.delete(farthest[0]);
+      const total = frames.count;
+      const targetIndex = Math.max(0, Math.min(total - 1, Math.round(framePosition)));
+
+      const fileName = frames.files[targetIndex];
+      let img = imageCache.get(fileName);
+
+      // If exact frame is not ready, fallback to the nearest available loaded frame
+      if (!img || !img.complete || img.naturalWidth === 0) {
+        let bestDist = Infinity;
+        let fallbackImg: HTMLImageElement | null = null;
+
+        // Search in a window of +- 30 frames for the closest ready frame
+        for (let offset = 1; offset <= 30; offset++) {
+          const prev = frames.files[targetIndex - offset];
+          if (prev) {
+            const candidate = imageCache.get(prev);
+            if (candidate && candidate.complete && candidate.naturalWidth > 0) {
+              fallbackImg = candidate;
+              bestDist = offset;
+              break;
+            }
           }
-          scheduleDraw();
-          loadNearby();
-        };
-        image.onerror = () => {
-          if (disposed || requestedVariant !== variant) return;
-          pending.delete(key);
-          failed.add(key);
-          loadNearby();
-        };
-        image.src = `${variant}/${key}`;
+          const next = frames.files[targetIndex + offset];
+          if (next) {
+            const candidate = imageCache.get(next);
+            if (candidate && candidate.complete && candidate.naturalWidth > 0) {
+              if (offset < bestDist) {
+                fallbackImg = candidate;
+                break;
+              }
+            }
+          }
+        }
+
+        if (fallbackImg) {
+          img = fallbackImg;
+        }
+      }
+
+      if (img && img.complete && img.naturalWidth > 0) {
+        paint(img);
+        lastRenderedIndex = targetIndex;
+      }
+    }
+
+    // High-performance 60/120fps physics lerp loop
+    function tick() {
+      if (disposed) return;
+
+      const diff = targetFrame - currentFrame;
+      const absDiff = Math.abs(diff);
+
+      if (absDiff > 0.008) {
+        // Dynamic lerp: faster when delta is large, silk-smooth when settling
+        const speed = absDiff > 10 ? 0.28 : absDiff > 2 ? 0.22 : 0.18;
+        currentFrame += diff * speed;
+
+        render(currentFrame);
+        rafId = requestAnimationFrame(tick);
+      } else {
+        currentFrame = targetFrame;
+        render(currentFrame);
+        isAnimating = false;
+        rafId = 0;
+      }
+    }
+
+    function startAnimation() {
+      if (!isAnimating) {
+        isAnimating = true;
+        rafId = requestAnimationFrame(tick);
+      }
+    }
+
+    // Image loading with priority
+    function fetchImage(fileName: string, priority: "high" | "auto" | "low" = "auto") {
+      if (disposed || !fileName) return;
+      if (imageCache.has(fileName) || inFlight.has(fileName)) return;
+
+      inFlight.add(fileName);
+      const img = new window.Image();
+      img.decoding = "async";
+      img.fetchPriority = priority;
+
+      img.onload = () => {
+        if (disposed) return;
+        inFlight.delete(fileName);
+        imageCache.set(fileName, img);
+
+        // If this image corresponds to the current frame or nearby, render immediately
+        const currentFile = frames.files[Math.round(currentFrame)];
+        if (fileName === currentFile || lastRenderedIndex === -1) {
+          render(currentFrame);
+        }
+      };
+
+      img.onerror = () => {
+        inFlight.delete(fileName);
+      };
+
+      img.src = `${variant}/${fileName}`;
+    }
+
+    // Preload window around a target index
+    function preloadAround(index: number) {
+      if (disposed) return;
+      const center = Math.max(0, Math.min(frames.count - 1, Math.round(index)));
+
+      // High priority immediate window (current +- 8 frames)
+      for (let offset = -4; offset <= 12; offset++) {
+        const file = frames.files[center + offset];
+        if (file) fetchImage(file, "high");
+      }
+
+      // Next buffer window (forward 13..35 frames)
+      for (let offset = 13; offset <= 35; offset++) {
+        const file = frames.files[center + offset];
+        if (file) fetchImage(file, "auto");
+      }
+    }
+
+    // Background progressive loader that steadily loads all unique files
+    let backgroundIndex = 0;
+    const uniqueFiles = Array.from(new Set(frames.files));
+
+    function queueBackgroundPreload() {
+      if (disposed) return;
+      let idleLoads = 0;
+      while (idleLoads < 6 && backgroundIndex < uniqueFiles.length) {
+        const file = uniqueFiles[backgroundIndex++];
+        if (file && !imageCache.has(file) && !inFlight.has(file)) {
+          fetchImage(file, "low");
+          idleLoads++;
+        }
+      }
+
+      if (backgroundIndex < uniqueFiles.length) {
+        if ("requestIdleCallback" in window) {
+          window.requestIdleCallback(queueBackgroundPreload, { timeout: 800 });
+        } else {
+          setTimeout(queueBackgroundPreload, 60);
+        }
       }
     }
 
     function resize() {
-      if (!canvas) return;
+      if (!canvas || !context) return;
       const rect = canvas.getBoundingClientRect();
       if (!rect.width || !rect.height) return;
-      const ratio = Math.min(window.devicePixelRatio || 1, 2, Math.sqrt((frames.width * frames.height) / (rect.width * rect.height)));
-      const width = Math.round(rect.width * ratio);
-      const height = Math.round(rect.height * ratio);
-      if (canvas.width === width && canvas.height === height) return;
-      canvas.width = width;
-      canvas.height = height;
-      lastDrawn = "";
-      scheduleDraw();
+
+      // Cap DPR at 1.5 to keep GPU fill-rate at native 60fps without wasteful supersampling
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      const width = Math.round(rect.width * dpr);
+      const height = Math.round(rect.height * dpr);
+
+      if (canvas.width !== width || canvas.height !== height) {
+        canvas.width = width;
+        canvas.height = height;
+        context.imageSmoothingEnabled = true;
+        context.imageSmoothingQuality = "medium";
+        render(currentFrame);
+      }
     }
 
-    function changeVariant() {
-      variant = mobile.matches ? frames.mobile : frames.desktop;
-      pending.forEach((image) => { image.onload = null; image.onerror = null; image.src = ""; });
-      pending.clear(); cache.clear(); failed.clear(); lastDrawn = "";
+    function onScrollProgress(val: number) {
+      const clamped = Math.max(0, Math.min(1, val));
+      targetFrame = clamped * (frames.count - 1);
+      preloadAround(targetFrame);
+      startAnimation();
+    }
+
+    function handleMediaChange() {
+      variant = mobileQuery.matches ? frames.mobile : frames.desktop;
+      imageCache.clear();
+      inFlight.clear();
+      backgroundIndex = 0;
       delete canvas!.dataset.ready;
-      loadNearby(); resize();
+      preloadAround(currentFrame);
+      queueBackgroundPreload();
+      resize();
     }
 
-    function update(value: number) {
-      const next = Math.max(0, Math.min(1, value)) * (frames.count - 1);
-      if (Math.abs(next - position) > 0.001) direction = next > position ? 1 : -1;
-      position = next;
-      target = Math.round(position);
-      scheduleDraw(); loadNearby();
-    }
-    const observer = new ResizeObserver(resize);
-    observer.observe(canvas);
-    mobile.addEventListener("change", changeVariant);
-    const unsubscribe = progress.on("change", update);
-    resize(); update(progress.get());
+    // Initial setup
+    resize();
+    const initialProgress = progress.get();
+    targetFrame = Math.max(0, Math.min(1, initialProgress)) * (frames.count - 1);
+    currentFrame = targetFrame;
+
+    // Preload immediate frames for initial render
+    preloadAround(currentFrame);
+
+    // Start background preloading after a brief delay so initial page load is instant
+    const backgroundTimer = setTimeout(queueBackgroundPreload, 250);
+
+    const resizeObserver = new ResizeObserver(resize);
+    resizeObserver.observe(canvas);
+    mobileQuery.addEventListener("change", handleMediaChange);
+
+    const unsubscribe = progress.on("change", onScrollProgress);
+
     return () => {
-      disposed = true; unsubscribe(); observer.disconnect(); mobile.removeEventListener("change", changeVariant);
-      cancelAnimationFrame(raf);
-      pending.forEach((image) => { image.onload = null; image.onerror = null; image.src = ""; });
-      pending.clear(); cache.clear();
+      disposed = true;
+      clearTimeout(backgroundTimer);
+      unsubscribe();
+      resizeObserver.disconnect();
+      mobileQuery.removeEventListener("change", handleMediaChange);
+      if (rafId) cancelAnimationFrame(rafId);
+      imageCache.clear();
+      inFlight.clear();
     };
   }, [progress, reducedMotion]);
 
-  return <div className="v2-frame-sequence">
-    <picture>
-      <source media="(max-width: 700px)" srcSet={`${frames.mobile}/${frames.files[0]}`} />
-      {/* The first source frame remains visible while the canvas loads or if JS fails. */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={`${frames.desktop}/${frames.files[0]}`} alt="Vue architecturale d’un bâtiment Cladis Construction" width={frames.width} height={frames.height} fetchPriority="high" />
-    </picture>
-    <canvas ref={canvasRef} aria-hidden="true" />
-  </div>;
+  return (
+    <div className="v2-frame-sequence">
+      <picture>
+        <source
+          media="(max-width: 700px)"
+          srcSet={`${frames.mobile}/${frames.files[0]}`}
+        />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={`${frames.desktop}/${frames.files[0]}`}
+          alt="Vue architecturale d’un bâtiment Cladis Construction"
+          width={frames.width}
+          height={frames.height}
+          fetchPriority="high"
+        />
+      </picture>
+      <canvas ref={canvasRef} aria-hidden="true" />
+    </div>
+  );
 }

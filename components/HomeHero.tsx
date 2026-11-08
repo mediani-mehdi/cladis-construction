@@ -12,7 +12,7 @@ export default function HomeHero() {
   const sectionRef = useRef<HTMLElement>(null);
   const reducedMotion = useReducedMotion();
   const { scrollYProgress: rawProgress } = useScroll({ target: sectionRef, offset: ["start start", "end end"] });
-  const scrollYProgress = useSpring(rawProgress, { stiffness: 150, damping: 24, mass: 0.35, restDelta: 0.00005 });
+  const scrollYProgress = useSpring(rawProgress, { stiffness: 220, damping: 28, mass: 0.15, restDelta: 0.0001 });
   const titleY = useTransform(scrollYProgress, [0, 0.65], [0, -160]);
   const titleOpacity = useTransform(scrollYProgress, [0, 0.4, 0.65], [1, 1, 0]);
   const statementOpacity = useTransform(scrollYProgress, [0.5, 0.85], [0, 1]);
@@ -22,7 +22,7 @@ export default function HomeHero() {
     <section ref={sectionRef} className="v2-hero" aria-label="Présentation de CLADIS CONSTRUCTION">
       <div className="v2-hero-sticky">
         <div className="v2-hero-film">
-          <div className="v2-hero-media"><ScrollFrameSequence progress={scrollYProgress} reducedMotion={!!reducedMotion} /></div>
+          <div className="v2-hero-media"><ScrollFrameSequence progress={rawProgress} reducedMotion={!!reducedMotion} /></div>
           <div className="v2-hero-shade" />
           <div className="v2-hero-grid" aria-hidden="true" />
           <motion.div className="v2-hero-copy" style={{ y: reducedMotion ? 0 : titleY, opacity: reducedMotion ? 1 : titleOpacity }}>
