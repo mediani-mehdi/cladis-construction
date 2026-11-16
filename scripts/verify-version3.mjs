@@ -2,7 +2,7 @@
 const base=process.argv[2]||'http://localhost:3100';
 const fetchPage=async path=>{const r=await fetch(base+path,{redirect:'manual'});assert.equal(r.status,200,path);return r.text()};
 const home=await fetchPage('/');
-for(const text of ['Une solide expérience','Nos points forts','sur le terrain.','Études et travaux'])assert.ok(home.includes(text),text);
+for(const text of ['Une solide expérience','Nos points forts','sur le terrain.','Études et travaux'])assert.ok(home.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').includes(text),text);
 for(const removed of ['v2-project-invitation','Ingénierie virtuelle','id="configurateur"','id="devis"'])assert.ok(!home.includes(removed),'Removed home block: '+removed);
 assert.ok(home.includes('v2-frame-sequence'),'Version 2 animated hero');
 assert.ok(home.includes('v2-glass'),'Version 2 glass navigation');

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { UsersRound, Ruler, ClipboardCheck, ArrowUpRight } from 'lucide-react';
 import { METIERS } from '@/lib/metiers-data';
 import { PROJECTS } from '@/lib/projects-data';
 import copy from '@/lib/home-copy.json';
@@ -65,23 +66,35 @@ export default function HomeSections() {
         </article>)}</div>
     <a className="v3-link" href="/etudes-et-travaux">Découvrir nos études et travaux ↗</a>
     </div></section>
-    <section className="v3-tint">
-    <div className="v3-wrap v3-section">
-    <span className="v3-label">05 / La force du collectif</span>
-    <div className="v3-section-heading">
-    <h2>Nos points forts</h2>
-    <figure>
-    <div className="v3-photo">
-    <Image src="/images/alliance-installation-fb19c46e.webp" alt="Deux poseurs équipés de casques et de gilets intervenant sur une façade" fill sizes="(max-width:700px) 100vw,40vw" className="object-cover"/>
-    </div>
-    <figcaption>La pose et le contrôle des raccords sur chantier.</figcaption>
-    </figure>
-    </div>
-    <div className="v3-three">{copy.strengths.map(s => <article key={s.title}>
-        <h3>{s.title}</h3>
-        <p>{s.text}</p>
-        </article>)}</div>
-    </div>
+    <section id="collectif" className="v3-tint v3-collective" aria-labelledby="collective-heading">
+      <div className="v3-wrap v3-section v3-collective-layout">
+        <figure className="v3-collective-visual">
+          <div className="v3-collective-photo">
+            <Image src="/images/alliance-installation-fb19c46e.webp"
+              alt="Deux poseurs équipés de casques et de gilets contrôlant les raccords d’une façade"
+              fill sizes="(max-width: 800px) 100vw, 44vw" className="object-cover" />
+            <div className="v3-collective-photo-note v2-glass">
+              <span>CLADIS CONSTRUCTION</span>
+              <strong>Des études à la pose.</strong>
+            </div>
+          </div>
+          <figcaption>La pose et le contrôle des raccords sur chantier.</figcaption>
+        </figure>
+        <div className="v3-collective-copy">
+          <span className="v3-label">05 / La force du collectif</span>
+          <h2 id="collective-heading">Nos points <em>forts.</em></h2>
+          <ol className="v3-collective-strengths">
+            {copy.strengths.map((strength, index) => {
+              const Icon = [UsersRound, Ruler, ClipboardCheck][index];
+              return <li key={strength.title}>
+                <span className="v3-collective-icon" aria-hidden="true"><Icon size={22} strokeWidth={1.4} /></span>
+                <div><h3>{strength.title}</h3><p>{strength.text}</p></div>
+              </li>;
+            })}
+          </ol>
+          <a className="v3-link" href="/etudes-et-travaux">D?couvrir nos ?quipes et nos ?tudes <ArrowUpRight size={17} aria-hidden="true" /></a>
+        </div>
+      </div>
     </section>
     </div>;
 }
