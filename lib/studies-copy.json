@@ -1,0 +1,64 @@
+{
+  "title": "Des études d’exécution à la réception du chantier",
+  "intro": "CLADIS Construction réunit un bureau d’études intégré, des équipes de pose qualifiées et des services dédiés à la préparation des opérations. En bardage, couverture métallique, étanchéité et charpente métallique, nos équipes travaillent ensemble pour traduire les plans en détails exécutables, organiser la pose et contrôler les ouvrages avant réception.",
+  "teamsTitle": "Des équipes qualifiées qui se forment régulièrement",
+  "teams": "Nos équipes de pose sont qualifiées pour intervenir sur les façades, les toitures et les structures métalliques. Nous organisons des formations régulières pour actualiser leurs connaissances sur les procédés, les règles de mise en œuvre et la sécurité sur chantier. En préparation, le conducteur de travaux et le chef d’équipe examinent avec le bureau d’études les détails à réaliser, les accès et les points à contrôler pendant la pose.",
+  "office": "Notre bureau d’études réalise en interne les métrés, les plans d’exécution et les carnets de détails relevant de nos lots. Il échange avec la maîtrise d’œuvre et les autres corps d’état pour préciser les supports, les réservations et les raccords avant les commandes et la pose.",
+  "disciplines": [
+    {
+      "title": "Bardage et façades architecturales",
+      "paragraphs": [
+        "Nous établissons les élévations et les calepinages des façades en bardage métallique, bois, panneaux HPL ou aluminium composite. Nous définissons la trame des parements, la position des joints et l’implantation des ossatures secondaires et des fixations selon le système et le support.",
+        "Les carnets de détails traitent les pieds et têtes de façade, les angles, les tableaux et appuis de baies, les bavettes, couvertines et sous-faces. Ils précisent les raccords avec les menuiseries et la toiture, la continuité de l’isolation et les dispositions de ventilation et de sécurité incendie applicables au procédé."
+      ]
+    },
+    {
+      "title": "Couverture métallique et étanchéité",
+      "paragraphs": [
+        "Nous produisons les plans de toiture, les calepinages des bacs, panneaux ou isolants et les plans de réservations. Nous étudions les pentes et les raccords aux acrotères, relevés, lanterneaux, costières et sorties de toiture. Pour les couvertures isolées, nous préparons les détails de continuité de l’isolation et de la membrane d’étanchéité à l’air lorsque le projet la prévoit.",
+        "Pour l’évacuation des eaux pluviales, nous repérons les surfaces collectées et les points bas. Dans le périmètre de notre lot, nous établissons les études hydrauliques et les plans d’implantation pour dimensionner les chéneaux, naissances et descentes d’eaux pluviales. Nous coordonnons les trop-pleins prévus au projet et les raccordements avec les lots concernés."
+      ]
+    },
+    {
+      "title": "Charpente et structures métalliques",
+      "paragraphs": [
+        "En neuf, en extension ou en rénovation, nous étudions la faisabilité, les appuis, les descentes de charges et les assemblages selon la mission confiée. Nos études couvrent les ossatures principales et secondaires, les chevêtres, les créations d’ouvertures et les renforts de structures existantes.",
+        "Nous utilisons AutoCAD pour les plans 2D, coupes et détails de raccordement, et Tekla Structures pour la modélisation 3D de l’ossature, le repérage des pièces et la préparation des plans de fabrication et de montage. Les plans précisent les interfaces avec le gros œuvre, le bardage et la toiture."
+      ]
+    }
+  ],
+  "preparation": [
+    {
+      "title": "Analyser les supports et le site",
+      "paragraphs": [
+        "Avant l’intervention, nous examinons les plans du marché et relevons les conditions sur place. Nous contrôlons les dimensions, la géométrie des supports, les appuis et les réservations utiles à nos lots. Nous identifions les écarts et les points à faire valider avant de lancer les études ou les commandes.",
+        "Nous préparons le phasage en fonction des accès, des zones de stockage, des moyens de levage et de la coactivité. En rénovation ou en site occupé, nous tenons compte des horaires d’exploitation, des circulations et des protections provisoires nécessaires."
+      ]
+    },
+    {
+      "title": "Préparer la pose et suivre les travaux",
+      "paragraphs": [
+        "Nous coordonnons les validations des plans, les commandes, les livraisons et la mobilisation des équipes. Les travaux sont organisés par zone selon le planning du chantier et les interfaces avec les autres corps d’état.",
+        "Le suivi porte sur les supports, les fixations, les raccords et les finitions selon le lot. Avant la réception, nous vérifions les ouvrages réalisés, traitons les écarts relevés et transmettons les documents de fin de travaux prévus au marché."
+      ]
+    }
+  ],
+  "partners": [
+    {
+      "title": "Une filiale d’achat qui centralise nos approvisionnements",
+      "text": "Elle regroupe les besoins des opérations, consulte les fournisseurs et suit les disponibilités, les commandes et les délais. Les circuits d’achat sont organisés avec le bureau d’études et les équipes travaux pour aligner les références et les livraisons sur les validations et le phasage."
+    },
+    {
+      "title": "Un service commercial et un service technique dédiés",
+      "text": "Le service commercial suit les consultations, les offres et les échanges avec les clients. Le service technique répond aux questions sur les procédés, les supports et les détails de mise en œuvre, en lien avec le bureau d’études."
+    },
+    {
+      "title": "Un service marketing dédié",
+      "text": "Il prépare les supports de présentation, le catalogue et les fiches de réalisations avec les équipes commerciales et techniques."
+    },
+    {
+      "title": "Des partenaires spécialisés",
+      "text": "Selon l’opération, nous mobilisons des fournisseurs et partenaires de travaux dont les interventions sont coordonnées avec nos équipes, de la préparation à la pose."
+    }
+  ]
+}

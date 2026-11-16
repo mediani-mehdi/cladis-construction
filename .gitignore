@@ -49,3 +49,7 @@ scraped_text.txt
 
 
 .vercel
+
+# Local version 3 verification artifacts
+/output/version3-qa/
+/output/npm-cache/

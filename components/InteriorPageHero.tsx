@@ -35,7 +35,7 @@ export default function InteriorPageHero(props: InteriorPageHeroProps) {
           <p>{props.description}</p>
           <div className="v2-interior-hero-actions">
             <a href={props.action.href} className="v2-button v2-button-light">{props.action.label}<ArrowDown size={17} aria-hidden="true" /></a>
-            <Link href="/#devis" className="v2-text-link">Parlons de votre projet<ArrowUpRight size={17} aria-hidden="true" /></Link>
+            <Link href="/contact" className="v2-text-link">Parlons de votre projet<ArrowUpRight size={17} aria-hidden="true" /></Link>
           </div>
         </div>
         <div className="v2-interior-hero-caption v2-glass"><span>{props.caption}</span><ArrowDown size={18} aria-hidden="true" /></div>

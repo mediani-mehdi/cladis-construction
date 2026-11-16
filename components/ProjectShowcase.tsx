@@ -135,7 +135,7 @@ export default function ProjectShowcase({ standalone = false }: { standalone?: b
         {standalone ? (
           <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-primary/15 pt-7 sm:flex-row sm:items-center">
             <p className="text-sm text-secondary">Donnons forme à votre prochain projet.</p>
-            <Link href="/#devis" className={`inline-flex items-center gap-4 bg-primary px-6 py-4 text-xs font-semibold text-white transition-colors hover:bg-primary/90 ${focusStyle}`}>
+            <Link href="/contact#devis" className={`inline-flex items-center gap-4 bg-primary px-6 py-4 text-xs font-semibold text-white transition-colors hover:bg-primary/90 ${focusStyle}`}>
               Parlons de votre projet
               <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
             </Link>

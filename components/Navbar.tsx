@@ -22,8 +22,8 @@ const searchShortcuts = [
   { label: "Méthodologie", target: "/methodologie" },
   { label: "L'Alliance", target: "/alliance" },
   { label: "Nos Réalisations", target: "/realisations" },
-  { label: "Configurateur Enveloppe", target: "/#configurateur" },
-  { label: "Demande de Devis", target: "/#devis" },
+  { label: "Configurateur Enveloppe", target: "/contact#configurateur" },
+  { label: "Demande de Devis", target: "/contact#devis" },
   { label: "Catalogue 2026 (PDF)", action: "catalogue" },
 ];
 
@@ -112,8 +112,8 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
     const target = query.includes("method") ? "/methodologie"
       : query.includes("alliance") ? "/alliance"
       : query.includes("propos") || query.includes("entreprise") ? "/l-entreprise"
-      : query.includes("devis") || query.includes("contact") ? "/#devis"
-      : query.includes("config") ? "/#configurateur"
+      : query.includes("devis") || query.includes("contact") ? "/contact#devis"
+      : query.includes("config") ? "/contact#configurateur"
       : query.includes("projet") || query.includes("real") ? "/realisations" : "/metiers";
     handleSearchSelect({ label: searchQuery, target });
   };
@@ -152,7 +152,7 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
                 <button ref={searchButtonRef} type="button" aria-label="Rechercher" aria-expanded={searchOpen} aria-controls="site-search" onClick={() => { setMobileMenuOpen(false); setSearchOpen((current) => !current); }} className={`flex h-11 w-11 items-center justify-center text-primary hover:bg-primary/5 ${focusStyle}`}>
                   <Search className="h-5 w-5" aria-hidden="true" />
                 </button>
-                <a href="/#devis" className={`hidden min-h-11 items-center gap-2 whitespace-nowrap bg-primary px-4 py-3 font-secondary text-[10px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-primary/90 md:inline-flex xl:hidden 2xl:inline-flex ${focusStyle}`}>Demander un devis<ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" /></a>
+                <a href="/contact#devis" className={`hidden min-h-11 items-center gap-2 whitespace-nowrap bg-primary px-4 py-3 font-secondary text-[10px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-primary/90 md:inline-flex xl:hidden 2xl:inline-flex ${focusStyle}`}>Demander un devis<ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" /></a>
                 <button ref={menuButtonRef} type="button" aria-label="Ouvrir le menu" aria-expanded={mobileMenuOpen} aria-controls="mobile-navigation" onClick={() => { setSearchOpen(false); setMobileMenuOpen(true); }} className={`flex h-11 w-11 items-center justify-center border border-primary/15 bg-primary/5 text-primary hover:bg-primary/10 xl:hidden ${focusStyle}`}>
                   <Menu className="h-5 w-5" aria-hidden="true" />
                 </button>
@@ -186,7 +186,7 @@ export default function Navbar({ onOpenCatalogue }: NavbarProps) {
               {NAV_LINKS.map((link) => <a key={link.href} href={link.href} aria-current={isActivePage(link.href) ? "page" : undefined} onClick={() => setMobileMenuOpen(false)} className="flex min-h-12 items-center justify-between gap-4 border-b border-white/15 px-2 py-3.5 text-base font-semibold text-white hover:bg-white/10 aria-[current=page]:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"><span>{link.label}</span><ArrowUpRight className="h-4 w-4 shrink-0 text-white/55" aria-hidden="true" /></a>)}
             </nav>
             <div className="mt-auto flex flex-col gap-3 pt-7">
-              <a href="/#devis" onClick={() => setMobileMenuOpen(false)} className="inline-flex min-h-12 items-center justify-between gap-3 bg-white px-5 py-4 text-sm font-bold text-primary">Demander un devis<ArrowUpRight className="h-4 w-4 shrink-0" aria-hidden="true" /></a>
+              <a href="/contact#devis" onClick={() => setMobileMenuOpen(false)} className="inline-flex min-h-12 items-center justify-between gap-3 bg-white px-5 py-4 text-sm font-bold text-primary">Demander un devis<ArrowUpRight className="h-4 w-4 shrink-0" aria-hidden="true" /></a>
               {onOpenCatalogue ? <button type="button" onClick={() => { setMobileMenuOpen(false); onOpenCatalogue(); }} className="inline-flex min-h-12 items-center justify-center gap-2 border border-white/25 px-4 py-3 text-xs text-white"><Download className="h-4 w-4 shrink-0" aria-hidden="true" />Consulter le catalogue</button> : <a href="/catalogue-cladis-2026.pdf" className="inline-flex min-h-12 items-center justify-center gap-2 border border-white/25 px-4 py-3 text-xs text-white"><Download className="h-4 w-4 shrink-0" aria-hidden="true" />Consulter le catalogue</a>}
               <a href="tel:0952863156" className="inline-flex min-h-11 items-center justify-center gap-2 py-2 text-xs text-white/75"><Phone className="h-3.5 w-3.5" aria-hidden="true" />09 52 86 31 56</a>
             </div>

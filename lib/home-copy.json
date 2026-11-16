@@ -1,0 +1,49 @@
+{
+  "knowhow": [
+    {
+      "title": "Expertise technique",
+      "text": "Nous intervenons sur les façades et les toitures, du bardage métallique à l’étanchéité des toitures-terrasses, en passant par la couverture et les structures métalliques."
+    },
+    {
+      "title": "Organisation structurée",
+      "text": "Nous préparons les détails, les approvisionnements et le phasage en fonction des supports, des accès et du planning de l’opération."
+    },
+    {
+      "title": "Engagement sur le terrain",
+      "text": "Nous suivons les travaux au fil de la pose, avec une attention particulière aux raccords, aux finitions et à la coordination avec les autres corps d’état."
+    }
+  ],
+  "spirit": "Un collège en activité, un bâtiment industriel ou un immeuble de logements présentent des contraintes différentes. Dès l’étude, nous tenons compte de l’usage du bâtiment, des supports et des conditions d’intervention. Nous préparons les raccords entre façade et toiture, le traitement des ouvertures et l’évacuation des eaux pluviales selon le périmètre de nos travaux.",
+  "steps": [
+    {
+      "title": "Analyser le besoin et le projet",
+      "text": "Nous examinons les plans, le cahier des charges, les supports et les contraintes du site. Nous identifions les points à préciser et les interfaces avec les autres lots."
+    },
+    {
+      "title": "Préparer le chantier",
+      "text": "Notre bureau d’études réalise les métrés, les plans d’exécution, les calepinages et les détails. Nous choisissons les matériaux selon le dossier et préparons les approvisionnements, les moyens de pose et le phasage."
+    },
+    {
+      "title": "Construire et coordonner",
+      "text": "Nous organisons la pose par zone et coordonnons les interventions avec les autres corps d’état. Nous suivons l’avancement, les raccords et les points singuliers au fil du chantier."
+    },
+    {
+      "title": "Vérifier avant la livraison",
+      "text": "Nous contrôlons les ouvrages relevant de notre lot, notamment les fixations, les raccords, les relevés et les finitions selon les travaux réalisés. Nous traitons les écarts relevés et préparons la réception."
+    }
+  ],
+  "strengths": [
+    {
+      "title": "Des équipes expérimentées qui continuent de se former",
+      "text": "Notre première force, ce sont les femmes et les hommes qui préparent et réalisent nos chantiers. Leur expérience en bardage, étanchéité et couverture s’appuie sur des formations régulières aux évolutions des règles techniques, des produits et des méthodes de pose."
+    },
+    {
+      "title": "Un bureau d’études intégré",
+      "text": "Nous réalisons en interne les métrés, les plans d’exécution, les calepinages et les carnets de détails. L’équipe études échange directement avec les équipes de chantier pour anticiper les raccords et adapter les détails aux conditions de pose."
+    },
+    {
+      "title": "Un suivi rigoureux sur le chantier",
+      "text": "Nous contrôlons les supports, la mise en œuvre et les finitions au fil des travaux. Nous appliquons les NF DTU et les règles techniques applicables aux ouvrages, ainsi que les prescriptions du marché."
+    }
+  ]
+}

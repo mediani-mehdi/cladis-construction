@@ -1,102 +1,87 @@
-"use client";
-
-import { useState, type ReactNode } from "react";
-import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
-import { ArrowDown, ArrowRight, ArrowUpRight, Plus, Minus, Layers3, Ruler, HardHat, PackageCheck } from "lucide-react";
-import { METIERS } from "@/lib/metiers-data";
-import { PROJECTS } from "@/lib/projects-data";
-
-function Reveal({ children, className = "" }: { children: ReactNode; className?: string }) {
-  const reduced = useReducedMotion();
-  return <motion.div className={className} initial={reduced ? false : { opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.12 }} transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}>{children}</motion.div>;
-}
-
-const steps = [
-  { icon: Ruler, title: "Comprendre & concevoir", text: "Un bureau d’études intégré pour traduire vos contraintes en solutions techniques précises.", tag: "ÉTUDES & CONCEPTION", slug: "etude-diagnostic" },
-  { icon: Layers3, title: "Choisir & préparer", text: "Des matériaux sélectionnés et un approvisionnement coordonné pour un chantier maîtrisé.", tag: "MATÉRIAUX & LOGISTIQUE", slug: "conception-modelisation" },
-  { icon: HardHat, title: "Construire & coordonner", text: "Des équipes de pose mobilisées, un interlocuteur dédié et une attention constante aux interfaces.", tag: "RÉALISATION & PILOTAGE", slug: "realisation-pilotage" },
-  { icon: PackageCheck, title: "Vérifier & transmettre", text: "Des contrôles jusqu’aux finitions, une réception accompagnée et les documents de votre ouvrage.", tag: "LIVRAISON & RÉCEPTION", slug: "livraison-reception" },
-];
-
-const knowhow = [
-  { title: "Expertise éprouvée", text: "Une connaissance approfondie de l'enveloppe du bâtiment et de la construction métallique." },
-  { title: "Organisation structurée", text: "Des études préparées avec rigueur et des interfaces coordonnées à chaque étape." },
-  { title: "Engagement terrain", text: "Un accompagnement attentif aux contraintes et aux ambitions de chaque projet." },
-];
-
+import Image from 'next/image';
+import { METIERS } from '@/lib/metiers-data';
+import { PROJECTS } from '@/lib/projects-data';
+import copy from '@/lib/home-copy.json';
 export default function HomeSections() {
-  const [activeService, setActiveService] = useState(0);
-  const [projectFilter, setProjectFilter] = useState("Tous");
-  const filters = [{ label: "Tous", value: "Tous" }, { label: "Bardage", value: "bardage" }, { label: "Couverture", value: "couverture" }, { label: "Charpente", value: "charpente" }];
-  const projects = projectFilter === "Tous" ? PROJECTS.slice(0, 3) : PROJECTS.filter((p) => p.category === projectFilter);
-  const active = METIERS[activeService];
-
-  return <>
-    <section id="savoir-faire" tabIndex={-1} aria-labelledby="savoir-faire-heading" className="v2-knowhow v2-container">
-      <Reveal className="v2-knowhow-heading"><span className="v2-eyebrow">Le savoir-faire CLADIS</span><h2 id="savoir-faire-heading">Une solide expérience.<br /><em>Un savoir-faire exigeant.</em></h2></Reveal>
-      <div className="v2-knowhow-grid">{knowhow.map((item) => <Reveal key={item.title}><article className="v2-knowhow-item"><h3>{item.title}</h3><p>{item.text}</p></article></Reveal>)}</div>
+    return <div className="v3-home-content">
+    <section id="savoir-faire" tabIndex={-1} className="v3-wrap v3-section">
+    <span className="v3-label">Le savoir-faire CLADIS</span>
+    <h2>Une solide expérience<br />de l’enveloppe du bâtiment</h2>
+    <div className="v3-three">{copy.knowhow.map(x => <article key={x.title}>
+        <h3>{x.title}</h3>
+        <p>{x.text}</p>
+        </article>)}</div>
     </section>
-    <section id="introduction" className="v2-intro v2-container">
-      <Reveal className="v2-section-top"><span className="v2-eyebrow">01 / L’ESPRIT CLADIS</span><span className="v2-small-note">L’EXIGENCE, PAR NATURE.</span></Reveal>
-      <Reveal className="v2-intro-grid"><div><h2>De la structure<br />à la signature<br /><em>architecturale.</em></h2></div><div className="v2-intro-right"><p className="v2-lead">Nous donnons à vos bâtiments<br />une enveloppe à la hauteur<br />de ce qu’ils abritent.</p><p>Depuis Chambéry, Cladis Construction accompagne les projets industriels, logistiques et tertiaires. Nous réunissons l’ingénierie, les matériaux et le savoir-faire de terrain pour construire des ouvrages cohérents, durables et singuliers.</p></div></Reveal>
-      <Reveal className="v2-intro-image v2-intro-image-woodland"><Image src="/images/about-company-woodland-d9a52e11.webp" alt="Bâtiment contemporain en bardage métallique anthracite, encadrement bois et vitrages éclairés dans un environnement boisé" fill quality={90} sizes="(max-width: 700px) 100vw, 90vw" /><div className="v2-image-caption v2-glass"><span>LA TECHNIQUE AU SERVICE DE L’ARCHITECTURE</span><ArrowUpRight size={22} /></div><span className="v2-image-index">CLADIS — CONCEPTION / RÉALISATION</span></Reveal>
+    <section className="v3-wrap v3-section v3-split">
+    <div>
+    <span className="v3-label">01 / L’esprit CLADIS</span>
+    <h2>Des façades et des toitures pensées pour chaque bâtiment</h2>
+    </div>
+    <div>
+    <p>{copy.spirit}</p>
+    <a className="v3-link" href="/l-entreprise">Découvrir l’entreprise ↗</a>
+    </div>
     </section>
-
-    <section id="expertises" className="v2-expertise">
-      <div className="v2-container"><Reveal className="v2-section-top"><span className="v2-eyebrow">02 / NOS MÉTIERS</span><a href="/metiers" className="v2-text-link">Tous nos métiers <ArrowUpRight size={17} /></a></Reveal>
-        <Reveal className="v2-section-heading"><h2>Une enveloppe complète.<br /><em>Chaque détail compte.</em></h2><p>Six savoir-faire qui se répondent.<br />Une même exigence de réalisation.</p></Reveal>
-        <div className="v2-expertise-grid"><Reveal className="v2-service-image"><Image key={active.slug} src={active.slug === "couverture-etancheite" ? active.heroImage : `/images/high-quality/metier-${active.slug}.png`} quality={90} alt={active.shortTitle} fill sizes="(max-width: 800px) 100vw, 45vw" /><div className="v2-service-image-label v2-glass"><span>SAVOIR-FAIRE / {active.num}</span><h3>{active.shortTitle}</h3></div></Reveal>
-          <div className="v2-service-list">{METIERS.map((service, index) => <div key={service.slug} className={`v2-service ${activeService === index ? "is-active" : ""}`}><button id={`service-trigger-${index}`} onClick={() => setActiveService(index)} aria-expanded={activeService === index} aria-controls={`service-panel-${index}`}><span className="v2-service-number">{service.num}</span><span>{service.shortTitle}</span>{activeService === index ? <Minus size={19} /> : <Plus size={19} />}</button><div id={`service-panel-${index}`} role="region" aria-labelledby={`service-trigger-${index}`} hidden={activeService !== index}><p>{service.shortDesc}</p><a href={`/metiers/${service.slug}`} className="v2-text-link">Explorer cette expertise <ArrowUpRight size={16} /></a></div></div>)}</div>
+    <section className="v3-tint">
+    <div className="v3-wrap v3-section">
+    <span className="v3-label">02 / Nos métiers</span>
+    <div className="v3-section-heading">
+    <h2>Une enveloppe complète.<br />Chaque détail compte.</h2>
+    <p>Nous intervenons sur les façades, les toitures et les structures qui les supportent, sur un lot ou sur plusieurs lots coordonnés.</p>
+    </div>
+    <div className="v3-trades">{METIERS.map(m => <a className="v3-trade" href={'/metiers/' + m.slug} key={m.slug}>
+        <span className="v3-label">{m.num}</span>
+        <div>
+        <h3>{m.shortTitle}</h3>
+        <p className="v3-trade-description">{["Simple peau, double peau, panneaux sandwich, cassettes, panneaux composites et profils métalliques.", "Couverture métallique, bac acier, panneaux sandwich et zinc à joint debout.", "Toiture-terrasse, étanchéité PVC et bitumineuse, végétalisation et murs enterrés.", "Ossatures, extensions, renforts et adaptations de structures existantes."][Number(m.num) - 1]}</p>
         </div>
-      </div>
+        <span aria-hidden="true">↗</span>
+        </a>)}</div>
+    <a className="v3-link" href="/metiers">Découvrir nos métiers ↗</a>
+    </div>
     </section>
-
-    <section id="realisations" className="v2-projects v2-container">
-      <Reveal className="v2-section-top"><span className="v2-eyebrow">03 / RÉALISATIONS CHOISIES</span><a href="/realisations" className="v2-text-link">Tous les projets <ArrowUpRight size={17} /></a></Reveal>
-      <Reveal className="v2-section-heading"><h2>La preuve,<br /><em>sur le terrain.</em></h2><p>Des contraintes réelles.<br />Des réponses qui prennent forme.</p></Reveal>
-      <div className="v2-project-filters" role="group" aria-label="Filtrer les réalisations">{filters.map((filter) => <button key={filter.value} onClick={() => setProjectFilter(filter.value)} aria-pressed={projectFilter === filter.value} className={projectFilter === filter.value ? "is-active" : ""}>{filter.label}{filter.value === "Tous" && <span>0{PROJECTS.length}</span>}</button>)}</div>
-      <div className="v2-project-grid" aria-live="polite">{projects.map((project, index) => <a key={project.id} href={`/realisations/${project.slug}`} className={`v2-project-card ${index === 0 ? "v2-project-featured" : ""}`}><div className="v2-project-image"><Image src={project.image} alt={project.title} fill sizes="(max-width: 700px) 100vw, 60vw" /><span className="v2-project-tag v2-glass">{project.categoryLabel}</span><span className="v2-project-arrow v2-glass"><ArrowUpRight size={23} /></span><div className="v2-project-image-footer"><span>{project.location}</span><span>{project.surface} / {project.year}</span></div></div><div className="v2-project-title"><h3>{project.title}</h3><span>0{PROJECTS.indexOf(project) + 1}</span></div></a>)}</div>
-    </section>
-
-    <section className="v2-method" id="approche">
-      <div className="v2-container">
-        <Reveal className="v2-section-top">
-          <span className="v2-eyebrow">04 / UNE MÉTHODE, UN ENGAGEMENT</span>
-          <a href="/methodologie" className="v2-text-link">Notre méthodologie <ArrowUpRight size={17} /></a>
-        </Reveal>
-        <Reveal className="v2-section-heading">
-          <h2>Maîtriser chaque étape.<br /><em>Tenir le cap, ensemble.</em></h2>
-          <p>Un projet réussi commence par une vision claire.<br />Et se construit dans la continuité.</p>
-        </Reveal>
-        <div className="v2-steps">
-          {steps.map((step, index) => (
-            <Reveal key={step.title}>
-              <a href={`/methodologie#${step.slug}`} className="v2-step">
-                <div className="v2-step-top">
-                  <div className="v2-step-icon">
-                    <step.icon size={25} strokeWidth={1.4} />
-                  </div>
-                  <span className="v2-step-number">0{index + 1}</span>
-                </div>
-                <div className="v2-step-body">
-                  <span className="v2-step-tag">{step.tag}</span>
-                  <h3>{step.title}</h3>
-                  <p>{step.text}</p>
-                </div>
-                <div className="v2-step-link">
-                  <span>Découvrir cette étape</span>
-                  <ArrowUpRight size={15} />
-                </div>
-              </a>
-            </Reveal>
-          ))}
+    <section className="v3-wrap v3-section">
+    <span className="v3-label">03 / Réalisations à la une</span>
+    <div className="v3-section-heading">
+    <h2>La preuve sur le terrain.</h2>
+    <p>Des contraintes réelles, des réponses qui prennent forme. Découvrez les travaux de bardage, de couverture, d’étanchéité et de charpente réalisés par CLADIS Construction.</p>
+    </div>
+    <div className="v3-three">{PROJECTS.slice(0, 3).map(p => <a className="v3-project" href={'/realisations/' + p.slug} key={p.slug}>
+        <div className="v3-photo">
+        <Image src={p.image} alt={p.title} fill sizes="(max-width:700px) 100vw,33vw" className="object-cover"/>
         </div>
-      </div>
+        <span className="v3-label">{p.location} · {p.categoryLabel}</span>
+        <h3>{p.title} ↗</h3>
+        </a>)}</div>
+    <a className="v3-link" href="/realisations">Voir toutes les réalisations ↗</a>
     </section>
-
-    <section className="v2-alliance v2-container"><Reveal className="v2-alliance-visual"><Image src="/images/high-quality/alliance-installation.png" alt="Équipe spécialisée dans la pose et la réalisation de l’enveloppe du bâtiment" fill sizes="(max-width: 800px) 100vw, 50vw" /><div className="v2-alliance-badge v2-glass"><span>CLADIS</span><Plus size={17} /><span>BUILDING SERVICES</span></div></Reveal><Reveal className="v2-alliance-copy"><span className="v2-eyebrow">05 / LA FORCE DU COLLECTIF</span><h2>Des expertises unies.<br /><em>Un projet maîtrisé.</em></h2><p>Cladis Construction, Building Services et notre filiale d’achat associent leurs forces. De l’étude à la pose, une chaîne de compétences coordonnée pour donner à votre projet toute sa dimension.</p><a href="/alliance" className="v2-text-link">Découvrir notre alliance <ArrowUpRight size={18} /></a><div className="v2-alliance-signature"><span>CONCEVOIR</span><ArrowRight size={14} /><span>APPROVISIONNER</span><ArrowRight size={14} /><span>CONSTRUIRE</span></div></Reveal></section>
-
-    <section className="v2-project-invitation"><div className="v2-container"><Reveal><span className="v2-eyebrow">ET SI ON CONSTRUISAIT LA SUITE ?</span><h2>Votre idée.<br /><em>Notre prochain projet.</em></h2><div className="v2-invitation-bottom"><p>Une construction, une rénovation, une ambition ?<br />Donnons ensemble une première forme à votre projet.</p><a href="#configurateur" className="v2-button v2-button-light">Configurer mon bâtiment <ArrowDown size={18} /></a><a href="#devis" className="v2-text-link">Échanger avec notre équipe <ArrowUpRight size={18} /></a></div></Reveal></div></section>
-  </>;
+    <section className="v3-wrap v3-section">
+    <span className="v3-label">04 / Notre méthode et nos engagements</span>
+    <h2>De l’analyse du projet<br />au contrôle avant livraison</h2>
+    <div className="v3-four">{copy.steps.map((s, i) => <article key={s.title}>
+        <span className="v3-label">0{i + 1}</span>
+        <h3>{s.title}</h3>
+        <p>{s.text}</p>
+        </article>)}</div>
+    <a className="v3-link" href="/etudes-et-travaux">Découvrir nos études et travaux ↗</a>
+    </section>
+    <section className="v3-tint">
+    <div className="v3-wrap v3-section">
+    <span className="v3-label">05 / La force du collectif</span>
+    <div className="v3-section-heading">
+    <h2>Nos points forts</h2>
+    <figure>
+    <div className="v3-photo">
+    <Image src="/images/alliance-installation-fb19c46e.webp" alt="Deux poseurs équipés de casques et de gilets intervenant sur une façade" fill sizes="(max-width:700px) 100vw,40vw" className="object-cover"/>
+    </div>
+    <figcaption>La pose et le contrôle des raccords sur chantier.</figcaption>
+    </figure>
+    </div>
+    <div className="v3-three">{copy.strengths.map(s => <article key={s.title}>
+        <h3>{s.title}</h3>
+        <p>{s.text}</p>
+        </article>)}</div>
+    </div>
+    </section>
+    </div>;
 }

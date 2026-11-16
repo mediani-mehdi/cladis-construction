@@ -16,6 +16,13 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      { source: '/methodologie', destination: '/etudes-et-travaux', permanent: true },
+      { source: '/alliance', destination: '/etudes-et-travaux', permanent: true },
+      { source: '/metiers/couverture-etancheite', destination: '/metiers/couverture-metallique', permanent: true },
+      { source: '/metiers/bardage-specifique', destination: '/metiers/bardage-metallique', permanent: true },
+      { source: '/metiers/isolation-thermique', destination: '/metiers/bardage-metallique', permanent: true },
+      { source: '/metiers/toiture-vegetalisee-solaire', destination: '/metiers/etancheite-toiture-terrasse', permanent: true },
+      { source: '/devis', destination: '/contact#devis', permanent: true },
       {
         source: '/a-propos',
         destination: '/l-entreprise',

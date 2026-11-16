@@ -1,18 +1,4 @@
-export const NAV_LINKS = [
-  { label: "Accueil", href: "/" },
-  { label: "À propos", href: "/l-entreprise" },
-  { label: "Nos Métiers", href: "/metiers" },
-  { label: "Méthodologie", href: "/methodologie" },
-  { label: "L'Alliance", href: "/alliance" },
-  { label: "Réalisations", href: "/realisations" },
-  { label: "Contact", href: "/#contact" },
-];
-
-export const METIER_LINKS = [
-  { label: "Bardage Métallique", href: "/metiers/bardage-metallique" },
-  { label: "Couverture & Étanchéité", href: "/metiers/couverture-etancheite" },
-  { label: "Charpentes Métalliques", href: "/metiers/charpente-metallique" },
-  { label: "Bardage Spécifique", href: "/metiers/bardage-specifique" },
-  { label: "Isolation Thermique", href: "/metiers/isolation-thermique" },
-  { label: "Étanchéité Végétalisée & Solaire", href: "/metiers/toiture-vegetalisee-solaire" },
-];
+export const HEADER_NAV_LINKS = [{ href: '/l-entreprise', label: 'L’entreprise' }, { href: '/metiers', label: 'Nos métiers' }, { href: '/etudes-et-travaux', label: 'Études et travaux' }, { href: '/realisations', label: 'Nos réalisations' }, { href: '/contact', label: 'Contact' }];
+export const NAV_LINKS = [{ href: '/', label: 'Accueil' }, ...HEADER_NAV_LINKS];
+export const METIER_LINKS = [{ "href": "/metiers/bardage-metallique", "label": "Bardage métallique et façades architecturales" }, { "href": "/metiers/couverture-metallique", "label": "Couverture métallique" }, { "href": "/metiers/etancheite-toiture-terrasse", "label": "Étanchéité de toiture-terrasse" }, { "href": "/metiers/charpente-metallique", "label": "Charpente et structures métalliques" }];
+export const CATALOGUE_URL = '/catalogue-cladis-2026.pdf';

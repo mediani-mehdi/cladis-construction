@@ -183,7 +183,7 @@ export default function EntreprisePage() {
               <Download className="h-4 w-4" aria-hidden="true" />
               Notre catalogue
             </button>
-            <Link href="/#devis" className={`inline-flex min-h-12 items-center justify-between gap-6 bg-primary px-6 py-4 font-secondary text-[10px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-primary/90 ${focusStyle}`}>
+            <Link href="/contact#devis" className={`inline-flex min-h-12 items-center justify-between gap-6 bg-primary px-6 py-4 font-secondary text-[10px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-primary/90 ${focusStyle}`}>
               Parlons de votre projet
               <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
             </Link>

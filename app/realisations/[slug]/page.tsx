@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import InformationPageLayout from "@/components/InformationPageLayout";
-import QuotationForm from "@/components/QuotationForm";
+
 import { PROJECTS, getProjectBySlug } from "@/lib/projects-data";
 import {
   ChevronRight,
@@ -96,7 +96,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
 
               <div className="flex flex-wrap items-center gap-4 pt-4">
                 <a
-                  href="#devis-projet"
+                  href="/contact#devis"
                   className="inline-flex items-center gap-2 px-7 py-4 bg-construction-blue hover:bg-construction-blueDark text-white font-mono text-xs uppercase tracking-widest font-bold shadow-xl transition-colors"
                 >
                   <span>Chiffrer un projet similaire</span>
@@ -386,19 +386,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
         </div>
       </section>
 
-      {/* 7. QUOTATION FORM PRE-FILLED */}
-      <div id="devis-projet">
-        <QuotationForm
-          preFillData={{
-            buildingType: project.clientType,
-            surface: parseInt(project.surface.replace(/\D/g, "")) || 3500,
-            hasCharpente: project.category === "charpente" || project.category === "complexe",
-            bardageType: project.category === "bardage" || project.category === "complexe" ? "Bardage Métallique" : undefined,
-            toitureType: project.category === "couverture" || project.category === "complexe" ? "Couverture & Étanchéité" : undefined,
-          }}
-        />
-      </div>
-
+      <section className="v3-wrap v3-section"><a className="v3-button" href="/contact">Parlons de votre projet ↗</a></section>
     </div>
     </InformationPageLayout>
   );

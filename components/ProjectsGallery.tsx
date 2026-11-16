@@ -32,6 +32,6 @@ export default function ProjectsGallery() {
         </div>
       </div>
     </section>
-    <section className="v2-project-invitation"><div className="v2-container"><span className="v2-eyebrow">ET SI ON CONSTRUISAIT LA SUITE ?</span><h2>Votre idée.<br /><em>Notre prochain projet.</em></h2><div className="v2-invitation-bottom"><p>Donnons forme à votre prochain projet.<br />Notre équipe vous accompagne de l’étude à la réalisation.</p><Link href="/#devis" className="v2-button v2-button-light">Parlons de votre projet<ArrowUpRight size={18} /></Link></div></div></section>
+    <section className="v2-project-invitation"><div className="v2-container"><span className="v2-eyebrow">ET SI ON CONSTRUISAIT LA SUITE ?</span><h2>Votre idée.<br /><em>Notre prochain projet.</em></h2><div className="v2-invitation-bottom"><p>Donnons forme à votre prochain projet.<br />Notre équipe vous accompagne de l’étude à la réalisation.</p><Link href="/contact" className="v2-button v2-button-light">Parlons de votre projet<ArrowUpRight size={18} /></Link></div></div></section>
   </>;
 }

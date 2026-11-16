@@ -51,8 +51,8 @@ export default function Footer({ onOpenCatalogue }: FooterProps) {
               <span className="border border-white/15 px-2.5 py-1.5 text-[10px] text-white/75">Alliance opérationnelle</span>
             </div>
             <nav aria-label="Préparer votre projet" className="flex flex-col items-start gap-3 border-t border-white/15 pt-5 text-xs font-semibold">
-              <a href="/#configurateur" className={`inline-flex items-center gap-2 ${footerLinkStyle}`}>Configurer mon bâtiment<ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" /></a>
-              <a href="/#devis" className={`inline-flex items-center gap-2 ${footerLinkStyle}`}>Demander un devis<ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" /></a>
+              <a href="/contact#configurateur" className={`inline-flex items-center gap-2 ${footerLinkStyle}`}>Configurer mon bâtiment<ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" /></a>
+              <a href="/contact#devis" className={`inline-flex items-center gap-2 ${footerLinkStyle}`}>Demander un devis<ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" /></a>
             </nav>
           </div>
 
