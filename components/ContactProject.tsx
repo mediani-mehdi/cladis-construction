@@ -2,25 +2,55 @@
 import { useRef, useState, type FormEvent } from 'react';
 import { ACCEPTED_EXTENSIONS, BUILDING_OPTIONS, EMPTY_PROJECT, OPERATION_OPTIONS, TRADE_OPTIONS, projectRows, validateFiles, type ProjectDraft } from '@/lib/contact';
 function ProjectFields({ value, onChange, prefix }: {
-    value: ProjectDraft;
-    onChange: (v: ProjectDraft) => void;
-    prefix: string;
+  value: ProjectDraft;
+  onChange: (value: ProjectDraft) => void;
+  prefix: string;
 }) {
-    const text = (key: keyof ProjectDraft, label: string, placeholder = '') => <label className="v3-field" key={key} htmlFor={prefix + key}>{label}{prefix === 'quote-' && key === 'town' ? ' *' : ''}<input id={prefix + key} required={prefix === 'quote-' && key === 'town'} value={String(value[key])} onChange={e => onChange({ ...value, [key]: e.target.value })} maxLength={500} placeholder={placeholder}/>
-    </label>;
-    return <div className="v3-form-grid">
-    <label className="v3-field" htmlFor={prefix + 'operation'}>Type d’opération<select id={prefix + 'operation'} value={value.operation} onChange={e => onChange({ ...value, operation: e.target.value })}>
-    <option value="">À préciser</option>{OPERATION_OPTIONS.map(x => <option key={x}>{x}</option>)}</select>
+  const isQuote = prefix === 'quote-';
+  const text = (key: Exclude<keyof ProjectDraft, 'trades'>, label: string, placeholder = '') => (
+    <label className="v3-field" htmlFor={prefix + key}>
+      {label}{isQuote && key === 'town' ? ' *' : ''}
+      <input id={prefix + key} required={isQuote && key === 'town'} value={value[key]}
+        onChange={event => onChange({ ...value, [key]: event.target.value })}
+        maxLength={500} placeholder={placeholder} />
     </label>
-    <label className="v3-field" htmlFor={prefix + 'building'}>Type de bâtiment<select id={prefix + 'building'} value={value.building} onChange={e => onChange({ ...value, building: e.target.value })}>
-    <option value="">À préciser</option>{BUILDING_OPTIONS.map(x => <option key={x}>{x}</option>)}</select>
-    </label>{text('town', 'Commune du chantier', 'Chambéry')}{text('postcode', 'Code postal', '73000')}<fieldset>
-    <legend>Métiers concernés{prefix === 'quote-' ? ' *' : ''}</legend>
-    <div className="v3-checkboxes">{TRADE_OPTIONS.map(x => <label key={x}>
-        <input type="checkbox" checked={value.trades.includes(x)} onChange={e => onChange({ ...value, trades: e.target.checked ? [...value.trades, x] : value.trades.filter(t => t !== x) })}/>{x}</label>)}</div>
-    </fieldset>{text('surface', 'Surface approximative par lot', 'Ex. : bardage 800 m², couverture 1 200 m²')}{text('system', 'Support ou système envisagé')}{text('calendar', 'Période souhaitée pour les travaux')}</div>;
+  );
+  const extras = <>
+    <label className="v3-field" htmlFor={prefix + 'operation'}>Type d’opération
+      <select id={prefix + 'operation'} value={value.operation} onChange={event => onChange({ ...value, operation: event.target.value })}>
+        <option value="">À préciser</option>{OPERATION_OPTIONS.map(option => <option key={option}>{option}</option>)}
+      </select>
+    </label>
+    <label className="v3-field" htmlFor={prefix + 'building'}>Type de bâtiment
+      <select id={prefix + 'building'} value={value.building} onChange={event => onChange({ ...value, building: event.target.value })}>
+        <option value="">À préciser</option>{BUILDING_OPTIONS.map(option => <option key={option}>{option}</option>)}
+      </select>
+    </label>
+    {text('surface', 'Surface approximative par lot', 'Ex. : bardage 800 m²')}
+    {text('system', 'Support ou système envisagé')}
+    {text('calendar', 'Période souhaitée pour les travaux')}
+  </>;
+  return <div className="v3-form-grid">
+    {text('town', 'Commune du chantier', 'Chambéry')}
+    {text('postcode', 'Code postal', '73000')}
+    <fieldset>
+      <legend>Métiers concernés{isQuote ? ' *' : ''}</legend>
+      <div className="v3-checkboxes">{TRADE_OPTIONS.map(trade => <label key={trade}>
+        <input type="checkbox" checked={value.trades.includes(trade)} onChange={event => onChange({
+          ...value, trades: event.target.checked ? [...value.trades, trade] : value.trades.filter(item => item !== trade),
+        })} />{trade}
+      </label>)}</div>
+    </fieldset>
+    {isQuote ? <details className="contact-disclosure wide">
+      <summary>Préciser les caractéristiques du bâtiment <span>Facultatif</span></summary>
+      <div className="v3-form-grid">{extras}</div>
+    </details> : extras}
+  </div>;
 }
-export default function ContactProject() {
+export default function ContactProject({ selected, onSelect }: {
+    selected: 'devis' | 'configurateur' | 'catalogue';
+    onSelect: (section: 'devis' | 'configurateur' | 'catalogue') => void;
+}) {
     const [draft, setDraft] = useState<ProjectDraft>({ ...EMPTY_PROJECT });
     const [project, setProject] = useState<ProjectDraft>({ ...EMPTY_PROJECT });
     const [status, setStatus] = useState('');
@@ -57,27 +87,32 @@ export default function ContactProject() {
         }
     }
     return <>
-    <section id="configurateur" className="v3-wrap v3-section">
+    <section id="configurateur" className="contact-panel" role="tabpanel" aria-labelledby="tab-configurateur" hidden={selected !== 'configurateur'}>
     <span className="v3-label">Configurateur de projet</span>
     <h2>Préparer votre demande de devis</h2>
     <p className="v3-lead">Indiquez les caractéristiques principales du bâtiment et les travaux envisagés. Vous pourrez joindre vos plans et transmettre le récapitulatif à notre équipe pour étude.</p>
     <ProjectFields value={draft} onChange={setDraft} prefix="config-"/>
-    <div className="v3-summary">
-    <h3>Récapitulatif du projet</h3>
+    <details className="v3-summary contact-disclosure"><summary>Récapitulatif du projet</summary>
     <dl>{projectRows(draft).map(([k, v]) => <div key={k} style={{ display: 'contents' }}>
         <dt>{k}</dt>
         <dd>{v || 'À préciser'}</dd>
         </div>)}</dl>
     <p>Ce récapitulatif prépare votre consultation. Le chiffrage, le dimensionnement et le délai sont établis après examen de votre dossier.</p>
-    <button className="v3-button" type="button" onClick={() => { setProject({ ...draft, trades: [...draft.trades] }); setSent(false); setStatus(''); window.location.hash = 'devis'; form.current?.querySelector<HTMLInputElement>('#quote-name')?.focus({ preventScroll: true }); }}>Reprendre ces informations dans ma demande ↗</button>
-    </div>
+    </details>
+    <button className="v3-button contact-transfer" type="button" onClick={() => {
+      setProject({ ...draft, trades: [...draft.trades] });
+      setSent(false);
+      setStatus('');
+      onSelect('devis');
+      requestAnimationFrame(() => form.current?.querySelector<HTMLInputElement>('#quote-name')?.focus({ preventScroll: true }));
+    }}>Reprendre ces informations dans ma demande ↗</button>
     </section>
-    <section id="devis" className="v3-tint">
-    <div className="v3-wrap v3-section">
+    <section id="devis" className="contact-panel" role="tabpanel" aria-labelledby="tab-devis" hidden={selected !== 'devis'}>
+    <div>
     <span className="v3-label">Votre consultation</span>
     <h2>Demander un devis</h2>
-    <p className="v3-lead">Pour étudier votre demande, indiquez la commune du chantier, le lot à chiffrer et les principales contraintes de l’opération. Si vous avez des plans, un CCTP ou un dossier de consultation, joignez-les à votre demande. Précisez la date de remise de votre offre si elle est fixée.</p>
-    <p>Les champs marqués d’un * sont obligatoires.</p>
+    <p className="v3-lead">Présentez votre chantier et joignez vos plans ou votre dossier de consultation. Notre équipe vous recontactera après examen.</p>
+    <p className="contact-required">* Champs obligatoires</p>
     <form ref={form} onSubmit={submit}>
     <fieldset disabled={loading || sent}>
     <div className="v3-form-grid">
@@ -85,7 +120,21 @@ export default function ContactProject() {
     </label>
     <label className="v3-field" htmlFor="quote-email">E-mail *<input id="quote-email" name="email" type="email" autoComplete="email" required maxLength={254}/>
     </label>
-    <label className="v3-field" htmlFor="quote-company">Société ou organisme<input id="quote-company" name="company" autoComplete="organization" maxLength={200}/>
+    </div>
+    <div style={{ marginBlock: 24 }}>
+    <ProjectFields value={project} onChange={setProject} prefix="quote-"/>
+    </div>
+    <div className="v3-form-grid">
+    <label className="v3-field wide" htmlFor="quote-description">Description des travaux et contraintes *<textarea id="quote-description" name="description" required maxLength={10000} rows={3}/>
+    </label>
+    <label className="v3-field wide" htmlFor="quote-files">Plans, CCTP, DPGF, DCE ou photos<input id="quote-files" name="files" type="file" multiple accept={ACCEPTED_EXTENSIONS.map(x => '.' + x).join(',')} aria-describedby={fileError ? 'file-limits file-error' : 'file-limits'} onChange={e => setFileError(validateFiles(Array.from(e.target.files || [])))}/>
+    <small id="file-limits">PDF, DWG, DXF, ZIP, JPG, PNG, WebP, Word ou Excel. 5 fichiers maximum, 3 Mo par fichier et moins de 4 Mo au total. Pour un dossier volumineux, indiquez un lien ci-dessous.</small>
+    </label>{fileError && <p id="file-error" className="wide" role="alert">{fileError}</p>}<label className="v3-field wide" htmlFor="quote-link">Lien de téléchargement du dossier (facultatif)<input id="quote-link" name="downloadUrl" type="url" placeholder="https://" maxLength={2000}/>
+    </label>
+    </div>
+    <details className="contact-disclosure">
+      <summary>Coordonnées et délais complémentaires <span>Facultatif</span></summary>
+      <div className="v3-form-grid">    <label className="v3-field" htmlFor="quote-company">Société ou organisme<input id="quote-company" name="company" autoComplete="organization" maxLength={200}/>
     </label>
     <label className="v3-field" htmlFor="quote-phone">Téléphone<input id="quote-phone" name="phone" type="tel" autoComplete="tel" maxLength={40}/>
     </label>
@@ -93,18 +142,8 @@ export default function ContactProject() {
     </label>
     <label className="v3-field" htmlFor="quote-date">Date de remise d’offre<input id="quote-date" name="offerDate" type="date"/>
     </label>
-    </div>
-    <div style={{ marginBlock: 24 }}>
-    <ProjectFields value={project} onChange={setProject} prefix="quote-"/>
-    </div>
-    <div className="v3-form-grid">
-    <label className="v3-field wide" htmlFor="quote-description">Description des travaux et contraintes *<textarea id="quote-description" name="description" required maxLength={10000} rows={5}/>
-    </label>
-    <label className="v3-field wide" htmlFor="quote-files">Plans, CCTP, DPGF, DCE ou photos<input id="quote-files" name="files" type="file" multiple accept={ACCEPTED_EXTENSIONS.map(x => '.' + x).join(',')} aria-describedby="file-limits file-error" onChange={e => setFileError(validateFiles(Array.from(e.target.files || [])))}/>
-    <small id="file-limits">PDF, DWG, DXF, ZIP, JPG, PNG, WebP, Word ou Excel. 5 fichiers maximum, 3 Mo par fichier et moins de 4 Mo au total. Pour un dossier volumineux, indiquez un lien ci-dessous.</small>
-    </label>{fileError && <p id="file-error" className="wide" role="alert">{fileError}</p>}<label className="v3-field wide" htmlFor="quote-link">Lien de téléchargement du dossier (facultatif)<input id="quote-link" name="downloadUrl" type="url" placeholder="https://" maxLength={2000}/>
-    </label>
-    </div>
+</div>
+    </details>
     <label className="v3-honeypot" aria-hidden="true">Site web<input name="website" tabIndex={-1} autoComplete="off"/>
     </label>
     <p className="v3-privacy">Vos informations sont utilisées pour traiter votre demande. <a href="/informations-legales#confidentialite">Informations de confidentialité</a>.</p>

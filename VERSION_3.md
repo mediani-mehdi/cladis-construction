@@ -8,7 +8,7 @@ Based on `version_2`. The pre-existing uncommitted edits are preserved separatel
 - Five primary menu links and a direct catalogue download, with the same navigation throughout the site.
 - Four trades with the supplied presentation, solutions, references, applications and four-step method. Other trades use linked photographs and a manual mobile carousel with arrow buttons.
 - Combined `/etudes-et-travaux` page; permanent redirects for the former method/alliance pages and merged trade URLs.
-- `/contact` includes contact information, the existing catalogue PDF, an editable project summary, and the quotation form with multiple attachments.
+- `/contact` uses three section cards (quote, project preparation, catalogue) and a compact contact-details card. One section is shown at a time, fragment links select the matching card, and form values remain mounted when switching sections. Optional quote fields and the project summary use expandable sections. The quotation form retains multiple attachments and editable project transfer.
 - Updated internal quotation links, sitemap, robots and trade canonical metadata. Set `NEXT_PUBLIC_SITE_URL` to the production origin when deploying to another domain.
 
 ## Contact delivery configuration
