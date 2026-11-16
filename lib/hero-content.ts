@@ -1,13 +1,12 @@
-// Hero wording from main, retained across the scroll-driven presentation.
 export const HERO_SLIDES = [
   {
     title: "ENVELOPPE DU BÂTIMENT & CONSTRUCTION MÉTALLIQUE",
-    subtitle: "L'exigence technique, au cœur de chaque projet.",
-    description: "Une expertise structurée pour concevoir et piloter des solutions constructives performantes.",
+    subtitle: "L’exigence technique, au cœur de chaque projet.",
+    description: "Bardage, étanchéité et couverture. Depuis Chambéry, nous réalisons vos travaux de façade et de toiture, en neuf comme en rénovation.",
   },
   {
-    title: "CLADIS CONSTRUCTION",
-    subtitle: "L'expertise technique au service de vos ambitions.",
-    description: "Enveloppe du bâtiment et construction métallique, avec rigueur, précision et exigence.",
+    title: "L’ESPRIT CLADIS",
+    subtitle: "Des façades et des toitures pensées pour chaque bâtiment.",
+    description: "Dès l’étude, nous tenons compte de l’usage du bâtiment, des supports et des conditions d’intervention.",
   },
 ];

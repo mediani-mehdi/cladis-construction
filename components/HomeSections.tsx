@@ -6,7 +6,7 @@ export default function HomeSections() {
     return <div className="v3-home-content">
     <section id="savoir-faire" tabIndex={-1} className="v3-wrap v3-section">
     <span className="v3-label">Le savoir-faire CLADIS</span>
-    <h2>Une solide expérience<br />de l’enveloppe du bâtiment</h2>
+    <h2>Une solide expérience.<br /><em>De l’enveloppe du bâtiment.</em></h2>
     <div className="v3-three">{copy.knowhow.map(x => <article key={x.title}>
         <h3>{x.title}</h3>
         <p>{x.text}</p>
@@ -26,7 +26,7 @@ export default function HomeSections() {
     <div className="v3-wrap v3-section">
     <span className="v3-label">02 / Nos métiers</span>
     <div className="v3-section-heading">
-    <h2>Une enveloppe complète.<br />Chaque détail compte.</h2>
+    <h2>Une enveloppe complète.<br /><em>Chaque détail compte.</em></h2>
     <p>Nous intervenons sur les façades, les toitures et les structures qui les supportent, sur un lot ou sur plusieurs lots coordonnés.</p>
     </div>
     <div className="v3-trades">{METIERS.map(m => <a className="v3-trade" href={'/metiers/' + m.slug} key={m.slug}>
@@ -43,7 +43,7 @@ export default function HomeSections() {
     <section className="v3-wrap v3-section">
     <span className="v3-label">03 / Réalisations à la une</span>
     <div className="v3-section-heading">
-    <h2>La preuve sur le terrain.</h2>
+    <h2>La preuve,<br /><em>sur le terrain.</em></h2>
     <p>Des contraintes réelles, des réponses qui prennent forme. Découvrez les travaux de bardage, de couverture, d’étanchéité et de charpente réalisés par CLADIS Construction.</p>
     </div>
     <div className="v3-three">{PROJECTS.slice(0, 3).map(p => <a className="v3-project" href={'/realisations/' + p.slug} key={p.slug}>
@@ -55,16 +55,16 @@ export default function HomeSections() {
         </a>)}</div>
     <a className="v3-link" href="/realisations">Voir toutes les réalisations ↗</a>
     </section>
-    <section className="v3-wrap v3-section">
+    <section className="v3-method"><div className="v3-wrap v3-section">
     <span className="v3-label">04 / Notre méthode et nos engagements</span>
-    <h2>De l’analyse du projet<br />au contrôle avant livraison</h2>
+    <h2>De l’analyse du projet<br /><em>au contrôle avant livraison.</em></h2>
     <div className="v3-four">{copy.steps.map((s, i) => <article key={s.title}>
         <span className="v3-label">0{i + 1}</span>
         <h3>{s.title}</h3>
         <p>{s.text}</p>
         </article>)}</div>
     <a className="v3-link" href="/etudes-et-travaux">Découvrir nos études et travaux ↗</a>
-    </section>
+    </div></section>
     <section className="v3-tint">
     <div className="v3-wrap v3-section">
     <span className="v3-label">05 / La force du collectif</span>

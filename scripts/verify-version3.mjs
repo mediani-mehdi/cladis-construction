@@ -2,8 +2,11 @@
 const base=process.argv[2]||'http://localhost:3100';
 const fetchPage=async path=>{const r=await fetch(base+path,{redirect:'manual'});assert.equal(r.status,200,path);return r.text()};
 const home=await fetchPage('/');
-for(const text of ['Une solide expérience','Nos points forts','La preuve sur le terrain','Études et travaux'])assert.ok(home.includes(text),text);
-for(const removed of ['v2-frame-sequence','v2-project-invitation','Ingénierie virtuelle','id="configurateur"','id="devis"'])assert.ok(!home.includes(removed),'Removed home block: '+removed);
+for(const text of ['Une solide expérience','Nos points forts','sur le terrain.','Études et travaux'])assert.ok(home.includes(text),text);
+for(const removed of ['v2-project-invitation','Ingénierie virtuelle','id="configurateur"','id="devis"'])assert.ok(!home.includes(removed),'Removed home block: '+removed);
+assert.ok(home.includes('v2-frame-sequence'),'Version 2 animated hero');
+assert.ok(home.includes('v2-glass'),'Version 2 glass navigation');
+assert.ok(home.includes('v2-footer-redesign'),'Version 2 footer');
 const trades=['bardage-metallique','couverture-metallique','etancheite-toiture-terrasse','charpente-metallique'];
 const index=await fetchPage('/metiers');for(const slug of trades)assert.ok(index.includes('/metiers/'+slug));
 for(const slug of trades){const html=await fetchPage('/metiers/'+slug);assert.ok(html.includes('canonical'));assert.ok(html.includes('Notre méthode en quatre étapes'));assert.ok(html.includes('Découvrez aussi nos autres métiers'));for(const removed of ['Spécifications et performances','Foire aux questions','Chiffrer ce lot','<form'])assert.ok(!html.includes(removed),slug+': '+removed)}

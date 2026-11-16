@@ -4,7 +4,7 @@ Based on `version_2`. The pre-existing uncommitted edits are preserved separatel
 
 ## Changes
 
-- Shorter home page using the client’s six requested sections and supplied copy. One static opening visual; no scroll sequence, comparison, calculator or quote form on the home page.
+- Shorter home page using the client’s six requested sections and supplied copy. The version 2 animated hero, floating glass navigation, blue palette, serif accents, rounded cards and photographic footer are retained following design feedback. No comparison, calculator or quote form on the home page.
 - Five primary menu links and a direct catalogue download, with the same navigation throughout the site.
 - Four trades with the supplied presentation, solutions, references, applications and four-step method. Other trades use linked photographs and a manual mobile carousel with arrow buttons.
 - Combined `/etudes-et-travaux` page; permanent redirects for the former method/alliance pages and merged trade URLs.
