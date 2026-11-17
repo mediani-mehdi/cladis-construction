@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import { ArrowDownToLine, ArrowUpRight } from 'lucide-react';
+import { ArrowDownToLine, ArrowUpRight, Phone, BookOpen } from 'lucide-react';
 import ContactProject from '@/components/ContactProject';
 import { CATALOGUE_URL } from '@/lib/site-navigation';
 
@@ -20,8 +20,8 @@ export default function ContactWorkspace({ catalogueSize }: { catalogueSize: str
       <a className="contact-simple-link" href="#configurateur" onClick={() => setConfigOpen(true)}>Configurer mon projet <ArrowUpRight size={16} aria-hidden="true" /></a>
       <a className="contact-simple-link" href={CATALOGUE_URL} download>Télécharger le catalogue <ArrowDownToLine size={16} aria-hidden="true" /></a>
     </nav>
-    <section className="contact-coordinates" aria-labelledby="contact-info-title">
-      <div><h2 id="contact-info-title">Contacter CLADIS Construction</h2>
+    <section className="contact-coordinates contact-section-card" aria-labelledby="contact-info-title">
+      <div><span className="contact-card-label"><Phone size={17} aria-hidden="true" />01 / Coordonnées</span><h2 id="contact-info-title">Contacter CLADIS Construction</h2>
       <p>Notre équipe basée à Chambéry répond à vos questions et vous oriente selon la nature de votre projet. Nous intervenons principalement en Savoie, Haute-Savoie, Isère, Ain et Rhône.</p></div>
       <address>
         <a className="contact-phone" href="tel:0952863156">09 52 86 31 56</a>
@@ -30,8 +30,8 @@ export default function ContactWorkspace({ catalogueSize }: { catalogueSize: str
         <span>Lundi – Vendredi · 8h00 – 18h00</span>
       </address>
     </section>
-    <section id="catalogue" className="contact-download" aria-labelledby="catalogue-heading">
-      <div><h2 id="catalogue-heading">Télécharger notre catalogue</h2>
+    <section id="catalogue" className="contact-download contact-section-card" aria-labelledby="catalogue-heading">
+      <div><span className="contact-card-label"><BookOpen size={17} aria-hidden="true" />02 / Catalogue et documents</span><h2 id="catalogue-heading">Télécharger notre catalogue</h2>
         <p>Retrouvez nos métiers, les solutions que nous mettons en œuvre et une sélection de réalisations CLADIS Construction.</p>
         <small>Les documents propres à une consultation peuvent être transmis sur demande.</small>
       </div>

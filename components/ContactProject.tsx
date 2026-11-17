@@ -1,5 +1,6 @@
 "use client";
 import { useRef, useState, type FormEvent } from 'react';
+import { SlidersHorizontal, Send } from 'lucide-react';
 import { ACCEPTED_EXTENSIONS, BUILDING_OPTIONS, EMPTY_PROJECT, OPERATION_OPTIONS, TRADE_OPTIONS, projectRows, validateFiles, type ProjectDraft } from '@/lib/contact';
 function ProjectFields({ value, onChange, prefix }: {
   value: ProjectDraft;
@@ -87,8 +88,8 @@ export default function ContactProject({ configOpen, onConfigOpenChange }: {
         }
     }
     return <>
-    <details id="configurateur" className="contact-configurator contact-panel" open={configOpen} onToggle={event => onConfigOpenChange(event.currentTarget.open)}>
-    <summary><span><span className="v3-label">Configurateur de projet · Facultatif</span><span className="contact-config-title">Préparer votre demande de devis</span></span><span className="contact-config-toggle" aria-hidden="true">+</span></summary>
+    <details id="configurateur" className="contact-configurator contact-panel contact-section-card" open={configOpen} onToggle={event => onConfigOpenChange(event.currentTarget.open)}>
+    <summary><span><span className="contact-card-label"><SlidersHorizontal size={17} aria-hidden="true" />03 / Configurateur · Facultatif</span><span className="contact-config-title">Préparer votre demande de devis</span></span><span className="contact-config-toggle" aria-hidden="true">+</span></summary>
     <div className="contact-config-body">
     <p className="v3-lead">Indiquez les caractéristiques principales du bâtiment et les travaux envisagés. Vous pourrez joindre vos plans et transmettre le récapitulatif à notre équipe pour étude.</p>
     <ProjectFields value={draft} onChange={setDraft} prefix="config-"/>
@@ -110,8 +111,9 @@ export default function ContactProject({ configOpen, onConfigOpenChange }: {
       });
     }}>Reprendre ces informations dans ma demande ↗</button>
     </div></details>
-    <section id="devis" className="contact-panel contact-quote" aria-labelledby="quote-heading">
+    <section id="devis" className="contact-panel contact-quote contact-section-card" aria-labelledby="quote-heading">
     <div>
+    <span className="contact-card-label"><Send size={17} aria-hidden="true" />04 / Votre demande</span>
     <h2 id="quote-heading">Demander un devis</h2>
     <p className="v3-lead">Présentez votre chantier et joignez vos plans ou votre dossier de consultation. Notre équipe vous recontactera après examen.</p>
     <p className="contact-required">* Champs obligatoires</p>
