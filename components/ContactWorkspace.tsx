@@ -1,88 +1,42 @@
-﻿"use client";
+"use client";
 
-import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
-import Image from "@/components/SiteImage";
-import { ArrowDownToLine, ArrowUpRight, FileText, SlidersHorizontal, Send } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { ArrowDownToLine, ArrowUpRight } from 'lucide-react';
 import ContactProject from '@/components/ContactProject';
-
-type Section = 'devis' | 'configurateur' | 'catalogue';
-const sections = [
-  { id: 'devis' as const, title: 'Demander un devis', description: 'Présentez votre chantier.', icon: Send },
-  { id: 'configurateur' as const, title: 'Préparer mon projet', description: 'Précisez vos besoins.', icon: SlidersHorizontal },
-  { id: 'catalogue' as const, title: 'Notre catalogue', description: 'Découvrez nos solutions.', icon: FileText },
-];
+import { CATALOGUE_URL } from '@/lib/site-navigation';
 
 export default function ContactWorkspace({ catalogueSize }: { catalogueSize: string }) {
-  const [selected, setSelected] = useState<Section>('devis');
-  const tabs = useRef<HTMLDivElement>(null);
-
+  const [configOpen, setConfigOpen] = useState(false);
   useEffect(() => {
-    const readHash = () => {
-      const hash = window.location.hash.slice(1);
-      if (sections.some(section => section.id === hash)) setSelected(hash as Section);
-    };
+    const readHash = () => { if (window.location.hash === '#configurateur') setConfigOpen(true); };
     readHash();
     window.addEventListener('hashchange', readHash);
     return () => window.removeEventListener('hashchange', readHash);
   }, []);
 
-  function select(section: Section) {
-    setSelected(section);
-    window.history.replaceState(null, '', '#' + section);
-  }
-
-  function navigateTabs(event: KeyboardEvent<HTMLButtonElement>, index: number) {
-    let next: number;
-    if (event.key === 'ArrowRight') next = (index + 1) % sections.length;
-    else if (event.key === 'ArrowLeft') next = (index + sections.length - 1) % sections.length;
-    else if (event.key === 'Home') next = 0;
-    else if (event.key === 'End') next = sections.length - 1;
-    else return;
-    event.preventDefault();
-    select(sections[next].id);
-    tabs.current?.querySelectorAll<HTMLButtonElement>('[role="tab"]')[next]?.focus();
-  }
-
   return <div className="v3-wrap contact-workspace">
-    <div ref={tabs} className="contact-section-cards" role="tablist" aria-label="Choisir une rubrique de contact">
-      {sections.map((section, index) => <button key={section.id} type="button" role="tab"
-        id={'tab-' + section.id} aria-controls={section.id} aria-selected={selected === section.id}
-        tabIndex={selected === section.id ? 0 : -1} onClick={() => select(section.id)}
-        onKeyDown={event => navigateTabs(event, index)} className="contact-section-card">
-        <section.icon size={20} strokeWidth={1.5} aria-hidden="true" />
-        <span><strong>{section.title}</strong><small>{section.description}</small></span>
-        <ArrowUpRight size={17} aria-hidden="true" />
-      </button>)}
-    </div>
-    <div className="contact-layout">
-      <aside className="contact-info-card" aria-labelledby="contact-info-title">
-        <span className="v3-label">À votre écoute</span>
-        <h2 id="contact-info-title">Un projet ?<br /><em>Échangeons.</em></h2>
-        <address>
-          <a className="contact-phone" href="tel:0952863156">09 52 86 31 56</a>
-          <a className="contact-email" href="mailto:contact@cladisbardage.com">contact@cladisbardage.com <ArrowUpRight size={14} aria-hidden="true" /></a>
-          <p>74 rue de la Révériaz<br />73000 Chambéry, France</p>
-          <p>Lundi – Vendredi<br />8h00 – 18h00</p>
-        </address>
-        <div className="contact-area"><span className="v3-label">Notre zone d’intervention</span>
-          <p>Savoie, Haute-Savoie, Isère, Ain et Rhône.</p>
-        </div>
-      </aside>
-      <div className="contact-content-card">
-        <ContactProject selected={selected} onSelect={select} />
-        <section id="catalogue" className="contact-panel contact-catalogue" role="tabpanel"
-          aria-labelledby="tab-catalogue" hidden={selected !== 'catalogue'}>
-          <div>
-            <span className="v3-label">Catalogue et documents</span>
-            <h2>Télécharger notre catalogue</h2>
-            <p>Retrouvez nos métiers, les solutions que nous mettons en œuvre et une sélection de réalisations CLADIS Construction.</p>
-            <a className="v3-button" href="/catalogue-cladis-2026.pdf" download>Télécharger le catalogue CLADIS <ArrowDownToLine size={17} aria-hidden="true" /></a>
-            <small>PDF · {catalogueSize} Mo</small>
-            <p className="contact-document-note">Les documents propres à une consultation peuvent être transmis sur demande.</p>
-          </div>
-          <div className="contact-catalogue-cover"><Image src="/images/catalogue-cover-faed49b8.webp" alt="Couverture du catalogue CLADIS 2026" width={200} height={280} className="object-contain" /></div>
-        </section>
+    <nav className="contact-shortcuts" aria-label="Accès directs">
+      <a className="v3-button" href="#devis">Demander un devis <ArrowUpRight size={17} aria-hidden="true" /></a>
+      <a className="contact-simple-link" href="#configurateur" onClick={() => setConfigOpen(true)}>Configurer mon projet <ArrowUpRight size={16} aria-hidden="true" /></a>
+      <a className="contact-simple-link" href={CATALOGUE_URL} download>Télécharger le catalogue <ArrowDownToLine size={16} aria-hidden="true" /></a>
+    </nav>
+    <section className="contact-coordinates" aria-labelledby="contact-info-title">
+      <div><h2 id="contact-info-title">Contacter CLADIS Construction</h2>
+      <p>Notre équipe basée à Chambéry répond à vos questions et vous oriente selon la nature de votre projet. Nous intervenons principalement en Savoie, Haute-Savoie, Isère, Ain et Rhône.</p></div>
+      <address>
+        <a className="contact-phone" href="tel:0952863156">09 52 86 31 56</a>
+        <a href="mailto:contact@cladisbardage.com">contact@cladisbardage.com</a>
+        <span>74 rue de la Révériaz · 73000 Chambéry</span>
+        <span>Lundi – Vendredi · 8h00 – 18h00</span>
+      </address>
+    </section>
+    <section id="catalogue" className="contact-download" aria-labelledby="catalogue-heading">
+      <div><h2 id="catalogue-heading">Télécharger notre catalogue</h2>
+        <p>Retrouvez nos métiers, les solutions que nous mettons en œuvre et une sélection de réalisations CLADIS Construction.</p>
+        <small>Les documents propres à une consultation peuvent être transmis sur demande.</small>
       </div>
-    </div>
+      <a href={CATALOGUE_URL} download className="contact-document-link"><ArrowDownToLine size={20} aria-hidden="true" /><span>Télécharger le catalogue CLADIS (PDF)<small>PDF · {catalogueSize} Mo</small></span></a>
+    </section>
+    <ContactProject configOpen={configOpen} onConfigOpenChange={setConfigOpen} />
   </div>;
 }

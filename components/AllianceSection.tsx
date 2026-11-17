@@ -129,7 +129,7 @@ export default function AllianceSection() {
           </div>
 
           <a
-            href="#devis"
+            href="/contact#devis"
             className="inline-flex min-h-12 w-full sm:w-auto items-center justify-center gap-2 px-5 sm:px-7 py-3.5 bg-swiss-ink text-white text-xs uppercase tracking-widest font-mono font-medium hover:bg-neutral-800 transition-colors shrink-0 shadow-sm"
           >
             <span>Démarrer une consultation</span>

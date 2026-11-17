@@ -17,7 +17,7 @@ export default function Page() {
       <section className="v3-wrap v3-page-intro contact-intro">
         <span className="v3-label">Contact · CLADIS Construction</span>
         <h1>Parlons de <em>votre projet.</em></h1>
-        <p>Un chantier de façade, de toiture ou de charpente ?<br />Présentez-nous votre projet ou transmettez votre dossier.</p>
+        <p>Vous préparez des travaux de bardage, de couverture métallique, d’étanchéité de toiture-terrasse ou de charpente métallique ? Présentez-nous votre chantier ou transmettez directement vos plans et votre dossier de consultation. Notre équipe vous recontactera après examen de votre demande.</p>
       </section>
       <ContactWorkspace catalogueSize={size} />
     </div>

@@ -89,7 +89,7 @@ export default function Hero() {
           </div>
           <div className="lg:col-span-3 lg:flex lg:justify-end lg:pb-1">
             <a
-              href="#devis"
+              href="/contact#devis"
               className="group inline-flex min-h-12 w-full items-center justify-center gap-3 border border-white/25 bg-primary px-6 py-4 font-secondary text-[10px] font-bold uppercase tracking-widest text-white shadow-xl transition-colors hover:border-white/60 hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:w-auto"
             >
               Demander un devis

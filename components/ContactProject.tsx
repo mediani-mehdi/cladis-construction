@@ -47,9 +47,9 @@ function ProjectFields({ value, onChange, prefix }: {
     </details> : extras}
   </div>;
 }
-export default function ContactProject({ selected, onSelect }: {
-    selected: 'devis' | 'configurateur' | 'catalogue';
-    onSelect: (section: 'devis' | 'configurateur' | 'catalogue') => void;
+export default function ContactProject({ configOpen, onConfigOpenChange }: {
+    configOpen: boolean;
+    onConfigOpenChange: (open: boolean) => void;
 }) {
     const [draft, setDraft] = useState<ProjectDraft>({ ...EMPTY_PROJECT });
     const [project, setProject] = useState<ProjectDraft>({ ...EMPTY_PROJECT });
@@ -87,30 +87,32 @@ export default function ContactProject({ selected, onSelect }: {
         }
     }
     return <>
-    <section id="configurateur" className="contact-panel" role="tabpanel" aria-labelledby="tab-configurateur" hidden={selected !== 'configurateur'}>
-    <span className="v3-label">Configurateur de projet</span>
-    <h2>Préparer votre demande de devis</h2>
+    <details id="configurateur" className="contact-configurator contact-panel" open={configOpen} onToggle={event => onConfigOpenChange(event.currentTarget.open)}>
+    <summary><span><span className="v3-label">Configurateur de projet · Facultatif</span><span className="contact-config-title">Préparer votre demande de devis</span></span><span className="contact-config-toggle" aria-hidden="true">+</span></summary>
+    <div className="contact-config-body">
     <p className="v3-lead">Indiquez les caractéristiques principales du bâtiment et les travaux envisagés. Vous pourrez joindre vos plans et transmettre le récapitulatif à notre équipe pour étude.</p>
     <ProjectFields value={draft} onChange={setDraft} prefix="config-"/>
-    <details className="v3-summary contact-disclosure"><summary>Récapitulatif du projet</summary>
+    <div className="v3-summary"><h3>Récapitulatif du projet</h3>
     <dl>{projectRows(draft).map(([k, v]) => <div key={k} style={{ display: 'contents' }}>
         <dt>{k}</dt>
         <dd>{v || 'À préciser'}</dd>
         </div>)}</dl>
     <p>Ce récapitulatif prépare votre consultation. Le chiffrage, le dimensionnement et le délai sont établis après examen de votre dossier.</p>
-    </details>
+    </div>
     <button className="v3-button contact-transfer" type="button" onClick={() => {
       setProject({ ...draft, trades: [...draft.trades] });
       setSent(false);
       setStatus('');
-      onSelect('devis');
-      requestAnimationFrame(() => form.current?.querySelector<HTMLInputElement>('#quote-name')?.focus({ preventScroll: true }));
+      window.history.replaceState(null, '', '#devis');
+      requestAnimationFrame(() => {
+        document.getElementById('devis')?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+        form.current?.querySelector<HTMLInputElement>('#quote-name')?.focus({ preventScroll: true });
+      });
     }}>Reprendre ces informations dans ma demande ↗</button>
-    </section>
-    <section id="devis" className="contact-panel" role="tabpanel" aria-labelledby="tab-devis" hidden={selected !== 'devis'}>
+    </div></details>
+    <section id="devis" className="contact-panel contact-quote" aria-labelledby="quote-heading">
     <div>
-    <span className="v3-label">Votre consultation</span>
-    <h2>Demander un devis</h2>
+    <h2 id="quote-heading">Demander un devis</h2>
     <p className="v3-lead">Présentez votre chantier et joignez vos plans ou votre dossier de consultation. Notre équipe vous recontactera après examen.</p>
     <p className="contact-required">* Champs obligatoires</p>
     <form ref={form} onSubmit={submit}>
@@ -127,11 +129,16 @@ export default function ContactProject({ selected, onSelect }: {
     <div className="v3-form-grid">
     <label className="v3-field wide" htmlFor="quote-description">Description des travaux et contraintes *<textarea id="quote-description" name="description" required maxLength={10000} rows={3}/>
     </label>
+    </div>
+    <details className="contact-disclosure">
+    <summary>Joindre des plans ou un dossier <span>Facultatif</span></summary>
+    <div className="v3-form-grid">
     <label className="v3-field wide" htmlFor="quote-files">Plans, CCTP, DPGF, DCE ou photos<input id="quote-files" name="files" type="file" multiple accept={ACCEPTED_EXTENSIONS.map(x => '.' + x).join(',')} aria-describedby={fileError ? 'file-limits file-error' : 'file-limits'} onChange={e => setFileError(validateFiles(Array.from(e.target.files || [])))}/>
     <small id="file-limits">PDF, DWG, DXF, ZIP, JPG, PNG, WebP, Word ou Excel. 5 fichiers maximum, 3 Mo par fichier et moins de 4 Mo au total. Pour un dossier volumineux, indiquez un lien ci-dessous.</small>
     </label>{fileError && <p id="file-error" className="wide" role="alert">{fileError}</p>}<label className="v3-field wide" htmlFor="quote-link">Lien de téléchargement du dossier (facultatif)<input id="quote-link" name="downloadUrl" type="url" placeholder="https://" maxLength={2000}/>
     </label>
     </div>
+    </details>
     <details className="contact-disclosure">
       <summary>Coordonnées et délais complémentaires <span>Facultatif</span></summary>
       <div className="v3-form-grid">    <label className="v3-field" htmlFor="quote-company">Société ou organisme<input id="quote-company" name="company" autoComplete="organization" maxLength={200}/>

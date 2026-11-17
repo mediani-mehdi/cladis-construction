@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "@/components/SiteImage";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight, Menu, X } from "lucide-react";
-import { NAV_LINKS, HEADER_NAV_LINKS } from "@/lib/site-navigation";
+import { NAV_LINKS, HEADER_NAV_LINKS, CATALOGUE_URL } from "@/lib/site-navigation";
 export default function HomeNavigation({ onOpenCatalogue }: {
     onOpenCatalogue?: () => void;
 }) {
@@ -56,7 +56,7 @@ export default function HomeNavigation({ onOpenCatalogue }: {
         {HEADER_NAV_LINKS.map((link) => <a key={link.href} href={link.href} aria-current={pathname === link.href || pathname.startsWith(`${link.href}/`) ? "page" : undefined}>{link.label}</a>)}
 
       </nav>
-      <a href="/catalogue-cladis-2026.pdf" download className="v2-nav-cta">Télécharger le catalogue <ArrowUpRight size={16}/>
+      <a href={CATALOGUE_URL} download className="v2-nav-cta">Télécharger le catalogue <ArrowUpRight size={16}/>
     </a>
       <button ref={triggerRef} className="v2-menu-trigger" onClick={() => setOpen(true)} aria-label="Ouvrir le menu" aria-expanded={open} aria-controls="v2-mobile-menu">
     <Menu size={22}/>
@@ -72,7 +72,7 @@ export default function HomeNavigation({ onOpenCatalogue }: {
       <nav>{NAV_LINKS.map((link, i) => <a key={link.href} href={link.href} onClick={() => setOpen(false)}>
             <small>0{i + 1}</small>{link.label}<ArrowUpRight size={20}/>
             </a>)}</nav>
-      <a className="v2-button v2-button-light" href="/catalogue-cladis-2026.pdf" download>Télécharger le catalogue <ArrowUpRight size={18}/>
+      <a className="v2-button v2-button-light" href={CATALOGUE_URL} download>Télécharger le catalogue <ArrowUpRight size={18}/>
         </a>
       <a className="v2-mobile-phone" href="tel:0952863156">09 52 86 31 56</a>
     </div>}

@@ -98,7 +98,7 @@ export default function AboutCompany() {
               </Link>
 
               <a
-                href="#devis"
+                href="/contact#devis"
                 className="inline-flex items-center gap-2 px-6 py-3.5 bg-construction-blue hover:bg-construction-blueDark text-white font-mono text-xs uppercase tracking-widest font-bold shadow-md transition-colors"
               >
                 <span>Demander un devis</span>

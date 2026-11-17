@@ -46,7 +46,7 @@ export default function Methodology() {
               étape par étape.
             </p>
             <a
-              href="#devis"
+              href="/contact"
               className="mt-5 inline-flex items-center gap-3 border-b border-primary/30 pb-2 font-secondary text-[11px] font-bold uppercase tracking-wider text-primary transition-colors hover:border-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
             >
               Parlons de votre projet
