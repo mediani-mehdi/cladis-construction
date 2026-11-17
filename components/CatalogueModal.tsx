@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import { useEffect, useRef } from "react";
-import Image from "next/image";
+import Image from "@/components/SiteImage";
 import { X, Download, ArrowUpRight } from "lucide-react";
 
 interface CatalogueModalProps {

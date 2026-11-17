@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import Image from "next/image";
+import Image from "@/components/SiteImage";
 import { NAV_LINKS, METIER_LINKS } from "@/lib/site-navigation";
 import { ArrowUp, ArrowUpRight, Phone, Mail, MapPin, Download } from "lucide-react";
 

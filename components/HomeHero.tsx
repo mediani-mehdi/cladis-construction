@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
+import Image from "@/components/SiteImage";
 import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
 import { ArrowDown, ArrowUpRight, Linkedin, Mouse } from "lucide-react";
 import ScrollFrameSequence from "@/components/ScrollFrameSequence";

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import Image from "@/components/SiteImage";
 import Link from "next/link";
 import { METHODOLOGY_PHASES } from "@/lib/methodology-data";
 import { Search, PenTool, Hammer, CheckCheck, ArrowRight, ArrowUpRight, Check, Clock, Plus } from "lucide-react";

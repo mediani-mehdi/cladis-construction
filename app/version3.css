@@ -25,6 +25,10 @@
   background: #f3f5f5;
 }
 
+.v3-home-comparison {
+  padding-block: 0 72px;
+}
+
 .v3-tint .v3-section {
   border: 0;
 }

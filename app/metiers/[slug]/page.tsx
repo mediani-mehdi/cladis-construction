@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import Image from 'next/image';
+import Image from "@/components/SiteImage";
 import InformationPageLayout from '@/components/InformationPageLayout';
 import TradeCards from '@/components/TradeCards';
 import { METIERS, getMetierBySlug } from '@/lib/metiers-data';

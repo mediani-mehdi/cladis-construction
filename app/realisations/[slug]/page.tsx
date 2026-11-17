@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import Image from "next/image";
+import Image from "@/components/SiteImage";
 import Link from "next/link";
 import InformationPageLayout from "@/components/InformationPageLayout";
 

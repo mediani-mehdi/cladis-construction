@@ -1,17 +1,21 @@
 "use client";
 
-import Image from "next/image";
+import Image from "@/components/SiteImage";
+import { useState } from "react";
 import { ArrowUp, ArrowUpRight } from "lucide-react";
 import { NAV_LINKS } from "@/lib/site-navigation";
+import CatalogueModal from "@/components/CatalogueModal";
 
 export default function HomeFooter({ onOpenCatalogue }: { onOpenCatalogue?: () => void }) {
-  return <footer className="v2-footer v2-footer-redesign">
+  const [catalogueOpen, setCatalogueOpen] = useState(false);
+
+  return <><footer className="v2-footer v2-footer-redesign">
     <div className="v2-footer-backdrop" aria-hidden="true"><Image src="/images/homepage-hero-3cdb9cad.webp" alt="" fill quality={90} sizes="(max-width: 700px) 100vw, 70vw" className="object-cover" /></div>
     <div className="v2-footer-fade" aria-hidden="true" />
     <div className="v2-container v2-footer-content">
       <div className="v2-footer-banner">
         <span className="v2-eyebrow">UNE VISION D’ENSEMBLE. LA PRÉCISION DU DÉTAIL.</span>
-        <div className="v2-footer-banner-content"><h2>Votre projet commence<br /><em>par un échange.</em></h2><a href="/catalogue-cladis-2026.pdf" download className="v2-button v2-button-light v2-footer-catalogue-cta"><span>Cladis Construction <em>Catalogue</em></span><ArrowUpRight size={23} aria-hidden="true" /></a></div>
+        <div className="v2-footer-banner-content"><h2>Votre projet commence<br /><em>par un échange.</em></h2><button type="button" onClick={onOpenCatalogue ?? (() => setCatalogueOpen(true))} className="v2-button v2-button-light v2-footer-catalogue-cta"><span>Cladis Construction <em>Catalogue</em></span><ArrowUpRight size={23} aria-hidden="true" /></button></div>
       </div>
       <div className="v2-footer-main">
         <div className="v2-footer-brand"><a href="/" aria-label="CLADIS Construction, accueil"><Image src="/images/cladis-logo-transparent-07a6284b.webp" alt="CLADIS Construction" width={210} height={60} className="v2-footer-logo" /></a><p>De la structure aux finitions, nous donnons forme à vos ambitions. Une enveloppe durable, un savoir-faire précis, un engagement à chaque étape.</p></div>
@@ -26,5 +30,5 @@ export default function HomeFooter({ onOpenCatalogue }: { onOpenCatalogue?: () =
       </div>
       <div className="v2-footer-final"><span>© {new Date().getFullYear()} Cladis Construction</span><span>CHAMBÉRY · AUVERGNE-RHÔNE-ALPES</span><a href="#" aria-label="Retour en haut de page"><span>Revenir en haut</span><span className="v2-footer-up"><ArrowUp size={17} aria-hidden="true" /></span></a></div>
     </div>
-  </footer>;
+  </footer><CatalogueModal isOpen={catalogueOpen} onClose={() => setCatalogueOpen(false)} /></>;
 }

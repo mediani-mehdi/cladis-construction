@@ -1,8 +1,9 @@
-import Image from 'next/image';
+import Image from "@/components/SiteImage";
 import { UsersRound, Ruler, ClipboardCheck, ArrowUpRight } from 'lucide-react';
 import { METIERS } from '@/lib/metiers-data';
 import { PROJECTS } from '@/lib/projects-data';
 import copy from '@/lib/home-copy.json';
+import FacadeComparison from '@/components/FacadeComparison';
 export default function HomeSections() {
     return <div className="v3-home-content">
     <section id="savoir-faire" tabIndex={-1} className="v3-wrap v3-section">
@@ -22,6 +23,9 @@ export default function HomeSections() {
     <p>{copy.spirit}</p>
     <a className="v3-link" href="/l-entreprise">Découvrir l’entreprise ↗</a>
     </div>
+    </section>
+    <section className="v3-wrap v3-home-comparison" aria-label="Le bâtiment avant et après la pose du bardage">
+    <FacadeComparison />
     </section>
     <section className="v3-tint">
     <div className="v3-wrap v3-section">

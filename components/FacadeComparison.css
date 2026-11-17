@@ -1,0 +1,25 @@
+.v2-comparison { isolation: isolate; }
+.v2-comparison-before { position: absolute; inset: 0; clip-path: inset(0 calc(100% - var(--comparison-position)) 0 0); }
+.v2-comparison img { user-select: none; }
+.v2-comparison-label { position: absolute; z-index: 2; top: 25px; padding: 11px 15px; border: 1px solid #ffffff45; border-radius: 5px; background: #102238b8; color: white; font-size: 10px; letter-spacing: .14em; pointer-events: none; }
+.v2-comparison-label span { display: block; margin-top: 3px; font-size: 11px; letter-spacing: .02em; opacity: .8; }
+.v2-comparison-label-before { left: 25px; }
+.v2-comparison-label-after { right: 25px; }
+.v2-comparison-divider { position: absolute; z-index: 2; top: 0; bottom: 0; left: var(--comparison-position); width: 2px; transform: translateX(-50%); background: #fff; box-shadow: 0 0 12px #10223840; pointer-events: none; }
+.v2-comparison-handle { position: absolute; top: 50%; left: 50%; display: flex; align-items: center; justify-content: center; width: 54px; height: 54px; border: 1px solid #ffffffa6; border-radius: 50%; background: #f5f7fb; color: #142c4c; box-shadow: 0 3px 20px #10223833; transform: translate(-50%, -50%); }
+.v2-comparison-range { position: absolute; z-index: 3; inset: 0 auto 0 -27px; width: calc(100% + 54px); height: 100%; margin: 0; opacity: 0; cursor: ew-resize; appearance: none; -webkit-appearance: none; background: transparent; touch-action: pan-y; }
+.v2-comparison-range::-webkit-slider-thumb { width: 54px; height: 54px; appearance: none; -webkit-appearance: none; }
+.v2-comparison-range::-moz-range-thumb { width: 54px; height: 54px; border: 0; }
+.v2-comparison:has(.v2-comparison-range:focus-visible) { outline: 3px solid #6c9fd6; outline-offset: 5px; }
+.v2-comparison:has(.v2-comparison-range:focus-visible) .v2-comparison-handle { box-shadow: 0 0 0 5px #6c9fd6b3; }
+.v2-comparison .v2-image-caption, .v2-comparison .v2-image-index { pointer-events: none; }
+.v2-comparison .v2-image-caption { bottom: 45px; }
+.v2-comparison .v2-image-index { bottom: 62px; }
+.v2-comparison-hint { position: absolute; z-index: 2; bottom: 14px; left: 25px; color: #fff; font-size: 10px; letter-spacing: .03em; text-shadow: 0 1px 5px #000; pointer-events: none; }
+@media (max-width: 700px) {
+  .v2-comparison-label { top: 16px; padding: 9px 11px; font-size: 9px; }
+  .v2-comparison-label-before { left: 14px; }
+  .v2-comparison-label-after { right: 14px; }
+  .v2-comparison .v2-image-caption { bottom: 41px; }
+  .v2-comparison-hint { left: 14px; font-size: 9px; }
+}

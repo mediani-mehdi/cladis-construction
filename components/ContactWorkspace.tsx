@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
-import Image from 'next/image';
+import Image from "@/components/SiteImage";
 import { ArrowDownToLine, ArrowUpRight, FileText, SlidersHorizontal, Send } from 'lucide-react';
 import ContactProject from '@/components/ContactProject';
 

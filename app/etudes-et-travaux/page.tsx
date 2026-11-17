@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
+import Image from "@/components/SiteImage";
 import InformationPageLayout from '@/components/InformationPageLayout';
 import copy from '@/lib/studies-copy.json';
 export const metadata: Metadata = { title: 'Études et travaux | CLADIS Construction', alternates: { canonical: '/etudes-et-travaux' } };

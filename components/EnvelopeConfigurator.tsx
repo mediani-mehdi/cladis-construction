@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import Image from "@/components/SiteImage";
 import { Building2, Sparkles, ArrowRight, ShieldCheck } from "lucide-react";
 
 interface ConfiguratorProps {

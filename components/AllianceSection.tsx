@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Image from "@/components/SiteImage";
 import Link from "next/link";
 import { ALLIANCE_PILLARS } from "@/lib/alliance-data";
 import { ShieldCheck, Truck, Cpu, CheckCircle2, ArrowRight, ArrowUpRight } from "lucide-react";

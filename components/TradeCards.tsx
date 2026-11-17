@@ -1,6 +1,6 @@
 "use client";
 import { useRef } from 'react';
-import Image from 'next/image';
+import Image from "@/components/SiteImage";
 import { METIERS } from '@/lib/metiers-data';
 export default function TradeCards({ exclude }: {
     exclude?: string;

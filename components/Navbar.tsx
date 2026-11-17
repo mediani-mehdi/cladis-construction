@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
+import Image from "@/components/SiteImage";
 import { usePathname } from "next/navigation";
 import { NAV_LINKS } from "@/lib/site-navigation";
 import { Menu, X, ArrowUpRight, Phone, Download, Clock, Linkedin, Instagram, Facebook, Search } from "lucide-react";

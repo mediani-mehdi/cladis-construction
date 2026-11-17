@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Image from "@/components/SiteImage";
 import Link from "next/link";
 import { ArrowUpRight, ArrowRight, Sliders } from "lucide-react";
 import { METIERS } from "@/lib/metiers-data";

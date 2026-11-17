@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
+import Image from "@/components/SiteImage";
 import InformationPageLayout from '@/components/InformationPageLayout';
 import TradeCards from '@/components/TradeCards';
 export const metadata: Metadata = { title: 'Bardage, couverture, étanchéité et charpente | CLADIS', description: 'Les quatre métiers de CLADIS Construction à Chambéry, du bardage de façade à la couverture métallique, l’étanchéité et la charpente acier.', alternates: { canonical: '/metiers' } };
