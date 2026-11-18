@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Box, Layers3, PanelsTopLeft, Plus } from "lucide-react";
 import Image from "@/components/SiteImage";
 import InformationPageLayout from "@/components/InformationPageLayout";
 import copy from "@/lib/studies-copy.json";
@@ -7,6 +8,12 @@ export const metadata: Metadata = {
   title: "Études et travaux | CLADIS Construction",
   alternates: { canonical: "/etudes-et-travaux" },
 };
+
+const disciplineOverviews = [
+  { Icon: PanelsTopLeft, summary: "Élévations, calepinage des parements et détails de raccordement." },
+  { Icon: Layers3, summary: "Plans de toiture, réservations et évacuation des eaux pluviales." },
+  { Icon: Box, summary: "Modélisation 3D et plans de fabrication et de montage." },
+];
 
 function StudiesPhoto({ src, alt, caption }: { src: string; alt: string; caption: string }) {
   return (
@@ -43,12 +50,12 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="v3-tint">
+      <section className="v3-studies-office" aria-labelledby="bureau-etudes">
         <div className="v3-wrap v3-section">
-          <div className="v3-studies-split v3-studies-split-reverse">
-            <div>
+          <div className="v3-studies-office-feature">
+            <div className="v3-studies-office-intro">
               <span className="v3-label">02 / Études d’exécution</span>
-              <h2>Notre bureau d’études intégré</h2>
+              <h2 id="bureau-etudes">Notre bureau d’études <em>intégré</em></h2>
               <p>{copy.office}</p>
             </div>
             <StudiesPhoto
@@ -57,13 +64,25 @@ export default function Page() {
               caption="Modélisation 3D et plans d’exécution"
             />
           </div>
-          <div className="v3-solutions">
-            {copy.disciplines.map(({ title, paragraphs }) => (
-              <article key={title}>
-                <h3>{title}</h3>
-                {paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-              </article>
-            ))}
+          <div className="v3-studies-disciplines">
+            {copy.disciplines.map(({ title, paragraphs }, index) => {
+              const { Icon, summary } = disciplineOverviews[index];
+              return (
+                <article key={title} className="v3-studies-discipline">
+                  <span className="v3-studies-discipline-icon"><Icon size={22} aria-hidden="true" /></span>
+                  <h3>{title}</h3>
+                  <p>{summary}</p>
+                  <details>
+                    <summary aria-label={`Détails des études — ${title}`}>
+                      Détails des études <Plus size={17} aria-hidden="true" />
+                    </summary>
+                    <div className="v3-studies-discipline-content">
+                      {paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                    </div>
+                  </details>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
