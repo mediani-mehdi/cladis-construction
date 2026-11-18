@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Box, Layers3, PanelsTopLeft, Plus } from "lucide-react";
+import { ArrowUpRight, Box, Handshake, Layers3, Megaphone, PanelsTopLeft, Plus, Truck, UsersRound } from "lucide-react";
 import Image from "@/components/SiteImage";
 import InformationPageLayout from "@/components/InformationPageLayout";
 import copy from "@/lib/studies-copy.json";
@@ -15,11 +15,18 @@ const disciplineOverviews = [
   { Icon: Box, summary: "Modélisation 3D et plans de fabrication et de montage." },
 ];
 
-function StudiesPhoto({ src, alt, caption }: { src: string; alt: string; caption: string }) {
+const partnerIcons = [Truck, UsersRound, Megaphone, Handshake];
+
+function StudiesPhoto({ src, alt, caption, sizes = "(max-width: 767px) calc(100vw - 40px), (max-width: 1488px) 52vw, 750px" }: {
+  src: string;
+  alt: string;
+  caption: string;
+  sizes?: string;
+}) {
   return (
     <figure>
       <div className="v3-studies-photo">
-        <Image src={src} alt={alt} fill sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1488px) 52vw, 750px" className="object-cover" />
+        <Image src={src} alt={alt} fill sizes={sizes} className="object-cover" />
       </div>
       <figcaption>{caption}</figcaption>
     </figure>
@@ -109,30 +116,35 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="v3-tint">
+      <section className="v3-studies-partners" aria-labelledby="services-partenaires">
         <div className="v3-wrap v3-section">
-          <div className="v3-studies-split v3-studies-split-reverse">
-            <div>
-              <span className="v3-label">04 / Une organisation coordonnée</span>
-              <h2>Nos services et partenaires</h2>
-            </div>
+          <span className="v3-label">04 / Une organisation coordonnée</span>
+          <h2 id="services-partenaires">Nos services <em>et partenaires</em></h2>
+
+          <div className="v3-studies-partners-layout">
             <StudiesPhoto
               src="/images/alliance-procurement-01b95925.webp"
               alt="Un responsable vérifie des panneaux et des profilés métalliques en entrepôt."
               caption="Contrôle des approvisionnements en entrepôt"
+              sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1000px) calc(100vw - 112px), (max-width: 1488px) 38vw, 540px"
             />
+            <div className="v3-studies-partner-cards">
+              {copy.partners.map(({ title, text }, index) => {
+                const Icon = partnerIcons[index];
+                return (
+                  <article key={title} className="v3-studies-partner-card">
+                    <Icon size={22} aria-hidden="true" />
+                    <h3>{title}</h3>
+                    <p>{text}</p>
+                  </article>
+                );
+              })}
+            </div>
           </div>
-          <div className="v3-solutions">
-            {copy.partners.map(({ title, text }) => (
-              <article key={title}>
-                <h3>{title}</h3>
-                <p>{text}</p>
-              </article>
-            ))}
-          </div>
+
           <div className="v3-actions">
-            <a className="v3-button" href="/realisations">Voir nos réalisations ↗</a>
-            <a className="v3-link" href="/contact">Nous contacter ↗</a>
+            <a className="v3-button light" href="/realisations">Voir nos réalisations <ArrowUpRight size={17} aria-hidden="true" /></a>
+            <a className="v3-link" href="/contact">Nous contacter <ArrowUpRight size={17} aria-hidden="true" /></a>
           </div>
         </div>
       </section>
