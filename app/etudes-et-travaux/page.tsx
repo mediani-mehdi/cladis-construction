@@ -143,7 +143,7 @@ export default function Page() {
           </div>
 
           <div className="v3-actions">
-            <a className="v3-button light" href="/realisations">Voir nos réalisations <ArrowUpRight size={17} aria-hidden="true" /></a>
+            <a className="v3-button" href="/realisations">Voir nos réalisations <ArrowUpRight size={17} aria-hidden="true" /></a>
             <a className="v3-link" href="/contact">Nous contacter <ArrowUpRight size={17} aria-hidden="true" /></a>
           </div>
         </div>
