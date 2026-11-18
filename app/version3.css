@@ -267,6 +267,45 @@
   padding-top: 24px;
 }
 
+.v3-studies-split {
+  display: grid;
+  grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+  align-items: center;
+  gap: clamp(24px, 5vw, 76px);
+}
+
+.v3-studies-split-reverse {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+}
+
+.v3-studies-split-reverse figure {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.v3-studies-photo {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #e8edef;
+}
+
+.v2-home .v3-section.v3-studies-teams {
+  padding-top: 0;
+}
+
+@media (max-width: 767px) {
+  .v3-studies-split,
+  .v3-studies-split-reverse {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .v3-studies-split-reverse figure {
+    grid-row: auto;
+  }
+}
+
 .v3-prose {
   max-width: 1000px;
 }

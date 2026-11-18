@@ -1,34 +1,78 @@
 "use client";
 
-import Image from "@/components/SiteImage";
 import { useState } from "react";
 import { ArrowUp, ArrowUpRight } from "lucide-react";
-import { NAV_LINKS } from "@/lib/site-navigation";
+import Image from "@/components/SiteImage";
 import CatalogueModal from "@/components/CatalogueModal";
+import { NAV_LINKS } from "@/lib/site-navigation";
 
 export default function HomeFooter({ onOpenCatalogue }: { onOpenCatalogue?: () => void }) {
   const [catalogueOpen, setCatalogueOpen] = useState(false);
 
-  return <><footer className="v2-footer v2-footer-redesign">
-    <div className="v2-footer-backdrop" aria-hidden="true"><Image src="/images/homepage-hero-3cdb9cad.webp" alt="" fill quality={90} sizes="(max-width: 700px) 100vw, 70vw" className="object-cover" /></div>
-    <div className="v2-footer-fade" aria-hidden="true" />
-    <div className="v2-container v2-footer-content">
-      <div className="v2-footer-banner">
-        <span className="v2-eyebrow">UNE VISION D’ENSEMBLE. LA PRÉCISION DU DÉTAIL.</span>
-        <div className="v2-footer-banner-content"><h2>Votre projet commence<br /><em>par un échange.</em></h2><button type="button" onClick={onOpenCatalogue ?? (() => setCatalogueOpen(true))} className="v2-button v2-button-light v2-footer-catalogue-cta"><span>Cladis Construction <em>Catalogue</em></span><ArrowUpRight size={23} aria-hidden="true" /></button></div>
-      </div>
-      <div className="v2-footer-main">
-        <div className="v2-footer-brand"><a href="/" aria-label="CLADIS Construction, accueil"><Image src="/images/cladis-logo-transparent-07a6284b.webp" alt="CLADIS Construction" width={210} height={60} className="v2-footer-logo" /></a><p>De la structure aux finitions, nous donnons forme à vos ambitions. Une enveloppe durable, un savoir-faire précis, un engagement à chaque étape.</p></div>
-        <nav className="v2-footer-navigation" aria-label="Menu de pied de page"><span className="v2-eyebrow">MENU</span><div>{NAV_LINKS.map((link) => <a key={link.href} href={link.href}>{link.label}</a>)}</div></nav>
-        <nav className="v2-footer-navigation" aria-label="Informations légales"><span className="v2-eyebrow">INFORMATIONS LÉGALES</span><div><a href="/informations-legales#mentions-legales">Mentions légales</a><a href="/informations-legales#conditions-generales">Conditions générales</a><a href="/informations-legales#confidentialite">Confidentialité</a></div></nav>
-        <div className="v2-footer-connect"><span className="v2-eyebrow">NOUS CONTACTER</span><address className="v2-footer-contact-list">
-          <span className="v2-footer-contact-address">74 rue de la Révériaz<br />73000 Chambéry, France</span>
-          <a href="mailto:contact@cladisbardage.com" className="v2-footer-contact-link">contact@cladisbardage.com</a>
-          <a href="tel:0952863156" className="v2-footer-contact-link">09 52 86 31 56</a>
-          <a href="tel:0768527215" className="v2-footer-contact-link">07 68 52 72 15</a>
-        </address><span className="v2-footer-hours">Lundi – Vendredi · 8h00 – 18h00</span></div>
-      </div>
-      <div className="v2-footer-final"><span>© {new Date().getFullYear()} Cladis Construction</span><span>CHAMBÉRY · AUVERGNE-RHÔNE-ALPES</span><a href="#" aria-label="Retour en haut de page"><span>Revenir en haut</span><span className="v2-footer-up"><ArrowUp size={17} aria-hidden="true" /></span></a></div>
-    </div>
-  </footer><CatalogueModal isOpen={catalogueOpen} onClose={() => setCatalogueOpen(false)} /></>;
+  return (
+    <>
+      <footer className="v2-footer-redesign">
+        <div className="site-footer-project">
+          <div className="v2-container site-footer-project-grid">
+            <div>
+              <h2>Parlons de <em>votre projet.</em></h2>
+              <a href="/contact" className="site-footer-contact-cta">
+                Nous contacter <ArrowUpRight size={19} aria-hidden="true" />
+              </a>
+            </div>
+            <button type="button" className="site-footer-catalogue" onClick={onOpenCatalogue ?? (() => setCatalogueOpen(true))}>
+              <Image src="/images/catalogue-cover-faed49b8.webp" alt="" width={84} height={109} className="site-footer-catalogue-cover" />
+              <span>
+                <span className="site-footer-catalogue-edition">Édition 2026</span>
+                <span className="site-footer-catalogue-title">Consulter le catalogue</span>
+              </span>
+              <ArrowUpRight size={19} aria-hidden="true" />
+            </button>
+          </div>
+        </div>
+
+        <div className="v2-container">
+          <div className="site-footer-directory">
+            <div className="site-footer-brand">
+              <a href="/" aria-label="CLADIS Construction, accueil">
+                <Image src="/images/cladis-logo-transparent-07a6284b.webp" alt="CLADIS Construction" width={210} height={60} />
+              </a>
+              <p>Enveloppe du bâtiment et construction métallique à Chambéry.</p>
+            </div>
+
+            <nav aria-labelledby="site-footer-navigation">
+              <h3 id="site-footer-navigation">Navigation</h3>
+              <ul className="site-footer-links">
+                {NAV_LINKS.map(({ href, label }) => <li key={href}><a href={href}>{label}</a></li>)}
+              </ul>
+            </nav>
+
+            <div>
+              <h3>Coordonnées</h3>
+              <address className="site-footer-address">
+                <span>74 rue de la Révériaz<br />73000 Chambéry, France</span>
+                <a href="mailto:contact@cladisbardage.com">contact@cladisbardage.com</a>
+                <div className="site-footer-phones">
+                  <a href="tel:0952863156">09 52 86 31 56</a>
+                  <a href="tel:0768527215">07 68 52 72 15</a>
+                </div>
+              </address>
+              <p className="site-footer-hours">Lundi – Vendredi · 8h00 – 18h00</p>
+            </div>
+          </div>
+
+          <div className="site-footer-bottom">
+            <small>© {new Date().getFullYear()} Cladis Construction</small>
+            <nav aria-label="Informations légales" className="site-footer-legal">
+              <a href="/informations-legales#mentions-legales">Mentions légales</a>
+              <a href="/informations-legales#conditions-generales">Conditions générales</a>
+              <a href="/informations-legales#confidentialite">Confidentialité</a>
+            </nav>
+            <a href="#" className="site-footer-top">Retour en haut <ArrowUp size={17} aria-hidden="true" /></a>
+          </div>
+        </div>
+      </footer>
+      <CatalogueModal isOpen={catalogueOpen} onClose={() => setCatalogueOpen(false)} />
+    </>
+  );
 }
