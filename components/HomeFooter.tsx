@@ -30,9 +30,17 @@ export default function HomeFooter({ onOpenCatalogue }: { onOpenCatalogue?: () =
     <>
       <footer className="v2-footer-redesign">
         <div className="site-footer-main">
+          {/* Faded Background Image & Signature Blue Shadow */}
           <div className="site-footer-backdrop" aria-hidden="true">
-            <Image src="/images/hero-building-60c1b312.webp" alt="" fill sizes="100vw" className="object-cover" />
+            <Image
+              src="/images/hero-building-60c1b312.webp"
+              alt=""
+              fill
+              sizes="100vw"
+              className="object-cover"
+            />
           </div>
+          <div className="site-footer-fade" aria-hidden="true" />
 
           <div className="v2-container site-footer-directory">
             {/* Brand Column */}
